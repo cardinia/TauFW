@@ -7,11 +7,13 @@ A part of the configuration needs to be done in each fresh login terminal on the
 ## Configuration after new login or in a new terminal
 
 To be able to perform the analysis with [TauFW](https://github.com/ArturAkh/TauFW.git) framework covered by sections [3](preselection.md),
+
 [4](flat_n-tuples.md), [5](norm_and_corr_exp.md), [6](refine_ztautau.md), [7](es_tau.md),
 and [8](prep_stat_inference.md), you need to do the following each time you perform a new login on the CERN `lxplus` or open a new terminal window there.
 
 ```sh
 # Moving into TauFW working directory
+
 cd ~/TauLongCMSDAS2020/CMSSW_10_6_20_patch1/src
 
 # Setting the CMSSW environment
@@ -114,3 +116,4 @@ For a different Z&rarr;&tau;&tau; final state, for example e&mu;, you will need 
 
 Finally, please check whether all directories configured (execute `pico.py list` to see them) are accessible, are properly written and you have the right permissions to read the files.
 More details on which directories are used for which step, will be given in the corresponding analysis sections.
+
