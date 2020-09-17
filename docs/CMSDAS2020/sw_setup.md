@@ -143,5 +143,5 @@ After some of you have completed a subtask for the analysis and the correspondin
 from the corresponding fork after adding it as an additional remote to their own fork.
 
 
-Long story short: Make use of strengths of github to improve the collaborative work among you during this exercise! Do not forget, that you all should consider yourselves as an entire analysis group working hand in hand to achieve a nice measurement :)
-
+Long story short: Make use of strengths of github to improve the collaborative work among you during this exercise! Do not forget, that you are one analysis group working hand in hand to achieve
+a nice measurement :)
