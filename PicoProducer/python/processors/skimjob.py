@@ -122,4 +122,3 @@ if copydir and outdir!=copydir:
 
 # DONE
 print(">>> skimjob.py done after %.1f seconds"%(time.time()-time0))
-
