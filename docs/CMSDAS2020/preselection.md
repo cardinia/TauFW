@@ -43,9 +43,7 @@ dasgoclient -query="dataset dataset=/DYJetsToLL_M-50_TuneCP5_13TeV-madgraphMLM-p
 If you like to see, whether there are other Drell-Yan samples available, you can use wildcard notation with &ast;:
 
 ```sh
-
 dasgoclient -query="dataset dataset=/DY*JetsToLL_M-50_TuneCP5*/RunIIAutumn18NanoAODv6-Nano25Oct2019_102X_upgrade2018_realistic_v20*/NANOAODSIM"
-
 ```
 
 You can also search for the files of the first dataset, or on which sites it is located:
