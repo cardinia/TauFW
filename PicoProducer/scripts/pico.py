@@ -493,6 +493,7 @@ def main_run(args):
           runcmd += " -y %s -o %s"%(era,outdir)
           if preselect:
             runcmd += " --preselect '%s'"%(preselect)
+
         ###elif 'test' in channel:
         ###  runcmd += " -o %s"%(outdir)
         else: # analysis
@@ -1575,4 +1576,3 @@ if __name__ == "__main__":
   
   print ">>> Done!"
   
-
