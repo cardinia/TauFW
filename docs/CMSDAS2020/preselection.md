@@ -187,5 +187,3 @@ Let us use these preselected NanoAOD samples for further processing to create fl
 
 For those of you, how are interested in setting up a completely new final state, the e&mu; final state is a good candidate to be used in the Z&rarr;&tau;&tau; cross-section measurement,
 combining it with the &mu;&tauM<sub>h</sub> final state. You would need to perform similar steps as for &mu;&tauM<sub>h</sub>, but adapted to a selection of a pair of a muon and an electron.
-
-
