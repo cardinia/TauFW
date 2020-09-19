@@ -200,5 +200,3 @@ class ModuleMuTau(Module):
     self.tree.Fill()
     
     return True
-
-
