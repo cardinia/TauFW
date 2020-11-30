@@ -23,12 +23,12 @@ class ModuleETau(ModuleTauPair):
     self.trigger   = TrigObjMatcher(jsonfile,trigger='SingleElectron',isdata=self.isdata)
     self.eleCutPt  = self.trigger.ptmins[0]
     self.tauCutPt  = 20
-    self.eleCutEta = 2.3
+    self.eleCutEta = 2.1 #LOR CHANGED DEFAULT IS 2.3
     self.tauCutEta = 2.3
     
     # CORRECTIONS
     if self.ismc:
-      self.eleSFs  = ElectronSFs(year=self.year)
+      self.eleSFs  = ElectronSFs(year=self.year) #LOR COMMENT
       self.tesTool = TauESTool(tauSFVersion[self.year])
       self.tauSFs  = TauIDSFTool(tauSFVersion[self.year],'DeepTau2017v2p1VSjet','Tight')
       self.etfSFs  = TauIDSFTool(tauSFVersion[self.year],'DeepTau2017v2p1VSe',  'VLoose')
@@ -96,6 +96,7 @@ class ModuleETau(ModuleTauPair):
       if abs(electron.dxy)>0.045: continue
       if not electron.convVeto: continue
       if electron.lostHits>1: continue
+      if electron.pfRelIso03_all > 0.5: continue 
       if not (electron.mvaFall17V2Iso_WP90 or electron.mvaFall17V2noIso_WP90): continue
       if not self.trigger.match(event,electron): continue
       electrons.append(electron)
@@ -109,11 +110,12 @@ class ModuleETau(ModuleTauPair):
     for tau in Collection(event,'Tau'):
       if abs(tau.eta)>self.tauCutEta: continue
       if abs(tau.dz)>0.2: continue
-      if tau.decayMode not in [0,1,10,11]: continue
+      if tau.decayMode in [5,6]: continue #not in [0,1,10,11]: continue #LOR CHANGED
       if abs(tau.charge)!=1: continue
+      if tau.idDecayModeNewDMs < 0.5: continue #LOR ADDED
       if tau.idDeepTau2017v2p1VSe<1: continue  # VVVLoose
       if tau.idDeepTau2017v2p1VSmu<1: continue # VLoose
-      if tau.idDeepTau2017v2p1VSjet<self.tauwp: continue
+      if tau.idDeepTau2017v2p1VSjet<16: continue   #self.tauwp: continue
       if self.ismc:
         genmatch = tau.genPartFlav
         if genmatch==5: # real tau
@@ -254,8 +256,8 @@ class ModuleETau(ModuleTauPair):
         self.btagTool.fillEffMaps(jets,usejec=self.dojec)
       
       # MUON WEIGHTS
-      self.out.trigweight[0]              = self.eleSFs.getTriggerSF(electron.pt,electron.eta)
-      self.out.idisoweight_1[0]           = self.eleSFs.getIdIsoSF(electron.pt,electron.eta)
+      self.out.trigweight[0]              = self.eleSFs.getTriggerSF(electron.pt,electron.eta)#LOR COMMENT
+      self.out.idisoweight_1[0]           = self.eleSFs.getIdIsoSF(electron.pt,electron.eta)#LOR COMMENT
       
       # TAU WEIGHTS
       if tau.genPartFlav==5: # real tau
