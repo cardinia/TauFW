@@ -127,9 +127,9 @@ class ModuleETau(ModuleTauPair):
           if tes!=1:
             tau.pt   *= tes
             tau.mass *= tes
-        elif self.ltf!=1.0 and 0<genmatch<5: # lepton -> tau fake
-          tau.pt   *= self.ltf
-          tau.mass *= self.ltf
+        #elif self.ltf!=1.0 and 0<genmatch<5: # lepton -> tau fake
+        #  tau.pt   *= self.ltf
+        #  tau.mass *= self.ltf
         elif self.jtf!=1.0 and genmatch==0: # jet -> tau fake
           tau.pt   *= self.jtf
           tau.mass *= self.jtf
