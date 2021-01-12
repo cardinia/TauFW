@@ -1,0 +1,104 @@
+000 (1631444.006.000) 12/29 12:17:31 Job submitted from host: <188.185.70.244:9618?addrs=188.185.70.244-9618+[2001-1458-d00-7--100-2ee]-9618&alias=bigbird10.cern.ch&noUDP&sock=schedd_1929_b647_195>
+...
+040 (1631444.006.000) 12/29 12:47:58 Started transferring input files
+	Transferring to host: <128.142.118.238:9618?addrs=128.142.118.238-9618&noUDP&sock=3022_05b4_55641>
+...
+040 (1631444.006.000) 12/29 12:47:58 Finished transferring input files
+...
+001 (1631444.006.000) 12/29 12:47:59 Job executing on host: <128.142.118.238:9618?addrs=128.142.118.238-9618&noUDP&sock=2170_049a_3>
+...
+006 (1631444.006.000) 12/29 12:48:09 Image size of job updated: 226836
+	158  -  MemoryUsage of job (MB)
+	160876  -  ResidentSetSize of job (KB)
+...
+006 (1631444.006.000) 12/29 12:53:09 Image size of job updated: 364968
+	286  -  MemoryUsage of job (MB)
+	291956  -  ResidentSetSize of job (KB)
+...
+006 (1631444.006.000) 12/29 12:58:09 Image size of job updated: 386068
+	306  -  MemoryUsage of job (MB)
+	313032  -  ResidentSetSize of job (KB)
+...
+006 (1631444.006.000) 12/29 13:03:10 Image size of job updated: 387536
+	308  -  MemoryUsage of job (MB)
+	314440  -  ResidentSetSize of job (KB)
+...
+006 (1631444.006.000) 12/29 13:08:11 Image size of job updated: 388264
+	308  -  MemoryUsage of job (MB)
+	315168  -  ResidentSetSize of job (KB)
+...
+006 (1631444.006.000) 12/29 13:13:11 Image size of job updated: 388264
+	309  -  MemoryUsage of job (MB)
+	315808  -  ResidentSetSize of job (KB)
+...
+006 (1631444.006.000) 12/29 13:24:03 Image size of job updated: 388264
+	309  -  MemoryUsage of job (MB)
+	316364  -  ResidentSetSize of job (KB)
+...
+007 (1631444.006.000) 12/29 13:24:03 Shadow exception!
+	Assertion ERROR on (result)
+	0  -  Run Bytes Sent By Job
+	9873  -  Run Bytes Received By Job
+...
+040 (1631444.006.000) 12/29 13:26:00 Started transferring input files
+	Transferring to host: <128.142.72.106:9618?addrs=128.142.72.106-9618+[2001-1458-301-75--100-bc]-9618&noUDP&sock=16978_496b_8248>
+...
+040 (1631444.006.000) 12/29 13:26:00 Finished transferring input files
+...
+001 (1631444.006.000) 12/29 13:26:01 Job executing on host: <128.142.72.106:9618?addrs=128.142.72.106-9618+[2001-1458-301-75--100-bc]-9618&noUDP&sock=16822_123f_3>
+...
+007 (1631444.006.000) 12/29 14:51:53 Shadow exception!
+	Assertion ERROR on (result)
+	0  -  Run Bytes Sent By Job
+	9873  -  Run Bytes Received By Job
+...
+040 (1631444.006.000) 12/29 14:53:20 Entered queue to transfer input files
+	Transferring to host: <188.184.212.77:9618?addrs=188.184.212.77-9618+[2001-1458-301-10c--100-44]-9618&noUDP&sock=11249_b023_135828>
+...
+040 (1631444.006.000) 12/29 15:10:05 Started transferring input files
+	Seconds spent in queue: 1005
+...
+001 (1631444.006.000) 12/29 15:10:53 Job executing on host: <188.184.212.77:9618?addrs=188.184.212.77-9618+[2001-1458-301-10c--100-44]-9618&noUDP&sock=20329_94e2_3>
+...
+040 (1631444.006.000) 12/29 15:10:53 Finished transferring input files
+...
+006 (1631444.006.000) 12/29 16:52:49 Image size of job updated: 400000
+	318  -  MemoryUsage of job (MB)
+	325500  -  ResidentSetSize of job (KB)
+...
+006 (1631444.006.000) 12/29 16:57:50 Image size of job updated: 400000
+	327  -  MemoryUsage of job (MB)
+	334284  -  ResidentSetSize of job (KB)
+...
+006 (1631444.006.000) 12/29 17:02:50 Image size of job updated: 400000
+	327  -  MemoryUsage of job (MB)
+	334288  -  ResidentSetSize of job (KB)
+...
+006 (1631444.006.000) 12/29 17:07:50 Image size of job updated: 400000
+	328  -  MemoryUsage of job (MB)
+	335324  -  ResidentSetSize of job (KB)
+...
+006 (1631444.006.000) 12/29 17:17:52 Image size of job updated: 400000
+	328  -  MemoryUsage of job (MB)
+	335332  -  ResidentSetSize of job (KB)
+...
+006 (1631444.006.000) 12/29 17:32:53 Image size of job updated: 400000
+	328  -  MemoryUsage of job (MB)
+	335336  -  ResidentSetSize of job (KB)
+...
+006 (1631444.006.000) 12/29 18:43:00 Image size of job updated: 400000
+	328  -  MemoryUsage of job (MB)
+	335840  -  ResidentSetSize of job (KB)
+...
+006 (1631444.006.000) 12/29 18:48:01 Image size of job updated: 400000
+	329  -  MemoryUsage of job (MB)
+	336504  -  ResidentSetSize of job (KB)
+...
+040 (1631444.006.000) 12/29 20:44:23 Started transferring output files
+	Seconds spent in queue: 21063
+...
+040 (1631444.006.000) 12/29 20:44:23 Finished transferring output files
+...
+009 (1631444.006.000) 12/29 20:44:23 Job was aborted by the user.
+	Job removed by SYSTEM_PERIODIC_REMOVE due to wall time exceeded allowed max.
+...

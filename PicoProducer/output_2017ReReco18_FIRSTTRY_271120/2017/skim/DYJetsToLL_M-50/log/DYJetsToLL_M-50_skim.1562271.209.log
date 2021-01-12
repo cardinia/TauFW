@@ -1,0 +1,73 @@
+Could not find platform independent libraries <prefix>
+Could not find platform dependent libraries <exec_prefix>
+Consider setting $PYTHONHOME to <prefix>[:<exec_prefix>]
+ImportError: No module named site
+Job start at Thu Nov 19 23:32:19 CET 2020
+Running job on machine Linux b7g42n0422.cern.ch 3.10.0-957.10.1.el7.x86_64 #1 SMP Mon Mar 18 15:06:45 UTC 2019 x86_64 x86_64 x86_64 GNU/Linux, host b7g42n0422.cern.ch
+============================================================
+$PWD=/pool/condor/dir_4901
+$JOBID=1562271
+$TASKID=209
+$HOSTNAME=b7g42n0422.cern.ch
+$TASKCMD=/afs/cern.ch/work/l/lvigilan/TauWork/CMSSW_10_6_17_patch1/src/TauFW/PicoProducer/python/processors/skimjob.py -y 2017 -d 'mc' -t _skim --copydir /eos/user/l/lvigilan/samples/nano/2017/DYJetsToLL_M-50_TuneCP5_13TeV-madgraphMLM-pythia8/RunIISummer19UL17NanoAOD-106X_mc2017_realistic_v6-v2/NANOAODSIM -p --preselect 'HLT_Ele35_WPTight_Gsf_v == 1 && Electron_pt > 35 && Electron_eta < 2.1 && Tau_pt > 20 && Tau_eta < 2.3 && Electron_pfRelIso03_all < 0.5 && Tau_idDeepTau2017v2p1VSmu >= 1 && Tau_idDeepTau2017v2p1VSjet >= 16' --opt 'zpt=True' -i root://cms-xrd-global.cern.ch//store/mc/RunIISummer19UL17NanoAOD/DYJetsToLL_M-50_TuneCP5_13TeV-madgraphMLM-pythia8/NANOAODSIM/106X_mc2017_realistic_v6-v2/280000/4C9A6333-31B5-BD4A-9980-E6D2D8EAFAD9.root
+$WORKDIR=/pool/condor/dir_4901
+>>> cd /afs/cern.ch/work/l/lvigilan/TauWork/CMSSW_10_6_17_patch1/src
+>>> eval `scramv1 runtime -sh`
+>>> cd /pool/condor/dir_4901
+$PWD=/pool/condor/dir_4901
+>>> /afs/cern.ch/work/l/lvigilan/TauWork/CMSSW_10_6_17_patch1/src/TauFW/PicoProducer/python/processors/skimjob.py -y 2017 -d 'mc' -t _skim --copydir /eos/user/l/lvigilan/samples/nano/2017/DYJetsToLL_M-50_TuneCP5_13TeV-madgraphMLM-pythia8/RunIISummer19UL17NanoAOD-106X_mc2017_realistic_v6-v2/NANOAODSIM -p --preselect 'HLT_Ele35_WPTight_Gsf_v == 1 && Electron_pt > 35 && Electron_eta < 2.1 && Tau_pt > 20 && Tau_eta < 2.3 && Electron_pfRelIso03_all < 0.5 && Tau_idDeepTau2017v2p1VSmu >= 1 && Tau_idDeepTau2017v2p1VSjet >= 16' --opt 'zpt=True' -i root://cms-xrd-global.cern.ch//store/mc/RunIISummer19UL17NanoAOD/DYJetsToLL_M-50_TuneCP5_13TeV-madgraphMLM-pythia8/NANOAODSIM/106X_mc2017_realistic_v6-v2/280000/4C9A6333-31B5-BD4A-9980-E6D2D8EAFAD9.root
+Error in <TGClient::TGClient>: can't open display "localhost:33.0", switching to batch mode...
+ In case you run from a remote ssh session, reconnect with ssh -Y
+Error in <TTreeFormula::Compile>:  Bad numerical expression : "HLT_Ele35_WPTight_Gsf_v"
+Info in <TSelectorDraw::AbortProcess>: Variable compilation failed: {,HLT_Ele35_WPTight_Gsf_v == 1 && Electron_pt > 35 && Electron_eta < 2.1 && Tau_pt > 20 && Tau_eta < 2.3 && Electron_pfRelIso03_all < 0.5 && Tau_idDeepTau2017v2p1VSmu >= 1 && Tau_idDeepTau2017v2p1VSjet >= 16}
+--------------------------------------------------------------------------------
+>>> era          = '2017'
+>>> year         = 2017
+>>> period       = ''
+>>> dtype        = 'mc'
+>>> maxevts      = None
+>>> tag          = '_skim'
+>>> postfix      = '_skim'
+>>> outdir       = '.'
+>>> outfiles     = './*_skim.root'
+>>> copydir      = '/eos/user/l/lvigilan/samples/nano/2017/DYJetsToLL_M-50_TuneCP5_13TeV-madgraphMLM-pythia8/RunIISummer19UL17NanoAOD-106X_mc2017_realistic_v6-v2/NANOAODSIM'
+>>> infiles      = ['root://cms-xrd-global.cern.ch//store/mc/RunIISummer19UL17NanoAOD/DYJetsToLL_M-50_TuneCP5_13TeV-madgraphMLM-pythia8/NANOAODSIM/106X_mc2017_realistic_v6-v2/280000/4C9A6333-31B5-BD4A-9980-E6D2D8EAFAD9.root']
+>>> branchsel    = '/afs/cern.ch/work/l/lvigilan/TauWork/CMSSW_10_6_17_patch1/python/TauFW/PicoProducer/processors/keep_and_drop_skim.txt'
+>>> json         = None
+>>> modules      = []
+>>> prefetch     = True
+>>> doJEC        = False
+>>> doJECSys     = False
+>>> cwd          = /pool/condor/dir_4901
+>>> preselection = HLT_Ele35_WPTight_Gsf_v == 1 && Electron_pt > 35 && Electron_eta < 2.1 && Tau_pt > 20 && Tau_eta < 2.3 && Electron_pfRelIso03_all < 0.5 && Tau_idDeepTau2017v2p1VSmu >= 1 && Tau_idDeepTau2017v2p1VSjet >= 16
+--------------------------------------------------------------------------------
+Will write selected trees to .
+Filename root://cms-xrd-global.cern.ch//store/mc/RunIISummer19UL17NanoAOD/DYJetsToLL_M-50_TuneCP5_13TeV-madgraphMLM-pythia8/NANOAODSIM/106X_mc2017_realistic_v6-v2/280000/4C9A6333-31B5-BD4A-9980-E6D2D8EAFAD9.root is remote, will do a copy to local path /pool/condor/dir_4901/tmp/4C9A6333-31B5-BD4A-9980-E6D2D8EAFAD9-7ed5921cb697ef48.root
+Time used for transferring the file locally: 2.71 s
+Pre-select 0 entries out of 328715 (0.00%)
+Selected 0 / 328715 entries from root://cms-xrd-global.cern.ch//store/mc/RunIISummer19UL17NanoAOD/DYJetsToLL_M-50_TuneCP5_13TeV-madgraphMLM-pythia8/NANOAODSIM/106X_mc2017_realistic_v6-v2/280000/4C9A6333-31B5-BD4A-9980-E6D2D8EAFAD9.root (0.00%)
+Done ./4C9A6333-31B5-BD4A-9980-E6D2D8EAFAD9_skim.root
+Total time 4.4 sec. to process 328715 events. Rate = 74806.8 Hz.
+>>> getstorage('/eos/user/l/lvigilan/samples/nano/2017/DYJetsToLL_M-50_TuneCP5_13TeV-madgraphMLM-pythia8/RunIISummer19UL17NanoAOD-106X_mc2017_realistic_v6-v2/NANOAODSIM'), <EOS("/eos/user/l/lvigilan/samples/nano/2017/DYJetsToLL_M-50_TuneCP5_13TeV-madgraphMLM-pythia8/RunIISummer19UL17NanoAOD-106X_mc2017_realistic_v6-v2/NANOAODSIM") at 0x2b55258cbf90>
+>>> Executing: 'cp ./*_skim.root /eos/user/l/lvigilan/samples/nano/2017/DYJetsToLL_M-50_TuneCP5_13TeV-madgraphMLM-pythia8/RunIISummer19UL17NanoAOD-106X_mc2017_realistic_v6-v2/NANOAODSIM'
+>>> Removing ./*_skim.root...
+>>> skimjob.py done after 7.9 seconds
+
+Job complete at Thu Nov 19 23:32:28 CET 2020
+Took 0 minutes 9 seconds040 (1562271.209.000) 11/19 23:32:28 Finished transferring output files
+...
+005 (1562271.209.000) 11/19 23:32:29 Job terminated.
+	(1) Normal termination (return value 0)
+		Usr 0 00:00:02, Sys 0 00:00:01  -  Run Remote Usage
+		Usr 0 00:00:00, Sys 0 00:00:00  -  Run Local Usage
+		Usr 0 00:00:02, Sys 0 00:00:01  -  Total Remote Usage
+		Usr 0 00:00:00, Sys 0 00:00:00  -  Total Local Usage
+	40966  -  Run Bytes Sent By Job
+	9881  -  Run Bytes Received By Job
+	40966  -  Total Bytes Sent By Job
+	9881  -  Total Bytes Received By Job
+	Partitionable Resources :    Usage  Request Allocated 
+	   Cpus                 :     0.05        1         1 
+	   Disk (KB)            :   110           1    291819 
+	   Memory (MB)          :   108        2000      2000 
+...

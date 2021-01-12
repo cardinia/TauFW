@@ -1,0 +1,73 @@
+Could not find platform independent libraries <prefix>
+Could not find platform dependent libraries <exec_prefix>
+Consider setting $PYTHONHOME to <prefix>[:<exec_prefix>]
+ImportError: No module named site
+Job start at Fri Nov 20 18:30:33 CET 2020
+Running job on machine Linux b7g52n7549.cern.ch 3.10.0-1160.2.2.el7.x86_64 #1 SMP Tue Oct 20 16:53:08 UTC 2020 x86_64 x86_64 x86_64 GNU/Linux, host b7g52n7549.cern.ch
+============================================================
+$PWD=/pool/condor/dir_26080
+$JOBID=1562279
+$TASKID=22
+$HOSTNAME=b7g52n7549.cern.ch
+$TASKCMD=/afs/cern.ch/work/l/lvigilan/TauWork/CMSSW_10_6_17_patch1/src/TauFW/PicoProducer/python/processors/skimjob.py -y 2017 -d 'mc' -t _skim --copydir /eos/user/l/lvigilan/samples/nano/2017/WJetsToLNu_TuneCP5_13TeV-madgraphMLM-pythia8/RunIISummer19UL17NanoAOD-106X_mc2017_realistic_v6-v2/NANOAODSIM -p --preselect 'HLT_Ele35_WPTight_Gsf_v == 1 && Electron_pt > 35 && Electron_eta < 2.1 && Tau_pt > 20 && Tau_eta < 2.3 && Electron_pfRelIso03_all < 0.5 && Tau_idDeepTau2017v2p1VSmu >= 1 && Tau_idDeepTau2017v2p1VSjet >= 16' -i root://cms-xrd-global.cern.ch//store/mc/RunIISummer19UL17NanoAOD/WJetsToLNu_TuneCP5_13TeV-madgraphMLM-pythia8/NANOAODSIM/106X_mc2017_realistic_v6-v2/100000/1656C080-9CB5-054C-86CD-0F81509EDA37.root
+$WORKDIR=/pool/condor/dir_26080
+>>> cd /afs/cern.ch/work/l/lvigilan/TauWork/CMSSW_10_6_17_patch1/src
+>>> eval `scramv1 runtime -sh`
+>>> cd /pool/condor/dir_26080
+$PWD=/pool/condor/dir_26080
+>>> /afs/cern.ch/work/l/lvigilan/TauWork/CMSSW_10_6_17_patch1/src/TauFW/PicoProducer/python/processors/skimjob.py -y 2017 -d 'mc' -t _skim --copydir /eos/user/l/lvigilan/samples/nano/2017/WJetsToLNu_TuneCP5_13TeV-madgraphMLM-pythia8/RunIISummer19UL17NanoAOD-106X_mc2017_realistic_v6-v2/NANOAODSIM -p --preselect 'HLT_Ele35_WPTight_Gsf_v == 1 && Electron_pt > 35 && Electron_eta < 2.1 && Tau_pt > 20 && Tau_eta < 2.3 && Electron_pfRelIso03_all < 0.5 && Tau_idDeepTau2017v2p1VSmu >= 1 && Tau_idDeepTau2017v2p1VSjet >= 16' -i root://cms-xrd-global.cern.ch//store/mc/RunIISummer19UL17NanoAOD/WJetsToLNu_TuneCP5_13TeV-madgraphMLM-pythia8/NANOAODSIM/106X_mc2017_realistic_v6-v2/100000/1656C080-9CB5-054C-86CD-0F81509EDA37.root
+Error in <TGClient::TGClient>: can't open display "localhost:33.0", switching to batch mode...
+ In case you run from a remote ssh session, reconnect with ssh -Y
+Error in <TTreeFormula::Compile>:  Bad numerical expression : "HLT_Ele35_WPTight_Gsf_v"
+Info in <TSelectorDraw::AbortProcess>: Variable compilation failed: {,HLT_Ele35_WPTight_Gsf_v == 1 && Electron_pt > 35 && Electron_eta < 2.1 && Tau_pt > 20 && Tau_eta < 2.3 && Electron_pfRelIso03_all < 0.5 && Tau_idDeepTau2017v2p1VSmu >= 1 && Tau_idDeepTau2017v2p1VSjet >= 16}
+--------------------------------------------------------------------------------
+>>> era          = '2017'
+>>> year         = 2017
+>>> period       = ''
+>>> dtype        = 'mc'
+>>> maxevts      = None
+>>> tag          = '_skim'
+>>> postfix      = '_skim'
+>>> outdir       = '.'
+>>> outfiles     = './*_skim.root'
+>>> copydir      = '/eos/user/l/lvigilan/samples/nano/2017/WJetsToLNu_TuneCP5_13TeV-madgraphMLM-pythia8/RunIISummer19UL17NanoAOD-106X_mc2017_realistic_v6-v2/NANOAODSIM'
+>>> infiles      = ['root://cms-xrd-global.cern.ch//store/mc/RunIISummer19UL17NanoAOD/WJetsToLNu_TuneCP5_13TeV-madgraphMLM-pythia8/NANOAODSIM/106X_mc2017_realistic_v6-v2/100000/1656C080-9CB5-054C-86CD-0F81509EDA37.root']
+>>> branchsel    = '/afs/cern.ch/work/l/lvigilan/TauWork/CMSSW_10_6_17_patch1/python/TauFW/PicoProducer/processors/keep_and_drop_skim.txt'
+>>> json         = None
+>>> modules      = []
+>>> prefetch     = True
+>>> doJEC        = False
+>>> doJECSys     = False
+>>> cwd          = /pool/condor/dir_26080
+>>> preselection = HLT_Ele35_WPTight_Gsf_v == 1 && Electron_pt > 35 && Electron_eta < 2.1 && Tau_pt > 20 && Tau_eta < 2.3 && Electron_pfRelIso03_all < 0.5 && Tau_idDeepTau2017v2p1VSmu >= 1 && Tau_idDeepTau2017v2p1VSjet >= 16
+--------------------------------------------------------------------------------
+Will write selected trees to .
+Filename root://cms-xrd-global.cern.ch//store/mc/RunIISummer19UL17NanoAOD/WJetsToLNu_TuneCP5_13TeV-madgraphMLM-pythia8/NANOAODSIM/106X_mc2017_realistic_v6-v2/100000/1656C080-9CB5-054C-86CD-0F81509EDA37.root is remote, will do a copy to local path /pool/condor/dir_26080/tmp/1656C080-9CB5-054C-86CD-0F81509EDA37-87e393b2f1270f4.root
+Time used for transferring the file locally: 248.30 s
+Pre-select 0 entries out of 347258 (0.00%)
+Selected 0 / 347258 entries from root://cms-xrd-global.cern.ch//store/mc/RunIISummer19UL17NanoAOD/WJetsToLNu_TuneCP5_13TeV-madgraphMLM-pythia8/NANOAODSIM/106X_mc2017_realistic_v6-v2/100000/1656C080-9CB5-054C-86CD-0F81509EDA37.root (0.00%)
+Done ./1656C080-9CB5-054C-86CD-0F81509EDA37_skim.root
+Total time 249.4 sec. to process 347258 events. Rate = 1392.5 Hz.
+>>> getstorage('/eos/user/l/lvigilan/samples/nano/2017/WJetsToLNu_TuneCP5_13TeV-madgraphMLM-pythia8/RunIISummer19UL17NanoAOD-106X_mc2017_realistic_v6-v2/NANOAODSIM'), <EOS("/eos/user/l/lvigilan/samples/nano/2017/WJetsToLNu_TuneCP5_13TeV-madgraphMLM-pythia8/RunIISummer19UL17NanoAOD-106X_mc2017_realistic_v6-v2/NANOAODSIM") at 0x2ae25447fe50>
+>>> Executing: 'cp ./*_skim.root /eos/user/l/lvigilan/samples/nano/2017/WJetsToLNu_TuneCP5_13TeV-madgraphMLM-pythia8/RunIISummer19UL17NanoAOD-106X_mc2017_realistic_v6-v2/NANOAODSIM'
+>>> Removing ./*_skim.root...
+>>> skimjob.py done after 251.5 seconds
+
+Job complete at Fri Nov 20 18:34:45 CET 2020
+Took 4 minutes 12 seconds040 (1562279.022.000) 11/20 18:34:45 Finished transferring output files
+...
+005 (1562279.022.000) 11/20 18:34:46 Job terminated.
+	(1) Normal termination (return value 0)
+		Usr 0 00:00:02, Sys 0 00:00:02  -  Run Remote Usage
+		Usr 0 00:00:00, Sys 0 00:00:00  -  Run Local Usage
+		Usr 0 00:00:02, Sys 0 00:00:02  -  Total Remote Usage
+		Usr 0 00:00:00, Sys 0 00:00:00  -  Total Local Usage
+	38571  -  Run Bytes Sent By Job
+	9881  -  Run Bytes Received By Job
+	38571  -  Total Bytes Sent By Job
+	9881  -  Total Bytes Received By Job
+	Partitionable Resources :    Usage  Request Allocated 
+	   Cpus                 :     0.01        1         1 
+	   Disk (KB)            :   107           1    291101 
+	   Memory (MB)          :    90        2000      2000 
+...

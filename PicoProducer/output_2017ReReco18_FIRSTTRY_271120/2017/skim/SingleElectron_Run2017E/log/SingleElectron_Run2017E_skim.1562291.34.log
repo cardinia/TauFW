@@ -1,0 +1,75 @@
+Could not find platform independent libraries <prefix>
+Could not find platform dependent libraries <exec_prefix>
+Consider setting $PYTHONHOME to <prefix>[:<exec_prefix>]
+ImportError: No module named site
+Job start at Fri Nov 20 23:12:33 CET 2020
+Running job on machine Linux b7s09n1494.cern.ch 3.10.0-1127.19.1.el7.x86_64 #1 SMP Tue Aug 25 17:23:54 UTC 2020 x86_64 x86_64 x86_64 GNU/Linux, host b7s09n1494.cern.ch
+============================================================
+$PWD=/pool/condor/dir_19515
+$JOBID=1562291
+$TASKID=34
+$HOSTNAME=b7s09n1494.cern.ch
+$TASKCMD=/afs/cern.ch/work/l/lvigilan/TauWork/CMSSW_10_6_17_patch1/src/TauFW/PicoProducer/python/processors/skimjob.py -y 2017 -d 'data' -t _skim --copydir /eos/user/l/lvigilan/samples/nano/2017/SingleElectron/Run2017E-UL2017_02Dec2019-v1/NANOAOD -p --preselect 'HLT_Ele35_WPTight_Gsf_v == 1 && Electron_pt > 35 && Electron_eta < 2.1 && Tau_pt > 20 && Tau_eta < 2.3 && Electron_pfRelIso03_all < 0.5 && Tau_idDeepTau2017v2p1VSmu >= 1 && Tau_idDeepTau2017v2p1VSjet >= 16' -i root://cms-xrd-global.cern.ch//store/data/Run2017E/SingleElectron/NANOAOD/UL2017_02Dec2019-v1/260000/0CF09E54-44E1-8C4D-8B3D-093384A4E567.root
+$WORKDIR=/pool/condor/dir_19515
+>>> cd /afs/cern.ch/work/l/lvigilan/TauWork/CMSSW_10_6_17_patch1/src
+>>> eval `scramv1 runtime -sh`
+>>> cd /pool/condor/dir_19515
+$PWD=/pool/condor/dir_19515
+>>> /afs/cern.ch/work/l/lvigilan/TauWork/CMSSW_10_6_17_patch1/src/TauFW/PicoProducer/python/processors/skimjob.py -y 2017 -d 'data' -t _skim --copydir /eos/user/l/lvigilan/samples/nano/2017/SingleElectron/Run2017E-UL2017_02Dec2019-v1/NANOAOD -p --preselect 'HLT_Ele35_WPTight_Gsf_v == 1 && Electron_pt > 35 && Electron_eta < 2.1 && Tau_pt > 20 && Tau_eta < 2.3 && Electron_pfRelIso03_all < 0.5 && Tau_idDeepTau2017v2p1VSmu >= 1 && Tau_idDeepTau2017v2p1VSjet >= 16' -i root://cms-xrd-global.cern.ch//store/data/Run2017E/SingleElectron/NANOAOD/UL2017_02Dec2019-v1/260000/0CF09E54-44E1-8C4D-8B3D-093384A4E567.root
+Error in <TGClient::TGClient>: can't open display "localhost:33.0", switching to batch mode...
+ In case you run from a remote ssh session, reconnect with ssh -Y
+Error in <TTreeFormula::Compile>:  Bad numerical expression : "HLT_Ele35_WPTight_Gsf_v"
+Info in <TSelectorDraw::AbortProcess>: Variable compilation failed: {,(HLT_Ele35_WPTight_Gsf_v == 1 && Electron_pt > 35 && Electron_eta < 2.1 && Tau_pt > 20 && Tau_eta < 2.3 && Electron_pfRelIso03_all < 0.5 && Tau_idDeepTau2017v2p1VSmu >= 1 && Tau_idDeepTau2017v2p1VSjet >= 16) && (297050 <= run && run <= 306460)}
+TTree::SetBranchStatus:0: RuntimeWarning: No branch name is matching wildcard -> *Dressed*
+TTree::SetBranchStatus:0: RuntimeWarning: No branch name is matching wildcard -> *HTXS*
+--------------------------------------------------------------------------------
+>>> era          = '2017'
+>>> year         = 2017
+>>> period       = 'E'
+>>> dtype        = 'data'
+>>> maxevts      = None
+>>> tag          = '_skim'
+>>> postfix      = '_skim'
+>>> outdir       = '.'
+>>> outfiles     = './*_skim.root'
+>>> copydir      = '/eos/user/l/lvigilan/samples/nano/2017/SingleElectron/Run2017E-UL2017_02Dec2019-v1/NANOAOD'
+>>> infiles      = ['root://cms-xrd-global.cern.ch//store/data/Run2017E/SingleElectron/NANOAOD/UL2017_02Dec2019-v1/260000/0CF09E54-44E1-8C4D-8B3D-093384A4E567.root']
+>>> branchsel    = '/afs/cern.ch/work/l/lvigilan/TauWork/CMSSW_10_6_17_patch1/python/TauFW/PicoProducer/processors/keep_and_drop_skim.txt'
+>>> json         = '/afs/cern.ch/work/l/lvigilan/TauWork/CMSSW_10_6_17_patch1/src/TauFW/PicoProducer/data/json/2017/Cert_294927-306462_13TeV_PromptReco_Collisions17_JSON.txt'
+>>> modules      = []
+>>> prefetch     = True
+>>> doJEC        = False
+>>> doJECSys     = False
+>>> cwd          = /pool/condor/dir_19515
+>>> preselection = HLT_Ele35_WPTight_Gsf_v == 1 && Electron_pt > 35 && Electron_eta < 2.1 && Tau_pt > 20 && Tau_eta < 2.3 && Electron_pfRelIso03_all < 0.5 && Tau_idDeepTau2017v2p1VSmu >= 1 && Tau_idDeepTau2017v2p1VSjet >= 16
+--------------------------------------------------------------------------------
+Will write selected trees to .
+Filename root://cms-xrd-global.cern.ch//store/data/Run2017E/SingleElectron/NANOAOD/UL2017_02Dec2019-v1/260000/0CF09E54-44E1-8C4D-8B3D-093384A4E567.root is remote, will do a copy to local path /pool/condor/dir_19515/tmp/0CF09E54-44E1-8C4D-8B3D-093384A4E567-9a775e41e939848b.root
+Time used for transferring the file locally: 2121.36 s
+Pre-select 0 entries out of 2460193 (0.00%)
+Selected 0 / 2460193 entries from root://cms-xrd-global.cern.ch//store/data/Run2017E/SingleElectron/NANOAOD/UL2017_02Dec2019-v1/260000/0CF09E54-44E1-8C4D-8B3D-093384A4E567.root (0.00%)
+Done ./0CF09E54-44E1-8C4D-8B3D-093384A4E567_skim.root
+Total time 2123.1 sec. to process 2460193 events. Rate = 1158.8 Hz.
+>>> getstorage('/eos/user/l/lvigilan/samples/nano/2017/SingleElectron/Run2017E-UL2017_02Dec2019-v1/NANOAOD'), <EOS("/eos/user/l/lvigilan/samples/nano/2017/SingleElectron/Run2017E-UL2017_02Dec2019-v1/NANOAOD") at 0x2b21f9451dd0>
+>>> Executing: 'cp ./*_skim.root /eos/user/l/lvigilan/samples/nano/2017/SingleElectron/Run2017E-UL2017_02Dec2019-v1/NANOAOD'
+>>> Removing ./*_skim.root...
+>>> skimjob.py done after 2127.3 seconds
+
+Job complete at Fri Nov 20 23:48:01 CET 2020
+Took 35 minutes 28 seconds040 (1562291.034.000) 11/20 23:56:56 Finished transferring output files
+...
+005 (1562291.034.000) 11/20 23:56:56 Job terminated.
+	(1) Normal termination (return value 0)
+		Usr 0 00:00:03, Sys 0 00:00:10  -  Run Remote Usage
+		Usr 0 00:00:00, Sys 0 00:00:00  -  Run Local Usage
+		Usr 0 00:00:03, Sys 0 00:00:10  -  Total Remote Usage
+		Usr 0 00:00:00, Sys 0 00:00:00  -  Total Local Usage
+	31794  -  Run Bytes Sent By Job
+	9881  -  Run Bytes Received By Job
+	31794  -  Total Bytes Sent By Job
+	9881  -  Total Bytes Received By Job
+	Partitionable Resources :    Usage  Request Allocated 
+	   Cpus                 :        0        1         1 
+	   Disk (KB)            :      100        1    284721 
+	   Memory (MB)          :      218     2000      2000 
+...

@@ -95,8 +95,8 @@ class Ratio(object):
     ratios      = self.ratios
     xmin        = kwargs.get('xmin',    self.frame.GetXaxis().GetXmin() )
     xmax        = kwargs.get('xmax',    self.frame.GetXaxis().GetXmax() )
-    ymin        = kwargs.get('ymin',    0.5     )
-    ymax        = kwargs.get('ymax',    1.5     )
+    ymin        = kwargs.get('ymin',    0.75     )
+    ymax        = kwargs.get('ymax',    1.25     )
     data        = kwargs.get('data',    False   )
     ytitle      = kwargs.get('ytitle',  "Obs. / Exp." if data else "Ratio" )
     xtitle      = kwargs.get('xtitle',  ""      )

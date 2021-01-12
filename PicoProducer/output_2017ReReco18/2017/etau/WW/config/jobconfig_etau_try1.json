@@ -1,5 +1,5 @@
 {
-  "time": "2020-11-27 17:53:47.521818", 
+  "time": "2020-12-07 22:42:13.025738", 
   "group": "VV", 
   "paths": [
     "/WW_TuneCP5_13TeV-pythia8/RunIIFall17NanoAODv6-PU2017_12Apr2018_Nano25Oct2019_102X_mc2017_realistic_v7-v1/NANOAODSIM"
@@ -18,7 +18,7 @@
   "postfix": "_etau", 
   "try": 1, 
   "jobids": [
-    1566427
+    1595098
   ], 
   "outdir": "/eos/home-l/lvigilan/output_2017ReReco18/2017/etau/WW", 
   "jobdir": "output_2017ReReco18/2017/etau/WW", 
