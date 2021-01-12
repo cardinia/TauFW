@@ -2,6 +2,7 @@
 # Description: Simple module to pre-select mutau events
 import sys
 import numpy as np
+from PhysicsTools.NanoAODTools.postprocessing.framework.datamodel import Object
 from TauFW.PicoProducer import datadir
 from TauFW.PicoProducer.analysis.TreeProducerETau import *
 from TauFW.PicoProducer.analysis.ModuleTauPair import *
@@ -9,6 +10,13 @@ from TauFW.PicoProducer.analysis.utils import LeptonTauPair, loosestIso, idIso, 
 from TauFW.PicoProducer.corrections.ElectronSFs import *
 from TauFW.PicoProducer.corrections.TrigObjMatcher import TrigObjMatcher
 from TauPOG.TauIDSFs.TauIDSFTool import TauIDSFTool, TauESTool, TauFESTool
+
+
+class Met(Object):
+  def __init__(self,event,prefix,index=None):
+    self.eta = 0.0
+    self.mass = 0.0
+    Object.__init__(self,event,prefix,index)
 
 
 class ModuleETau(ModuleTauPair):
@@ -114,7 +122,7 @@ class ModuleETau(ModuleTauPair):
       if tau.decayMode in [5,6]: continue #not in [0,1,10,11]: continue #LOR CHANGED
       if abs(tau.charge)!=1: continue
       if tau.idDecayModeNewDMs < 0.5: continue #LOR ADDED
-      if tau.idDeepTau2017v2p1VSe<1: continue  # VVVLoose
+      #if tau.idDeepTau2017v2p1VSe<1: continue  # VVVLoose
       if tau.idDeepTau2017v2p1VSmu<1: continue # VLoose
       if tau.idDeepTau2017v2p1VSjet<16: continue   #self.tauwp: continue
       if self.ismc:
@@ -164,7 +172,9 @@ class ModuleETau(ModuleTauPair):
     tau.tlv       = tau.p4()
     self.out.cutflow.fill('pair')
     
-    
+    ###PUPPIMET
+    puppimet = Met(event, 'PuppiMET')
+
     # VETOS
     extramuon_veto, extraelec_veto, dilepton_veto = getlepvetoes(event,[electron],[ ],[tau],self.channel)
     self.out.extramuon_veto[0], self.out.extraelec_veto[0], self.out.dilepton_veto[0] = getlepvetoes(event,[electron],[ ],[ ],self.channel)
@@ -240,6 +250,11 @@ class ModuleETau(ModuleTauPair):
     self.out.photonsOutsideSignalCone_2[0] = tau.photonsOutsideSignalCone
     self.out.puCorr_2[0]                   = tau.puCorr
     
+    #PUPPIMET
+    self.out.puppimetpt[0]             = puppimet.pt
+    self.out.puppimetphi[0]            = puppimet.phi
+    self.out.mt_puppimet_1[0]      = sqrt( 2*electron.pt*puppimet.pt*(1-cos(deltaPhi(electron.phi,puppimet.phi))) )
+    self.out.mt_puppimet_2[0]      = sqrt( 2*tau.pt *puppimet.pt*(1-cos(deltaPhi(tau.phi,puppimet.phi))) )
     
     # GENERATOR
     if self.ismc:

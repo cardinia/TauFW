@@ -70,7 +70,16 @@ class TreeProducerETau(TreeProducerTauPair):
     self.addBranch('photonsOutsideSignalCone_2', 'f')
     self.addBranch('puCorr_2',                   'f')
     self.addBranch('jpt_match_2',                'f', -1, title="pt of jet matching tau")
-    
+
+
+    ######
+    ###PUPPI MET
+    ###########
+    self.addBranch('puppimetpt',                       'f')
+    self.addBranch('puppimetphi',                       'f')
+    self.addBranch('mt_puppimet_1',                       'f')
+    self.addBranch('mt_puppimet_2',                       'f')
+
     if self.module.ismc:
       self.addBranch('jpt_genmatch_2',           'f', -1, title="pt of gen jet matching tau")
       self.addBranch('genmatch_1',               'i', -1)

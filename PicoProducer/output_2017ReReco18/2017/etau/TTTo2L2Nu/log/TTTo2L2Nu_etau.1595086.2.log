@@ -1,0 +1,150 @@
+Could not find platform independent libraries <prefix>
+Could not find platform dependent libraries <exec_prefix>
+Consider setting $PYTHONHOME to <prefix>[:<exec_prefix>]
+ImportError: No module named site
+Job start at Mon Dec  7 23:00:02 CET 2020
+Running job on machine Linux b7g23n0929.cern.ch 3.10.0-1127.19.1.el7.x86_64 #1 SMP Tue Aug 25 17:23:54 UTC 2020 x86_64 x86_64 x86_64 GNU/Linux, host b7g23n0929.cern.ch
+============================================================
+$PWD=/pool/condor/dir_13775
+$JOBID=1595086
+$TASKID=2
+$HOSTNAME=b7g23n0929.cern.ch
+$TASKCMD=/afs/cern.ch/work/l/lvigilan/TauWork/CMSSW_10_6_17_patch1/src/TauFW/PicoProducer/python/processors/picojob.py -y 2017 -d 'mc' -c etau -M ModuleETau --copydir /eos/home-l/lvigilan/output_2017ReReco18/2017/etau/TTTo2L2Nu -t _etau_2 --opt 'jec=False' 'toppt=True' -i root://cms-xrd-global.cern.ch//store/mc/RunIIFall17NanoAODv6/TTTo2L2Nu_TuneCP5_13TeV-powheg-pythia8/NANOAODSIM/PU2017_12Apr2018_Nano25Oct2019_new_pmx_102X_mc2017_realistic_v7-v1/280000/FED233E7-D1FC-214E-92F5-D5974B70944E.root
+$WORKDIR=/pool/condor/dir_13775
+>>> cd /afs/cern.ch/work/l/lvigilan/TauWork/CMSSW_10_6_17_patch1/src
+>>> eval `scramv1 runtime -sh`
+>>> cd /pool/condor/dir_13775
+$PWD=/pool/condor/dir_13775
+>>> /afs/cern.ch/work/l/lvigilan/TauWork/CMSSW_10_6_17_patch1/src/TauFW/PicoProducer/python/processors/picojob.py -y 2017 -d 'mc' -c etau -M ModuleETau --copydir /eos/home-l/lvigilan/output_2017ReReco18/2017/etau/TTTo2L2Nu -t _etau_2 --opt 'jec=False' 'toppt=True' -i root://cms-xrd-global.cern.ch//store/mc/RunIIFall17NanoAODv6/TTTo2L2Nu_TuneCP5_13TeV-powheg-pythia8/NANOAODSIM/PU2017_12Apr2018_Nano25Oct2019_new_pmx_102X_mc2017_realistic_v7-v1/280000/FED233E7-D1FC-214E-92F5-D5974B70944E.root
+Error in <TGClient::TGClient>: can't open display "localhost:31.0", switching to batch mode...
+ In case you run from a remote ssh session, reconnect with ssh -Y
+--------------------------------------------------------------------------------
+>>> era          = '2017'
+>>> year         = 2017
+>>> channel      = 'etau'
+>>> modname      = 'ModuleETau'
+>>> dtype        = 'mc'
+>>> kwargs       = {'dtype': 'mc', 'toppt': True, 'jec': False, 'verb': 0, 'era': '2017', 'year': 2017}
+>>> maxevts      = None
+>>> outdir       = '.'
+>>> copydir      = '/eos/home-l/lvigilan/output_2017ReReco18/2017/etau/TTTo2L2Nu'
+>>> infiles      = ['root://cms-xrd-global.cern.ch//store/mc/RunIIFall17NanoAODv6/TTTo2L2Nu_TuneCP5_13TeV-powheg-pythia8/NANOAODSIM/PU2017_12Apr2018_Nano25Oct2019_new_pmx_102X_mc2017_realistic_v7-v1/280000/FED233E7-D1FC-214E-92F5-D5974B70944E.root']
+>>> outfname     = './pico_etau_etau_2.root'
+>>> branchsel    = '/afs/cern.ch/work/l/lvigilan/TauWork/CMSSW_10_6_17_patch1/python/TauFW/PicoProducer/processors/keep_and_drop_skim.txt'
+>>> json         = None
+>>> prefetch     = False
+>>> cwd          = /pool/condor/dir_13775
+--------------------------------------------------------------------------------
+
+   ################
+   #  ModuleETau  #
+   ################
+
+Loading PileupWeightTool for '/afs/cern.ch/work/l/lvigilan/TauWork/CMSSW_10_6_17_patch1/src/TauFW/PicoProducer/data/pileup/Data_PileUp_2017_69p2.root' and '/afs/cern.ch/work/l/lvigilan/TauWork/CMSSW_10_6_17_patch1/src/TauFW/PicoProducer/data/pileup/MC_PileUp_2017_Winter17_V2_new_pmx.root'
+Loading BTagWeightTool for DeepCSV (medium WP)...
+>>> BTagTool: [1m[33mWarning! [0m[33mHistogram 'etau/eff_DeepCSV_udsg_medium' does not exist in /afs/cern.ch/work/l/lvigilan/TauWork/CMSSW_10_6_17_patch1/src/TauFW/PicoProducer/data/btag/DeepCSV_2017_12Apr2017_eff.root! Reverting to default efficiency histogram...[0m
+>>> BTagTool: [1m[33mWarning! [0m[33mHistogram 'etau/eff_DeepCSV_c_medium' does not exist in /afs/cern.ch/work/l/lvigilan/TauWork/CMSSW_10_6_17_patch1/src/TauFW/PicoProducer/data/btag/DeepCSV_2017_12Apr2017_eff.root! Reverting to default efficiency histogram...[0m
+>>> BTagTool: [1m[33mWarning! [0m[33mHistogram 'etau/eff_DeepCSV_b_medium' does not exist in /afs/cern.ch/work/l/lvigilan/TauWork/CMSSW_10_6_17_patch1/src/TauFW/PicoProducer/data/btag/DeepCSV_2017_12Apr2017_eff.root! Reverting to default efficiency histogram...[0m
+>>> BTagTool: [1m[33mWarning! [0m[33mMade use of default efficiency histograms! The b tag weights from this module should be regarded as placeholders only,
+and should NOT be used for analyses. B (mis)tag efficiencies in MC are analysis dependent. Please create your own
+efficiency histogram with data/btag/getBTagEfficiencies.py after running all MC samples with BTagWeightTool.[0m
+Loading TreeProducerETau for './pico_etau_etau_2.root'
+--------------------------------------------------------------------------------
+>>> filename     = './pico_etau_etau_2.root'
+>>> year         = 2017
+>>> dtype        = 'mc'
+>>> channel      = 'etau'
+>>> ismc         = True
+>>> isdata       = False
+>>> isembed      = False
+>>> tes          = None
+>>> tessys       = None
+>>> ltf          = 1.0
+>>> jtf          = 1.0
+>>> dotoppt      = True
+>>> dozpt        = False
+>>> dojec        = False
+>>> dojecsys     = False
+>>> dotight      = False
+>>> jetCutPt     = 30
+>>> bjetCutEta   = 2.7
+>>> tauwp        = 0
+>>> eleCutPt     = 36
+>>> eleCutEta    = 2.1
+>>> tauCutPt     = 20
+>>> tauCutEta    = 2.3
+Pre-select 477754 entries out of 477754 (100.00%)
+Processed    10000/  477754 entries,  2.09% (elapsed time    22.0s, curr speed    0.454 kHz, avg speed    0.454 kHz), accepted      418/   10001 events ( 4.18%)
+Processed    20000/  477754 entries,  4.19% (elapsed time    36.6s, curr speed    0.686 kHz, avg speed    0.546 kHz), accepted      835/   20001 events ( 4.17%)
+Processed    30000/  477754 entries,  6.28% (elapsed time    49.4s, curr speed    0.780 kHz, avg speed    0.607 kHz), accepted     1246/   30001 events ( 4.15%)
+Processed    40000/  477754 entries,  8.37% (elapsed time    66.9s, curr speed    0.573 kHz, avg speed    0.598 kHz), accepted     1659/   40001 events ( 4.15%)
+Processed    50000/  477754 entries, 10.47% (elapsed time    81.6s, curr speed    0.681 kHz, avg speed    0.613 kHz), accepted     2084/   50001 events ( 4.17%)
+Processed    60000/  477754 entries, 12.56% (elapsed time    94.5s, curr speed    0.774 kHz, avg speed    0.635 kHz), accepted     2481/   60001 events ( 4.13%)
+Processed    70000/  477754 entries, 14.65% (elapsed time   115.0s, curr speed    0.488 kHz, avg speed    0.609 kHz), accepted     2921/   70001 events ( 4.17%)
+Processed    80000/  477754 entries, 16.75% (elapsed time   130.6s, curr speed    0.641 kHz, avg speed    0.613 kHz), accepted     3333/   80001 events ( 4.17%)
+Processed    90000/  477754 entries, 18.84% (elapsed time   145.5s, curr speed    0.672 kHz, avg speed    0.619 kHz), accepted     3747/   90001 events ( 4.16%)
+Processed   100000/  477754 entries, 20.93% (elapsed time   161.0s, curr speed    0.645 kHz, avg speed    0.621 kHz), accepted     4150/  100001 events ( 4.15%)
+Processed   110000/  477754 entries, 23.02% (elapsed time   180.8s, curr speed    0.503 kHz, avg speed    0.608 kHz), accepted     4531/  110001 events ( 4.12%)
+Processed   120000/  477754 entries, 25.12% (elapsed time   200.5s, curr speed    0.508 kHz, avg speed    0.598 kHz), accepted     4944/  120001 events ( 4.12%)
+Processed   130000/  477754 entries, 27.21% (elapsed time   216.7s, curr speed    0.619 kHz, avg speed    0.600 kHz), accepted     5339/  130001 events ( 4.11%)
+Processed   140000/  477754 entries, 29.30% (elapsed time   238.4s, curr speed    0.460 kHz, avg speed    0.587 kHz), accepted     5733/  140001 events ( 4.09%)
+Processed   150000/  477754 entries, 31.40% (elapsed time   253.9s, curr speed    0.646 kHz, avg speed    0.591 kHz), accepted     6114/  150001 events ( 4.08%)
+Processed   160000/  477754 entries, 33.49% (elapsed time   271.1s, curr speed    0.581 kHz, avg speed    0.590 kHz), accepted     6522/  160001 events ( 4.08%)
+Processed   170000/  477754 entries, 35.58% (elapsed time   290.8s, curr speed    0.509 kHz, avg speed    0.585 kHz), accepted     6920/  170001 events ( 4.07%)
+Processed   180000/  477754 entries, 37.68% (elapsed time   321.9s, curr speed    0.321 kHz, avg speed    0.559 kHz), accepted     7327/  180001 events ( 4.07%)
+Processed   190000/  477754 entries, 39.77% (elapsed time   343.8s, curr speed    0.456 kHz, avg speed    0.553 kHz), accepted     7706/  190001 events ( 4.06%)
+Processed   200000/  477754 entries, 41.86% (elapsed time   363.0s, curr speed    0.523 kHz, avg speed    0.551 kHz), accepted     8101/  200001 events ( 4.05%)
+Processed   210000/  477754 entries, 43.96% (elapsed time   388.6s, curr speed    0.390 kHz, avg speed    0.540 kHz), accepted     8532/  210001 events ( 4.06%)
+Processed   220000/  477754 entries, 46.05% (elapsed time   407.0s, curr speed    0.545 kHz, avg speed    0.541 kHz), accepted     8939/  220001 events ( 4.06%)
+Processed   230000/  477754 entries, 48.14% (elapsed time   424.6s, curr speed    0.568 kHz, avg speed    0.542 kHz), accepted     9326/  230001 events ( 4.05%)
+Processed   240000/  477754 entries, 50.24% (elapsed time   447.5s, curr speed    0.435 kHz, avg speed    0.536 kHz), accepted     9701/  240001 events ( 4.04%)
+Processed   250000/  477754 entries, 52.33% (elapsed time   469.7s, curr speed    0.450 kHz, avg speed    0.532 kHz), accepted    10103/  250001 events ( 4.04%)
+Processed   260000/  477754 entries, 54.42% (elapsed time   493.1s, curr speed    0.429 kHz, avg speed    0.527 kHz), accepted    10497/  260001 events ( 4.04%)
+Processed   270000/  477754 entries, 56.51% (elapsed time   512.3s, curr speed    0.521 kHz, avg speed    0.527 kHz), accepted    10895/  270001 events ( 4.04%)
+Processed   280000/  477754 entries, 58.61% (elapsed time   537.7s, curr speed    0.394 kHz, avg speed    0.521 kHz), accepted    11298/  280001 events ( 4.03%)
+Processed   290000/  477754 entries, 60.70% (elapsed time   558.0s, curr speed    0.492 kHz, avg speed    0.520 kHz), accepted    11685/  290001 events ( 4.03%)
+Processed   300000/  477754 entries, 62.79% (elapsed time   579.9s, curr speed    0.457 kHz, avg speed    0.517 kHz), accepted    12116/  300001 events ( 4.04%)
+Processed   310000/  477754 entries, 64.89% (elapsed time   598.0s, curr speed    0.550 kHz, avg speed    0.518 kHz), accepted    12513/  310001 events ( 4.04%)
+Processed   320000/  477754 entries, 66.98% (elapsed time   623.5s, curr speed    0.393 kHz, avg speed    0.513 kHz), accepted    12933/  320001 events ( 4.04%)
+Processed   330000/  477754 entries, 69.07% (elapsed time   644.6s, curr speed    0.474 kHz, avg speed    0.512 kHz), accepted    13360/  330001 events ( 4.05%)
+Processed   340000/  477754 entries, 71.17% (elapsed time   664.3s, curr speed    0.509 kHz, avg speed    0.512 kHz), accepted    13741/  340001 events ( 4.04%)
+Processed   350000/  477754 entries, 73.26% (elapsed time   686.4s, curr speed    0.452 kHz, avg speed    0.510 kHz), accepted    14139/  350001 events ( 4.04%)
+Processed   360000/  477754 entries, 75.35% (elapsed time   704.4s, curr speed    0.555 kHz, avg speed    0.511 kHz), accepted    14557/  360001 events ( 4.04%)
+Processed   370000/  477754 entries, 77.45% (elapsed time   720.6s, curr speed    0.620 kHz, avg speed    0.513 kHz), accepted    14930/  370001 events ( 4.04%)
+Processed   380000/  477754 entries, 79.54% (elapsed time   737.3s, curr speed    0.599 kHz, avg speed    0.515 kHz), accepted    15330/  380001 events ( 4.03%)
+Processed   390000/  477754 entries, 81.63% (elapsed time   758.0s, curr speed    0.483 kHz, avg speed    0.515 kHz), accepted    15707/  390001 events ( 4.03%)
+Processed   400000/  477754 entries, 83.73% (elapsed time   771.8s, curr speed    0.722 kHz, avg speed    0.518 kHz), accepted    16101/  400001 events ( 4.03%)
+Processed   410000/  477754 entries, 85.82% (elapsed time   787.9s, curr speed    0.621 kHz, avg speed    0.520 kHz), accepted    16492/  410001 events ( 4.02%)
+Processed   420000/  477754 entries, 87.91% (elapsed time   807.8s, curr speed    0.502 kHz, avg speed    0.520 kHz), accepted    16884/  420001 events ( 4.02%)
+Processed   430000/  477754 entries, 90.00% (elapsed time   822.5s, curr speed    0.684 kHz, avg speed    0.523 kHz), accepted    17284/  430001 events ( 4.02%)
+Processed   440000/  477754 entries, 92.10% (elapsed time   838.6s, curr speed    0.620 kHz, avg speed    0.525 kHz), accepted    17703/  440001 events ( 4.02%)
+Processed   450000/  477754 entries, 94.19% (elapsed time   852.7s, curr speed    0.708 kHz, avg speed    0.528 kHz), accepted    18124/  450001 events ( 4.03%)
+Processed   460000/  477754 entries, 96.28% (elapsed time   871.8s, curr speed    0.525 kHz, avg speed    0.528 kHz), accepted    18547/  460001 events ( 4.03%)
+Processed   470000/  477754 entries, 98.38% (elapsed time   885.6s, curr speed    0.725 kHz, avg speed    0.531 kHz), accepted    18949/  470001 events ( 4.03%)
+Processed 477754 preselected entries from root://cms-xrd-global.cern.ch//store/mc/RunIIFall17NanoAODv6/TTTo2L2Nu_TuneCP5_13TeV-powheg-pythia8/NANOAODSIM/PU2017_12Apr2018_Nano25Oct2019_new_pmx_102X_mc2017_realistic_v7-v1/280000/FED233E7-D1FC-214E-92F5-D5974B70944E.root (477754 entries). Finally selected 19264 entries
+Total time 901.7 sec. to process 477754 events. Rate = 529.8 Hz.
+>>> cwd          = /pool/condor/dir_13775
+>>> ls           = ['condor_exec.exe', 'pico_etau_etau_2.root', 'lvigilan.cc', '_condor_stdout', '.chirp.config', '.job.ad', 'var', '.machine.ad', 'tmp', 'x509_voms', '.update.ad']
+>>> getstorage('/eos/home-l/lvigilan/output_2017ReReco18/2017/etau/TTTo2L2Nu'), <EOS("/eos/home-l/lvigilan/output_2017ReReco18/2017/etau/TTTo2L2Nu") at 0x2b73676a64d0>
+>>> Executing: 'cp ./pico_etau_etau_2.root /eos/home-l/lvigilan/output_2017ReReco18/2017/etau/TTTo2L2Nu'
+>>> Removing './pico_etau_etau_2.root'...
+>>> picojob.py done after 937.9 seconds
+
+Job complete at Mon Dec  7 23:15:45 CET 2020
+Took 15 minutes 43 seconds040 (1595086.002.000) 12/07 23:15:45 Finished transferring output files
+...
+005 (1595086.002.000) 12/07 23:15:45 Job terminated.
+	(1) Normal termination (return value 0)
+		Usr 0 00:04:11, Sys 0 00:00:14  -  Run Remote Usage
+		Usr 0 00:00:00, Sys 0 00:00:00  -  Run Local Usage
+		Usr 0 00:04:11, Sys 0 00:00:14  -  Total Remote Usage
+		Usr 0 00:00:00, Sys 0 00:00:00  -  Total Local Usage
+	18632  -  Run Bytes Sent By Job
+	9902  -  Run Bytes Received By Job
+	18632  -  Total Bytes Sent By Job
+	9902  -  Total Bytes Received By Job
+	Partitionable Resources :    Usage  Request Allocated 
+	   Cpus                 :     0.30        1         1 
+	   Disk (KB)            :    87           1    347990 
+	   Memory (MB)          :   296        2000      2000 
+...

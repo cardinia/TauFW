@@ -1,5 +1,5 @@
 {
-  "time": "2020-11-27 17:53:54.130229", 
+  "time": "2020-12-07 22:42:25.141322", 
   "group": "Data", 
   "paths": [
     "/SingleElectron/Run2017D-Nano25Oct2019-v1/NANOAOD"
@@ -18,7 +18,7 @@
   "postfix": "_etau", 
   "try": 1, 
   "jobids": [
-    1566432
+    1595103
   ], 
   "outdir": "/eos/home-l/lvigilan/output_2017ReReco18/2017/etau/SingleElectron_Run2017D", 
   "jobdir": "output_2017ReReco18/2017/etau/SingleElectron_Run2017D", 

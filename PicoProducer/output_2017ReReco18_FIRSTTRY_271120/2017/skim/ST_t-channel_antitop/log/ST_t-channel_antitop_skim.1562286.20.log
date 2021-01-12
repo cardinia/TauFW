@@ -1,0 +1,75 @@
+Could not find platform independent libraries <prefix>
+Could not find platform dependent libraries <exec_prefix>
+Consider setting $PYTHONHOME to <prefix>[:<exec_prefix>]
+ImportError: No module named site
+Job start at Fri Nov 20 22:08:41 CET 2020
+Running job on machine Linux b7g24n0432.cern.ch 3.10.0-957.1.3.el7.x86_64 #1 SMP Thu Nov 29 14:49:43 UTC 2018 x86_64 x86_64 x86_64 GNU/Linux, host b7g24n0432.cern.ch
+============================================================
+$PWD=/pool/condor/dir_6559
+$JOBID=1562286
+$TASKID=20
+$HOSTNAME=b7g24n0432.cern.ch
+$TASKCMD=/afs/cern.ch/work/l/lvigilan/TauWork/CMSSW_10_6_17_patch1/src/TauFW/PicoProducer/python/processors/skimjob.py -y 2017 -d 'mc' -t _skim --copydir /eos/user/l/lvigilan/samples/nano/2017/ST_t-channel_antitop_5f_InclusiveDecays_TuneCP5_13TeV-powheg-pythia8/RunIISummer19UL17NanoAOD-106X_mc2017_realistic_v6-v1/NANOAODSIM -p --preselect 'HLT_Ele35_WPTight_Gsf_v == 1 && Electron_pt > 35 && Electron_eta < 2.1 && Tau_pt > 20 && Tau_eta < 2.3 && Electron_pfRelIso03_all < 0.5 && Tau_idDeepTau2017v2p1VSmu >= 1 && Tau_idDeepTau2017v2p1VSjet >= 16' -i root://cms-xrd-global.cern.ch//store/mc/RunIISummer19UL17NanoAOD/ST_t-channel_antitop_5f_InclusiveDecays_TuneCP5_13TeV-powheg-pythia8/NANOAODSIM/106X_mc2017_realistic_v6-v1/280000/83839854-28D5-AB4C-99F1-91241D5DCCD9.root
+$WORKDIR=/pool/condor/dir_6559
+>>> cd /afs/cern.ch/work/l/lvigilan/TauWork/CMSSW_10_6_17_patch1/src
+>>> eval `scramv1 runtime -sh`
+>>> cd /pool/condor/dir_6559
+$PWD=/pool/condor/dir_6559
+>>> /afs/cern.ch/work/l/lvigilan/TauWork/CMSSW_10_6_17_patch1/src/TauFW/PicoProducer/python/processors/skimjob.py -y 2017 -d 'mc' -t _skim --copydir /eos/user/l/lvigilan/samples/nano/2017/ST_t-channel_antitop_5f_InclusiveDecays_TuneCP5_13TeV-powheg-pythia8/RunIISummer19UL17NanoAOD-106X_mc2017_realistic_v6-v1/NANOAODSIM -p --preselect 'HLT_Ele35_WPTight_Gsf_v == 1 && Electron_pt > 35 && Electron_eta < 2.1 && Tau_pt > 20 && Tau_eta < 2.3 && Electron_pfRelIso03_all < 0.5 && Tau_idDeepTau2017v2p1VSmu >= 1 && Tau_idDeepTau2017v2p1VSjet >= 16' -i root://cms-xrd-global.cern.ch//store/mc/RunIISummer19UL17NanoAOD/ST_t-channel_antitop_5f_InclusiveDecays_TuneCP5_13TeV-powheg-pythia8/NANOAODSIM/106X_mc2017_realistic_v6-v1/280000/83839854-28D5-AB4C-99F1-91241D5DCCD9.root
+Error in <TGClient::TGClient>: can't open display "localhost:33.0", switching to batch mode...
+ In case you run from a remote ssh session, reconnect with ssh -Y
+Error in <TTreeFormula::Compile>:  Bad numerical expression : "HLT_Ele35_WPTight_Gsf_v"
+Info in <TSelectorDraw::AbortProcess>: Variable compilation failed: {,HLT_Ele35_WPTight_Gsf_v == 1 && Electron_pt > 35 && Electron_eta < 2.1 && Tau_pt > 20 && Tau_eta < 2.3 && Electron_pfRelIso03_all < 0.5 && Tau_idDeepTau2017v2p1VSmu >= 1 && Tau_idDeepTau2017v2p1VSjet >= 16}
+--------------------------------------------------------------------------------
+>>> era          = '2017'
+>>> year         = 2017
+>>> period       = ''
+>>> dtype        = 'mc'
+>>> maxevts      = None
+>>> tag          = '_skim'
+>>> postfix      = '_skim'
+>>> outdir       = '.'
+>>> outfiles     = './*_skim.root'
+>>> copydir      = '/eos/user/l/lvigilan/samples/nano/2017/ST_t-channel_antitop_5f_InclusiveDecays_TuneCP5_13TeV-powheg-pythia8/RunIISummer19UL17NanoAOD-106X_mc2017_realistic_v6-v1/NANOAODSIM'
+>>> infiles      = ['root://cms-xrd-global.cern.ch//store/mc/RunIISummer19UL17NanoAOD/ST_t-channel_antitop_5f_InclusiveDecays_TuneCP5_13TeV-powheg-pythia8/NANOAODSIM/106X_mc2017_realistic_v6-v1/280000/83839854-28D5-AB4C-99F1-91241D5DCCD9.root']
+>>> branchsel    = '/afs/cern.ch/work/l/lvigilan/TauWork/CMSSW_10_6_17_patch1/python/TauFW/PicoProducer/processors/keep_and_drop_skim.txt'
+>>> json         = None
+>>> modules      = []
+>>> prefetch     = True
+>>> doJEC        = False
+>>> doJECSys     = False
+>>> cwd          = /pool/condor/dir_6559
+>>> preselection = HLT_Ele35_WPTight_Gsf_v == 1 && Electron_pt > 35 && Electron_eta < 2.1 && Tau_pt > 20 && Tau_eta < 2.3 && Electron_pfRelIso03_all < 0.5 && Tau_idDeepTau2017v2p1VSmu >= 1 && Tau_idDeepTau2017v2p1VSjet >= 16
+--------------------------------------------------------------------------------
+Will write selected trees to .
+Filename root://cms-xrd-global.cern.ch//store/mc/RunIISummer19UL17NanoAOD/ST_t-channel_antitop_5f_InclusiveDecays_TuneCP5_13TeV-powheg-pythia8/NANOAODSIM/106X_mc2017_realistic_v6-v1/280000/83839854-28D5-AB4C-99F1-91241D5DCCD9.root is remote, will do a copy to local path /pool/condor/dir_6559/tmp/83839854-28D5-AB4C-99F1-91241D5DCCD9-b4ec6197f5692799.root
+Time used for transferring the file locally: 1.00 s
+Pre-select 0 entries out of 22000 (0.00%)
+Selected 0 / 22000 entries from root://cms-xrd-global.cern.ch//store/mc/RunIISummer19UL17NanoAOD/ST_t-channel_antitop_5f_InclusiveDecays_TuneCP5_13TeV-powheg-pythia8/NANOAODSIM/106X_mc2017_realistic_v6-v1/280000/83839854-28D5-AB4C-99F1-91241D5DCCD9.root (0.00%)
+Done ./83839854-28D5-AB4C-99F1-91241D5DCCD9_skim.root
+Total time 2.5 sec. to process 22000 events. Rate = 8826.3 Hz.
+>>> getstorage('/eos/user/l/lvigilan/samples/nano/2017/ST_t-channel_antitop_5f_InclusiveDecays_TuneCP5_13TeV-powheg-pythia8/RunIISummer19UL17NanoAOD-106X_mc2017_realistic_v6-v1/NANOAODSIM'), <EOS("/eos/user/l/lvigilan/samples/nano/2017/ST_t-channel_antitop_5f_InclusiveDecays_TuneCP5_13TeV-powheg-pythia8/RunIISummer19UL17NanoAOD-106X_mc2017_realistic_v6-v1/NANOAODSIM") at 0x2ac83e5dcf90>
+>>> Executing: 'cp ./*_skim.root /eos/user/l/lvigilan/samples/nano/2017/ST_t-channel_antitop_5f_InclusiveDecays_TuneCP5_13TeV-powheg-pythia8/RunIISummer19UL17NanoAOD-106X_mc2017_realistic_v6-v1/NANOAODSIM'
+>>> Removing ./*_skim.root...
+>>> skimjob.py done after 5.5 seconds
+
+Job complete at Fri Nov 20 22:08:47 CET 2020
+Took 0 minutes 6 seconds040 (1562286.020.000) 11/20 22:08:47 Started transferring output files
+...
+040 (1562286.020.000) 11/20 22:08:47 Finished transferring output files
+...
+005 (1562286.020.000) 11/20 22:08:47 Job terminated.
+	(1) Normal termination (return value 0)
+		Usr 0 00:00:03, Sys 0 00:00:01  -  Run Remote Usage
+		Usr 0 00:00:00, Sys 0 00:00:00  -  Run Local Usage
+		Usr 0 00:00:03, Sys 0 00:00:01  -  Total Remote Usage
+		Usr 0 00:00:00, Sys 0 00:00:00  -  Total Local Usage
+	36995  -  Run Bytes Sent By Job
+	9881  -  Run Bytes Received By Job
+	36995  -  Total Bytes Sent By Job
+	9881  -  Total Bytes Received By Job
+	Partitionable Resources :    Usage  Request Allocated 
+	   Cpus                 :     0.66        1         1 
+	   Disk (KB)            :   106           1    274245 
+	   Memory (MB)          :     0        2000      2000 
+...

@@ -66,8 +66,8 @@ class Stack(Plot):
     xmax         = kwargs.get('xmax',         self.xmax       )
     ymin         = kwargs.get('ymin',         self.ymin       )
     ymax         = kwargs.get('ymax',         self.ymax       )
-    rmin         = kwargs.get('rmin',         self.rmin       ) or 0.45 # ratio ymin
-    rmax         = kwargs.get('rmax',         self.rmax       ) or 1.55 # ratio ymax
+    rmin         = kwargs.get('rmin',         0.75            )#LOR CHANGE. DEFAULT IS self.rmin       ) or 0.45 # ratio ymin
+    rmax         = kwargs.get('rmax',         1.25            )#LOR CHANGE. DEFAULT IS self.rmax       ) or 1.55 # ratio ymax
     ratiorange   = kwargs.get('rrange',       self.ratiorange ) # ratio range around 1.0
     binlabels    = kwargs.get('binlabels',    self.binlabels  ) # list of alphanumeric bin labels
     ytitleoffset = kwargs.get('ytitleoffset', 1.0             )

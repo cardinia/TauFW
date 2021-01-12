@@ -1,5 +1,5 @@
 {
-  "time": "2020-11-27 17:53:39.084899", 
+  "time": "2020-12-07 22:41:57.989383", 
   "group": "WJ", 
   "paths": [
     "/W3JetsToLNu_TuneCP5_13TeV-madgraphMLM-pythia8/RunIIFall17NanoAODv6-PU2017_12Apr2018_Nano25Oct2019_ext_102X_mc2017_realistic_v7-v1/NANOAODSIM"
@@ -18,7 +18,7 @@
   "postfix": "_etau", 
   "try": 1, 
   "jobids": [
-    1566421
+    1595092
   ], 
   "outdir": "/eos/home-l/lvigilan/output_2017ReReco18/2017/etau/W3JetsToLNu", 
   "jobdir": "output_2017ReReco18/2017/etau/W3JetsToLNu", 
