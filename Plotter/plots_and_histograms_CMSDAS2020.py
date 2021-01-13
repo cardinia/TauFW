@@ -69,18 +69,18 @@ def getsampleset(channel,era,**kwargs):
       # Cross-secitons: https://twiki.cern.ch/twiki/bin/viewauth/CMS/StandardModelCrossSectionsat13TeV, Z/a* (50)                                                           
       ( 'DY', "DYJetsToLL_M-50",       "Drell-Yan 50",          6077.22,       {"nevts" : 49748967 * (1.0 - 2 * negative_fractions["DYJetsToLL_M-50"])}),
       # Cross-secitons: https://github.com/cardinia/HiggsCP/blob/master/Inputs/interface/settingsDNN.h#L695-L699
-      ( 'DY', "DY1JetsToLL_M-50",      "Drell-Yan 50 1j",       1.225*1012.5,       {"nevts" : 63730337 * (1.0 - 2 * negative_fractions["DYJetsToLL_M-50"])}),
-      ( 'DY', "DY2JetsToLL_M-50",      "Drell-Yan 50 2j",       1.225*332.8,       {"nevts" : 19879279 * (1.0 - 2 * negative_fractions["DYJetsToLL_M-50"])}),
-      ( 'DY', "DY3JetsToLL_M-50",      "Drell-Yan 50 3j",       1.225*101.8,       {"nevts" : 5857441 * (1.0 - 2 * negative_fractions["DYJetsToLL_M-50"])}),
-      ( 'DY', "DY4JetsToLL_M-50",      "Drell-Yan 50 4j",       1.225*54.8,       {"nevts" : 4197868 * (1.0 - 2 * negative_fractions["DYJetsToLL_M-50"])}),
+      ( 'DY', "DY1JetsToLL_M-50",      "Drell-Yan 50 1j",       1.225*1012.5,       {"nevts" : 63730337 }),
+      ( 'DY', "DY2JetsToLL_M-50",      "Drell-Yan 50 2j",       1.225*332.8,       {"nevts" : 19879279 }),
+      ( 'DY', "DY3JetsToLL_M-50",      "Drell-Yan 50 3j",       1.225*101.8,       {"nevts" : 5857441 }),
+      ( 'DY', "DY4JetsToLL_M-50",      "Drell-Yan 50 4j",       1.225*54.8,       {"nevts" : 4197868 }),
 
       # Cross-sections: https://twiki.cern.ch/twiki/bin/viewauth/CMS/StandardModelCrossSectionsat13TeV, Total W                                                                   
       ( 'WJ', "WJetsToLNu",             "W + jets",              3*20508.9,     {"nevts" : 57402435 * (1.0 - 2 * negative_fractions["WJetsToLNu"])}),
       # Cross-secitons: https://github.com/cardinia/HiggsCP/blob/master/Inputs/interface/settingsDNN.h
-      ( 'WJ', "W1JetsToLNu",            "W + jets 1j",           1.224*9644.5,  {"nevts" : 43773492 * (1.0 - 2 * negative_fractions["WJetsToLNu"])}),
-      ( 'WJ', "W2JetsToLNu",            "W + jets 2j",           1.224*3144.5,  {"nevts" : 30374504 * (1.0 - 2 * negative_fractions["WJetsToLNu"])}),
-      ( 'WJ', "W3JetsToLNu",            "W + jets 3j",           1.224*954.8,     {"nevts" : 39501912 * (1.0 - 2 * negative_fractions["WJetsToLNu"])}),
-      ( 'WJ', "W4JetsToLNu",            "W + jets 4j",           1.224*485.6,     {"nevts" : 18751462 * (1.0 - 2 * negative_fractions["WJetsToLNu"])}),
+      ( 'WJ', "W1JetsToLNu",            "W + jets 1j",           1.224*9644.5,  {"nevts" : 43773492 }),
+      ( 'WJ', "W2JetsToLNu",            "W + jets 2j",           1.224*3144.5,  {"nevts" : 30374504 }),
+      ( 'WJ', "W3JetsToLNu",            "W + jets 3j",           1.224*954.8,     {"nevts" : 39501912 }),
+      ( 'WJ', "W4JetsToLNu",            "W + jets 4j",           1.224*485.6,     {"nevts" : 18751462 }),
 
       # Cross-sections: https://github.com/cardinia/HiggsCP/blob/master/Inputs/interface/settingsDNN.h
       ( 'VV', "WW",                    "WW",                 75.88, {"nevts" : 6988168}),
@@ -124,8 +124,8 @@ def getsampleset(channel,era,**kwargs):
 
 
   #STITCHING
-  sampleset.stitch("W*Jets",   incl='WJ', name='WJ'                               )
-  sampleset.stitch("DY*J*M-50",incl='DYJ',name="DY_M-50",title="Drell-Yan M=50GeV")
+  #sampleset.stitch("W*Jets",   incl='WJ', name='WJ'                               )
+  #sampleset.stitch("DY*J*M-50",incl='DYJ',name="DY_M-50",title="Drell-Yan M=50GeV")
   
   # JOIN
   # Note: titles are set via STYLE.sample_titles
@@ -230,11 +230,11 @@ def plot(sampleset,channel,parallel=True,tag="",outdir="plots",histdir="",era=""
     #Sel('tot_PFMET_DTVL',tot_cuts4),
     #Sel('tot_PFMET_DTMedium',tot_cuts5),
     #Sel('tot_PFMET_DTVTight',tot_cuts6),
-
+    
     Sel('id_VSjM_VSeVVVL',totid_cuts3),
     #Sel('id_VSjM_VSeVL',totid_cuts4),
     #Sel('id_VSjM_VSeM',totid_cuts5),
-    #Sel('id_VSjM_VSeVT',totid_cuts6),
+    Sel('id_VSjM_VSeVT',totid_cuts6),
 
     #Sel('inclusive',inclusive),
     #Sel('inclusive_cr_qcd',inclusive_cr_qcd),
