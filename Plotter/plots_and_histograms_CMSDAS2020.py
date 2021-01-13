@@ -68,20 +68,22 @@ def getsampleset(channel,era,**kwargs):
       
       # Cross-secitons: https://twiki.cern.ch/twiki/bin/viewauth/CMS/StandardModelCrossSectionsat13TeV, Z/a* (50)                                                           
       ( 'DY', "DYJetsToLL_M-50",       "Drell-Yan 50",          6077.22,       {"nevts" : 49748967 * (1.0 - 2 * negative_fractions["DYJetsToLL_M-50"])}),
-      ( 'DY', "DY1JetsToLL_M-50",      "Drell-Yan 50 1j",       6077.22,       {"nevts" : 63730337 * (1.0 - 2 * negative_fractions["DYJetsToLL_M-50"])}),
-      ( 'DY', "DY2JetsToLL_M-50",      "Drell-Yan 50 2j",       6077.22,       {"nevts" : 19879279 * (1.0 - 2 * negative_fractions["DYJetsToLL_M-50"])}),
-      ( 'DY', "DY3JetsToLL_M-50",      "Drell-Yan 50 3j",       6077.22,       {"nevts" : 5857441 * (1.0 - 2 * negative_fractions["DYJetsToLL_M-50"])}),
-      ( 'DY', "DY4JetsToLL_M-50",      "Drell-Yan 50 4j",       6077.22,       {"nevts" : 4197868 * (1.0 - 2 * negative_fractions["DYJetsToLL_M-50"])}),
+      # Cross-secitons: https://github.com/cardinia/HiggsCP/blob/master/Inputs/interface/settingsDNN.h#L695-L699
+      ( 'DY', "DY1JetsToLL_M-50",      "Drell-Yan 50 1j",       1.225*1012.5,       {"nevts" : 63730337 * (1.0 - 2 * negative_fractions["DYJetsToLL_M-50"])}),
+      ( 'DY', "DY2JetsToLL_M-50",      "Drell-Yan 50 2j",       1.225*332.8,       {"nevts" : 19879279 * (1.0 - 2 * negative_fractions["DYJetsToLL_M-50"])}),
+      ( 'DY', "DY3JetsToLL_M-50",      "Drell-Yan 50 3j",       1.225*101.8,       {"nevts" : 5857441 * (1.0 - 2 * negative_fractions["DYJetsToLL_M-50"])}),
+      ( 'DY', "DY4JetsToLL_M-50",      "Drell-Yan 50 4j",       1.225*54.8,       {"nevts" : 4197868 * (1.0 - 2 * negative_fractions["DYJetsToLL_M-50"])}),
 
       # Cross-sections: https://twiki.cern.ch/twiki/bin/viewauth/CMS/StandardModelCrossSectionsat13TeV, Total W                                                                   
       ( 'WJ', "WJetsToLNu",             "W + jets",              3*20508.9,     {"nevts" : 57402435 * (1.0 - 2 * negative_fractions["WJetsToLNu"])}),
-      ( 'WJ', "W1JetsToLNu",            "W + jets 1j",           3*20508.9,     {"nevts" : 43773492 * (1.0 - 2 * negative_fractions["WJetsToLNu"])}),
-      ( 'WJ', "W2JetsToLNu",            "W + jets 2j",           3*20508.9,     {"nevts" : 30374504 * (1.0 - 2 * negative_fractions["WJetsToLNu"])}),
-      ( 'WJ', "W3JetsToLNu",            "W + jets 3j",           3*20508.9,     {"nevts" : 39501912 * (1.0 - 2 * negative_fractions["WJetsToLNu"])}),
-      ( 'WJ', "W4JetsToLNu",            "W + jets 4j",           3*20508.9,     {"nevts" : 18751462 * (1.0 - 2 * negative_fractions["WJetsToLNu"])}),
+      # Cross-secitons: https://github.com/cardinia/HiggsCP/blob/master/Inputs/interface/settingsDNN.h
+      ( 'WJ', "W1JetsToLNu",            "W + jets 1j",           1.224*9644.5,  {"nevts" : 43773492 * (1.0 - 2 * negative_fractions["WJetsToLNu"])}),
+      ( 'WJ', "W2JetsToLNu",            "W + jets 2j",           1.224*3144.5,  {"nevts" : 30374504 * (1.0 - 2 * negative_fractions["WJetsToLNu"])}),
+      ( 'WJ', "W3JetsToLNu",            "W + jets 3j",           1.224*954.8,     {"nevts" : 39501912 * (1.0 - 2 * negative_fractions["WJetsToLNu"])}),
+      ( 'WJ', "W4JetsToLNu",            "W + jets 4j",           1.224*485.6,     {"nevts" : 18751462 * (1.0 - 2 * negative_fractions["WJetsToLNu"])}),
 
-      # Cross-sections: https://twiki.cern.ch/twiki/bin/viewauth/CMS/StandardModelCrossSectionsat13TeV, W+ W-                                                                     
-      ( 'VV', "WW",                    "WW",                 118.7, {"nevts" : 6988168}),
+      # Cross-sections: https://github.com/cardinia/HiggsCP/blob/master/Inputs/interface/settingsDNN.h
+      ( 'VV', "WW",                    "WW",                 75.88, {"nevts" : 6988168}),
 
       # Cross-sections: from generator (https://cms-gen-dev.cern.ch/xsdb with 'process_name=WZ_TuneCP5_13TeV-pythia8')                                                            
       ( 'VV', "WZ",                    "WZ",                 27.6, {"nevts" : 2997571}),
@@ -121,7 +123,7 @@ def getsampleset(channel,era,**kwargs):
   sampleset = _getsampleset(datasample,expsamples,channel=channel,era=era,**kwargs)
 
 
-
+  #STITCHING
   sampleset.stitch("W*Jets",   incl='WJ', name='WJ'                               )
   sampleset.stitch("DY*J*M-50",incl='DYJ',name="DY_M-50",title="Drell-Yan M=50GeV")
   
