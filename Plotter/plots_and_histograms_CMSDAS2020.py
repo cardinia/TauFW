@@ -169,13 +169,14 @@ def plot(sampleset,channel,parallel=True,tag="",outdir="plots",histdir="",era=""
   mvis_cuts5 = "(m_vis>60) && (m_vis < 120) && (mt_1 < 60) && (idDeepTau2017v2p1VSe_2 >= 16 )"#Medium
   mvis_cuts6 = "(m_vis>60) && (m_vis < 120) && (mt_1 < 60) && (idDeepTau2017v2p1VSe_2 >= 64 )"#VTight
 
-  id_cuts3 = " (mt_1 < 60) && (idDeepTau2017v2p1VSe_2 >= 1 )"#VVVLose
-  id_cuts4 = " (mt_1 < 60) && (idDeepTau2017v2p1VSe_2 >= 4 )"#VLose
-  id_cuts5 = " (mt_1 < 60) && (idDeepTau2017v2p1VSe_2 >= 16 )"#Medium
-  id_cuts6 = " (mt_1 < 60) && (idDeepTau2017v2p1VSe_2 >= 64 )"#VTight
+  id_cuts3 = "(idDeepTau2017v2p1VSjet_2>= 16)"#&&(idDeepTau2017v2p1VSe_2 >= 1 )"#VVVLose
+  id_cuts4 = "(idDeepTau2017v2p1VSjet_2>= 16)&&(idDeepTau2017v2p1VSe_2 >= 4 )"#VLose
+  id_cuts5 = "(idDeepTau2017v2p1VSjet_2>= 16)&&(idDeepTau2017v2p1VSe_2 >= 16 )"#Medium
+  id_cuts6 = "(idDeepTau2017v2p1VSjet_2>= 16)"#&&(idDeepTau2017v2p1VSe_2 >= 64 )"#VTight
 
   mt1_cuts= "(mt_1 < 60)"
-
+ #prepara VVL e VT, no taglio m_t
+ #da fare pt,phi e eta ele e tau, njet,mt,mvis,jetpt e discrimani,
   inclusive = inclusive.replace(" ","")
   general_cuts = general_cuts.replace(" ","")
   mvis_cuts1 = mvis_cuts1.replace(" ","")
@@ -231,10 +232,10 @@ def plot(sampleset,channel,parallel=True,tag="",outdir="plots",histdir="",era=""
     #Sel('tot_PFMET_DTMedium',tot_cuts5),
     #Sel('tot_PFMET_DTVTight',tot_cuts6),
     
-    Sel('id_VSjM_VSeVVVL',totid_cuts3),
-    #Sel('id_VSjM_VSeVL',totid_cuts4),
-    #Sel('id_VSjM_VSeM',totid_cuts5),
-    Sel('id_VSjM_VSeVT',totid_cuts6),
+    Sel('id_VSjM-VSeVVVL',totid_cuts3),
+    #Sel('id_VSjM-VSeVL',totid_cuts4),
+    #Sel('id_VSjM-VSeM',totid_cuts5),
+    Sel('id_VSjM-VSeVT',totid_cuts6),
 
     #Sel('inclusive',inclusive),
     #Sel('inclusive_cr_qcd',inclusive_cr_qcd),
@@ -246,7 +247,7 @@ def plot(sampleset,channel,parallel=True,tag="",outdir="plots",histdir="",era=""
   # TODO section 5: extend with other variables, which are available in the flat n-tuples
   variables = [
      #Var('m_vis',  11,  60, 120),
-     Var('pt_1',  "Muon pt",    40,  35, 120, ctitle={'etau':"Electron pt",'tautau':"Leading tau_h pt",'emu':"Electron pt"}),
+     #Var('pt_1',  "Muon pt",    40,  35, 120, ctitle={'etau':"Electron pt",'tautau':"Leading tau_h pt",'emu':"Electron pt"}),
      #Var('pt_2',  "tau_h pt",   40,  20, 120, ctitle={'tautau':"Subleading tau_h pt",'emu':"Muon pt"}),
      #Var('eta_1', "Electron eta",   30, -3, 3, ctitle={'etau':"Electron eta",'tautau':"Leading tau_h eta",'emu':"Electron eta"},ymargin=1.6,pos='T',ncols=2),
      #Var('eta_2', "tau_h eta",  30, -3, 3, ctitle={'etau':"Tau eta",'tautau':"Subleading tau_h eta",'emu':"Muon eta"},ymargin=1.6,pos='T',ncols=2),
@@ -257,7 +258,7 @@ def plot(sampleset,channel,parallel=True,tag="",outdir="plots",histdir="",era=""
      #Var("jpt_2",  29,   10,  300, veto=[r"njets\w*==0"]),
      #Var("jeta_1", 53, -5.4,  5.2, ymargin=1.6,pos='T',ncols=2,veto=[r"njets\w*==0"]),
      #Var("jeta_2", 53, -5.4,  5.2, ymargin=1.6,pos='T',ncols=2,veto=[r"njets\w*==0"]),
-     Var('njets',   8,  0,   8),
+     #Var('njets',   8,  0,   8),
      #Var('met',    50,  0, 150),
      #Var('puppimetpt', "PuppiMET"  , 50,  0, 150),
      #Var('pt_ll',   "p_{T}(mutau_h)", 25, 0, 200, ctitle={'etau':"p_{T}(etau_h)",'tautau':"p_{T}(tau_htau_h)",'emu':"p_{T}(emu)"}),
@@ -267,8 +268,8 @@ def plot(sampleset,channel,parallel=True,tag="",outdir="plots",histdir="",era=""
      #Var("pzetavis", 50,    0, 200 ), 
      #Var('rawDeepTau2017v2p1VSjet_2', "rawDeepTau2017v2p1VSjet", 100, 0.0, 1, ncols=2,pos='L;y=0.85',logy=True,ymargin=2.5),
      #Var('rawDeepTau2017v2p1VSjet_2', "rawDeepTau2017v2p1VSjet", 20, 0.80, 1, fname="$VAR_zoom",ncols=2,pos='L;y=0.85'),
-     #Var('rawDeepTau2017v2p1VSe_2',   "rawDeepTau2017v2p1VSe",   100, 0.0, 1, fname="$VAR",ncols=2,ymin=1.0, logy=True,pos='L;y=0.85'),
-     #Var('rawDeepTau2017v2p1VSe_2',   "rawDeepTau2017v2p1VSe",   30, 0.70, 1, fname="$VAR_zoom",ncols=2,logy=True,pos='L;y=0.85'),
+     Var('rawDeepTau2017v2p1VSe_2',   "rawDeepTau2017v2p1VSe",   100, 0.0, 1, fname="$VAR",ncols=2,ymin=1.0, logy=True,pos='L;y=0.85'),
+     Var('rawDeepTau2017v2p1VSe_2',   "rawDeepTau2017v2p1VSe",   30, 0.70, 1, fname="$VAR_zoom",ncols=2,logy=True,pos='L;y=0.85'),
      #Var('rawDeepTau2017v2p1VSmu_2',  "rawDeepTau2017v2p1VSmu",  100, 0.0, 1, fname="$VAR",ncols=2,logy=True,logyrange=4,pos='L;y=0.85'),                                    
      #Var('rawDeepTau2017v2p1VSmu_2',  "rawDeepTau2017v2p1VSmu",  20, 0.80, 1, fname="$VAR_zoom",ncols=2,logy=True,logyrange=4,pos='L;y=0.85'),                                    
 
@@ -293,7 +294,7 @@ def plot(sampleset,channel,parallel=True,tag="",outdir="plots",histdir="",era=""
       for h in stack.hists:
         h.Write(h.GetName().replace("QCD_","QCD"),R.TH1.kOverwrite)
       stack.draw()
-      stack.drawlegend(x1=0.30,x2=0.85,y1=0.70,y2=0.95)
+      stack.drawlegend(x1=0.40,x2=0.95,y1=0.70,y2=0.95)
       stack.drawtext(text)
       stack.saveas(fname,ext=exts,tag=tag)
       stack.close()
