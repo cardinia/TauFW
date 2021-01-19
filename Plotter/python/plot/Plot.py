@@ -759,7 +759,7 @@ class Plot(object):
     if transparent: legend.SetFillStyle(0) # 0 = transparent
     else: legend.SetFillColor(0)
     legend.SetBorderSize(border)
-    legend.SetTextSize(tsize)
+    legend.SetTextSize(tsize*0.7)#LOR CHANGES ADD *0.7 to reduce the size
     legend.SetTextFont(headerfont) # bold for title
     if ncols>1:
       legend.SetNColumns(ncols)
