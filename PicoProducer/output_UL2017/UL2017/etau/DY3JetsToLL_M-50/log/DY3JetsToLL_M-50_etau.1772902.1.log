@@ -1,0 +1,370 @@
+Could not find platform independent libraries <prefix>
+Could not find platform dependent libraries <exec_prefix>
+Consider setting $PYTHONHOME to <prefix>[:<exec_prefix>]
+ImportError: No module named site
+Job start at Thu Jan 21 18:30:11 CET 2021
+Running job on machine Linux b7g24n0427.cern.ch 3.10.0-957.1.3.el7.x86_64 #1 SMP Thu Nov 29 14:49:43 UTC 2018 x86_64 x86_64 x86_64 GNU/Linux, host b7g24n0427.cern.ch
+============================================================
+$PWD=/pool/condor/dir_26609
+$JOBID=1772902
+$TASKID=1
+$HOSTNAME=b7g24n0427.cern.ch
+$TASKCMD=/afs/cern.ch/work/l/lvigilan/TauWork/CMSSW_10_6_17_patch1/src/TauFW/PicoProducer/python/processors/picojob.py -y UL2017 -d 'mc' -c etau -M ModuleETau --copydir /eos/home-l/lvigilan/output_UL2017/UL2017/etau/DY3JetsToLL_M-50 -t _etau_1 --opt 'jec=False' 'zpt=True' -i root://cms-xrd-global.cern.ch//store/mc/RunIIFall17NanoAODv6/DY3JetsToLL_M-50_TuneCP5_13TeV-madgraphMLM-pythia8/NANOAODSIM/PU2017_12Apr2018_Nano25Oct2019_102X_mc2017_realistic_v7-v1/270000/FDE1C3FF-CD7A-1B4A-BBEC-AC1EAC3E9C53.root root://cms-xrd-global.cern.ch//store/mc/RunIIFall17NanoAODv6/DY3JetsToLL_M-50_TuneCP5_13TeV-madgraphMLM-pythia8/NANOAODSIM/PU2017_12Apr2018_Nano25Oct2019_new_pmx_102X_mc2017_realistic_v7_ext1-v1/280000/CF819538-D430-B649-B41A-966E703CD8B9.root root://cms-xrd-global.cern.ch//store/mc/RunIIFall17NanoAODv6/DY3JetsToLL_M-50_TuneCP5_13TeV-madgraphMLM-pythia8/NANOAODSIM/PU2017_12Apr2018_Nano25Oct2019_new_pmx_102X_mc2017_realistic_v7_ext1-v1/280000/E38F7DD2-4FC2-0745-84A9-E6E5765F6E6D.root
+$WORKDIR=/pool/condor/dir_26609
+>>> cd /afs/cern.ch/work/l/lvigilan/TauWork/CMSSW_10_6_17_patch1/src
+>>> eval `scramv1 runtime -sh`
+>>> cd /pool/condor/dir_26609
+$PWD=/pool/condor/dir_26609
+>>> /afs/cern.ch/work/l/lvigilan/TauWork/CMSSW_10_6_17_patch1/src/TauFW/PicoProducer/python/processors/picojob.py -y UL2017 -d 'mc' -c etau -M ModuleETau --copydir /eos/home-l/lvigilan/output_UL2017/UL2017/etau/DY3JetsToLL_M-50 -t _etau_1 --opt 'jec=False' 'zpt=True' -i root://cms-xrd-global.cern.ch//store/mc/RunIIFall17NanoAODv6/DY3JetsToLL_M-50_TuneCP5_13TeV-madgraphMLM-pythia8/NANOAODSIM/PU2017_12Apr2018_Nano25Oct2019_102X_mc2017_realistic_v7-v1/270000/FDE1C3FF-CD7A-1B4A-BBEC-AC1EAC3E9C53.root root://cms-xrd-global.cern.ch//store/mc/RunIIFall17NanoAODv6/DY3JetsToLL_M-50_TuneCP5_13TeV-madgraphMLM-pythia8/NANOAODSIM/PU2017_12Apr2018_Nano25Oct2019_new_pmx_102X_mc2017_realistic_v7_ext1-v1/280000/CF819538-D430-B649-B41A-966E703CD8B9.root root://cms-xrd-global.cern.ch//store/mc/RunIIFall17NanoAODv6/DY3JetsToLL_M-50_TuneCP5_13TeV-madgraphMLM-pythia8/NANOAODSIM/PU2017_12Apr2018_Nano25Oct2019_new_pmx_102X_mc2017_realistic_v7_ext1-v1/280000/E38F7DD2-4FC2-0745-84A9-E6E5765F6E6D.root
+Error in <TGClient::TGClient>: can't open display "localhost:24.0", switching to batch mode...
+ In case you run from a remote ssh session, reconnect with ssh -Y
+--------------------------------------------------------------------------------
+>>> era          = 'UL2017'
+>>> year         = 2017
+>>> channel      = 'etau'
+>>> modname      = 'ModuleETau'
+>>> dtype        = 'mc'
+>>> kwargs       = {'dtype': 'mc', 'zpt': True, 'jec': False, 'verb': 0, 'era': 'UL2017', 'year': 2017}
+>>> maxevts      = None
+>>> outdir       = '.'
+>>> copydir      = '/eos/home-l/lvigilan/output_UL2017/UL2017/etau/DY3JetsToLL_M-50'
+>>> infiles      = ['root://cms-xrd-global.cern.ch//store/mc/RunIIFall17NanoAODv6/DY3JetsToLL_M-50_TuneCP5_13TeV-madgraphMLM-pythia8/NANOAODSIM/PU2017_12Apr2018_Nano25Oct2019_102X_mc2017_realistic_v7-v1/270000/FDE1C3FF-CD7A-1B4A-BBEC-AC1EAC3E9C53.root', 'root://cms-xrd-global.cern.ch//store/mc/RunIIFall17NanoAODv6/DY3JetsToLL_M-50_TuneCP5_13TeV-madgraphMLM-pythia8/NANOAODSIM/PU2017_12Apr2018_Nano25Oct2019_new_pmx_102X_mc2017_realistic_v7_ext1-v1/280000/CF819538-D430-B649-B41A-966E703CD8B9.root', 'root://cms-xrd-global.cern.ch//store/mc/RunIIFall17NanoAODv6/DY3JetsToLL_M-50_TuneCP5_13TeV-madgraphMLM-pythia8/NANOAODSIM/PU2017_12Apr2018_Nano25Oct2019_new_pmx_102X_mc2017_realistic_v7_ext1-v1/280000/E38F7DD2-4FC2-0745-84A9-E6E5765F6E6D.root']
+>>> outfname     = './pico_etau_etau_1.root'
+>>> branchsel    = '/afs/cern.ch/work/l/lvigilan/TauWork/CMSSW_10_6_17_patch1/python/TauFW/PicoProducer/processors/keep_and_drop_skim.txt'
+>>> json         = None
+>>> prefetch     = False
+>>> cwd          = /pool/condor/dir_26609
+--------------------------------------------------------------------------------
+
+   ################
+   #  ModuleETau  #
+   ################
+
+Loading PileupWeightTool for '/afs/cern.ch/work/l/lvigilan/TauWork/CMSSW_10_6_17_patch1/src/TauFW/PicoProducer/data/pileup/Data_PileUp_UL2017_69p2.root' and '/afs/cern.ch/work/l/lvigilan/TauWork/CMSSW_10_6_17_patch1/src/TauFW/PicoProducer/data/pileup/MC_PileUp_UL2017_Summer19.root'
+Loading BTagWeightTool for DeepCSV (medium WP)...
+>>> BTagTool: [1m[33mWarning! [0m[33mHistogram 'etau/eff_DeepCSV_udsg_medium' does not exist in /afs/cern.ch/work/l/lvigilan/TauWork/CMSSW_10_6_17_patch1/src/TauFW/PicoProducer/data/btag/DeepCSV_2017_12Apr2017_eff.root! Reverting to default efficiency histogram...[0m
+>>> BTagTool: [1m[33mWarning! [0m[33mHistogram 'etau/eff_DeepCSV_c_medium' does not exist in /afs/cern.ch/work/l/lvigilan/TauWork/CMSSW_10_6_17_patch1/src/TauFW/PicoProducer/data/btag/DeepCSV_2017_12Apr2017_eff.root! Reverting to default efficiency histogram...[0m
+>>> BTagTool: [1m[33mWarning! [0m[33mHistogram 'etau/eff_DeepCSV_b_medium' does not exist in /afs/cern.ch/work/l/lvigilan/TauWork/CMSSW_10_6_17_patch1/src/TauFW/PicoProducer/data/btag/DeepCSV_2017_12Apr2017_eff.root! Reverting to default efficiency histogram...[0m
+>>> BTagTool: [1m[33mWarning! [0m[33mMade use of default efficiency histograms! The b tag weights from this module should be regarded as placeholders only,
+and should NOT be used for analyses. B (mis)tag efficiencies in MC are analysis dependent. Please create your own
+efficiency histogram with data/btag/getBTagEfficiencies.py after running all MC samples with BTagWeightTool.[0m
+Loading TreeProducerETau for './pico_etau_etau_1.root'
+--------------------------------------------------------------------------------
+>>> filename     = './pico_etau_etau_1.root'
+>>> year         = 2017
+>>> dtype        = 'mc'
+>>> channel      = 'etau'
+>>> ismc         = True
+>>> isdata       = False
+>>> isembed      = False
+>>> tes          = 1.0
+>>> tessys       = None
+>>> ltf          = 1.0
+>>> jtf          = 1.0
+>>> dotoppt      = False
+>>> dozpt        = True
+>>> dojec        = False
+>>> dojecsys     = False
+>>> dotight      = False
+>>> jetCutPt     = 30
+>>> bjetCutEta   = 2.7
+>>> tauwp        = 0
+>>> eleCutPt     = 36
+>>> eleCutEta    = 2.1
+>>> tauCutPt     = 20
+>>> tauCutEta    = 2.3
+Pre-select 1055904 entries out of 1055904 (100.00%)
+Processed    10000/ 1055904 entries,  0.95% (elapsed time    19.1s, curr speed    0.524 kHz, avg speed    0.524 kHz), accepted      596/   10001 events ( 5.96%)
+Processed    20000/ 1055904 entries,  1.89% (elapsed time    32.8s, curr speed    0.728 kHz, avg speed    0.609 kHz), accepted     1199/   20001 events ( 5.99%)
+Processed    30000/ 1055904 entries,  2.84% (elapsed time    47.0s, curr speed    0.703 kHz, avg speed    0.638 kHz), accepted     1758/   30001 events ( 5.86%)
+Processed    40000/ 1055904 entries,  3.79% (elapsed time    61.4s, curr speed    0.698 kHz, avg speed    0.652 kHz), accepted     2352/   40001 events ( 5.88%)
+Processed    50000/ 1055904 entries,  4.74% (elapsed time    75.6s, curr speed    0.704 kHz, avg speed    0.662 kHz), accepted     2948/   50001 events ( 5.90%)
+Processed    60000/ 1055904 entries,  5.68% (elapsed time    90.1s, curr speed    0.690 kHz, avg speed    0.666 kHz), accepted     3562/   60001 events ( 5.94%)
+Processed    70000/ 1055904 entries,  6.63% (elapsed time   104.2s, curr speed    0.709 kHz, avg speed    0.672 kHz), accepted     4097/   70001 events ( 5.85%)
+Processed    80000/ 1055904 entries,  7.58% (elapsed time   118.0s, curr speed    0.724 kHz, avg speed    0.678 kHz), accepted     4691/   80001 events ( 5.86%)
+Processed    90000/ 1055904 entries,  8.52% (elapsed time   131.7s, curr speed    0.728 kHz, avg speed    0.683 kHz), accepted     5256/   90001 events ( 5.84%)
+Processed   100000/ 1055904 entries,  9.47% (elapsed time   143.2s, curr speed    0.871 kHz, avg speed    0.698 kHz), accepted     5858/  100001 events ( 5.86%)
+Processed   110000/ 1055904 entries, 10.42% (elapsed time   156.8s, curr speed    0.736 kHz, avg speed    0.702 kHz), accepted     6449/  110001 events ( 5.86%)
+Processed   120000/ 1055904 entries, 11.36% (elapsed time   170.3s, curr speed    0.742 kHz, avg speed    0.705 kHz), accepted     7025/  120001 events ( 5.85%)
+Processed   130000/ 1055904 entries, 12.31% (elapsed time   184.7s, curr speed    0.693 kHz, avg speed    0.704 kHz), accepted     7584/  130001 events ( 5.83%)
+Processed   140000/ 1055904 entries, 13.26% (elapsed time   199.3s, curr speed    0.683 kHz, avg speed    0.702 kHz), accepted     8177/  140001 events ( 5.84%)
+>>> PileupTool: [1m[33mWarning! [0m[33mPileupWeightTools.getWeight: Could not make pileup weight for npu=77.0 data=3.78217528813e-07, mc=0.0[0m
+Processed   150000/ 1055904 entries, 14.21% (elapsed time   213.3s, curr speed    0.719 kHz, avg speed    0.703 kHz), accepted     8751/  150001 events ( 5.83%)
+>>> PileupTool: [1m[33mWarning! [0m[33mPileupWeightTools.getWeight: Could not make pileup weight for npu=80.0 data=1.11473779721e-07, mc=0.0[0m
+Processed   160000/ 1055904 entries, 15.15% (elapsed time   227.6s, curr speed    0.695 kHz, avg speed    0.703 kHz), accepted     9322/  160001 events ( 5.83%)
+Processed   170000/ 1055904 entries, 16.10% (elapsed time   242.1s, curr speed    0.694 kHz, avg speed    0.702 kHz), accepted     9923/  170001 events ( 5.84%)
+Processed   180000/ 1055904 entries, 17.05% (elapsed time   256.6s, curr speed    0.687 kHz, avg speed    0.701 kHz), accepted    10551/  180001 events ( 5.86%)
+Processed   190000/ 1055904 entries, 17.99% (elapsed time   271.6s, curr speed    0.666 kHz, avg speed    0.699 kHz), accepted    11132/  190001 events ( 5.86%)
+Processed   200000/ 1055904 entries, 18.94% (elapsed time   281.6s, curr speed    1.000 kHz, avg speed    0.710 kHz), accepted    11676/  200001 events ( 5.84%)
+Processed   210000/ 1055904 entries, 19.89% (elapsed time   295.4s, curr speed    0.725 kHz, avg speed    0.711 kHz), accepted    12265/  210001 events ( 5.84%)
+Processed   220000/ 1055904 entries, 20.84% (elapsed time   309.6s, curr speed    0.705 kHz, avg speed    0.711 kHz), accepted    12850/  220001 events ( 5.84%)
+Processed   230000/ 1055904 entries, 21.78% (elapsed time   324.0s, curr speed    0.696 kHz, avg speed    0.710 kHz), accepted    13437/  230001 events ( 5.84%)
+Processed   240000/ 1055904 entries, 22.73% (elapsed time   338.1s, curr speed    0.711 kHz, avg speed    0.710 kHz), accepted    14013/  240001 events ( 5.84%)
+Processed   250000/ 1055904 entries, 23.68% (elapsed time   352.6s, curr speed    0.689 kHz, avg speed    0.709 kHz), accepted    14610/  250001 events ( 5.84%)
+Processed   260000/ 1055904 entries, 24.62% (elapsed time   367.1s, curr speed    0.689 kHz, avg speed    0.708 kHz), accepted    15164/  260001 events ( 5.83%)
+Processed   270000/ 1055904 entries, 25.57% (elapsed time   380.6s, curr speed    0.742 kHz, avg speed    0.709 kHz), accepted    15717/  270001 events ( 5.82%)
+Processed   280000/ 1055904 entries, 26.52% (elapsed time   395.1s, curr speed    0.687 kHz, avg speed    0.709 kHz), accepted    16330/  280001 events ( 5.83%)
+Processed   290000/ 1055904 entries, 27.46% (elapsed time   409.7s, curr speed    0.686 kHz, avg speed    0.708 kHz), accepted    16935/  290001 events ( 5.84%)
+Processed   300000/ 1055904 entries, 28.41% (elapsed time   419.9s, curr speed    0.983 kHz, avg speed    0.714 kHz), accepted    17523/  300001 events ( 5.84%)
+Processed   310000/ 1055904 entries, 29.36% (elapsed time   433.6s, curr speed    0.727 kHz, avg speed    0.715 kHz), accepted    18104/  310001 events ( 5.84%)
+Processed   320000/ 1055904 entries, 30.31% (elapsed time   447.9s, curr speed    0.699 kHz, avg speed    0.714 kHz), accepted    18684/  320001 events ( 5.84%)
+Processed   330000/ 1055904 entries, 31.25% (elapsed time   462.9s, curr speed    0.670 kHz, avg speed    0.713 kHz), accepted    19279/  330001 events ( 5.84%)
+Processed   340000/ 1055904 entries, 32.20% (elapsed time   476.7s, curr speed    0.721 kHz, avg speed    0.713 kHz), accepted    19885/  340001 events ( 5.85%)
+Processed   350000/ 1055904 entries, 33.15% (elapsed time   491.0s, curr speed    0.703 kHz, avg speed    0.713 kHz), accepted    20423/  350001 events ( 5.84%)
+Processed   360000/ 1055904 entries, 34.09% (elapsed time   505.4s, curr speed    0.690 kHz, avg speed    0.712 kHz), accepted    21006/  360001 events ( 5.83%)
+Processed   370000/ 1055904 entries, 35.04% (elapsed time   519.4s, curr speed    0.716 kHz, avg speed    0.712 kHz), accepted    21619/  370001 events ( 5.84%)
+Processed   380000/ 1055904 entries, 35.99% (elapsed time   533.4s, curr speed    0.713 kHz, avg speed    0.712 kHz), accepted    22224/  380001 events ( 5.85%)
+Processed   390000/ 1055904 entries, 36.94% (elapsed time   548.1s, curr speed    0.680 kHz, avg speed    0.711 kHz), accepted    22837/  390001 events ( 5.86%)
+Processed   400000/ 1055904 entries, 37.88% (elapsed time   558.3s, curr speed    0.985 kHz, avg speed    0.716 kHz), accepted    23411/  400001 events ( 5.85%)
+Processed   410000/ 1055904 entries, 38.83% (elapsed time   572.1s, curr speed    0.726 kHz, avg speed    0.717 kHz), accepted    24025/  410001 events ( 5.86%)
+>>> PileupTool: [1m[33mWarning! [0m[33mPileupWeightTools.getWeight: Could not make pileup weight for npu=79.0 data=1.68190467676e-07, mc=0.0[0m
+Processed   420000/ 1055904 entries, 39.78% (elapsed time   586.9s, curr speed    0.672 kHz, avg speed    0.716 kHz), accepted    24633/  420001 events ( 5.86%)
+Processed   430000/ 1055904 entries, 40.72% (elapsed time   601.4s, curr speed    0.692 kHz, avg speed    0.715 kHz), accepted    25230/  430001 events ( 5.87%)
+Processed   440000/ 1055904 entries, 41.67% (elapsed time   615.4s, curr speed    0.713 kHz, avg speed    0.715 kHz), accepted    25787/  440001 events ( 5.86%)
+>>> PileupTool: [1m[33mWarning! [0m[33mPileupWeightTools.getWeight: Could not make pileup weight for npu=74.0 data=1.25748332577e-06, mc=0.0[0m
+Processed   450000/ 1055904 entries, 42.62% (elapsed time   629.5s, curr speed    0.709 kHz, avg speed    0.715 kHz), accepted    26326/  450001 events ( 5.85%)
+Processed   460000/ 1055904 entries, 43.56% (elapsed time   643.8s, curr speed    0.700 kHz, avg speed    0.715 kHz), accepted    26880/  460001 events ( 5.84%)
+Processed   470000/ 1055904 entries, 44.51% (elapsed time   657.8s, curr speed    0.712 kHz, avg speed    0.714 kHz), accepted    27475/  470001 events ( 5.85%)
+Processed   480000/ 1055904 entries, 45.46% (elapsed time   672.4s, curr speed    0.689 kHz, avg speed    0.714 kHz), accepted    28096/  480001 events ( 5.85%)
+Processed   490000/ 1055904 entries, 46.41% (elapsed time   683.4s, curr speed    0.906 kHz, avg speed    0.717 kHz), accepted    28656/  490001 events ( 5.85%)
+Processed   500000/ 1055904 entries, 47.35% (elapsed time   696.8s, curr speed    0.747 kHz, avg speed    0.718 kHz), accepted    29192/  500001 events ( 5.84%)
+Processed   510000/ 1055904 entries, 48.30% (elapsed time   710.5s, curr speed    0.731 kHz, avg speed    0.718 kHz), accepted    29767/  510001 events ( 5.84%)
+Processed   520000/ 1055904 entries, 49.25% (elapsed time   725.0s, curr speed    0.686 kHz, avg speed    0.717 kHz), accepted    30348/  520001 events ( 5.84%)
+Processed   530000/ 1055904 entries, 50.19% (elapsed time   739.3s, curr speed    0.701 kHz, avg speed    0.717 kHz), accepted    30943/  530001 events ( 5.84%)
+Processed   540000/ 1055904 entries, 51.14% (elapsed time   753.6s, curr speed    0.698 kHz, avg speed    0.717 kHz), accepted    31502/  540001 events ( 5.83%)
+Processed   550000/ 1055904 entries, 52.09% (elapsed time   768.9s, curr speed    0.656 kHz, avg speed    0.715 kHz), accepted    32128/  550001 events ( 5.84%)
+Processed   560000/ 1055904 entries, 53.04% (elapsed time   783.4s, curr speed    0.687 kHz, avg speed    0.715 kHz), accepted    32747/  560001 events ( 5.85%)
+Processed   570000/ 1055904 entries, 53.98% (elapsed time   797.3s, curr speed    0.719 kHz, avg speed    0.715 kHz), accepted    33303/  570001 events ( 5.84%)
+Processed   580000/ 1055904 entries, 54.93% (elapsed time   811.8s, curr speed    0.692 kHz, avg speed    0.714 kHz), accepted    33834/  580001 events ( 5.83%)
+Processed   590000/ 1055904 entries, 55.88% (elapsed time   822.4s, curr speed    0.938 kHz, avg speed    0.717 kHz), accepted    34436/  590001 events ( 5.84%)
+Processed   600000/ 1055904 entries, 56.82% (elapsed time   836.1s, curr speed    0.734 kHz, avg speed    0.718 kHz), accepted    34999/  600001 events ( 5.83%)
+Processed   610000/ 1055904 entries, 57.77% (elapsed time   850.0s, curr speed    0.718 kHz, avg speed    0.718 kHz), accepted    35583/  610001 events ( 5.83%)
+Processed   620000/ 1055904 entries, 58.72% (elapsed time   864.2s, curr speed    0.706 kHz, avg speed    0.717 kHz), accepted    36171/  620001 events ( 5.83%)
+>>> PileupTool: [1m[33mWarning! [0m[33mPileupWeightTools.getWeight: Could not make pileup weight for npu=78.0 data=2.52655123218e-07, mc=0.0[0m
+Processed   630000/ 1055904 entries, 59.66% (elapsed time   879.0s, curr speed    0.676 kHz, avg speed    0.717 kHz), accepted    36755/  630001 events ( 5.83%)
+Processed   640000/ 1055904 entries, 60.61% (elapsed time   892.5s, curr speed    0.738 kHz, avg speed    0.717 kHz), accepted    37304/  640001 events ( 5.83%)
+Processed   650000/ 1055904 entries, 61.56% (elapsed time   906.4s, curr speed    0.723 kHz, avg speed    0.717 kHz), accepted    37917/  650001 events ( 5.83%)
+Processed   660000/ 1055904 entries, 62.51% (elapsed time   921.2s, curr speed    0.673 kHz, avg speed    0.716 kHz), accepted    38531/  660001 events ( 5.84%)
+Processed   670000/ 1055904 entries, 63.45% (elapsed time   935.7s, curr speed    0.688 kHz, avg speed    0.716 kHz), accepted    39114/  670001 events ( 5.84%)
+Processed   680000/ 1055904 entries, 64.40% (elapsed time   950.3s, curr speed    0.685 kHz, avg speed    0.716 kHz), accepted    39752/  680001 events ( 5.85%)
+>>> PileupTool: [1m[33mWarning! [0m[33mPileupWeightTools.getWeight: Could not make pileup weight for npu=74.0 data=1.25748332577e-06, mc=0.0[0m
+Processed   690000/ 1055904 entries, 65.35% (elapsed time   960.7s, curr speed    0.963 kHz, avg speed    0.718 kHz), accepted    40346/  690001 events ( 5.85%)
+Processed   700000/ 1055904 entries, 66.29% (elapsed time   974.9s, curr speed    0.705 kHz, avg speed    0.718 kHz), accepted    40911/  700001 events ( 5.84%)
+>>> PileupTool: [1m[33mWarning! [0m[33mPileupWeightTools.getWeight: Could not make pileup weight for npu=75.0 data=8.42562481429e-07, mc=0.0[0m
+Processed   710000/ 1055904 entries, 67.24% (elapsed time   988.6s, curr speed    0.729 kHz, avg speed    0.718 kHz), accepted    41524/  710001 events ( 5.85%)
+Processed   720000/ 1055904 entries, 68.19% (elapsed time  1002.9s, curr speed    0.700 kHz, avg speed    0.718 kHz), accepted    42103/  720001 events ( 5.85%)
+Processed   730000/ 1055904 entries, 69.14% (elapsed time  1016.7s, curr speed    0.726 kHz, avg speed    0.718 kHz), accepted    42668/  730001 events ( 5.84%)
+Processed   740000/ 1055904 entries, 70.08% (elapsed time  1031.1s, curr speed    0.694 kHz, avg speed    0.718 kHz), accepted    43226/  740001 events ( 5.84%)
+Processed   750000/ 1055904 entries, 71.03% (elapsed time  1045.8s, curr speed    0.680 kHz, avg speed    0.717 kHz), accepted    43794/  750001 events ( 5.84%)
+Processed   760000/ 1055904 entries, 71.98% (elapsed time  1060.4s, curr speed    0.683 kHz, avg speed    0.717 kHz), accepted    44353/  760001 events ( 5.84%)
+Processed   770000/ 1055904 entries, 72.92% (elapsed time  1074.8s, curr speed    0.694 kHz, avg speed    0.716 kHz), accepted    44926/  770001 events ( 5.83%)
+>>> PileupTool: [1m[33mWarning! [0m[33mPileupWeightTools.getWeight: Could not make pileup weight for npu=79.0 data=1.68190467676e-07, mc=0.0[0m
+Processed   780000/ 1055904 entries, 73.87% (elapsed time  1088.9s, curr speed    0.711 kHz, avg speed    0.716 kHz), accepted    45482/  780001 events ( 5.83%)
+Processed   790000/ 1055904 entries, 74.82% (elapsed time  1099.2s, curr speed    0.969 kHz, avg speed    0.719 kHz), accepted    46023/  790001 events ( 5.83%)
+Processed   800000/ 1055904 entries, 75.76% (elapsed time  1113.0s, curr speed    0.724 kHz, avg speed    0.719 kHz), accepted    46629/  800001 events ( 5.83%)
+Processed   810000/ 1055904 entries, 76.71% (elapsed time  1127.6s, curr speed    0.687 kHz, avg speed    0.718 kHz), accepted    47247/  810001 events ( 5.83%)
+Processed   820000/ 1055904 entries, 77.66% (elapsed time  1142.9s, curr speed    0.654 kHz, avg speed    0.717 kHz), accepted    47839/  820001 events ( 5.83%)
+Processed   830000/ 1055904 entries, 78.61% (elapsed time  1157.6s, curr speed    0.680 kHz, avg speed    0.717 kHz), accepted    48439/  830001 events ( 5.84%)
+Processed   840000/ 1055904 entries, 79.55% (elapsed time  1172.6s, curr speed    0.668 kHz, avg speed    0.716 kHz), accepted    49060/  840001 events ( 5.84%)
+>>> PileupTool: [1m[33mWarning! [0m[33mPileupWeightTools.getWeight: Could not make pileup weight for npu=75.0 data=8.42562481429e-07, mc=0.0[0m
+Processed   850000/ 1055904 entries, 80.50% (elapsed time  1187.3s, curr speed    0.679 kHz, avg speed    0.716 kHz), accepted    49633/  850001 events ( 5.84%)
+>>> PileupTool: [1m[33mWarning! [0m[33mPileupWeightTools.getWeight: Could not make pileup weight for npu=76.0 data=5.64820208539e-07, mc=0.0[0m
+Processed   860000/ 1055904 entries, 81.45% (elapsed time  1201.2s, curr speed    0.721 kHz, avg speed    0.716 kHz), accepted    50185/  860001 events ( 5.84%)
+Processed   870000/ 1055904 entries, 82.39% (elapsed time  1215.6s, curr speed    0.693 kHz, avg speed    0.716 kHz), accepted    50733/  870001 events ( 5.83%)
+Processed   880000/ 1055904 entries, 83.34% (elapsed time  1226.7s, curr speed    0.897 kHz, avg speed    0.717 kHz), accepted    51298/  880001 events ( 5.83%)
+Processed   890000/ 1055904 entries, 84.29% (elapsed time  1240.1s, curr speed    0.747 kHz, avg speed    0.718 kHz), accepted    51866/  890001 events ( 5.83%)
+>>> PileupTool: [1m[33mWarning! [0m[33mPileupWeightTools.getWeight: Could not make pileup weight for npu=75.0 data=8.42562481429e-07, mc=0.0[0m
+Processed   900000/ 1055904 entries, 85.24% (elapsed time  1253.7s, curr speed    0.738 kHz, avg speed    0.718 kHz), accepted    52423/  900001 events ( 5.82%)
+Processed   910000/ 1055904 entries, 86.18% (elapsed time  1268.7s, curr speed    0.665 kHz, avg speed    0.717 kHz), accepted    53039/  910001 events ( 5.83%)
+Processed   920000/ 1055904 entries, 87.13% (elapsed time  1282.7s, curr speed    0.715 kHz, avg speed    0.717 kHz), accepted    53616/  920001 events ( 5.83%)
+>>> PileupTool: [1m[33mWarning! [0m[33mPileupWeightTools.getWeight: Could not make pileup weight for npu=79.0 data=1.68190467676e-07, mc=0.0[0m
+Processed   930000/ 1055904 entries, 88.08% (elapsed time  1297.5s, curr speed    0.677 kHz, avg speed    0.717 kHz), accepted    54237/  930001 events ( 5.83%)
+>>> PileupTool: [1m[33mWarning! [0m[33mPileupWeightTools.getWeight: Could not make pileup weight for npu=79.0 data=1.68190467676e-07, mc=0.0[0m
+Processed   940000/ 1055904 entries, 89.02% (elapsed time  1311.8s, curr speed    0.698 kHz, avg speed    0.717 kHz), accepted    54834/  940001 events ( 5.83%)
+>>> PileupTool: [1m[33mWarning! [0m[33mPileupWeightTools.getWeight: Could not make pileup weight for npu=74.0 data=1.25748332577e-06, mc=0.0[0m
+Processed   950000/ 1055904 entries, 89.97% (elapsed time  1325.8s, curr speed    0.713 kHz, avg speed    0.717 kHz), accepted    55407/  950001 events ( 5.83%)
+Processed   960000/ 1055904 entries, 90.92% (elapsed time  1340.0s, curr speed    0.708 kHz, avg speed    0.716 kHz), accepted    55987/  960001 events ( 5.83%)
+>>> PileupTool: [1m[33mWarning! [0m[33mPileupWeightTools.getWeight: Could not make pileup weight for npu=75.0 data=8.42562481429e-07, mc=0.0[0m
+Processed   970000/ 1055904 entries, 91.86% (elapsed time  1354.8s, curr speed    0.673 kHz, avg speed    0.716 kHz), accepted    56576/  970001 events ( 5.83%)
+Processed   980000/ 1055904 entries, 92.81% (elapsed time  1365.3s, curr speed    0.954 kHz, avg speed    0.718 kHz), accepted    57143/  980001 events ( 5.83%)
+Processed   990000/ 1055904 entries, 93.76% (elapsed time  1379.5s, curr speed    0.706 kHz, avg speed    0.718 kHz), accepted    57713/  990001 events ( 5.83%)
+Processed  1000000/ 1055904 entries, 94.71% (elapsed time  1393.2s, curr speed    0.727 kHz, avg speed    0.718 kHz), accepted    58299/ 1000001 events ( 5.83%)
+Processed  1010000/ 1055904 entries, 95.65% (elapsed time  1408.4s, curr speed    0.661 kHz, avg speed    0.717 kHz), accepted    58875/ 1010001 events ( 5.83%)
+Processed  1020000/ 1055904 entries, 96.60% (elapsed time  1422.7s, curr speed    0.698 kHz, avg speed    0.717 kHz), accepted    59434/ 1020001 events ( 5.83%)
+>>> PileupTool: [1m[33mWarning! [0m[33mPileupWeightTools.getWeight: Could not make pileup weight for npu=79.0 data=1.68190467676e-07, mc=0.0[0m
+Processed  1030000/ 1055904 entries, 97.55% (elapsed time  1437.1s, curr speed    0.693 kHz, avg speed    0.717 kHz), accepted    60027/ 1030001 events ( 5.83%)
+Processed  1040000/ 1055904 entries, 98.49% (elapsed time  1451.5s, curr speed    0.697 kHz, avg speed    0.717 kHz), accepted    60620/ 1040001 events ( 5.83%)
+>>> PileupTool: [1m[33mWarning! [0m[33mPileupWeightTools.getWeight: Could not make pileup weight for npu=75.0 data=8.42562481429e-07, mc=0.0[0m
+Processed  1050000/ 1055904 entries, 99.44% (elapsed time  1465.4s, curr speed    0.717 kHz, avg speed    0.717 kHz), accepted    61206/ 1050001 events ( 5.83%)
+Processed 1055904 preselected entries from root://cms-xrd-global.cern.ch//store/mc/RunIIFall17NanoAODv6/DY3JetsToLL_M-50_TuneCP5_13TeV-madgraphMLM-pythia8/NANOAODSIM/PU2017_12Apr2018_Nano25Oct2019_102X_mc2017_realistic_v7-v1/270000/FDE1C3FF-CD7A-1B4A-BBEC-AC1EAC3E9C53.root (1055904 entries). Finally selected 61541 entries
+Pre-select 930722 entries out of 930722 (100.00%)
+Processed    10000/  930722 entries,  1.07% (elapsed time    20.5s, curr speed    0.487 kHz, avg speed    0.487 kHz), accepted      583/   10001 events ( 5.83%)
+Processed    20000/  930722 entries,  2.15% (elapsed time    36.6s, curr speed    0.622 kHz, avg speed    0.546 kHz), accepted     1193/   20001 events ( 5.96%)
+Processed    30000/  930722 entries,  3.22% (elapsed time    52.9s, curr speed    0.615 kHz, avg speed    0.567 kHz), accepted     1767/   30001 events ( 5.89%)
+Processed    40000/  930722 entries,  4.30% (elapsed time    69.4s, curr speed    0.603 kHz, avg speed    0.576 kHz), accepted     2340/   40001 events ( 5.85%)
+Processed    50000/  930722 entries,  5.37% (elapsed time    85.9s, curr speed    0.609 kHz, avg speed    0.582 kHz), accepted     2922/   50001 events ( 5.84%)
+Processed    60000/  930722 entries,  6.45% (elapsed time   102.5s, curr speed    0.601 kHz, avg speed    0.585 kHz), accepted     3520/   60001 events ( 5.87%)
+>>> PileupTool: [1m[33mWarning! [0m[33mPileupWeightTools.getWeight: Could not make pileup weight for npu=74.0 data=1.25748332577e-06, mc=0.0[0m
+Processed    70000/  930722 entries,  7.52% (elapsed time   118.5s, curr speed    0.626 kHz, avg speed    0.591 kHz), accepted     4083/   70001 events ( 5.83%)
+Processed    80000/  930722 entries,  8.60% (elapsed time   134.8s, curr speed    0.612 kHz, avg speed    0.593 kHz), accepted     4663/   80001 events ( 5.83%)
+>>> PileupTool: [1m[33mWarning! [0m[33mPileupWeightTools.getWeight: Could not make pileup weight for npu=80.0 data=1.11473779721e-07, mc=0.0[0m
+Processed    90000/  930722 entries,  9.67% (elapsed time   151.3s, curr speed    0.608 kHz, avg speed    0.595 kHz), accepted     5230/   90001 events ( 5.81%)
+Processed   100000/  930722 entries, 10.74% (elapsed time   163.9s, curr speed    0.795 kHz, avg speed    0.610 kHz), accepted     5851/  100001 events ( 5.85%)
+Processed   110000/  930722 entries, 11.82% (elapsed time   179.9s, curr speed    0.622 kHz, avg speed    0.611 kHz), accepted     6399/  110001 events ( 5.82%)
+>>> PileupTool: [1m[33mWarning! [0m[33mPileupWeightTools.getWeight: Could not make pileup weight for npu=76.0 data=5.64820208539e-07, mc=0.0[0m
+Processed   120000/  930722 entries, 12.89% (elapsed time   196.9s, curr speed    0.590 kHz, avg speed    0.609 kHz), accepted     6972/  120001 events ( 5.81%)
+Processed   130000/  930722 entries, 13.97% (elapsed time   213.7s, curr speed    0.596 kHz, avg speed    0.608 kHz), accepted     7571/  130001 events ( 5.82%)
+>>> PileupTool: [1m[33mWarning! [0m[33mPileupWeightTools.getWeight: Could not make pileup weight for npu=74.0 data=1.25748332577e-06, mc=0.0[0m
+Processed   140000/  930722 entries, 15.04% (elapsed time   229.6s, curr speed    0.628 kHz, avg speed    0.610 kHz), accepted     8134/  140001 events ( 5.81%)
+>>> PileupTool: [1m[33mWarning! [0m[33mPileupWeightTools.getWeight: Could not make pileup weight for npu=75.0 data=8.42562481429e-07, mc=0.0[0m
+Processed   150000/  930722 entries, 16.12% (elapsed time   245.8s, curr speed    0.615 kHz, avg speed    0.610 kHz), accepted     8728/  150001 events ( 5.82%)
+Processed   160000/  930722 entries, 17.19% (elapsed time   261.8s, curr speed    0.626 kHz, avg speed    0.611 kHz), accepted     9318/  160001 events ( 5.82%)
+>>> PileupTool: [1m[33mWarning! [0m[33mPileupWeightTools.getWeight: Could not make pileup weight for npu=75.0 data=8.42562481429e-07, mc=0.0[0m
+Processed   170000/  930722 entries, 18.27% (elapsed time   277.7s, curr speed    0.630 kHz, avg speed    0.612 kHz), accepted     9910/  170001 events ( 5.83%)
+Processed   180000/  930722 entries, 19.34% (elapsed time   294.7s, curr speed    0.589 kHz, avg speed    0.611 kHz), accepted    10501/  180001 events ( 5.83%)
+Processed   190000/  930722 entries, 20.41% (elapsed time   311.5s, curr speed    0.593 kHz, avg speed    0.610 kHz), accepted    11088/  190001 events ( 5.84%)
+Processed   200000/  930722 entries, 21.49% (elapsed time   323.1s, curr speed    0.865 kHz, avg speed    0.619 kHz), accepted    11629/  200001 events ( 5.81%)
+Processed   210000/  930722 entries, 22.56% (elapsed time   338.1s, curr speed    0.665 kHz, avg speed    0.621 kHz), accepted    12204/  210001 events ( 5.81%)
+Processed   220000/  930722 entries, 23.64% (elapsed time   354.4s, curr speed    0.617 kHz, avg speed    0.621 kHz), accepted    12794/  220001 events ( 5.82%)
+Processed   230000/  930722 entries, 24.71% (elapsed time   370.3s, curr speed    0.629 kHz, avg speed    0.621 kHz), accepted    13377/  230001 events ( 5.82%)
+Processed   240000/  930722 entries, 25.79% (elapsed time   386.1s, curr speed    0.631 kHz, avg speed    0.622 kHz), accepted    13993/  240001 events ( 5.83%)
+Processed   250000/  930722 entries, 26.86% (elapsed time   402.2s, curr speed    0.622 kHz, avg speed    0.622 kHz), accepted    14562/  250001 events ( 5.82%)
+Processed   260000/  930722 entries, 27.94% (elapsed time   418.4s, curr speed    0.615 kHz, avg speed    0.621 kHz), accepted    15161/  260001 events ( 5.83%)
+Processed   270000/  930722 entries, 29.01% (elapsed time   434.4s, curr speed    0.627 kHz, avg speed    0.622 kHz), accepted    15732/  270001 events ( 5.83%)
+Processed   280000/  930722 entries, 30.08% (elapsed time   451.1s, curr speed    0.598 kHz, avg speed    0.621 kHz), accepted    16309/  280001 events ( 5.82%)
+Processed   290000/  930722 entries, 31.16% (elapsed time   463.6s, curr speed    0.803 kHz, avg speed    0.626 kHz), accepted    16870/  290001 events ( 5.82%)
+Processed   300000/  930722 entries, 32.23% (elapsed time   478.8s, curr speed    0.657 kHz, avg speed    0.627 kHz), accepted    17461/  300001 events ( 5.82%)
+Processed   310000/  930722 entries, 33.31% (elapsed time   494.6s, curr speed    0.632 kHz, avg speed    0.627 kHz), accepted    18030/  310001 events ( 5.82%)
+Processed   320000/  930722 entries, 34.38% (elapsed time   511.2s, curr speed    0.604 kHz, avg speed    0.626 kHz), accepted    18601/  320001 events ( 5.81%)
+Processed   330000/  930722 entries, 35.46% (elapsed time   528.3s, curr speed    0.584 kHz, avg speed    0.625 kHz), accepted    19183/  330001 events ( 5.81%)
+Processed   340000/  930722 entries, 36.53% (elapsed time   544.3s, curr speed    0.624 kHz, avg speed    0.625 kHz), accepted    19767/  340001 events ( 5.81%)
+>>> PileupTool: [1m[33mWarning! [0m[33mPileupWeightTools.getWeight: Could not make pileup weight for npu=74.0 data=1.25748332577e-06, mc=0.0[0m
+Processed   350000/  930722 entries, 37.61% (elapsed time   560.3s, curr speed    0.627 kHz, avg speed    0.625 kHz), accepted    20361/  350001 events ( 5.82%)
+Processed   360000/  930722 entries, 38.68% (elapsed time   576.8s, curr speed    0.606 kHz, avg speed    0.624 kHz), accepted    20938/  360001 events ( 5.82%)
+Processed   370000/  930722 entries, 39.75% (elapsed time   592.8s, curr speed    0.623 kHz, avg speed    0.624 kHz), accepted    21516/  370001 events ( 5.82%)
+>>> PileupTool: [1m[33mWarning! [0m[33mPileupWeightTools.getWeight: Could not make pileup weight for npu=74.0 data=1.25748332577e-06, mc=0.0[0m
+>>> PileupTool: [1m[33mWarning! [0m[33mPileupWeightTools.getWeight: Could not make pileup weight for npu=78.0 data=2.52655123218e-07, mc=0.0[0m
+Processed   380000/  930722 entries, 40.83% (elapsed time   609.5s, curr speed    0.597 kHz, avg speed    0.623 kHz), accepted    22111/  380001 events ( 5.82%)
+Processed   390000/  930722 entries, 41.90% (elapsed time   620.9s, curr speed    0.881 kHz, avg speed    0.628 kHz), accepted    22672/  390001 events ( 5.81%)
+Processed   400000/  930722 entries, 42.98% (elapsed time   636.4s, curr speed    0.644 kHz, avg speed    0.629 kHz), accepted    23243/  400001 events ( 5.81%)
+Processed   410000/  930722 entries, 44.05% (elapsed time   652.5s, curr speed    0.623 kHz, avg speed    0.628 kHz), accepted    23806/  410001 events ( 5.81%)
+>>> PileupTool: [1m[33mWarning! [0m[33mPileupWeightTools.getWeight: Could not make pileup weight for npu=74.0 data=1.25748332577e-06, mc=0.0[0m
+Processed   420000/  930722 entries, 45.13% (elapsed time   668.8s, curr speed    0.611 kHz, avg speed    0.628 kHz), accepted    24417/  420001 events ( 5.81%)
+>>> PileupTool: [1m[33mWarning! [0m[33mPileupWeightTools.getWeight: Could not make pileup weight for npu=77.0 data=3.78217528813e-07, mc=0.0[0m
+Processed   430000/  930722 entries, 46.20% (elapsed time   685.5s, curr speed    0.600 kHz, avg speed    0.627 kHz), accepted    25012/  430001 events ( 5.82%)
+Processed   440000/  930722 entries, 47.28% (elapsed time   701.9s, curr speed    0.608 kHz, avg speed    0.627 kHz), accepted    25622/  440001 events ( 5.82%)
+Processed   450000/  930722 entries, 48.35% (elapsed time   718.2s, curr speed    0.613 kHz, avg speed    0.627 kHz), accepted    26223/  450001 events ( 5.83%)
+Processed   460000/  930722 entries, 49.42% (elapsed time   734.0s, curr speed    0.636 kHz, avg speed    0.627 kHz), accepted    26781/  460001 events ( 5.82%)
+Processed   470000/  930722 entries, 50.50% (elapsed time   750.6s, curr speed    0.601 kHz, avg speed    0.626 kHz), accepted    27390/  470001 events ( 5.83%)
+Processed   480000/  930722 entries, 51.57% (elapsed time   763.2s, curr speed    0.794 kHz, avg speed    0.629 kHz), accepted    27961/  480001 events ( 5.83%)
+Processed   490000/  930722 entries, 52.65% (elapsed time   778.8s, curr speed    0.640 kHz, avg speed    0.629 kHz), accepted    28538/  490001 events ( 5.82%)
+>>> PileupTool: [1m[33mWarning! [0m[33mPileupWeightTools.getWeight: Could not make pileup weight for npu=75.0 data=8.42562481429e-07, mc=0.0[0m
+Processed   500000/  930722 entries, 53.72% (elapsed time   794.2s, curr speed    0.652 kHz, avg speed    0.630 kHz), accepted    29096/  500001 events ( 5.82%)
+Processed   510000/  930722 entries, 54.80% (elapsed time   810.5s, curr speed    0.611 kHz, avg speed    0.629 kHz), accepted    29691/  510001 events ( 5.82%)
+Processed   520000/  930722 entries, 55.87% (elapsed time   826.3s, curr speed    0.633 kHz, avg speed    0.629 kHz), accepted    30276/  520001 events ( 5.82%)
+>>> PileupTool: [1m[33mWarning! [0m[33mPileupWeightTools.getWeight: Could not make pileup weight for npu=76.0 data=5.64820208539e-07, mc=0.0[0m
+Processed   530000/  930722 entries, 56.95% (elapsed time   842.2s, curr speed    0.631 kHz, avg speed    0.629 kHz), accepted    30887/  530001 events ( 5.83%)
+Processed   540000/  930722 entries, 58.02% (elapsed time   858.2s, curr speed    0.625 kHz, avg speed    0.629 kHz), accepted    31507/  540001 events ( 5.83%)
+Processed   550000/  930722 entries, 59.09% (elapsed time   873.9s, curr speed    0.638 kHz, avg speed    0.629 kHz), accepted    32083/  550001 events ( 5.83%)
+Processed   560000/  930722 entries, 60.17% (elapsed time   889.5s, curr speed    0.639 kHz, avg speed    0.630 kHz), accepted    32626/  560001 events ( 5.83%)
+Processed   570000/  930722 entries, 61.24% (elapsed time   905.1s, curr speed    0.641 kHz, avg speed    0.630 kHz), accepted    33210/  570001 events ( 5.83%)
+Processed   580000/  930722 entries, 62.32% (elapsed time   917.2s, curr speed    0.829 kHz, avg speed    0.632 kHz), accepted    33802/  580001 events ( 5.83%)
+Processed   590000/  930722 entries, 63.39% (elapsed time   932.1s, curr speed    0.670 kHz, avg speed    0.633 kHz), accepted    34418/  590001 events ( 5.83%)
+Processed   600000/  930722 entries, 64.47% (elapsed time   947.6s, curr speed    0.646 kHz, avg speed    0.633 kHz), accepted    34993/  600001 events ( 5.83%)
+Processed   610000/  930722 entries, 65.54% (elapsed time   963.8s, curr speed    0.615 kHz, avg speed    0.633 kHz), accepted    35586/  610001 events ( 5.83%)
+>>> PileupTool: [1m[33mWarning! [0m[33mPileupWeightTools.getWeight: Could not make pileup weight for npu=75.0 data=8.42562481429e-07, mc=0.0[0m
+Processed   620000/  930722 entries, 66.61% (elapsed time   979.3s, curr speed    0.648 kHz, avg speed    0.633 kHz), accepted    36140/  620001 events ( 5.83%)
+Processed   630000/  930722 entries, 67.69% (elapsed time   995.1s, curr speed    0.630 kHz, avg speed    0.633 kHz), accepted    36735/  630001 events ( 5.83%)
+Processed   640000/  930722 entries, 68.76% (elapsed time  1010.9s, curr speed    0.634 kHz, avg speed    0.633 kHz), accepted    37288/  640001 events ( 5.83%)
+Processed   650000/  930722 entries, 69.84% (elapsed time  1026.4s, curr speed    0.645 kHz, avg speed    0.633 kHz), accepted    37873/  650001 events ( 5.83%)
+Processed   660000/  930722 entries, 70.91% (elapsed time  1042.7s, curr speed    0.613 kHz, avg speed    0.633 kHz), accepted    38477/  660001 events ( 5.83%)
+Processed   670000/  930722 entries, 71.99% (elapsed time  1058.2s, curr speed    0.648 kHz, avg speed    0.633 kHz), accepted    39067/  670001 events ( 5.83%)
+Processed   680000/  930722 entries, 73.06% (elapsed time  1069.3s, curr speed    0.899 kHz, avg speed    0.636 kHz), accepted    39595/  680001 events ( 5.82%)
+Processed   690000/  930722 entries, 74.14% (elapsed time  1084.9s, curr speed    0.639 kHz, avg speed    0.636 kHz), accepted    40186/  690001 events ( 5.82%)
+Processed   700000/  930722 entries, 75.21% (elapsed time  1101.6s, curr speed    0.601 kHz, avg speed    0.635 kHz), accepted    40803/  700001 events ( 5.83%)
+Processed   710000/  930722 entries, 76.28% (elapsed time  1117.5s, curr speed    0.627 kHz, avg speed    0.635 kHz), accepted    41394/  710001 events ( 5.83%)
+Processed   720000/  930722 entries, 77.36% (elapsed time  1133.0s, curr speed    0.644 kHz, avg speed    0.635 kHz), accepted    41987/  720001 events ( 5.83%)
+>>> PileupTool: [1m[33mWarning! [0m[33mPileupWeightTools.getWeight: Could not make pileup weight for npu=81.0 data=7.35044686122e-08, mc=0.0[0m
+Processed   730000/  930722 entries, 78.43% (elapsed time  1148.6s, curr speed    0.641 kHz, avg speed    0.636 kHz), accepted    42546/  730001 events ( 5.83%)
+Processed   740000/  930722 entries, 79.51% (elapsed time  1164.2s, curr speed    0.644 kHz, avg speed    0.636 kHz), accepted    43087/  740001 events ( 5.82%)
+Processed   750000/  930722 entries, 80.58% (elapsed time  1179.5s, curr speed    0.651 kHz, avg speed    0.636 kHz), accepted    43675/  750001 events ( 5.82%)
+Processed   760000/  930722 entries, 81.66% (elapsed time  1195.6s, curr speed    0.621 kHz, avg speed    0.636 kHz), accepted    44280/  760001 events ( 5.83%)
+Processed   770000/  930722 entries, 82.73% (elapsed time  1207.6s, curr speed    0.836 kHz, avg speed    0.638 kHz), accepted    44826/  770001 events ( 5.82%)
+Processed   780000/  930722 entries, 83.81% (elapsed time  1222.9s, curr speed    0.653 kHz, avg speed    0.638 kHz), accepted    45402/  780001 events ( 5.82%)
+Processed   790000/  930722 entries, 84.88% (elapsed time  1237.9s, curr speed    0.665 kHz, avg speed    0.638 kHz), accepted    45935/  790001 events ( 5.81%)
+Processed   800000/  930722 entries, 85.95% (elapsed time  1253.8s, curr speed    0.629 kHz, avg speed    0.638 kHz), accepted    46511/  800001 events ( 5.81%)
+>>> PileupTool: [1m[33mWarning! [0m[33mPileupWeightTools.getWeight: Could not make pileup weight for npu=74.0 data=1.25748332577e-06, mc=0.0[0m
+Processed   810000/  930722 entries, 87.03% (elapsed time  1270.0s, curr speed    0.618 kHz, avg speed    0.638 kHz), accepted    47074/  810001 events ( 5.81%)
+Processed   820000/  930722 entries, 88.10% (elapsed time  1286.0s, curr speed    0.627 kHz, avg speed    0.638 kHz), accepted    47619/  820001 events ( 5.81%)
+Processed   830000/  930722 entries, 89.18% (elapsed time  1302.1s, curr speed    0.619 kHz, avg speed    0.637 kHz), accepted    48184/  830001 events ( 5.81%)
+Processed   840000/  930722 entries, 90.25% (elapsed time  1317.5s, curr speed    0.649 kHz, avg speed    0.638 kHz), accepted    48755/  840001 events ( 5.80%)
+Processed   850000/  930722 entries, 91.33% (elapsed time  1333.8s, curr speed    0.615 kHz, avg speed    0.637 kHz), accepted    49340/  850001 events ( 5.80%)
+Processed   860000/  930722 entries, 92.40% (elapsed time  1350.0s, curr speed    0.616 kHz, avg speed    0.637 kHz), accepted    49917/  860001 events ( 5.80%)
+Processed   870000/  930722 entries, 93.48% (elapsed time  1361.4s, curr speed    0.878 kHz, avg speed    0.639 kHz), accepted    50466/  870001 events ( 5.80%)
+Processed   880000/  930722 entries, 94.55% (elapsed time  1376.8s, curr speed    0.650 kHz, avg speed    0.639 kHz), accepted    51072/  880001 events ( 5.80%)
+Processed   890000/  930722 entries, 95.62% (elapsed time  1392.6s, curr speed    0.635 kHz, avg speed    0.639 kHz), accepted    51660/  890001 events ( 5.80%)
+>>> PileupTool: [1m[33mWarning! [0m[33mPileupWeightTools.getWeight: Could not make pileup weight for npu=75.0 data=8.42562481429e-07, mc=0.0[0m
+Processed   900000/  930722 entries, 96.70% (elapsed time  1409.9s, curr speed    0.576 kHz, avg speed    0.638 kHz), accepted    52222/  900001 events ( 5.80%)
+>>> PileupTool: [1m[33mWarning! [0m[33mPileupWeightTools.getWeight: Could not make pileup weight for npu=76.0 data=5.64820208539e-07, mc=0.0[0m
+Processed   910000/  930722 entries, 97.77% (elapsed time  1425.9s, curr speed    0.628 kHz, avg speed    0.638 kHz), accepted    52786/  910001 events ( 5.80%)
+>>> PileupTool: [1m[33mWarning! [0m[33mPileupWeightTools.getWeight: Could not make pileup weight for npu=76.0 data=5.64820208539e-07, mc=0.0[0m
+Processed   920000/  930722 entries, 98.85% (elapsed time  1441.9s, curr speed    0.625 kHz, avg speed    0.638 kHz), accepted    53335/  920001 events ( 5.80%)
+>>> PileupTool: [1m[33mWarning! [0m[33mPileupWeightTools.getWeight: Could not make pileup weight for npu=75.0 data=8.42562481429e-07, mc=0.0[0m
+Processed   930000/  930722 entries, 99.92% (elapsed time  1457.6s, curr speed    0.636 kHz, avg speed    0.638 kHz), accepted    53903/  930001 events ( 5.80%)
+Processed 930722 preselected entries from root://cms-xrd-global.cern.ch//store/mc/RunIIFall17NanoAODv6/DY3JetsToLL_M-50_TuneCP5_13TeV-madgraphMLM-pythia8/NANOAODSIM/PU2017_12Apr2018_Nano25Oct2019_new_pmx_102X_mc2017_realistic_v7_ext1-v1/280000/CF819538-D430-B649-B41A-966E703CD8B9.root (930722 entries). Finally selected 53952 entries
+Pre-select 218745 entries out of 218745 (100.00%)
+Processed    10000/  218745 entries,  4.57% (elapsed time    23.2s, curr speed    0.431 kHz, avg speed    0.431 kHz), accepted      606/   10001 events ( 6.06%)
+>>> PileupTool: [1m[33mWarning! [0m[33mPileupWeightTools.getWeight: Could not make pileup weight for npu=77.0 data=3.78217528813e-07, mc=0.0[0m
+Processed    20000/  218745 entries,  9.14% (elapsed time    40.9s, curr speed    0.564 kHz, avg speed    0.489 kHz), accepted     1173/   20001 events ( 5.86%)
+>>> PileupTool: [1m[33mWarning! [0m[33mPileupWeightTools.getWeight: Could not make pileup weight for npu=78.0 data=2.52655123218e-07, mc=0.0[0m
+Processed    30000/  218745 entries, 13.71% (elapsed time    59.9s, curr speed    0.527 kHz, avg speed    0.501 kHz), accepted     1771/   30001 events ( 5.90%)
+Processed    40000/  218745 entries, 18.29% (elapsed time    79.0s, curr speed    0.525 kHz, avg speed    0.507 kHz), accepted     2363/   40001 events ( 5.91%)
+Processed    50000/  218745 entries, 22.86% (elapsed time    98.5s, curr speed    0.511 kHz, avg speed    0.508 kHz), accepted     2922/   50001 events ( 5.84%)
+Processed    60000/  218745 entries, 27.43% (elapsed time   117.1s, curr speed    0.538 kHz, avg speed    0.512 kHz), accepted     3473/   60001 events ( 5.79%)
+Processed    70000/  218745 entries, 32.00% (elapsed time   134.8s, curr speed    0.565 kHz, avg speed    0.519 kHz), accepted     4064/   70001 events ( 5.81%)
+Processed    80000/  218745 entries, 36.57% (elapsed time   153.0s, curr speed    0.548 kHz, avg speed    0.523 kHz), accepted     4618/   80001 events ( 5.77%)
+Processed    90000/  218745 entries, 41.14% (elapsed time   171.2s, curr speed    0.550 kHz, avg speed    0.526 kHz), accepted     5217/   90001 events ( 5.80%)
+Processed   100000/  218745 entries, 45.72% (elapsed time   184.3s, curr speed    0.763 kHz, avg speed    0.543 kHz), accepted     5799/  100001 events ( 5.80%)
+Processed   110000/  218745 entries, 50.29% (elapsed time   201.2s, curr speed    0.594 kHz, avg speed    0.547 kHz), accepted     6363/  110001 events ( 5.78%)
+>>> PileupTool: [1m[33mWarning! [0m[33mPileupWeightTools.getWeight: Could not make pileup weight for npu=77.0 data=3.78217528813e-07, mc=0.0[0m
+>>> PileupTool: [1m[33mWarning! [0m[33mPileupWeightTools.getWeight: Could not make pileup weight for npu=80.0 data=1.11473779721e-07, mc=0.0[0m
+Processed   120000/  218745 entries, 54.86% (elapsed time   219.1s, curr speed    0.556 kHz, avg speed    0.548 kHz), accepted     6942/  120001 events ( 5.78%)
+Processed   130000/  218745 entries, 59.43% (elapsed time   237.9s, curr speed    0.532 kHz, avg speed    0.546 kHz), accepted     7544/  130001 events ( 5.80%)
+>>> PileupTool: [1m[33mWarning! [0m[33mPileupWeightTools.getWeight: Could not make pileup weight for npu=82.0 data=4.81882380766e-08, mc=0.0[0m
+Processed   140000/  218745 entries, 64.00% (elapsed time   256.9s, curr speed    0.528 kHz, avg speed    0.545 kHz), accepted     8169/  140001 events ( 5.83%)
+Processed   150000/  218745 entries, 68.57% (elapsed time   274.3s, curr speed    0.573 kHz, avg speed    0.547 kHz), accepted     8729/  150001 events ( 5.82%)
+>>> PileupTool: [1m[33mWarning! [0m[33mPileupWeightTools.getWeight: Could not make pileup weight for npu=74.0 data=1.25748332577e-06, mc=0.0[0m
+Processed   160000/  218745 entries, 73.14% (elapsed time   292.0s, curr speed    0.567 kHz, avg speed    0.548 kHz), accepted     9336/  160001 events ( 5.83%)
+Processed   170000/  218745 entries, 77.72% (elapsed time   310.5s, curr speed    0.539 kHz, avg speed    0.548 kHz), accepted     9896/  170001 events ( 5.82%)
+Processed   180000/  218745 entries, 82.29% (elapsed time   328.9s, curr speed    0.544 kHz, avg speed    0.547 kHz), accepted    10437/  180001 events ( 5.80%)
+>>> PileupTool: [1m[33mWarning! [0m[33mPileupWeightTools.getWeight: Could not make pileup weight for npu=75.0 data=8.42562481429e-07, mc=0.0[0m
+Processed   190000/  218745 entries, 86.86% (elapsed time   341.9s, curr speed    0.770 kHz, avg speed    0.556 kHz), accepted    11034/  190001 events ( 5.81%)
+Processed   200000/  218745 entries, 91.43% (elapsed time   358.8s, curr speed    0.591 kHz, avg speed    0.557 kHz), accepted    11556/  200001 events ( 5.78%)
+Processed   210000/  218745 entries, 96.00% (elapsed time   377.2s, curr speed    0.545 kHz, avg speed    0.557 kHz), accepted    12157/  210001 events ( 5.79%)
+Processed 218745 preselected entries from root://cms-xrd-global.cern.ch//store/mc/RunIIFall17NanoAODv6/DY3JetsToLL_M-50_TuneCP5_13TeV-madgraphMLM-pythia8/NANOAODSIM/PU2017_12Apr2018_Nano25Oct2019_new_pmx_102X_mc2017_realistic_v7_ext1-v1/280000/E38F7DD2-4FC2-0745-84A9-E6E5765F6E6D.root (218745 entries). Finally selected 12636 entries
+Total time 3338.6 sec. to process 2205371 events. Rate = 660.6 Hz.
+>>> cwd          = /pool/condor/dir_26609
+>>> ls           = ['.chirp.config', '.job.ad', 'x509_voms', '_condor_stdout', 'var', 'tmp', '.machine.ad', 'condor_exec.exe', 'pico_etau_etau_1.root', 'lvigilan.cc', '.update.ad']
+>>> getstorage('/eos/home-l/lvigilan/output_UL2017/UL2017/etau/DY3JetsToLL_M-50'), <EOS("/eos/home-l/lvigilan/output_UL2017/UL2017/etau/DY3JetsToLL_M-50") at 0x2b6617c6d490>
+>>> Executing: 'cp ./pico_etau_etau_1.root /eos/home-l/lvigilan/output_UL2017/UL2017/etau/DY3JetsToLL_M-50'
+>>> Removing './pico_etau_etau_1.root'...
+>>> picojob.py done after 3355.5 seconds
+
+Job complete at Thu Jan 21 19:26:07 CET 2021
+Took 55 minutes 56 seconds040 (1772902.001.000) 01/21 19:26:07 Finished transferring output files
+...
+005 (1772902.001.000) 01/21 19:26:07 Job terminated.
+	(1) Normal termination (return value 0)
+		Usr 0 00:13:54, Sys 0 00:00:41  -  Run Remote Usage
+		Usr 0 00:00:00, Sys 0 00:00:00  -  Run Local Usage
+		Usr 0 00:13:54, Sys 0 00:00:41  -  Total Remote Usage
+		Usr 0 00:00:00, Sys 0 00:00:00  -  Total Local Usage
+	55171  -  Run Bytes Sent By Job
+	9906  -  Run Bytes Received By Job
+	55171  -  Total Bytes Sent By Job
+	9906  -  Total Bytes Received By Job
+	Partitionable Resources :    Usage  Request Allocated 
+	   Cpus                 :     0.22        1         1 
+	   Disk (KB)            :   123           1    293641 
+	   Memory (MB)          :   329        2000      2000 
+...

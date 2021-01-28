@@ -1,0 +1,112 @@
+Could not find platform independent libraries <prefix>
+Could not find platform dependent libraries <exec_prefix>
+Consider setting $PYTHONHOME to <prefix>[:<exec_prefix>]
+ImportError: No module named site
+Job start at Thu Jan 21 18:34:46 CET 2021
+Running job on machine Linux b7g23n0797.cern.ch 3.10.0-1127.19.1.el7.x86_64 #1 SMP Tue Aug 25 17:23:54 UTC 2020 x86_64 x86_64 x86_64 GNU/Linux, host b7g23n0797.cern.ch
+============================================================
+$PWD=/pool/condor/dir_8962
+$JOBID=1772907
+$TASKID=11
+$HOSTNAME=b7g23n0797.cern.ch
+$TASKCMD=/afs/cern.ch/work/l/lvigilan/TauWork/CMSSW_10_6_17_patch1/src/TauFW/PicoProducer/python/processors/picojob.py -y UL2017 -d 'mc' -c etau -M ModuleETau --copydir /eos/home-l/lvigilan/output_UL2017/UL2017/etau/WJetsToLNu -t _etau_11 --opt 'jec=False' -i root://cms-xrd-global.cern.ch//store/mc/RunIIFall17NanoAODv6/WJetsToLNu_TuneCP5_13TeV-madgraphMLM-pythia8/NANOAODSIM/PU2017_12Apr2018_Nano25Oct2019_102X_mc2017_realistic_v7_ext1-v1/70000/FB362559-CB12-3643-9572-79E3377D2F37.root
+$WORKDIR=/pool/condor/dir_8962
+>>> cd /afs/cern.ch/work/l/lvigilan/TauWork/CMSSW_10_6_17_patch1/src
+>>> eval `scramv1 runtime -sh`
+>>> cd /pool/condor/dir_8962
+$PWD=/pool/condor/dir_8962
+>>> /afs/cern.ch/work/l/lvigilan/TauWork/CMSSW_10_6_17_patch1/src/TauFW/PicoProducer/python/processors/picojob.py -y UL2017 -d 'mc' -c etau -M ModuleETau --copydir /eos/home-l/lvigilan/output_UL2017/UL2017/etau/WJetsToLNu -t _etau_11 --opt 'jec=False' -i root://cms-xrd-global.cern.ch//store/mc/RunIIFall17NanoAODv6/WJetsToLNu_TuneCP5_13TeV-madgraphMLM-pythia8/NANOAODSIM/PU2017_12Apr2018_Nano25Oct2019_102X_mc2017_realistic_v7_ext1-v1/70000/FB362559-CB12-3643-9572-79E3377D2F37.root
+Error in <TGClient::TGClient>: can't open display "localhost:24.0", switching to batch mode...
+ In case you run from a remote ssh session, reconnect with ssh -Y
+--------------------------------------------------------------------------------
+>>> era          = 'UL2017'
+>>> year         = 2017
+>>> channel      = 'etau'
+>>> modname      = 'ModuleETau'
+>>> dtype        = 'mc'
+>>> kwargs       = {'dtype': 'mc', 'verb': 0, 'era': 'UL2017', 'jec': False, 'year': 2017}
+>>> maxevts      = None
+>>> outdir       = '.'
+>>> copydir      = '/eos/home-l/lvigilan/output_UL2017/UL2017/etau/WJetsToLNu'
+>>> infiles      = ['root://cms-xrd-global.cern.ch//store/mc/RunIIFall17NanoAODv6/WJetsToLNu_TuneCP5_13TeV-madgraphMLM-pythia8/NANOAODSIM/PU2017_12Apr2018_Nano25Oct2019_102X_mc2017_realistic_v7_ext1-v1/70000/FB362559-CB12-3643-9572-79E3377D2F37.root']
+>>> outfname     = './pico_etau_etau_11.root'
+>>> branchsel    = '/afs/cern.ch/work/l/lvigilan/TauWork/CMSSW_10_6_17_patch1/python/TauFW/PicoProducer/processors/keep_and_drop_skim.txt'
+>>> json         = None
+>>> prefetch     = False
+>>> cwd          = /pool/condor/dir_8962
+--------------------------------------------------------------------------------
+
+   ################
+   #  ModuleETau  #
+   ################
+
+Loading PileupWeightTool for '/afs/cern.ch/work/l/lvigilan/TauWork/CMSSW_10_6_17_patch1/src/TauFW/PicoProducer/data/pileup/Data_PileUp_UL2017_69p2.root' and '/afs/cern.ch/work/l/lvigilan/TauWork/CMSSW_10_6_17_patch1/src/TauFW/PicoProducer/data/pileup/MC_PileUp_UL2017_Summer19.root'
+Loading BTagWeightTool for DeepCSV (medium WP)...
+>>> BTagTool: [1m[33mWarning! [0m[33mHistogram 'etau/eff_DeepCSV_udsg_medium' does not exist in /afs/cern.ch/work/l/lvigilan/TauWork/CMSSW_10_6_17_patch1/src/TauFW/PicoProducer/data/btag/DeepCSV_2017_12Apr2017_eff.root! Reverting to default efficiency histogram...[0m
+>>> BTagTool: [1m[33mWarning! [0m[33mHistogram 'etau/eff_DeepCSV_c_medium' does not exist in /afs/cern.ch/work/l/lvigilan/TauWork/CMSSW_10_6_17_patch1/src/TauFW/PicoProducer/data/btag/DeepCSV_2017_12Apr2017_eff.root! Reverting to default efficiency histogram...[0m
+>>> BTagTool: [1m[33mWarning! [0m[33mHistogram 'etau/eff_DeepCSV_b_medium' does not exist in /afs/cern.ch/work/l/lvigilan/TauWork/CMSSW_10_6_17_patch1/src/TauFW/PicoProducer/data/btag/DeepCSV_2017_12Apr2017_eff.root! Reverting to default efficiency histogram...[0m
+>>> BTagTool: [1m[33mWarning! [0m[33mMade use of default efficiency histograms! The b tag weights from this module should be regarded as placeholders only,
+and should NOT be used for analyses. B (mis)tag efficiencies in MC are analysis dependent. Please create your own
+efficiency histogram with data/btag/getBTagEfficiencies.py after running all MC samples with BTagWeightTool.[0m
+Loading TreeProducerETau for './pico_etau_etau_11.root'
+--------------------------------------------------------------------------------
+>>> filename     = './pico_etau_etau_11.root'
+>>> year         = 2017
+>>> dtype        = 'mc'
+>>> channel      = 'etau'
+>>> ismc         = True
+>>> isdata       = False
+>>> isembed      = False
+>>> tes          = 1.0
+>>> tessys       = None
+>>> ltf          = 1.0
+>>> jtf          = 1.0
+>>> dotoppt      = False
+>>> dozpt        = False
+>>> dojec        = False
+>>> dojecsys     = False
+>>> dotight      = False
+>>> jetCutPt     = 30
+>>> bjetCutEta   = 2.7
+>>> tauwp        = 0
+>>> eleCutPt     = 36
+>>> eleCutEta    = 2.1
+>>> tauCutPt     = 20
+>>> tauCutEta    = 2.3
+Pre-select 95473 entries out of 95473 (100.00%)
+Processed    10000/   95473 entries, 10.47% (elapsed time     4.2s, curr speed    2.385 kHz, avg speed    2.385 kHz), accepted        0/   10001 events ( 0.00%)
+Processed    20000/   95473 entries, 20.95% (elapsed time     6.3s, curr speed    4.818 kHz, avg speed    3.191 kHz), accepted        0/   20001 events ( 0.00%)
+Processed    30000/   95473 entries, 31.42% (elapsed time     8.3s, curr speed    4.979 kHz, avg speed    3.625 kHz), accepted        0/   30001 events ( 0.00%)
+Processed    40000/   95473 entries, 41.90% (elapsed time    10.7s, curr speed    4.097 kHz, avg speed    3.732 kHz), accepted        0/   40001 events ( 0.00%)
+Processed    50000/   95473 entries, 52.37% (elapsed time    13.5s, curr speed    3.634 kHz, avg speed    3.712 kHz), accepted        0/   50001 events ( 0.00%)
+Processed    60000/   95473 entries, 62.84% (elapsed time    18.8s, curr speed    1.865 kHz, avg speed    3.186 kHz), accepted        1/   60001 events ( 0.00%)
+Processed    70000/   95473 entries, 73.32% (elapsed time    20.8s, curr speed    5.000 kHz, avg speed    3.360 kHz), accepted        1/   70001 events ( 0.00%)
+Processed    80000/   95473 entries, 83.79% (elapsed time    24.5s, curr speed    2.721 kHz, avg speed    3.265 kHz), accepted        2/   80001 events ( 0.00%)
+Processed    90000/   95473 entries, 94.27% (elapsed time    27.2s, curr speed    3.680 kHz, avg speed    3.306 kHz), accepted        2/   90001 events ( 0.00%)
+Processed 95473 preselected entries from root://cms-xrd-global.cern.ch//store/mc/RunIIFall17NanoAODv6/WJetsToLNu_TuneCP5_13TeV-madgraphMLM-pythia8/NANOAODSIM/PU2017_12Apr2018_Nano25Oct2019_102X_mc2017_realistic_v7_ext1-v1/70000/FB362559-CB12-3643-9572-79E3377D2F37.root (95473 entries). Finally selected 2 entries
+Total time 30.5 sec. to process 95473 events. Rate = 3134.5 Hz.
+>>> cwd          = /pool/condor/dir_8962
+>>> ls           = ['tmp', 'pico_etau_etau_11.root', 'var', '.chirp.config', 'lvigilan.cc', '.job.ad', '_condor_stdout', 'condor_exec.exe', '.update.ad', '.machine.ad', 'x509_voms']
+>>> getstorage('/eos/home-l/lvigilan/output_UL2017/UL2017/etau/WJetsToLNu'), <EOS("/eos/home-l/lvigilan/output_UL2017/UL2017/etau/WJetsToLNu") at 0x2b8ad275b450>
+>>> Executing: 'cp ./pico_etau_etau_11.root /eos/home-l/lvigilan/output_UL2017/UL2017/etau/WJetsToLNu'
+>>> Removing './pico_etau_etau_11.root'...
+>>> picojob.py done after 56.2 seconds
+
+Job complete at Thu Jan 21 18:35:45 CET 2021
+Took 0 minutes 59 seconds040 (1772907.011.000) 01/21 18:35:45 Finished transferring output files
+...
+005 (1772907.011.000) 01/21 18:35:45 Job terminated.
+	(1) Normal termination (return value 0)
+		Usr 0 00:00:26, Sys 0 00:00:02  -  Run Remote Usage
+		Usr 0 00:00:00, Sys 0 00:00:00  -  Run Local Usage
+		Usr 0 00:00:26, Sys 0 00:00:02  -  Total Remote Usage
+		Usr 0 00:00:00, Sys 0 00:00:00  -  Total Local Usage
+	12474  -  Run Bytes Sent By Job
+	9906  -  Run Bytes Received By Job
+	12474  -  Total Bytes Sent By Job
+	9906  -  Total Bytes Received By Job
+	Partitionable Resources :    Usage  Request Allocated 
+	   Cpus                 :     0.54        1         1 
+	   Disk (KB)            :    81           1    362248 
+	   Memory (MB)          :    70        2000      2000 
+...

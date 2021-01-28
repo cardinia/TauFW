@@ -1,0 +1,104 @@
+Could not find platform independent libraries <prefix>
+Could not find platform dependent libraries <exec_prefix>
+Consider setting $PYTHONHOME to <prefix>[:<exec_prefix>]
+ImportError: No module named site
+Job start at Thu Jan 21 10:53:08 CET 2021
+Running job on machine Linux b7s07n2674.cern.ch 3.10.0-1127.18.2.el7.x86_64 #1 SMP Sun Jul 26 15:27:06 UTC 2020 x86_64 x86_64 x86_64 GNU/Linux, host b7s07n2674.cern.ch
+============================================================
+$PWD=/pool/condor/dir_10243
+$JOBID=1772029
+$TASKID=4
+$HOSTNAME=b7s07n2674.cern.ch
+$TASKCMD=/afs/cern.ch/work/l/lvigilan/TauWork/CMSSW_10_6_17_patch1/src/TauFW/PicoProducer/python/processors/picojob.py -y 2017 -d 'data' -c etau -M ModuleETau --copydir /eos/home-l/lvigilan/output_UL2017/2017/etau/SingleElectron_Run2017D -t _etau_4 -i root://cms-xrd-global.cern.ch//store/data/Run2017D/SingleElectron/NANOAOD/UL2017_02Dec2019-v1/70000/B36CE5D3-588D-974C-913E-E04F583B9C49.root root://cms-xrd-global.cern.ch//store/data/Run2017D/SingleElectron/NANOAOD/UL2017_02Dec2019-v1/70000/BEE74CD1-6667-7D40-A83B-39A23779C255.root root://cms-xrd-global.cern.ch//store/data/Run2017D/SingleElectron/NANOAOD/UL2017_02Dec2019-v1/70000/DB24E00D-31C5-DE43-BC6A-88B55A326BA1.root root://cms-xrd-global.cern.ch//store/data/Run2017D/SingleElectron/NANOAOD/UL2017_02Dec2019-v1/70000/F9373DAA-993F-4A48-B4EC-6E67BF92DF3B.root root://cms-xrd-global.cern.ch//store/data/Run2017D/SingleElectron/NANOAOD/UL2017_02Dec2019-v1/70000/FDAB81AA-4C5E-974B-ABB7-7DBD1E7D0222.root
+$WORKDIR=/pool/condor/dir_10243
+>>> cd /afs/cern.ch/work/l/lvigilan/TauWork/CMSSW_10_6_17_patch1/src
+>>> eval `scramv1 runtime -sh`
+>>> cd /pool/condor/dir_10243
+$PWD=/pool/condor/dir_10243
+>>> /afs/cern.ch/work/l/lvigilan/TauWork/CMSSW_10_6_17_patch1/src/TauFW/PicoProducer/python/processors/picojob.py -y 2017 -d 'data' -c etau -M ModuleETau --copydir /eos/home-l/lvigilan/output_UL2017/2017/etau/SingleElectron_Run2017D -t _etau_4 -i root://cms-xrd-global.cern.ch//store/data/Run2017D/SingleElectron/NANOAOD/UL2017_02Dec2019-v1/70000/B36CE5D3-588D-974C-913E-E04F583B9C49.root root://cms-xrd-global.cern.ch//store/data/Run2017D/SingleElectron/NANOAOD/UL2017_02Dec2019-v1/70000/BEE74CD1-6667-7D40-A83B-39A23779C255.root root://cms-xrd-global.cern.ch//store/data/Run2017D/SingleElectron/NANOAOD/UL2017_02Dec2019-v1/70000/DB24E00D-31C5-DE43-BC6A-88B55A326BA1.root root://cms-xrd-global.cern.ch//store/data/Run2017D/SingleElectron/NANOAOD/UL2017_02Dec2019-v1/70000/F9373DAA-993F-4A48-B4EC-6E67BF92DF3B.root root://cms-xrd-global.cern.ch//store/data/Run2017D/SingleElectron/NANOAOD/UL2017_02Dec2019-v1/70000/FDAB81AA-4C5E-974B-ABB7-7DBD1E7D0222.root
+Error in <TGClient::TGClient>: can't open display "localhost:38.0", switching to batch mode...
+ In case you run from a remote ssh session, reconnect with ssh -Y
+--------------------------------------------------------------------------------
+>>> era          = '2017'
+>>> year         = 2017
+>>> channel      = 'etau'
+>>> modname      = 'ModuleETau'
+>>> dtype        = 'data'
+>>> kwargs       = {'dtype': 'data', 'verb': 0, 'era': '2017', 'year': 2017}
+>>> maxevts      = None
+>>> outdir       = '.'
+>>> copydir      = '/eos/home-l/lvigilan/output_UL2017/2017/etau/SingleElectron_Run2017D'
+>>> infiles      = ['root://cms-xrd-global.cern.ch//store/data/Run2017D/SingleElectron/NANOAOD/UL2017_02Dec2019-v1/70000/B36CE5D3-588D-974C-913E-E04F583B9C49.root', 'root://cms-xrd-global.cern.ch//store/data/Run2017D/SingleElectron/NANOAOD/UL2017_02Dec2019-v1/70000/BEE74CD1-6667-7D40-A83B-39A23779C255.root', 'root://cms-xrd-global.cern.ch//store/data/Run2017D/SingleElectron/NANOAOD/UL2017_02Dec2019-v1/70000/DB24E00D-31C5-DE43-BC6A-88B55A326BA1.root', 'root://cms-xrd-global.cern.ch//store/data/Run2017D/SingleElectron/NANOAOD/UL2017_02Dec2019-v1/70000/F9373DAA-993F-4A48-B4EC-6E67BF92DF3B.root', 'root://cms-xrd-global.cern.ch//store/data/Run2017D/SingleElectron/NANOAOD/UL2017_02Dec2019-v1/70000/FDAB81AA-4C5E-974B-ABB7-7DBD1E7D0222.root']
+>>> outfname     = './pico_etau_etau_4.root'
+>>> branchsel    = '/afs/cern.ch/work/l/lvigilan/TauWork/CMSSW_10_6_17_patch1/python/TauFW/PicoProducer/processors/keep_and_drop_skim.txt'
+>>> json         = '/afs/cern.ch/work/l/lvigilan/TauWork/CMSSW_10_6_17_patch1/src/TauFW/PicoProducer/data/json/2017/Cert_294927-306462_13TeV_PromptReco_Collisions17_JSON.txt'
+>>> prefetch     = False
+>>> cwd          = /pool/condor/dir_10243
+--------------------------------------------------------------------------------
+
+   ################
+   #  ModuleETau  #
+   ################
+
+Loading TreeProducerETau for './pico_etau_etau_4.root'
+--------------------------------------------------------------------------------
+>>> filename     = './pico_etau_etau_4.root'
+>>> year         = 2017
+>>> dtype        = 'data'
+>>> channel      = 'etau'
+>>> ismc         = False
+>>> isdata       = True
+>>> isembed      = False
+>>> tes          = None
+>>> tessys       = None
+>>> ltf          = 1.0
+>>> jtf          = 1.0
+>>> dotoppt      = False
+>>> dozpt        = False
+>>> dojec        = False
+>>> dojecsys     = False
+>>> dotight      = False
+>>> jetCutPt     = 30
+>>> bjetCutEta   = 2.7
+>>> tauwp        = 0
+>>> eleCutPt     = 36
+>>> eleCutEta    = 2.1
+>>> tauCutPt     = 20
+>>> tauCutEta    = 2.3
+Pre-select 2366949 entries out of 2378621 (99.51%)
+Traceback (most recent call last):
+  File "/afs/cern.ch/work/l/lvigilan/TauWork/CMSSW_10_6_17_patch1/src/TauFW/PicoProducer/python/processors/picojob.py", line 111, in <module>
+    p.run()
+  File "/afs/cern.ch/work/l/lvigilan/TauWork/CMSSW_10_6_17_patch1/python/PhysicsTools/NanoAODTools/postprocessing/framework/postprocessor.py", line 234, in run
+    eventRange=eventRange, maxEvents=self.maxEntries
+  File "/afs/cern.ch/work/l/lvigilan/TauWork/CMSSW_10_6_17_patch1/python/PhysicsTools/NanoAODTools/postprocessing/framework/eventloop.py", line 82, in eventLoop
+    ret = m.analyze(e)
+  File "/afs/cern.ch/work/l/lvigilan/TauWork/CMSSW_10_6_17_patch1/python/TauFW/PicoProducer/analysis/ModuleETau.py", line 177, in analyze
+    self.fillEventBranches(event)
+  File "/afs/cern.ch/work/l/lvigilan/TauWork/CMSSW_10_6_17_patch1/python/TauFW/PicoProducer/analysis/ModuleTauPair.py", line 148, in fillEventBranches
+    self.out.metfilter[0]       = self.filter(event)
+  File "<string>", line 1, in <lambda>
+  File "/afs/cern.ch/work/l/lvigilan/TauWork/CMSSW_10_6_17_patch1/python/PhysicsTools/NanoAODTools/postprocessing/framework/datamodel.py", line 18, in __getattr__
+    return self._tree.readBranch(name)
+  File "/afs/cern.ch/work/l/lvigilan/TauWork/CMSSW_10_6_17_patch1/python/PhysicsTools/NanoAODTools/postprocessing/framework/treeReaderArrayTools.py", line 76, in readBranch
+    raise RuntimeError("Unknown branch %s" % branchName)
+RuntimeError: Unknown branch Flag_ecalBadCalibFilterV2
+
+Job complete at Thu Jan 21 10:58:23 CET 2021
+Took 5 minutes 15 seconds040 (1772029.004.000) 01/21 10:58:23 Finished transferring output files
+...
+005 (1772029.004.000) 01/21 10:58:23 Job terminated.
+	(1) Normal termination (return value 0)
+		Usr 0 00:04:33, Sys 0 00:00:07  -  Run Remote Usage
+		Usr 0 00:00:00, Sys 0 00:00:00  -  Run Local Usage
+		Usr 0 00:04:33, Sys 0 00:00:07  -  Total Remote Usage
+		Usr 0 00:00:00, Sys 0 00:00:00  -  Total Local Usage
+	7341  -  Run Bytes Sent By Job
+	9881  -  Run Bytes Received By Job
+	7341  -  Total Bytes Sent By Job
+	9881  -  Total Bytes Received By Job
+	Partitionable Resources :    Usage  Request Allocated 
+	   Cpus                 :     0.96        1         1 
+	   Disk (KB)            :    79           1    216480 
+	   Memory (MB)          :   241        2000      2000 
+...

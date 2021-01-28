@@ -31,10 +31,10 @@ def getsampleset(channel,era,**kwargs):
   }
     
   # SM BACKGROUND MC SAMPLES
-  if year == 2018:
+  if year == 2018 or year == 2017:
     expsamples = [ # table of MC samples to be converted to Sample objects
       # GROUP NAME                     TITLE                 XSEC [pb]      effective NEVENTS = simulated NEVENTS * ( 1  - 2 * negative fraction)
-      
+
       # Cross-secitons: https://twiki.cern.ch/twiki/bin/viewauth/CMS/StandardModelCrossSectionsat13TeV, Z/a* (50)
       ( 'DY', "DYJetsToLL_M-50",       "Drell-Yan 50",       6077.22,       {"nevts" : 100194597 * (1.0 - 2 * negative_fractions["DYJetsToLL_M-50"])}),
 
@@ -102,6 +102,38 @@ def getsampleset(channel,era,**kwargs):
     ]
 
 
+  if year == 9999: # It is for year==UL2017. Not all the samples available yet
+    expsamples = [ # table of MC samples to be converted to Sample objects
+      # GROUP NAME                     TITLE                 XSEC [pb]      effective NEVENTS = simulated NEVENTS * ( 1  - 2 * negative fraction)
+
+      # Cross-secitons: https://twiki.cern.ch/twiki/bin/viewauth/CMS/StandardModelCrossSectionsat13TeV, Z/a* (50)
+      ( 'DY', "DYJetsToLL_M-50",       "Drell-Yan 50",       6077.22,     {"nevts" : 101079197* (1.0 - 2 * negative_fractions["DYJetsToLL_M-50"])}),
+
+      # Cross-sections: https://twiki.cern.ch/twiki/bin/viewauth/CMS/StandardModelCrossSectionsat13TeV, Total W
+      ( 'WJ', "WJetsToLNu",            "W + jets",           61526.7,     {"nevts" :  87614760 * (1.0 - 2 * negative_fractions["WJetsToLNu"])}),
+
+      # Cross-sections: https://twiki.cern.ch/twiki/bin/viewauth/CMS/StandardModelCrossSectionsat13TeV, W+ W-
+      ( 'VV', "WW",                    "WW",                 75.88, {"nevts" : 7850000}),
+
+      # Cross-sections: from generator (https://cms-gen-dev.cern.ch/xsdb with 'process_name=WZ_TuneCP5_13TeV-pythia8')
+      ( 'VV', "WZ",                    "WZ",                 27.57, {"nevts" : 3885000}),
+
+      # Cross-sections: from generator (https://cms-gen-dev.cern.ch/xsdb with 'process_name=ZZ_TuneCP5_13TeV-pythia8')
+      ( 'VV', "ZZ",                    "ZZ",                 12.14, {"nevts" : 1979000}),
+
+      # Cross-sections: # https://twiki.cern.ch/twiki/bin/viewauth/CMS/SingleTopSigma
+      ( 'ST', "ST_t-channel_top",      "ST t-channel t",     136.02, {"nevts" : 5473400  * (1.0 - 2 * negative_fractions["ST_t-channel_top"])}),
+      ( 'ST', "ST_t-channel_antitop",  "ST t-channel at",    80.95,  {"nevts" : 3695100  * (1.0 - 2 * negative_fractions["ST_t-channel_antitop"]) }),
+      ( 'ST', "ST_tW_top",             "ST tW",              35.85,  {"nevts" : 10041965 * (1.0 - 2 * negative_fractions["ST_tW_top"])  }),
+      ( 'ST', "ST_tW_antitop",         "ST atW",             35.85,  {"nevts" : 154307600 * (1.0 - 2 * negative_fractions["ST_tW_antitop"])  }),
+
+      # Cross-sections: https://twiki.cern.ch/twiki/bin/view/LHCPhysics/TtbarNNLO#Top_quark_pair_cross_sections_at, m_top = 172.5 GeV + PDG for W boson decays
+      ( 'TT', "TTTo2L2Nu",             "ttbar 2l2#nu",       88.29,         {"nevts" : 66259900 * (1.0 - 2 * negative_fractions["TTTo2L2Nu"]) }), 
+      ( 'TT', "TTToHadronic",          "ttbar hadronic",     377.96,        {"nevts" : 129706300  * (1.0 - 2 * negative_fractions["TTToHadronic"])}),
+      ( 'TT', "TTToSemiLeptonic",      "ttbar semileptonic", 365.35,        {"nevts" : 114058500 * (1.0 - 2 * negative_fractions["TTToSemiLeptonic"])}),
+    ]
+
+
 
   # OBSERVED DATA SAMPLES
   if 'mutau'  in channel: dataset = "SingleMuon_Run%d?"%year
@@ -124,8 +156,8 @@ def getsampleset(channel,era,**kwargs):
 
 
   #STITCHING
-  sampleset.stitch("W*Jets",   incl='WJ', name='WJ',xsec_incl=3*20508.9/1.224,kfactor=1.224,title="W jets" )
-  sampleset.stitch("DY*J*M-50",incl='DYJ',name="DY_M-50",xsec_incl=6077.22/1.225,kfactor=1.225,title="Drell-Yan M=50GeV")
+  #sampleset.stitch("W*Jets",   incl='WJ', name='WJ',xsec_incl=3*20508.9/1.224,kfactor=1.224,title="W jets" )
+  #sampleset.stitch("DY*J*M-50",incl='DYJ',name="DY_M-50",xsec_incl=6077.22/1.225,kfactor=1.225,title="Drell-Yan M=50GeV")
   
   # JOIN
   # Note: titles are set via STYLE.sample_titles
@@ -142,9 +174,14 @@ def getsampleset(channel,era,**kwargs):
   # What is the major contribution from Drell-Yan to genmatch_2!=5? How does this look like for other processes?
   GMR = "genmatch_2==5"
   GMO = "genmatch_2!=5"
-  sampleset.split('DY', [('ZTT',GMR),('ZL',GMO)])
-  sampleset.split('Top',[('TopT',GMR),('TopJ',GMO)])
-  sampleset.split('EWK',[('EWKT',GMR),('EWKJ',GMO)])
+#LOR CHANGES FOR FITTING
+  GMEE= "genmatch_2==1||genmatch_2==3"
+  GMJ="genmatch_2!=1&&genmatch_2!=3&&genmatch_2!=5"
+
+  sampleset.split('DY', [('ZTT',GMR),('ZEE',GMEE),("ZJ",GMJ)])#LOR CHANGE DEFAULT IS sampleset.split('DY', [('ZTT',GMR),('ZL',GMO)])
+  
+  #sampleset.split('Top',[('TopT',GMR),('TopJ',GMO)]) #LOR commented it out
+  #sampleset.split('EWK',[('EWKT',GMR),('EWKJ',GMO)]) #LOR commented it out
  
   if table:
     sampleset.printtable(merged=True,split=True)
@@ -174,9 +211,14 @@ def plot(sampleset,channel,parallel=True,tag="",outdir="plots",histdir="",era=""
   id_cuts5 = "(idDeepTau2017v2p1VSjet_2>= 16)&&(idDeepTau2017v2p1VSe_2 >= 16 )"#Medium
   id_cuts6 = "(idDeepTau2017v2p1VSjet_2>= 16)"#&&(idDeepTau2017v2p1VSe_2 >= 64 )"#VTight
 
+  DTM_cuts1="(idDeepTau2017v2p1VSe_2>=16)&&(eta_2>-1.448)&&(eta_2<1.448)"
+  DTM_cuts2="(idDeepTau2017v2p1VSe_2<16)&&(eta_2>-1.448)&&(eta_2<1.448)"
+  DTM_cuts3="(idDeepTau2017v2p1VSe_2>=16)&&((eta_2<-1.556)||(eta_2>1.556))"
+  DTM_cuts4="(idDeepTau2017v2p1VSe_2<16)&&((eta_2<-1.556)||(eta_2>1.556))"
+
   mt1_cuts= "(mt_1 < 60)"
- #prepara VVL e VT, no taglio m_t
- #da fare pt,phi e eta ele e tau, njet,mt,mvis,jetpt e discrimani,
+  #prepara VVL e VT, no taglio m_t
+  #da fare pt,phi e eta ele e tau, njet,mt,mvis,jetpt e discrimani,
   inclusive = inclusive.replace(" ","")
   general_cuts = general_cuts.replace(" ","")
   mvis_cuts1 = mvis_cuts1.replace(" ","")
@@ -192,7 +234,10 @@ def plot(sampleset,channel,parallel=True,tag="",outdir="plots",histdir="",era=""
   id_cuts6 = id_cuts6.replace(" ","")
   
   mt1_cuts = mt1_cuts.replace(" ","")
-
+  DTM_cuts1 = DTM_cuts1.replace(" ","")
+  DTM_cuts2 = DTM_cuts2.replace(" ","")
+  DTM_cuts3 = DTM_cuts3.replace(" ","")
+  DTM_cuts4 = DTM_cuts4.replace(" ","")
   
   #SUM OF SELECTIONS
   tot_cuts1 = general_cuts + "&&" + mvis_cuts1
@@ -221,6 +266,15 @@ def plot(sampleset,channel,parallel=True,tag="",outdir="plots",histdir="",era=""
   
   tot_mt1_cuts1 = general_cuts + "&&" + mt1_cuts
   tot_mt1_cuts1 = tot_mt1_cuts1.replace(" ","")
+  
+  DTM_tot_cuts1 = general_cuts + "&&" + DTM_cuts1
+  DTM_tot_cuts1 = DTM_tot_cuts1.replace(" ","")
+  DTM_tot_cuts2 = general_cuts + "&&" + DTM_cuts2
+  DTM_tot_cuts2 = DTM_tot_cuts2.replace(" ","")
+  DTM_tot_cuts3 = general_cuts + "&&" + DTM_cuts3
+  DTM_tot_cuts3 = DTM_tot_cuts3.replace(" ","")
+  DTM_tot_cuts4 = general_cuts + "&&" + DTM_cuts4
+  DTM_tot_cuts4 = DTM_tot_cuts4.replace(" ","")
 
 
   selections = [
@@ -232,21 +286,26 @@ def plot(sampleset,channel,parallel=True,tag="",outdir="plots",histdir="",era=""
     #Sel('tot_PFMET_DTMedium',tot_cuts5),
     #Sel('tot_PFMET_DTVTight',tot_cuts6),
     
-    Sel('id_VSjM-VSeVVVL',totid_cuts3),
+    #Sel('id_VSjM-VSeVVVL',totid_cuts3),
     #Sel('id_VSjM-VSeVL',totid_cuts4),
     #Sel('id_VSjM-VSeM',totid_cuts5),
-    Sel('id_VSjM-VSeVT',totid_cuts6),
-
+    #Sel('id_VSjM-VSeVT',totid_cuts6),
+    
     #Sel('inclusive',inclusive),
     #Sel('inclusive_cr_qcd',inclusive_cr_qcd),
-    
+    #Sel('DTM1_VSjM-VSeM',DTM_tot_cuts1),
+    #Sel('DTM2_VSjM-VSeM',DTM_tot_cuts2),
+    Sel('DTM3_VSjM-VSeM',DTM_tot_cuts3),
+    #Sel('DTM4_VSjM-VSeM',DTM_tot_cuts4),
+
     #Sel('mt1_VSjM',tot_mt1_cuts1),
   ]
   
   # VARIABLES
   # TODO section 5: extend with other variables, which are available in the flat n-tuples
   variables = [
-     #Var('m_vis',  11,  60, 120),
+     Var('m_vis',  11,  60, 120),
+     #Var('m_vis',  1,  60, 120),
      #Var('pt_1',  "Muon pt",    40,  35, 120, ctitle={'etau':"Electron pt",'tautau':"Leading tau_h pt",'emu':"Electron pt"}),
      #Var('pt_2',  "tau_h pt",   40,  20, 120, ctitle={'tautau':"Subleading tau_h pt",'emu':"Muon pt"}),
      #Var('eta_1', "Electron eta",   30, -3, 3, ctitle={'etau':"Electron eta",'tautau':"Leading tau_h eta",'emu':"Electron eta"},ymargin=1.6,pos='T',ncols=2),
@@ -268,8 +327,8 @@ def plot(sampleset,channel,parallel=True,tag="",outdir="plots",histdir="",era=""
      #Var("pzetavis", 50,    0, 200 ), 
      #Var('rawDeepTau2017v2p1VSjet_2', "rawDeepTau2017v2p1VSjet", 100, 0.0, 1, ncols=2,pos='L;y=0.85',logy=True,ymargin=2.5),
      #Var('rawDeepTau2017v2p1VSjet_2', "rawDeepTau2017v2p1VSjet", 20, 0.80, 1, fname="$VAR_zoom",ncols=2,pos='L;y=0.85'),
-     Var('rawDeepTau2017v2p1VSe_2',   "rawDeepTau2017v2p1VSe",   100, 0.0, 1, fname="$VAR",ncols=2,ymin=1.0, logy=True,pos='L;y=0.85'),
-     Var('rawDeepTau2017v2p1VSe_2',   "rawDeepTau2017v2p1VSe",   30, 0.70, 1, fname="$VAR_zoom",ncols=2,logy=True,pos='L;y=0.85'),
+     #Var('rawDeepTau2017v2p1VSe_2',   "rawDeepTau2017v2p1VSe",   100, 0.0, 1, fname="$VAR",ncols=2,ymin=1.0, logy=True,pos='L;y=0.85'),
+     #Var('rawDeepTau2017v2p1VSe_2',   "rawDeepTau2017v2p1VSe",   30, 0.70, 1, fname="$VAR_zoom",ncols=2,logy=True,pos='L;y=0.85'),
      #Var('rawDeepTau2017v2p1VSmu_2',  "rawDeepTau2017v2p1VSmu",  100, 0.0, 1, fname="$VAR",ncols=2,logy=True,logyrange=4,pos='L;y=0.85'),                                    
      #Var('rawDeepTau2017v2p1VSmu_2',  "rawDeepTau2017v2p1VSmu",  20, 0.80, 1, fname="$VAR_zoom",ncols=2,logy=True,logyrange=4,pos='L;y=0.85'),                                    
 
