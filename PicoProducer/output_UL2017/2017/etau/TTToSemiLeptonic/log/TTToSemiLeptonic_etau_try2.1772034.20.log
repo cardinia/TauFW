@@ -1,0 +1,112 @@
+Could not find platform independent libraries <prefix>
+Could not find platform dependent libraries <exec_prefix>
+Consider setting $PYTHONHOME to <prefix>[:<exec_prefix>]
+ImportError: No module named site
+Job start at Thu Jan 21 10:53:57 CET 2021
+Running job on machine Linux b7s13n0593.cern.ch 3.10.0-1160.6.1.el7.x86_64 #1 SMP Tue Nov 17 13:59:11 UTC 2020 x86_64 x86_64 x86_64 GNU/Linux, host b7s13n0593.cern.ch
+============================================================
+$PWD=/pool/condor/dir_2339
+$JOBID=1772034
+$TASKID=20
+$HOSTNAME=b7s13n0593.cern.ch
+$TASKCMD=/afs/cern.ch/work/l/lvigilan/TauWork/CMSSW_10_6_17_patch1/src/TauFW/PicoProducer/python/processors/picojob.py -y 2017 -d 'mc' -c etau -M ModuleETau --copydir /eos/home-l/lvigilan/output_UL2017/2017/etau/TTToSemiLeptonic -t _etau_20 --opt 'toppt=True' -i root://cms-xrd-global.cern.ch//store/mc/RunIISummer19UL17NanoAOD/TTToSemiLeptonic_TuneCP5_13TeV-powheg-pythia8/NANOAODSIM/106X_mc2017_realistic_v6-v2/280000/A28767C4-5647-1B46-ACE5-30FD49C4736C.root root://cms-xrd-global.cern.ch//store/mc/RunIISummer19UL17NanoAOD/TTToSemiLeptonic_TuneCP5_13TeV-powheg-pythia8/NANOAODSIM/106X_mc2017_realistic_v6-v2/280000/A4539CA9-7147-2A4E-8124-3A70C9682218.root root://cms-xrd-global.cern.ch//store/mc/RunIISummer19UL17NanoAOD/TTToSemiLeptonic_TuneCP5_13TeV-powheg-pythia8/NANOAODSIM/106X_mc2017_realistic_v6-v2/280000/BA09B448-DD2E-CE41-8CE1-0F6039E996EF.root root://cms-xrd-global.cern.ch//store/mc/RunIISummer19UL17NanoAOD/TTToSemiLeptonic_TuneCP5_13TeV-powheg-pythia8/NANOAODSIM/106X_mc2017_realistic_v6-v2/280000/C973EE85-643C-B943-B971-410CE08B23BE.root root://cms-xrd-global.cern.ch//store/mc/RunIISummer19UL17NanoAOD/TTToSemiLeptonic_TuneCP5_13TeV-powheg-pythia8/NANOAODSIM/106X_mc2017_realistic_v6-v2/280000/E856DD26-E21B-8143-85B4-EE33F9861180.root
+$WORKDIR=/pool/condor/dir_2339
+>>> cd /afs/cern.ch/work/l/lvigilan/TauWork/CMSSW_10_6_17_patch1/src
+>>> eval `scramv1 runtime -sh`
+>>> cd /pool/condor/dir_2339
+$PWD=/pool/condor/dir_2339
+>>> /afs/cern.ch/work/l/lvigilan/TauWork/CMSSW_10_6_17_patch1/src/TauFW/PicoProducer/python/processors/picojob.py -y 2017 -d 'mc' -c etau -M ModuleETau --copydir /eos/home-l/lvigilan/output_UL2017/2017/etau/TTToSemiLeptonic -t _etau_20 --opt 'toppt=True' -i root://cms-xrd-global.cern.ch//store/mc/RunIISummer19UL17NanoAOD/TTToSemiLeptonic_TuneCP5_13TeV-powheg-pythia8/NANOAODSIM/106X_mc2017_realistic_v6-v2/280000/A28767C4-5647-1B46-ACE5-30FD49C4736C.root root://cms-xrd-global.cern.ch//store/mc/RunIISummer19UL17NanoAOD/TTToSemiLeptonic_TuneCP5_13TeV-powheg-pythia8/NANOAODSIM/106X_mc2017_realistic_v6-v2/280000/A4539CA9-7147-2A4E-8124-3A70C9682218.root root://cms-xrd-global.cern.ch//store/mc/RunIISummer19UL17NanoAOD/TTToSemiLeptonic_TuneCP5_13TeV-powheg-pythia8/NANOAODSIM/106X_mc2017_realistic_v6-v2/280000/BA09B448-DD2E-CE41-8CE1-0F6039E996EF.root root://cms-xrd-global.cern.ch//store/mc/RunIISummer19UL17NanoAOD/TTToSemiLeptonic_TuneCP5_13TeV-powheg-pythia8/NANOAODSIM/106X_mc2017_realistic_v6-v2/280000/C973EE85-643C-B943-B971-410CE08B23BE.root root://cms-xrd-global.cern.ch//store/mc/RunIISummer19UL17NanoAOD/TTToSemiLeptonic_TuneCP5_13TeV-powheg-pythia8/NANOAODSIM/106X_mc2017_realistic_v6-v2/280000/E856DD26-E21B-8143-85B4-EE33F9861180.root
+Error in <TGClient::TGClient>: can't open display "localhost:38.0", switching to batch mode...
+ In case you run from a remote ssh session, reconnect with ssh -Y
+--------------------------------------------------------------------------------
+>>> era          = '2017'
+>>> year         = 2017
+>>> channel      = 'etau'
+>>> modname      = 'ModuleETau'
+>>> dtype        = 'mc'
+>>> kwargs       = {'toppt': True, 'dtype': 'mc', 'verb': 0, 'era': '2017', 'year': 2017}
+>>> maxevts      = None
+>>> outdir       = '.'
+>>> copydir      = '/eos/home-l/lvigilan/output_UL2017/2017/etau/TTToSemiLeptonic'
+>>> infiles      = ['root://cms-xrd-global.cern.ch//store/mc/RunIISummer19UL17NanoAOD/TTToSemiLeptonic_TuneCP5_13TeV-powheg-pythia8/NANOAODSIM/106X_mc2017_realistic_v6-v2/280000/A28767C4-5647-1B46-ACE5-30FD49C4736C.root', 'root://cms-xrd-global.cern.ch//store/mc/RunIISummer19UL17NanoAOD/TTToSemiLeptonic_TuneCP5_13TeV-powheg-pythia8/NANOAODSIM/106X_mc2017_realistic_v6-v2/280000/A4539CA9-7147-2A4E-8124-3A70C9682218.root', 'root://cms-xrd-global.cern.ch//store/mc/RunIISummer19UL17NanoAOD/TTToSemiLeptonic_TuneCP5_13TeV-powheg-pythia8/NANOAODSIM/106X_mc2017_realistic_v6-v2/280000/BA09B448-DD2E-CE41-8CE1-0F6039E996EF.root', 'root://cms-xrd-global.cern.ch//store/mc/RunIISummer19UL17NanoAOD/TTToSemiLeptonic_TuneCP5_13TeV-powheg-pythia8/NANOAODSIM/106X_mc2017_realistic_v6-v2/280000/C973EE85-643C-B943-B971-410CE08B23BE.root', 'root://cms-xrd-global.cern.ch//store/mc/RunIISummer19UL17NanoAOD/TTToSemiLeptonic_TuneCP5_13TeV-powheg-pythia8/NANOAODSIM/106X_mc2017_realistic_v6-v2/280000/E856DD26-E21B-8143-85B4-EE33F9861180.root']
+>>> outfname     = './pico_etau_etau_20.root'
+>>> branchsel    = '/afs/cern.ch/work/l/lvigilan/TauWork/CMSSW_10_6_17_patch1/python/TauFW/PicoProducer/processors/keep_and_drop_skim.txt'
+>>> json         = None
+>>> prefetch     = False
+>>> cwd          = /pool/condor/dir_2339
+--------------------------------------------------------------------------------
+
+   ################
+   #  ModuleETau  #
+   ################
+
+Loading PileupWeightTool for '/afs/cern.ch/work/l/lvigilan/TauWork/CMSSW_10_6_17_patch1/src/TauFW/PicoProducer/data/pileup/Data_PileUp_2017_69p2.root' and '/afs/cern.ch/work/l/lvigilan/TauWork/CMSSW_10_6_17_patch1/src/TauFW/PicoProducer/data/pileup/MC_PileUp_2017_Winter17_V2_new_pmx.root'
+Loading BTagWeightTool for DeepCSV (medium WP)...
+>>> BTagTool: [1m[33mWarning! [0m[33mHistogram 'etau/eff_DeepCSV_udsg_medium' does not exist in /afs/cern.ch/work/l/lvigilan/TauWork/CMSSW_10_6_17_patch1/src/TauFW/PicoProducer/data/btag/DeepCSV_2017_12Apr2017_eff.root! Reverting to default efficiency histogram...[0m
+>>> BTagTool: [1m[33mWarning! [0m[33mHistogram 'etau/eff_DeepCSV_c_medium' does not exist in /afs/cern.ch/work/l/lvigilan/TauWork/CMSSW_10_6_17_patch1/src/TauFW/PicoProducer/data/btag/DeepCSV_2017_12Apr2017_eff.root! Reverting to default efficiency histogram...[0m
+>>> BTagTool: [1m[33mWarning! [0m[33mHistogram 'etau/eff_DeepCSV_b_medium' does not exist in /afs/cern.ch/work/l/lvigilan/TauWork/CMSSW_10_6_17_patch1/src/TauFW/PicoProducer/data/btag/DeepCSV_2017_12Apr2017_eff.root! Reverting to default efficiency histogram...[0m
+>>> BTagTool: [1m[33mWarning! [0m[33mMade use of default efficiency histograms! The b tag weights from this module should be regarded as placeholders only,
+and should NOT be used for analyses. B (mis)tag efficiencies in MC are analysis dependent. Please create your own
+efficiency histogram with data/btag/getBTagEfficiencies.py after running all MC samples with BTagWeightTool.[0m
+Loading TreeProducerETau for './pico_etau_etau_20.root'
+--------------------------------------------------------------------------------
+>>> filename     = './pico_etau_etau_20.root'
+>>> year         = 2017
+>>> dtype        = 'mc'
+>>> channel      = 'etau'
+>>> ismc         = True
+>>> isdata       = False
+>>> isembed      = False
+>>> tes          = None
+>>> tessys       = None
+>>> ltf          = 1.0
+>>> jtf          = 1.0
+>>> dotoppt      = True
+>>> dozpt        = False
+>>> dojec        = True
+>>> dojecsys     = True
+>>> dotight      = False
+>>> jetCutPt     = 30
+>>> bjetCutEta   = 2.7
+>>> tauwp        = 0
+>>> eleCutPt     = 36
+>>> eleCutEta    = 2.1
+>>> tauCutPt     = 20
+>>> tauCutEta    = 2.3
+Pre-select 961800 entries out of 961800 (100.00%)
+Traceback (most recent call last):
+  File "/afs/cern.ch/work/l/lvigilan/TauWork/CMSSW_10_6_17_patch1/src/TauFW/PicoProducer/python/processors/picojob.py", line 111, in <module>
+    p.run()
+  File "/afs/cern.ch/work/l/lvigilan/TauWork/CMSSW_10_6_17_patch1/python/PhysicsTools/NanoAODTools/postprocessing/framework/postprocessor.py", line 234, in run
+    eventRange=eventRange, maxEvents=self.maxEntries
+  File "/afs/cern.ch/work/l/lvigilan/TauWork/CMSSW_10_6_17_patch1/python/PhysicsTools/NanoAODTools/postprocessing/framework/eventloop.py", line 82, in eventLoop
+    ret = m.analyze(e)
+  File "/afs/cern.ch/work/l/lvigilan/TauWork/CMSSW_10_6_17_patch1/python/TauFW/PicoProducer/analysis/ModuleETau.py", line 177, in analyze
+    self.fillEventBranches(event)
+  File "/afs/cern.ch/work/l/lvigilan/TauWork/CMSSW_10_6_17_patch1/python/TauFW/PicoProducer/analysis/ModuleTauPair.py", line 148, in fillEventBranches
+    self.out.metfilter[0]       = self.filter(event)
+  File "<string>", line 1, in <lambda>
+  File "/afs/cern.ch/work/l/lvigilan/TauWork/CMSSW_10_6_17_patch1/python/PhysicsTools/NanoAODTools/postprocessing/framework/datamodel.py", line 18, in __getattr__
+    return self._tree.readBranch(name)
+  File "/afs/cern.ch/work/l/lvigilan/TauWork/CMSSW_10_6_17_patch1/python/PhysicsTools/NanoAODTools/postprocessing/framework/treeReaderArrayTools.py", line 76, in readBranch
+    raise RuntimeError("Unknown branch %s" % branchName)
+RuntimeError: Unknown branch Flag_ecalBadCalibFilterV2
+
+Job complete at Thu Jan 21 10:54:12 CET 2021
+Took 0 minutes 15 seconds040 (1772034.020.000) 01/21 10:54:15 Finished transferring output files
+...
+005 (1772034.020.000) 01/21 10:54:15 Job terminated.
+	(1) Normal termination (return value 0)
+		Usr 0 00:00:12, Sys 0 00:00:01  -  Run Remote Usage
+		Usr 0 00:00:00, Sys 0 00:00:00  -  Run Local Usage
+		Usr 0 00:00:12, Sys 0 00:00:01  -  Total Remote Usage
+		Usr 0 00:00:00, Sys 0 00:00:00  -  Total Local Usage
+	9607  -  Run Bytes Sent By Job
+	9881  -  Run Bytes Received By Job
+	9607  -  Total Bytes Sent By Job
+	9881  -  Total Bytes Received By Job
+	Partitionable Resources :    Usage  Request Allocated 
+	   Cpus                 :     0.75        1         1 
+	   Disk (KB)            :    82           1    270893 
+	   Memory (MB)          :   207        2000      2000 
+...

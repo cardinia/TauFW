@@ -9,7 +9,9 @@
   "eras": {
     "2016": "ETauFakeRate/samples_2016.py", 
     "2017": "ETauFakeRate/samples_2017.py", 
-    "2018": "ETauFakeRate/samples_2018.py"
+    "2018": "ETauFakeRate/samples_2018.py", 
+    "2017UL": "ETauFakeRate/samples_UL2017.py", 
+    "UL2017": "ETauFakeRate/samples_2017.py"
   }, 
   "nfilesperjob": 5, 
   "filelistdir": "samples/files/$ERA/$SAMPLE.txt", 
