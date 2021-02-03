@@ -98,10 +98,10 @@ def main(args):
       ###################
       # observable/variables to be fitted in combine
       
-      if channel=='mumu':
+      if channel=='etau':
       
         observables = [
-          Var('m_vis', 1, 60, 120, ymargin=1.6, rrange=0.08),
+          Var('m_vis', 11, 60, 120, ymargin=1.6, rrange=0.08),
         ]
       
       else:
@@ -117,6 +117,7 @@ def main(args):
         # => use 'cut' option as hack to save time drawing pt or DM bins
         #    instead of looping over many selection,
         #    also, each pt/DM bin will be a separate file
+       if channel=='mutau':
         dmbins = [0,1,10,11]
         ptbins = [20,25,30,35,40,50,70,2000] #500,1000]
         print ">>> DM cuts:"
@@ -158,7 +159,7 @@ def main(args):
         tauwps    = ['VVVLoose','VVLoose','VLoose','Loose','Medium','Tight','VTight','VVTight']
         tauwpbits = { wp: 2**i for i, wp in enumerate(tauwps)}
         iso_1     = "iso_1<0.15"
-        iso_2     = "idDecayModeNewDMs_2 && idDeepTau2017v2p1VSjet_2>=$WP && idDeepTau2017v2p1VSe_2>=2 && idDeepTau2017v2p1VSmu_2>=8"
+        iso_2     = "idDecayModeNewDMs_2 && idDeepTau2017v2p1VSjet_2>=16 && idDeepTau2017v2p1VSe_2>=2 && idDeepTau2017v2p1VSmu_2>=1"
         baseline  = "q_1*q_2<0 && %s && %s && !lepton_vetoes_notau && metfilter"%(iso_1,iso_2)
         zttregion = "%s && mt_1<60 && dzeta>-25 && abs(deta_ll)<1.5"%(baseline)
         bins = [
