@@ -10,7 +10,7 @@ from ROOT import TStyle, TPad, TLatex, TASImage, kBlack, kWhite, TGaxis
 cmsText        = "CMS"
 cmsTextFont    = 61
 writeExtraText = True
-extraText      = "Preliminary"
+extraText      = "Work in Progress"
 lumiText       = ""
 extraTextFont  = 52
 lumiTextSize   = 0.90

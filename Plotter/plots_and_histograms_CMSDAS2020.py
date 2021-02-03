@@ -156,8 +156,8 @@ def getsampleset(channel,era,**kwargs):
 
 
   #STITCHING
-  #sampleset.stitch("W*Jets",   incl='WJ', name='WJ',xsec_incl=3*20508.9/1.224,kfactor=1.224,title="W jets" )
-  #sampleset.stitch("DY*J*M-50",incl='DYJ',name="DY_M-50",xsec_incl=6077.22/1.225,kfactor=1.225,title="Drell-Yan M=50GeV")
+  sampleset.stitch("W*Jets",   incl='WJ', name='WJ',xsec_incl=3*20508.9/1.224,kfactor=1.224,title="W jets" )
+  sampleset.stitch("DY*J*M-50",incl='DYJ',name="DY_M-50",xsec_incl=6077.22/1.225,kfactor=1.225,title="Drell-Yan M=50GeV")
   
   # JOIN
   # Note: titles are set via STYLE.sample_titles
@@ -178,10 +178,11 @@ def getsampleset(channel,era,**kwargs):
   GMEE= "genmatch_2==1||genmatch_2==3"
   GMJ="genmatch_2!=1&&genmatch_2!=3&&genmatch_2!=5"
 
-  sampleset.split('DY', [('ZTT',GMR),('ZEE',GMEE),("ZJ",GMJ)])#LOR CHANGE DEFAULT IS sampleset.split('DY', [('ZTT',GMR),('ZL',GMO)])
+  #sampleset.split('DY', [('ZTT',GMR),('ZEE',GMEE),("ZJ",GMJ)])#LOR CHANGE DEFAULT IS NEXT Line
+  sampleset.split('DY', [('ZTT',GMR),('ZL',GMO)])
   
-  #sampleset.split('Top',[('TopT',GMR),('TopJ',GMO)]) #LOR commented it out
-  #sampleset.split('EWK',[('EWKT',GMR),('EWKJ',GMO)]) #LOR commented it out
+  sampleset.split('Top',[('TopT',GMR),('TopJ',GMO)]) #LOR commented it out
+  sampleset.split('EWK',[('EWKT',GMR),('EWKJ',GMO)]) #LOR commented it out
  
   if table:
     sampleset.printtable(merged=True,split=True)
@@ -196,8 +197,8 @@ def plot(sampleset,channel,parallel=True,tag="",outdir="plots",histdir="",era=""
   inclusive = "(q_1*q_2<0)"
   
   inclusive_cr_qcd = inclusive.replace("q_1*q_2<0","q_1*q_2>0") # inverting the opposite-sign requirement of the mutau pair into a same-sign requirment
-  general_cuts = "(iso_1<0.1)&&(pt_1>26.0)&&(pt_2>20.0)&&(eta_1>-2.1)&&(eta_1<2.1)&&(eta_2>-2.3)&&(eta_2<2.3)"
-  
+  #general_cuts = "(iso_1<0.1)&&(pt_1>26.0)&&(pt_2>20.0)&&(eta_1>-2.1)&&(eta_1<2.1)&&(eta_2>-2.3)&&(eta_2<2.3)&&!lepton_vetoes_notau&&metfilter"
+  general_cuts='iso_1<0.1 && pt_1>26.0 && pt_2>20.0 && abs(eta_1)<2.1 && abs(eta_2)<2.3 && idDecayModeNewDMs_2 && idDeepTau2017v2p1VSjet_2>=16 && idDeepTau2017v2p1VSe_2>=1 && idDeepTau2017v2p1VSmu_2>=1  && q_1*q_2<0 && !lepton_vetoes_notau && metfilter'
   mvis_cuts1 = "(m_vis>60) && (m_vis < 120) && (mt_2 < 60) && (idDeepTau2017v2p1VSe_2 >= 16 )"
   mvis_cuts2 = "(m_vis>60) && (m_vis < 120) && (mt_2 < 60) && (idDeepTau2017v2p1VSe_2 >= 32 )" #LOR CUTS 16 DIC 2020
 
@@ -207,9 +208,9 @@ def plot(sampleset,channel,parallel=True,tag="",outdir="plots",histdir="",era=""
   mvis_cuts6 = "(m_vis>60) && (m_vis < 120) && (mt_1 < 60) && (idDeepTau2017v2p1VSe_2 >= 64 )"#VTight
 
   id_cuts3 = "(idDeepTau2017v2p1VSjet_2>= 16)"#&&(idDeepTau2017v2p1VSe_2 >= 1 )"#VVVLose
-  id_cuts4 = "(idDeepTau2017v2p1VSjet_2>= 16)&&(idDeepTau2017v2p1VSe_2 >= 4 )"#VLose
-  id_cuts5 = "(idDeepTau2017v2p1VSjet_2>= 16)&&(idDeepTau2017v2p1VSe_2 >= 16 )"#Medium
-  id_cuts6 = "(idDeepTau2017v2p1VSjet_2>= 16)"#&&(idDeepTau2017v2p1VSe_2 >= 64 )"#VTight
+  id_cuts4 = "(idDeepTau2017v2p1VSjet_2>= 16)&&(idDeepTau2017v2p1VSe_2>=4)"#VLose
+  id_cuts5 = "(idDeepTau2017v2p1VSjet_2>= 16)&&(idDeepTau2017v2p1VSe_2>=16)"#Medium
+  id_cuts6 = "(idDeepTau2017v2p1VSjet_2>= 16)&&(idDeepTau2017v2p1VSe_2>=64)"#VTight
 
   DTM_cuts1="(idDeepTau2017v2p1VSe_2>=16)&&(eta_2>-1.448)&&(eta_2<1.448)"
   DTM_cuts2="(idDeepTau2017v2p1VSe_2<16)&&(eta_2>-1.448)&&(eta_2<1.448)"
@@ -278,7 +279,7 @@ def plot(sampleset,channel,parallel=True,tag="",outdir="plots",histdir="",era=""
 
 
   selections = [
-    #Sel('kinematic sel.',general_cuts),
+    Sel('kinematic sel.',general_cuts),
     #Sel('tot_PuppiMET_DTMedium',tot_cuts1),
     #Sel('tot_PuppiMET_DTTight',tot_cuts2),
     #Sel('tot_PFMET_DTVVVL',tot_cuts3),
@@ -286,16 +287,16 @@ def plot(sampleset,channel,parallel=True,tag="",outdir="plots",histdir="",era=""
     #Sel('tot_PFMET_DTMedium',tot_cuts5),
     #Sel('tot_PFMET_DTVTight',tot_cuts6),
     
-    #Sel('id_VSjM-VSeVVVL',totid_cuts3),
-    #Sel('id_VSjM-VSeVL',totid_cuts4),
-    #Sel('id_VSjM-VSeM',totid_cuts5),
-    #Sel('id_VSjM-VSeVT',totid_cuts6),
+    Sel('id_VSjM-VSeVVVL',totid_cuts3),
+    Sel('id_VSjM-VSeVL',totid_cuts4),
+    Sel('id_VSjM-VSeM',totid_cuts5),
+    Sel('id_VSjM-VSeVT',totid_cuts6),
     
     #Sel('inclusive',inclusive),
     #Sel('inclusive_cr_qcd',inclusive_cr_qcd),
     #Sel('DTM1_VSjM-VSeM',DTM_tot_cuts1),
     #Sel('DTM2_VSjM-VSeM',DTM_tot_cuts2),
-    Sel('DTM3_VSjM-VSeM',DTM_tot_cuts3),
+    #Sel('DTM3_VSjM-VSeM',DTM_tot_cuts3),
     #Sel('DTM4_VSjM-VSeM',DTM_tot_cuts4),
 
     #Sel('mt1_VSjM',tot_mt1_cuts1),
@@ -306,10 +307,10 @@ def plot(sampleset,channel,parallel=True,tag="",outdir="plots",histdir="",era=""
   variables = [
      Var('m_vis',  11,  60, 120),
      #Var('m_vis',  1,  60, 120),
-     #Var('pt_1',  "Muon pt",    40,  35, 120, ctitle={'etau':"Electron pt",'tautau':"Leading tau_h pt",'emu':"Electron pt"}),
-     #Var('pt_2',  "tau_h pt",   40,  20, 120, ctitle={'tautau':"Subleading tau_h pt",'emu':"Muon pt"}),
-     #Var('eta_1', "Electron eta",   30, -3, 3, ctitle={'etau':"Electron eta",'tautau':"Leading tau_h eta",'emu':"Electron eta"},ymargin=1.6,pos='T',ncols=2),
-     #Var('eta_2', "tau_h eta",  30, -3, 3, ctitle={'etau':"Tau eta",'tautau':"Subleading tau_h eta",'emu':"Muon eta"},ymargin=1.6,pos='T',ncols=2),
+     Var('pt_1',  "Muon pt",    40,  35, 120, ctitle={'etau':"Electron pt",'tautau':"Leading tau_h pt",'emu':"Electron pt"}),
+     Var('pt_2',  "tau_h pt",   40,  20, 120, ctitle={'tautau':"Subleading tau_h pt",'emu':"Muon pt"}),
+     Var('eta_1', "Electron eta",   30, -3, 3, ctitle={'etau':"Electron eta",'tautau':"Leading tau_h eta",'emu':"Electron eta"},ymargin=1.6,pos='T',ncols=2),
+     Var('eta_2', "tau_h eta",  30, -3, 3, ctitle={'etau':"Tau eta",'tautau':"Subleading tau_h eta",'emu':"Muon eta"},ymargin=1.6,pos='T',ncols=2),
      #Var('m_vis',  40,  0, 200),
      #Var('mt_1',  "mt(e,MET)", 40,  0, 200),
      #Var('mt_2',  "mt(e,PuppiMET)", 40,  0, 200),
@@ -317,7 +318,7 @@ def plot(sampleset,channel,parallel=True,tag="",outdir="plots",histdir="",era=""
      #Var("jpt_2",  29,   10,  300, veto=[r"njets\w*==0"]),
      #Var("jeta_1", 53, -5.4,  5.2, ymargin=1.6,pos='T',ncols=2,veto=[r"njets\w*==0"]),
      #Var("jeta_2", 53, -5.4,  5.2, ymargin=1.6,pos='T',ncols=2,veto=[r"njets\w*==0"]),
-     #Var('njets',   8,  0,   8),
+     Var('njets',   8,  0,   8),
      #Var('met',    50,  0, 150),
      #Var('puppimetpt', "PuppiMET"  , 50,  0, 150),
      #Var('pt_ll',   "p_{T}(mutau_h)", 25, 0, 200, ctitle={'etau':"p_{T}(etau_h)",'tautau':"p_{T}(tau_htau_h)",'emu':"p_{T}(emu)"}),
@@ -325,14 +326,14 @@ def plot(sampleset,channel,parallel=True,tag="",outdir="plots",histdir="",era=""
      #Var('deta_ll', "deta(mutau_h)",  20, 0, 6.0, ctitle={'etau':"deta(etau_h)",'tautau':"deta(tautau)",'emu':"deta(emu)"},logy=True,pos='TRR'), #, ymargin=8, logyrange=2.6
      #Var('dzeta',  56, -180, 100, pos='L;y=0.88',units='GeV'),
      #Var("pzetavis", 50,    0, 200 ), 
-     #Var('rawDeepTau2017v2p1VSjet_2', "rawDeepTau2017v2p1VSjet", 100, 0.0, 1, ncols=2,pos='L;y=0.85',logy=True,ymargin=2.5),
-     #Var('rawDeepTau2017v2p1VSjet_2', "rawDeepTau2017v2p1VSjet", 20, 0.80, 1, fname="$VAR_zoom",ncols=2,pos='L;y=0.85'),
-     #Var('rawDeepTau2017v2p1VSe_2',   "rawDeepTau2017v2p1VSe",   100, 0.0, 1, fname="$VAR",ncols=2,ymin=1.0, logy=True,pos='L;y=0.85'),
-     #Var('rawDeepTau2017v2p1VSe_2',   "rawDeepTau2017v2p1VSe",   30, 0.70, 1, fname="$VAR_zoom",ncols=2,logy=True,pos='L;y=0.85'),
-     #Var('rawDeepTau2017v2p1VSmu_2',  "rawDeepTau2017v2p1VSmu",  100, 0.0, 1, fname="$VAR",ncols=2,logy=True,logyrange=4,pos='L;y=0.85'),                                    
-     #Var('rawDeepTau2017v2p1VSmu_2',  "rawDeepTau2017v2p1VSmu",  20, 0.80, 1, fname="$VAR_zoom",ncols=2,logy=True,logyrange=4,pos='L;y=0.85'),                                    
+     Var('rawDeepTau2017v2p1VSjet_2', "rawDeepTau2017v2p1VSjet", 100, 0.0, 1, ncols=2,pos='L;y=0.85',logy=True,ymargin=2.5),
+     Var('rawDeepTau2017v2p1VSjet_2', "rawDeepTau2017v2p1VSjet", 20, 0.80, 1, fname="$VAR_zoom",ncols=2,pos='L;y=0.85'),
+     Var('rawDeepTau2017v2p1VSe_2',   "rawDeepTau2017v2p1VSe",   100, 0.0, 1, fname="$VAR",ncols=2,ymin=1.0, logy=True,pos='L;y=0.85'),
+     Var('rawDeepTau2017v2p1VSe_2',   "rawDeepTau2017v2p1VSe",   30, 0.70, 1, fname="$VAR_zoom",ncols=2,logy=True,pos='L;y=0.85'),
+     Var('rawDeepTau2017v2p1VSmu_2',  "rawDeepTau2017v2p1VSmu",  100, 0.0, 1, fname="$VAR",ncols=2,logy=True,logyrange=4,pos='L;y=0.85'),                                    
+     Var('rawDeepTau2017v2p1VSmu_2',  "rawDeepTau2017v2p1VSmu",  20, 0.80, 1, fname="$VAR_zoom",ncols=2,logy=True,logyrange=4,pos='L;y=0.85'),                                    
 
-#     Var('npv',    40,    0,  80 ), 
+    #Var('npv',    40,    0,  80 ), 
 
   ]
   
@@ -351,7 +352,12 @@ def plot(sampleset,channel,parallel=True,tag="",outdir="plots",histdir="",era=""
     for stack, variable in stacks.iteritems():
       outhists.cd(selection.filename)
       for h in stack.hists:
-        h.Write(h.GetName().replace("QCD_","QCD") + tag,R.TH1.kOverwrite)
+        if "QCD" in  h.GetName():
+            h.Write(h.GetName().replace("m_vis_QCD_","QCD"),R.TH1.kOverwrite)
+        if  "m_vis_SingleElectron_Run2017" in  h.GetName():
+            h.Write(h.GetName().replace("m_vis_SingleElectron_Run2017","data_obs"),R.TH1.kOverwrite)
+        if  "m_vis" in h.GetName():
+            h.Write(h.GetName().replace("m_vis_",""),R.TH1.kOverwrite)
       stack.draw()
       stack.drawlegend(x1=0.40,x2=0.95,y1=0.70,y2=0.95)
       stack.drawtext(text)
@@ -369,7 +375,7 @@ def main(args):
   tag      = args.tag
   fpattern = args.picopattern
 
-  setera(era) # set era for plot style and lumi-xsec normalization
+  setera(era,extra="Work in progress") # set era for plot style and lumi-xsec normalization
   sampleset = getsampleset(channel,era,file=fpattern,tag=tag,table=True)
   plot(sampleset,channel,parallel=parallel,tag=tag,outdir=outdir,histdir=histdir,era=era)
   
@@ -397,6 +403,3 @@ if __name__ == "__main__":
   PLOG.verbosity = args.verbosity
   main(args)
   print "\n>>> Done."
-  
-
-
