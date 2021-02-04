@@ -45,6 +45,12 @@ git clone https://github.com/cms-tau-pog/TauIDSFs TauPOG/TauIDSFs
 cmsenv
 scram b -j4
 ```
+If you want to use the Lepton IdIso efficiencies provided for CMS-HTT analyses ([`LeptonEfficiencies`](https://github.com/CMS-HTT/LeptonEfficiencies)) run:
+```
+cd $CMSSW_BASE/src/TauFW/PicoProducer/data/lepton
+git clone https://github.com/CMS-HTT/LeptonEfficiencies.git HTT
+cd -
+```
 
 ### Fitter and Combine tools
 If you want to use the `Combine` tools in `Fitter`, install
