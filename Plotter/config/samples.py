@@ -16,7 +16,7 @@ def getsampleset(channel,era,**kwargs):
   if era=='2016':
     expsamples = [ # table of MC samples to be converted to Sample objects
       # GROUP NAME                     TITLE                 XSEC      EXTRA OPTIONS
-      ( 'DY', "DYJetsToLL_M-10to50",   "Drell-Yan 10-50",    18610.0, {'extraweight': 'zptweight'} ),
+      #( 'DY', "DYJetsToLL_M-10to50",   "Drell-Yan 10-50",    18610.0, {'extraweight': 'zptweight'} ),#LOR CHANGE
       ( 'DY', "DYJetsToLL_M-50",       "Drell-Yan 50",        4963.0, {'extraweight': 'zptweight'} ),
       ( 'DY', "DY1JetsToLL_M-50",      "Drell-Yan 1J 50",     1012.0, {'extraweight': 'zptweight'} ),
       ( 'DY', "DY2JetsToLL_M-50",      "Drell-Yan 2J 50",      334.7, {'extraweight': 'zptweight'} ),
@@ -39,7 +39,7 @@ def getsampleset(channel,era,**kwargs):
   elif era=='2017':
     expsamples = [ # table of MC samples to be converted to Sample objects
       # GROUP NAME                     TITLE                 XSEC      EXTRA OPTIONS
-      ( 'DY', "DYJetsToLL_M-10to50",   "Drell-Yan 10-50",    18610.0, {'extraweight': 'zptweight'} ),
+      #( 'DY', "DYJetsToLL_M-10to50",   "Drell-Yan 10-50",    18610.0, {'extraweight': 'zptweight'} ),#LOR CHANGE
       ( 'DY', "DYJetsToLL_M-50",       "Drell-Yan 50",        5343.0, {'extraweight': 'zptweight'} ),
       ( 'DY', "DY1JetsToLL_M-50",      "Drell-Yan 1J 50",      877.8, {'extraweight': 'zptweight'} ),
       ( 'DY', "DY2JetsToLL_M-50",      "Drell-Yan 2J 50",      304.4, {'extraweight': 'zptweight'} ),
@@ -89,7 +89,7 @@ def getsampleset(channel,era,**kwargs):
   elif era=='2018':
     expsamples = [ # table of MC samples to be converted to Sample objects
       # GROUP NAME                     TITLE                 XSEC      EXTRA OPTIONS
-      ( 'DY', "DYJetsToLL_M-10to50",   "Drell-Yan 10-50",    18610.0, {'extraweight': 'zptweight'} ),
+      #( 'DY', "DYJetsToLL_M-10to50",   "Drell-Yan 10-50",    18610.0, {'extraweight': 'zptweight'} ),#LOR CHANGE
       ( 'DY', "DYJetsToLL_M-50",       "Drell-Yan 50",        4963.0, {'extraweight': 'zptweight'} ),
       ( 'DY', "DY1JetsToLL_M-50",      "Drell-Yan 1J 50",     1012.0, {'extraweight': 'zptweight'} ),
       ( 'DY', "DY2JetsToLL_M-50",      "Drell-Yan 2J 50",      334.7, {'extraweight': 'zptweight'} ),
