@@ -256,6 +256,8 @@ def getlepvetoes(event, electrons, muons, taus, channel):
       if electron1.charge*electron2.charge<0 and electron1.DeltaR(electron2)>0.20:
         dilepton_veto = True
         break
+  else :
+    print "WARNING: dilepton veto implemented only for channel={mutau,etau,eletau}, please check implementation in PicoProducer/python/analysis/utils.py"
   
   return extramuon_veto, extraelec_veto, dilepton_veto
   
