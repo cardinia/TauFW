@@ -1,0 +1,56 @@
+{
+  "time": "2021-02-07 21:46:55.929202", 
+  "group": "ST", 
+  "paths": [
+    "/ST_tW_top_5f_inclusiveDecays_TuneCP5_PSweights_13TeV-powheg-pythia8/RunIISummer16NanoAODv6-PUMoriond17_Nano25Oct2019_102X_mcRun2_asymptotic_v7-v1/NANOAODSIM"
+  ], 
+  "name": "ST_tW_top", 
+  "nevents": 0, 
+  "dtype": "mc", 
+  "channel": "etau", 
+  "module": "ModuleETau", 
+  "extraopts": [
+    "jec=False"
+  ], 
+  "jobname": "ST_tW_top_etau", 
+  "jobtag": "_etau_try1", 
+  "tag": "", 
+  "postfix": "_etau", 
+  "try": 1, 
+  "jobids": [
+    1885069
+  ], 
+  "outdir": "/eos/home-l/lvigilan/output_ETauFR/2016/etau/ST_tW_top", 
+  "jobdir": "output_ETauFR/2016/etau/ST_tW_top", 
+  "cfgdir": "output_ETauFR/2016/etau/ST_tW_top/config", 
+  "logdir": "output_ETauFR/2016/etau/ST_tW_top/log", 
+  "cfgname": "output_ETauFR/2016/etau/ST_tW_top/config/jobconfig_etau_try1.json", 
+  "joblist": "output_ETauFR/2016/etau/ST_tW_top/config/jobarglist_etau_try1.txt", 
+  "nfiles": 6, 
+  "files": [
+    "root://cms-xrd-global.cern.ch//store/mc/RunIISummer16NanoAODv6/ST_tW_top_5f_inclusiveDecays_TuneCP5_PSweights_13TeV-powheg-pythia8/NANOAODSIM/PUMoriond17_Nano25Oct2019_102X_mcRun2_asymptotic_v7-v1/270000/3E93BFB1-FB9C-064D-9102-BAC088242555.root", 
+    "root://cms-xrd-global.cern.ch//store/mc/RunIISummer16NanoAODv6/ST_tW_top_5f_inclusiveDecays_TuneCP5_PSweights_13TeV-powheg-pythia8/NANOAODSIM/PUMoriond17_Nano25Oct2019_102X_mcRun2_asymptotic_v7-v1/270000/52E8898C-5AE4-DB48-9E14-E74F94B3DA43.root", 
+    "root://cms-xrd-global.cern.ch//store/mc/RunIISummer16NanoAODv6/ST_tW_top_5f_inclusiveDecays_TuneCP5_PSweights_13TeV-powheg-pythia8/NANOAODSIM/PUMoriond17_Nano25Oct2019_102X_mcRun2_asymptotic_v7-v1/270000/666859E5-C5EC-A746-B5A4-B16BF91B68CF.root", 
+    "root://cms-xrd-global.cern.ch//store/mc/RunIISummer16NanoAODv6/ST_tW_top_5f_inclusiveDecays_TuneCP5_PSweights_13TeV-powheg-pythia8/NANOAODSIM/PUMoriond17_Nano25Oct2019_102X_mcRun2_asymptotic_v7-v1/270000/A72419AF-D500-8249-A8D3-6FE01BC9FF4F.root", 
+    "root://cms-xrd-global.cern.ch//store/mc/RunIISummer16NanoAODv6/ST_tW_top_5f_inclusiveDecays_TuneCP5_PSweights_13TeV-powheg-pythia8/NANOAODSIM/PUMoriond17_Nano25Oct2019_102X_mcRun2_asymptotic_v7-v1/270000/D7D0B7EE-ADA6-6847-B981-CEC5F45F9FB7.root", 
+    "root://cms-xrd-global.cern.ch//store/mc/RunIISummer16NanoAODv6/ST_tW_top_5f_inclusiveDecays_TuneCP5_PSweights_13TeV-powheg-pythia8/NANOAODSIM/PUMoriond17_Nano25Oct2019_102X_mcRun2_asymptotic_v7-v1/270000/DD5C72A7-5B9E-5F4C-AEE0-A6669E150D0B.root"
+  ], 
+  "nfilesperjob": 5, 
+  "nchunks": 2, 
+  "chunks": [
+    0, 
+    1
+  ], 
+  "chunkdict": {
+    "0": [
+      "root://cms-xrd-global.cern.ch//store/mc/RunIISummer16NanoAODv6/ST_tW_top_5f_inclusiveDecays_TuneCP5_PSweights_13TeV-powheg-pythia8/NANOAODSIM/PUMoriond17_Nano25Oct2019_102X_mcRun2_asymptotic_v7-v1/270000/3E93BFB1-FB9C-064D-9102-BAC088242555.root", 
+      "root://cms-xrd-global.cern.ch//store/mc/RunIISummer16NanoAODv6/ST_tW_top_5f_inclusiveDecays_TuneCP5_PSweights_13TeV-powheg-pythia8/NANOAODSIM/PUMoriond17_Nano25Oct2019_102X_mcRun2_asymptotic_v7-v1/270000/52E8898C-5AE4-DB48-9E14-E74F94B3DA43.root", 
+      "root://cms-xrd-global.cern.ch//store/mc/RunIISummer16NanoAODv6/ST_tW_top_5f_inclusiveDecays_TuneCP5_PSweights_13TeV-powheg-pythia8/NANOAODSIM/PUMoriond17_Nano25Oct2019_102X_mcRun2_asymptotic_v7-v1/270000/666859E5-C5EC-A746-B5A4-B16BF91B68CF.root", 
+      "root://cms-xrd-global.cern.ch//store/mc/RunIISummer16NanoAODv6/ST_tW_top_5f_inclusiveDecays_TuneCP5_PSweights_13TeV-powheg-pythia8/NANOAODSIM/PUMoriond17_Nano25Oct2019_102X_mcRun2_asymptotic_v7-v1/270000/A72419AF-D500-8249-A8D3-6FE01BC9FF4F.root", 
+      "root://cms-xrd-global.cern.ch//store/mc/RunIISummer16NanoAODv6/ST_tW_top_5f_inclusiveDecays_TuneCP5_PSweights_13TeV-powheg-pythia8/NANOAODSIM/PUMoriond17_Nano25Oct2019_102X_mcRun2_asymptotic_v7-v1/270000/D7D0B7EE-ADA6-6847-B981-CEC5F45F9FB7.root"
+    ], 
+    "1": [
+      "root://cms-xrd-global.cern.ch//store/mc/RunIISummer16NanoAODv6/ST_tW_top_5f_inclusiveDecays_TuneCP5_PSweights_13TeV-powheg-pythia8/NANOAODSIM/PUMoriond17_Nano25Oct2019_102X_mcRun2_asymptotic_v7-v1/270000/DD5C72A7-5B9E-5F4C-AEE0-A6669E150D0B.root"
+    ]
+  }
+}

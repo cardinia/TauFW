@@ -1,0 +1,104 @@
+000 (1891928.004.000) 02/08 17:04:34 Job submitted from host: <188.185.70.244:9618?addrs=188.185.70.244-9618+[2001-1458-d00-7--100-2ee]-9618&alias=bigbird10.cern.ch&noUDP&sock=schedd_1882_7954_12>
+...
+040 (1891928.004.000) 02/08 17:14:01 Started transferring input files
+	Transferring to host: <128.142.116.173:9618?addrs=128.142.116.173-9618+[2001-1458-301-ae--100-5b1]-9618&noUDP&sock=18361_bc44_105883>
+...
+040 (1891928.004.000) 02/08 17:14:01 Finished transferring input files
+...
+001 (1891928.004.000) 02/08 17:14:02 Job executing on host: <128.142.116.173:9618?addrs=128.142.116.173-9618+[2001-1458-301-ae--100-5b1]-9618&noUDP&sock=18226_1937_3>
+...
+006 (1891928.004.000) 02/08 17:14:11 Image size of job updated: 39292
+	28  -  MemoryUsage of job (MB)
+	28288  -  ResidentSetSize of job (KB)
+...
+006 (1891928.004.000) 02/08 17:19:12 Image size of job updated: 390828
+	343  -  MemoryUsage of job (MB)
+	351192  -  ResidentSetSize of job (KB)
+...
+006 (1891928.004.000) 02/08 17:24:12 Image size of job updated: 390828
+	345  -  MemoryUsage of job (MB)
+	352544  -  ResidentSetSize of job (KB)
+...
+006 (1891928.004.000) 02/08 17:29:12 Image size of job updated: 390828
+	345  -  MemoryUsage of job (MB)
+	353264  -  ResidentSetSize of job (KB)
+...
+006 (1891928.004.000) 02/08 17:34:13 Image size of job updated: 390828
+	346  -  MemoryUsage of job (MB)
+	354004  -  ResidentSetSize of job (KB)
+...
+006 (1891928.004.000) 02/08 17:39:13 Image size of job updated: 390828
+	346  -  MemoryUsage of job (MB)
+	354304  -  ResidentSetSize of job (KB)
+...
+006 (1891928.004.000) 02/08 17:44:13 Image size of job updated: 390828
+	347  -  MemoryUsage of job (MB)
+	354768  -  ResidentSetSize of job (KB)
+...
+006 (1891928.004.000) 02/08 17:49:14 Image size of job updated: 390828
+	354  -  MemoryUsage of job (MB)
+	361700  -  ResidentSetSize of job (KB)
+...
+006 (1891928.004.000) 02/08 17:54:15 Image size of job updated: 390828
+	354  -  MemoryUsage of job (MB)
+	361740  -  ResidentSetSize of job (KB)
+...
+006 (1891928.004.000) 02/08 17:59:15 Image size of job updated: 390828
+	354  -  MemoryUsage of job (MB)
+	361756  -  ResidentSetSize of job (KB)
+...
+006 (1891928.004.000) 02/08 18:04:16 Image size of job updated: 390828
+	354  -  MemoryUsage of job (MB)
+	361776  -  ResidentSetSize of job (KB)
+...
+006 (1891928.004.000) 02/08 18:09:17 Image size of job updated: 390828
+	354  -  MemoryUsage of job (MB)
+	361792  -  ResidentSetSize of job (KB)
+...
+006 (1891928.004.000) 02/08 18:14:17 Image size of job updated: 390828
+	354  -  MemoryUsage of job (MB)
+	361812  -  ResidentSetSize of job (KB)
+...
+006 (1891928.004.000) 02/08 18:19:17 Image size of job updated: 390828
+	354  -  MemoryUsage of job (MB)
+	361836  -  ResidentSetSize of job (KB)
+...
+006 (1891928.004.000) 02/08 18:24:18 Image size of job updated: 390828
+	354  -  MemoryUsage of job (MB)
+	361852  -  ResidentSetSize of job (KB)
+...
+006 (1891928.004.000) 02/08 18:29:18 Image size of job updated: 390828
+	354  -  MemoryUsage of job (MB)
+	361876  -  ResidentSetSize of job (KB)
+...
+006 (1891928.004.000) 02/08 18:34:18 Image size of job updated: 390828
+	354  -  MemoryUsage of job (MB)
+	361892  -  ResidentSetSize of job (KB)
+...
+006 (1891928.004.000) 02/08 18:39:19 Image size of job updated: 390828
+	354  -  MemoryUsage of job (MB)
+	361908  -  ResidentSetSize of job (KB)
+...
+006 (1891928.004.000) 02/08 18:44:19 Image size of job updated: 390828
+	354  -  MemoryUsage of job (MB)
+	361916  -  ResidentSetSize of job (KB)
+...
+006 (1891928.004.000) 02/08 18:49:19 Image size of job updated: 390828
+	354  -  MemoryUsage of job (MB)
+	361936  -  ResidentSetSize of job (KB)
+...
+006 (1891928.004.000) 02/08 18:54:20 Image size of job updated: 390828
+	354  -  MemoryUsage of job (MB)
+	361952  -  ResidentSetSize of job (KB)
+...
+006 (1891928.004.000) 02/08 19:19:22 Image size of job updated: 390828
+	354  -  MemoryUsage of job (MB)
+	362304  -  ResidentSetSize of job (KB)
+...
+040 (1891928.004.000) 02/08 22:48:13 Started transferring output files
+...
+040 (1891928.004.000) 02/08 22:48:14 Finished transferring output files
+...
+009 (1891928.004.000) 02/08 22:48:14 Job was aborted by the user.
+	Job removed by SYSTEM_PERIODIC_REMOVE due to wall time exceeded allowed max.
+...

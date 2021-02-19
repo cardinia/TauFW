@@ -7,7 +7,7 @@
 import os, re
 from TauFW.Plotter.plot.utils import *
 import ROOT
-from ROOT import gStyle, gPad, TH1, THStack, TProfile, TGraph, TGraphAsymmErrors, TLine
+from ROOT import TH1, TProfile, TLine
 
 
 class Ratio(object):
@@ -82,11 +82,11 @@ class Ratio(object):
       #seterrorbandstyle(self.errband,style='hatched',color=errband.GetFillColor())
     
     self.histden = histden
-    self.frame   = self.histden.Clone("frame_ratio_%s"%(self.histden.GetName()))
-    self.frame.Reset() # make empty
-    self.frame.SetLineColor(0)
-    self.frame.SetLineWidth(0)
-    self.frame.SetMarkerSize(0)
+    #self.frame   = self.histden.Clone("frame_ratio_%s"%(self.histden.GetName()))
+    #self.frame.Reset() # make empty
+    #self.frame.SetLineColor(0)
+    #self.frame.SetLineWidth(0)
+    #self.frame.SetMarkerSize(0)
     
   
   def draw(self, option=None, **kwargs):
@@ -98,11 +98,12 @@ class Ratio(object):
     ymin        = kwargs.get('ymin',    0.75     )
     ymax        = kwargs.get('ymax',    1.25     )
     data        = kwargs.get('data',    False   )
-    ytitle      = kwargs.get('ytitle',  "Obs. / Exp." if data else "Ratio" )
-    xtitle      = kwargs.get('xtitle',  ""      )
+    ytitle      = kwargs.get('ytitle', "Obs. / Exp." if data else "Ratio" )
+    xtitle      = kwargs.get('xtitle', ""      )
     size        = 1.0 if data else 0.0 #0.9
     #self.frame  = gPad.DrawFrame(xmin,ymin,xmax,ymax)
-    frame       = self.frame
+    frame       = getframe(gPad,self.histden,xmin=xmin,xmax=xmax)
+    self.frame  = frame
     
     frame.GetYaxis().SetTitle(ytitle)
     frame.GetXaxis().SetTitle(xtitle)
@@ -122,7 +123,9 @@ class Ratio(object):
       self.errband.Draw('2 SAME')
     
     if self.line:
-      self.line = TLine(xmin,1,xmax,1)
+      self.line = TGraph(2) #TLine(xmin,1,xmax,1)
+      self.line.SetPoint(0,xmin,1.)
+      self.line.SetPoint(1,xmax,1.)
       if data:
         self.line.SetLineColor(12)
         self.line.SetLineWidth(1)
@@ -131,7 +134,7 @@ class Ratio(object):
         self.line.SetLineColor(self.histden.GetLineColor())
         self.line.SetLineWidth(self.histden.GetLineWidth())
         self.line.SetLineStyle(1)
-      self.line.Draw('SAME') # only draw line if a histogram has been drawn!
+      self.line.Draw('LSAME') # only draw line if a histogram has been drawn!
     
     for ratio in self.ratios:
       ratio.SetMaximum(ymax*1e10)

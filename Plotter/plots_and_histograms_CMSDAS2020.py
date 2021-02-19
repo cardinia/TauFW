@@ -147,7 +147,6 @@ def getsampleset(channel,era,**kwargs):
   datasample = ('Data',dataset) # Data for chosen channel
   
 
-
   # SAMPLE SET
   # TODO section 5: This weight needs to be extended with correction weights common to all simulated samples (MC)
   weight = "genweight/abs(genweight)" # normalize weight, since sometimes the generator cross-section is contained in it.
@@ -195,7 +194,6 @@ def plot(sampleset,channel,parallel=True,tag="",outdir="plots",histdir="",era=""
   
   # SELECTIONS
   inclusive = "(q_1*q_2<0)"
-  
   inclusive_cr_qcd = inclusive.replace("q_1*q_2<0","q_1*q_2>0") # inverting the opposite-sign requirement of the mutau pair into a same-sign requirment
   #general_cuts = "(iso_1<0.1)&&(pt_1>26.0)&&(pt_2>20.0)&&(eta_1>-2.1)&&(eta_1<2.1)&&(eta_2>-2.3)&&(eta_2<2.3)&&!lepton_vetoes_notau&&metfilter"
   general_cuts='iso_1<0.1 && pt_1>26.0 && pt_2>20.0 && abs(eta_1)<2.1 && abs(eta_2)<2.3 && idDecayModeNewDMs_2 && idDeepTau2017v2p1VSjet_2>=16 && idDeepTau2017v2p1VSe_2>=1 && idDeepTau2017v2p1VSmu_2>=1  && q_1*q_2<0 && !lepton_vetoes_notau && metfilter'

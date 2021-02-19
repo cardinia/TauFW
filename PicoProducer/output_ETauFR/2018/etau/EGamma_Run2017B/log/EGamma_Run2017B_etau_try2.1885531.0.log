@@ -1,0 +1,96 @@
+Could not find platform independent libraries <prefix>
+Could not find platform dependent libraries <exec_prefix>
+Consider setting $PYTHONHOME to <prefix>[:<exec_prefix>]
+ImportError: No module named site
+Job start at Mon Feb  8 11:28:37 CET 2021
+Running job on machine Linux b7g50s1826.cern.ch 3.10.0-1127.19.1.el7.x86_64 #1 SMP Tue Aug 25 17:23:54 UTC 2020 x86_64 x86_64 x86_64 GNU/Linux, host b7g50s1826.cern.ch
+============================================================
+$PWD=/pool/condor/dir_8860
+$JOBID=1885531
+$TASKID=0
+$HOSTNAME=b7g50s1826.cern.ch
+$TASKCMD=/afs/cern.ch/work/l/lvigilan/TauWork/CMSSW_10_6_17_patch1/src/TauFW/PicoProducer/python/processors/picojob.py -y 2018 -d 'data' -c etau -M ModuleETau --copydir /eos/home-l/lvigilan/output_ETauFR/2018/etau/EGamma_Run2017B -t _etau_2 --opt 'jec=False' -i root://cms-xrd-global.cern.ch//store/data/Run2018B/EGamma/NANOAOD/Nano25Oct2019-v1/230000/2B35350A-5B41-3441-8391-7B049F8840FE.root root://cms-xrd-global.cern.ch//store/data/Run2018B/EGamma/NANOAOD/Nano25Oct2019-v1/230000/2F21AAB8-5112-0546-8403-1EEDC764FA16.root root://cms-xrd-global.cern.ch//store/data/Run2018B/EGamma/NANOAOD/Nano25Oct2019-v1/230000/310EA364-76AB-3040-AB26-2E3B70BC116C.root root://cms-xrd-global.cern.ch//store/data/Run2018B/EGamma/NANOAOD/Nano25Oct2019-v1/230000/3BFC7511-F9BD-2449-B8C8-8369C4299B87.root root://cms-xrd-global.cern.ch//store/data/Run2018B/EGamma/NANOAOD/Nano25Oct2019-v1/230000/434F71E8-5B00-C744-B3D3-3F32C0A45146.root
+$WORKDIR=/pool/condor/dir_8860
+>>> cd /afs/cern.ch/work/l/lvigilan/TauWork/CMSSW_10_6_17_patch1/src
+>>> eval `scramv1 runtime -sh`
+>>> cd /pool/condor/dir_8860
+$PWD=/pool/condor/dir_8860
+>>> /afs/cern.ch/work/l/lvigilan/TauWork/CMSSW_10_6_17_patch1/src/TauFW/PicoProducer/python/processors/picojob.py -y 2018 -d 'data' -c etau -M ModuleETau --copydir /eos/home-l/lvigilan/output_ETauFR/2018/etau/EGamma_Run2017B -t _etau_2 --opt 'jec=False' -i root://cms-xrd-global.cern.ch//store/data/Run2018B/EGamma/NANOAOD/Nano25Oct2019-v1/230000/2B35350A-5B41-3441-8391-7B049F8840FE.root root://cms-xrd-global.cern.ch//store/data/Run2018B/EGamma/NANOAOD/Nano25Oct2019-v1/230000/2F21AAB8-5112-0546-8403-1EEDC764FA16.root root://cms-xrd-global.cern.ch//store/data/Run2018B/EGamma/NANOAOD/Nano25Oct2019-v1/230000/310EA364-76AB-3040-AB26-2E3B70BC116C.root root://cms-xrd-global.cern.ch//store/data/Run2018B/EGamma/NANOAOD/Nano25Oct2019-v1/230000/3BFC7511-F9BD-2449-B8C8-8369C4299B87.root root://cms-xrd-global.cern.ch//store/data/Run2018B/EGamma/NANOAOD/Nano25Oct2019-v1/230000/434F71E8-5B00-C744-B3D3-3F32C0A45146.root
+Error in <TGClient::TGClient>: can't open display "localhost:50.0", switching to batch mode...
+ In case you run from a remote ssh session, reconnect with ssh -Y
+Error in <TNetXNGFile::Open>: [ERROR] Server responded with an error: [3010] Unable to access - public access level restriction /eos/vbc/experiments/cms/store/data/Run2018B/EGamma/NANOAOD/Nano25Oct2019-v1/230000/2B35350A-5B41-3441-8391-7B049F8840FE.root; Permission denied
+
+--------------------------------------------------------------------------------
+>>> era          = '2018'
+>>> year         = 2018
+>>> channel      = 'etau'
+>>> modname      = 'ModuleETau'
+>>> dtype        = 'data'
+>>> kwargs       = {'dtype': 'data', 'verb': 0, 'era': '2018', 'jec': False, 'year': 2018}
+>>> maxevts      = None
+>>> outdir       = '.'
+>>> copydir      = '/eos/home-l/lvigilan/output_ETauFR/2018/etau/EGamma_Run2017B'
+>>> infiles      = ['root://cms-xrd-global.cern.ch//store/data/Run2018B/EGamma/NANOAOD/Nano25Oct2019-v1/230000/2B35350A-5B41-3441-8391-7B049F8840FE.root', 'root://cms-xrd-global.cern.ch//store/data/Run2018B/EGamma/NANOAOD/Nano25Oct2019-v1/230000/2F21AAB8-5112-0546-8403-1EEDC764FA16.root', 'root://cms-xrd-global.cern.ch//store/data/Run2018B/EGamma/NANOAOD/Nano25Oct2019-v1/230000/310EA364-76AB-3040-AB26-2E3B70BC116C.root', 'root://cms-xrd-global.cern.ch//store/data/Run2018B/EGamma/NANOAOD/Nano25Oct2019-v1/230000/3BFC7511-F9BD-2449-B8C8-8369C4299B87.root', 'root://cms-xrd-global.cern.ch//store/data/Run2018B/EGamma/NANOAOD/Nano25Oct2019-v1/230000/434F71E8-5B00-C744-B3D3-3F32C0A45146.root']
+>>> outfname     = './pico_etau_etau_2.root'
+>>> branchsel    = '/afs/cern.ch/work/l/lvigilan/TauWork/CMSSW_10_6_17_patch1/python/TauFW/PicoProducer/processors/keep_and_drop_skim.txt'
+>>> json         = '/afs/cern.ch/work/l/lvigilan/TauWork/CMSSW_10_6_17_patch1/src/TauFW/PicoProducer/data/json/2018/Cert_314472-325175_13TeV_PromptReco_Collisions18_JSON.txt'
+>>> prefetch     = False
+>>> cwd          = /pool/condor/dir_8860
+--------------------------------------------------------------------------------
+
+   ################
+   #  ModuleETau  #
+   ################
+
+Loading TreeProducerETau for './pico_etau_etau_2.root'
+--------------------------------------------------------------------------------
+>>> filename     = './pico_etau_etau_2.root'
+>>> year         = 2018
+>>> dtype        = 'data'
+>>> channel      = 'etau'
+>>> ismc         = False
+>>> isdata       = True
+>>> isembed      = False
+>>> tes          = None
+>>> tessys       = None
+>>> ltf          = 1.0
+>>> jtf          = 1.0
+>>> dotoppt      = False
+>>> dozpt        = False
+>>> dojec        = False
+>>> dojecsys     = False
+>>> dotight      = False
+>>> jetCutPt     = 30
+>>> bjetCutEta   = 2.7
+>>> tauwp        = 0
+>>> eleCutPt     = 33
+>>> eleCutEta    = 2.1
+>>> tauCutPt     = 20
+>>> tauCutEta    = 2.3
+Traceback (most recent call last):
+  File "/afs/cern.ch/work/l/lvigilan/TauWork/CMSSW_10_6_17_patch1/src/TauFW/PicoProducer/python/processors/picojob.py", line 111, in <module>
+    p.run()
+  File "/afs/cern.ch/work/l/lvigilan/TauWork/CMSSW_10_6_17_patch1/python/PhysicsTools/NanoAODTools/postprocessing/framework/postprocessor.py", line 163, in run
+    inTree = inFile.Get("Events")
+ReferenceError: attempt to access a null-pointer
+
+Job complete at Mon Feb  8 11:28:46 CET 2021
+Took 0 minutes 10 seconds040 (1885531.000.000) 02/08 11:28:47 Started transferring output files
+...
+040 (1885531.000.000) 02/08 11:28:47 Finished transferring output files
+...
+005 (1885531.000.000) 02/08 11:28:47 Job terminated.
+	(1) Normal termination (return value 0)
+		Usr 0 00:00:02, Sys 0 00:00:01  -  Run Remote Usage
+		Usr 0 00:00:00, Sys 0 00:00:00  -  Run Local Usage
+		Usr 0 00:00:02, Sys 0 00:00:01  -  Total Remote Usage
+		Usr 0 00:00:00, Sys 0 00:00:00  -  Total Local Usage
+	6379  -  Run Bytes Sent By Job
+	9902  -  Run Bytes Received By Job
+	6379  -  Total Bytes Sent By Job
+	9902  -  Total Bytes Received By Job
+	Partitionable Resources :    Usage  Request Allocated 
+	   Cpus                 :        0        1         1 
+	   Disk (KB)            :       77        1    322818 
+	   Memory (MB)          :       90     2000      2000 
+...

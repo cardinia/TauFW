@@ -1,0 +1,125 @@
+Could not find platform independent libraries <prefix>
+Could not find platform dependent libraries <exec_prefix>
+Consider setting $PYTHONHOME to <prefix>[:<exec_prefix>]
+ImportError: No module named site
+Job start at Sun Feb  7 21:53:12 CET 2021
+Running job on machine Linux b7g24n0180.cern.ch 3.10.0-957.5.1.el7.x86_64 #1 SMP Fri Feb 1 14:54:57 UTC 2019 x86_64 x86_64 x86_64 GNU/Linux, host b7g24n0180.cern.ch
+============================================================
+$PWD=/pool/condor/dir_18721
+$JOBID=1885128
+$TASKID=15
+$HOSTNAME=b7g24n0180.cern.ch
+$TASKCMD=/afs/cern.ch/work/l/lvigilan/TauWork/CMSSW_10_6_17_patch1/src/TauFW/PicoProducer/python/processors/picojob.py -y 2018 -d 'data' -c etau -M ModuleETau --copydir /eos/home-l/lvigilan/output_ETauFR/2018/etau/EGamma_Run2017B -t _etau_15 --opt 'jec=False' -i root://cms-xrd-global.cern.ch//store/data/Run2018B/EGamma/NANOAOD/Nano25Oct2019-v1/60000/2C6ECEEA-9D3A-234F-86D9-A0B9B273743A.root root://cms-xrd-global.cern.ch//store/data/Run2018B/EGamma/NANOAOD/Nano25Oct2019-v1/60000/2F86524D-5F10-E043-9A71-82E2828A0683.root root://cms-xrd-global.cern.ch//store/data/Run2018B/EGamma/NANOAOD/Nano25Oct2019-v1/60000/3DBFF294-676D-A246-B654-1AEFD345AB6F.root root://cms-xrd-global.cern.ch//store/data/Run2018B/EGamma/NANOAOD/Nano25Oct2019-v1/60000/740EA738-BC40-F647-8161-F231260F241F.root root://cms-xrd-global.cern.ch//store/data/Run2018B/EGamma/NANOAOD/Nano25Oct2019-v1/60000/774EFA36-228D-6945-9B1B-B7F04F77F9D5.root
+$WORKDIR=/pool/condor/dir_18721
+>>> cd /afs/cern.ch/work/l/lvigilan/TauWork/CMSSW_10_6_17_patch1/src
+>>> eval `scramv1 runtime -sh`
+>>> cd /pool/condor/dir_18721
+$PWD=/pool/condor/dir_18721
+>>> /afs/cern.ch/work/l/lvigilan/TauWork/CMSSW_10_6_17_patch1/src/TauFW/PicoProducer/python/processors/picojob.py -y 2018 -d 'data' -c etau -M ModuleETau --copydir /eos/home-l/lvigilan/output_ETauFR/2018/etau/EGamma_Run2017B -t _etau_15 --opt 'jec=False' -i root://cms-xrd-global.cern.ch//store/data/Run2018B/EGamma/NANOAOD/Nano25Oct2019-v1/60000/2C6ECEEA-9D3A-234F-86D9-A0B9B273743A.root root://cms-xrd-global.cern.ch//store/data/Run2018B/EGamma/NANOAOD/Nano25Oct2019-v1/60000/2F86524D-5F10-E043-9A71-82E2828A0683.root root://cms-xrd-global.cern.ch//store/data/Run2018B/EGamma/NANOAOD/Nano25Oct2019-v1/60000/3DBFF294-676D-A246-B654-1AEFD345AB6F.root root://cms-xrd-global.cern.ch//store/data/Run2018B/EGamma/NANOAOD/Nano25Oct2019-v1/60000/740EA738-BC40-F647-8161-F231260F241F.root root://cms-xrd-global.cern.ch//store/data/Run2018B/EGamma/NANOAOD/Nano25Oct2019-v1/60000/774EFA36-228D-6945-9B1B-B7F04F77F9D5.root
+Error in <TGClient::TGClient>: can't open display "localhost:40.0", switching to batch mode...
+ In case you run from a remote ssh session, reconnect with ssh -Y
+--------------------------------------------------------------------------------
+>>> era          = '2018'
+>>> year         = 2018
+>>> channel      = 'etau'
+>>> modname      = 'ModuleETau'
+>>> dtype        = 'data'
+>>> kwargs       = {'dtype': 'data', 'verb': 0, 'era': '2018', 'jec': False, 'year': 2018}
+>>> maxevts      = None
+>>> outdir       = '.'
+>>> copydir      = '/eos/home-l/lvigilan/output_ETauFR/2018/etau/EGamma_Run2017B'
+>>> infiles      = ['root://cms-xrd-global.cern.ch//store/data/Run2018B/EGamma/NANOAOD/Nano25Oct2019-v1/60000/2C6ECEEA-9D3A-234F-86D9-A0B9B273743A.root', 'root://cms-xrd-global.cern.ch//store/data/Run2018B/EGamma/NANOAOD/Nano25Oct2019-v1/60000/2F86524D-5F10-E043-9A71-82E2828A0683.root', 'root://cms-xrd-global.cern.ch//store/data/Run2018B/EGamma/NANOAOD/Nano25Oct2019-v1/60000/3DBFF294-676D-A246-B654-1AEFD345AB6F.root', 'root://cms-xrd-global.cern.ch//store/data/Run2018B/EGamma/NANOAOD/Nano25Oct2019-v1/60000/740EA738-BC40-F647-8161-F231260F241F.root', 'root://cms-xrd-global.cern.ch//store/data/Run2018B/EGamma/NANOAOD/Nano25Oct2019-v1/60000/774EFA36-228D-6945-9B1B-B7F04F77F9D5.root']
+>>> outfname     = './pico_etau_etau_15.root'
+>>> branchsel    = '/afs/cern.ch/work/l/lvigilan/TauWork/CMSSW_10_6_17_patch1/python/TauFW/PicoProducer/processors/keep_and_drop_skim.txt'
+>>> json         = '/afs/cern.ch/work/l/lvigilan/TauWork/CMSSW_10_6_17_patch1/src/TauFW/PicoProducer/data/json/2018/Cert_314472-325175_13TeV_PromptReco_Collisions18_JSON.txt'
+>>> prefetch     = False
+>>> cwd          = /pool/condor/dir_18721
+--------------------------------------------------------------------------------
+
+   ################
+   #  ModuleETau  #
+   ################
+
+Loading TreeProducerETau for './pico_etau_etau_15.root'
+--------------------------------------------------------------------------------
+>>> filename     = './pico_etau_etau_15.root'
+>>> year         = 2018
+>>> dtype        = 'data'
+>>> channel      = 'etau'
+>>> ismc         = False
+>>> isdata       = True
+>>> isembed      = False
+>>> tes          = None
+>>> tessys       = None
+>>> ltf          = 1.0
+>>> jtf          = 1.0
+>>> dotoppt      = False
+>>> dozpt        = False
+>>> dojec        = False
+>>> dojecsys     = False
+>>> dotight      = False
+>>> jetCutPt     = 30
+>>> bjetCutEta   = 2.7
+>>> tauwp        = 0
+>>> eleCutPt     = 33
+>>> eleCutEta    = 2.1
+>>> tauCutPt     = 20
+>>> tauCutEta    = 2.3
+Pre-select 291880 entries out of 325253 (89.74%)
+Processed    10000/  291880 entries,  3.43% (elapsed time    32.5s, curr speed    0.308 kHz, avg speed    0.308 kHz), accepted      321/   10001 events ( 3.21%)
+Processed    20000/  291880 entries,  6.85% (elapsed time    46.5s, curr speed    0.715 kHz, avg speed    0.430 kHz), accepted      668/   20001 events ( 3.34%)
+Processed    30000/  291880 entries, 10.28% (elapsed time    59.7s, curr speed    0.756 kHz, avg speed    0.503 kHz), accepted     1035/   30001 events ( 3.45%)
+Processed    40000/  291880 entries, 13.70% (elapsed time    77.0s, curr speed    0.576 kHz, avg speed    0.519 kHz), accepted     1437/   40001 events ( 3.59%)
+Processed    50000/  291880 entries, 17.13% (elapsed time   101.4s, curr speed    0.410 kHz, avg speed    0.493 kHz), accepted     1769/   50001 events ( 3.54%)
+Processed    60000/  291880 entries, 20.56% (elapsed time   116.6s, curr speed    0.661 kHz, avg speed    0.515 kHz), accepted     2099/   60001 events ( 3.50%)
+Processed    70000/  291880 entries, 23.98% (elapsed time   133.6s, curr speed    0.588 kHz, avg speed    0.524 kHz), accepted     2433/   70001 events ( 3.48%)
+Processed    80000/  291880 entries, 27.41% (elapsed time   150.3s, curr speed    0.599 kHz, avg speed    0.532 kHz), accepted     2769/   80001 events ( 3.46%)
+Processed    90000/  291880 entries, 30.83% (elapsed time   173.3s, curr speed    0.435 kHz, avg speed    0.519 kHz), accepted     3088/   90001 events ( 3.43%)
+Processed   100000/  291880 entries, 34.26% (elapsed time   189.8s, curr speed    0.603 kHz, avg speed    0.527 kHz), accepted     3360/  100001 events ( 3.36%)
+Processed   110000/  291880 entries, 37.69% (elapsed time   210.5s, curr speed    0.485 kHz, avg speed    0.523 kHz), accepted     3663/  110001 events ( 3.33%)
+Processed   120000/  291880 entries, 41.11% (elapsed time   231.9s, curr speed    0.467 kHz, avg speed    0.517 kHz), accepted     3938/  120001 events ( 3.28%)
+Processed   130000/  291880 entries, 44.54% (elapsed time   250.6s, curr speed    0.535 kHz, avg speed    0.519 kHz), accepted     4239/  130001 events ( 3.26%)
+Processed   140000/  291880 entries, 47.96% (elapsed time   271.9s, curr speed    0.470 kHz, avg speed    0.515 kHz), accepted     4617/  140001 events ( 3.30%)
+Processed   150000/  291880 entries, 51.39% (elapsed time   289.5s, curr speed    0.567 kHz, avg speed    0.518 kHz), accepted     4924/  150001 events ( 3.28%)
+Processed   160000/  291880 entries, 54.82% (elapsed time   308.6s, curr speed    0.525 kHz, avg speed    0.519 kHz), accepted     5208/  160001 events ( 3.25%)
+Processed   170000/  291880 entries, 58.24% (elapsed time   336.3s, curr speed    0.360 kHz, avg speed    0.505 kHz), accepted     5545/  170001 events ( 3.26%)
+Processed   180000/  291880 entries, 61.67% (elapsed time   354.6s, curr speed    0.548 kHz, avg speed    0.508 kHz), accepted     5918/  180001 events ( 3.29%)
+Processed   190000/  291880 entries, 65.10% (elapsed time   376.4s, curr speed    0.458 kHz, avg speed    0.505 kHz), accepted     6289/  190001 events ( 3.31%)
+Processed   200000/  291880 entries, 68.52% (elapsed time   397.6s, curr speed    0.472 kHz, avg speed    0.503 kHz), accepted     6612/  200001 events ( 3.31%)
+Processed   210000/  291880 entries, 71.95% (elapsed time   416.3s, curr speed    0.534 kHz, avg speed    0.504 kHz), accepted     6924/  210001 events ( 3.30%)
+Processed   220000/  291880 entries, 75.37% (elapsed time   440.4s, curr speed    0.416 kHz, avg speed    0.500 kHz), accepted     7268/  220001 events ( 3.30%)
+Processed   230000/  291880 entries, 78.80% (elapsed time   466.5s, curr speed    0.383 kHz, avg speed    0.493 kHz), accepted     7616/  230001 events ( 3.31%)
+Processed   240000/  291880 entries, 82.23% (elapsed time   498.5s, curr speed    0.313 kHz, avg speed    0.481 kHz), accepted     7951/  240001 events ( 3.31%)
+Processed   250000/  291880 entries, 85.65% (elapsed time   519.7s, curr speed    0.472 kHz, avg speed    0.481 kHz), accepted     8316/  250001 events ( 3.33%)
+Processed   260000/  291880 entries, 89.08% (elapsed time   543.1s, curr speed    0.427 kHz, avg speed    0.479 kHz), accepted     8662/  260001 events ( 3.33%)
+Processed   270000/  291880 entries, 92.50% (elapsed time   562.0s, curr speed    0.527 kHz, avg speed    0.480 kHz), accepted     9036/  270001 events ( 3.35%)
+Processed   280000/  291880 entries, 95.93% (elapsed time   597.6s, curr speed    0.281 kHz, avg speed    0.469 kHz), accepted     9430/  280001 events ( 3.37%)
+Processed   290000/  291880 entries, 99.36% (elapsed time   629.6s, curr speed    0.313 kHz, avg speed    0.461 kHz), accepted     9800/  290001 events ( 3.38%)
+Error in <TNetXNGFile::Open>: [ERROR] Server responded with an error: [3010] Unable to access - public access level restriction /eos/vbc/experiments/cms/store/data/Run2018B/EGamma/NANOAOD/Nano25Oct2019-v1/60000/2F86524D-5F10-E043-9A71-82E2828A0683.root; Permission denied
+
+Processed 291880 preselected entries from root://cms-xrd-global.cern.ch//store/data/Run2018B/EGamma/NANOAOD/Nano25Oct2019-v1/60000/2C6ECEEA-9D3A-234F-86D9-A0B9B273743A.root (325253 entries). Finally selected 9861 entries
+Traceback (most recent call last):
+  File "/afs/cern.ch/work/l/lvigilan/TauWork/CMSSW_10_6_17_patch1/src/TauFW/PicoProducer/python/processors/picojob.py", line 111, in <module>
+    p.run()
+  File "/afs/cern.ch/work/l/lvigilan/TauWork/CMSSW_10_6_17_patch1/python/PhysicsTools/NanoAODTools/postprocessing/framework/postprocessor.py", line 163, in run
+    inTree = inFile.Get("Events")
+ReferenceError: attempt to access a null-pointer
+
+Job complete at Sun Feb  7 22:08:10 CET 2021
+Took 14 minutes 58 seconds040 (1885128.015.000) 02/07 22:08:10 Finished transferring output files
+...
+005 (1885128.015.000) 02/07 22:08:11 Job terminated.
+	(1) Normal termination (return value 0)
+		Usr 0 00:01:12, Sys 0 00:00:04  -  Run Remote Usage
+		Usr 0 00:00:00, Sys 0 00:00:00  -  Run Local Usage
+		Usr 0 00:01:12, Sys 0 00:00:04  -  Total Remote Usage
+		Usr 0 00:00:00, Sys 0 00:00:00  -  Total Local Usage
+	1180430  -  Run Bytes Sent By Job
+	9877  -  Run Bytes Received By Job
+	1180430  -  Total Bytes Sent By Job
+	9877  -  Total Bytes Received By Job
+	Partitionable Resources :    Usage  Request Allocated 
+	   Cpus                 :     0.04        1         1 
+	   Disk (KB)            :  1224           1    291975 
+	   Memory (MB)          :   204        2000      2000 
+...

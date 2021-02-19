@@ -1,0 +1,96 @@
+000 (1891925.006.000) 02/08 17:02:58 Job submitted from host: <188.185.70.244:9618?addrs=188.185.70.244-9618+[2001-1458-d00-7--100-2ee]-9618&alias=bigbird10.cern.ch&noUDP&sock=schedd_1882_7954_12>
+...
+040 (1891925.006.000) 02/08 17:07:37 Started transferring input files
+	Transferring to host: <188.184.169.161:9618?addrs=188.184.169.161-9618+[2001-1458-301-c0--100-40c]-9618&alias=b7g52n2823.cern.ch&noUDP&sock=slot1_13_10075_7fb3_3223>
+...
+040 (1891925.006.000) 02/08 17:07:37 Finished transferring input files
+...
+001 (1891925.006.000) 02/08 17:07:38 Job executing on host: <188.184.169.161:9618?addrs=188.184.169.161-9618+[2001-1458-301-c0--100-40c]-9618&alias=b7g52n2823.cern.ch&noUDP&sock=startd_17659_2f04>
+...
+006 (1891925.006.000) 02/08 17:07:47 Image size of job updated: 342136
+	190  -  MemoryUsage of job (MB)
+	194092  -  ResidentSetSize of job (KB)
+...
+006 (1891925.006.000) 02/08 17:12:48 Image size of job updated: 1013568
+	296  -  MemoryUsage of job (MB)
+	302712  -  ResidentSetSize of job (KB)
+...
+006 (1891925.006.000) 02/08 17:17:49 Image size of job updated: 1018492
+	302  -  MemoryUsage of job (MB)
+	308780  -  ResidentSetSize of job (KB)
+...
+006 (1891925.006.000) 02/08 17:22:49 Image size of job updated: 1018492
+	302  -  MemoryUsage of job (MB)
+	308948  -  ResidentSetSize of job (KB)
+...
+006 (1891925.006.000) 02/08 17:27:49 Image size of job updated: 1018492
+	302  -  MemoryUsage of job (MB)
+	309072  -  ResidentSetSize of job (KB)
+...
+006 (1891925.006.000) 02/08 17:32:50 Image size of job updated: 1018492
+	303  -  MemoryUsage of job (MB)
+	309452  -  ResidentSetSize of job (KB)
+...
+006 (1891925.006.000) 02/08 17:37:51 Image size of job updated: 1018492
+	303  -  MemoryUsage of job (MB)
+	309460  -  ResidentSetSize of job (KB)
+...
+006 (1891925.006.000) 02/08 17:47:51 Image size of job updated: 1018492
+	303  -  MemoryUsage of job (MB)
+	309464  -  ResidentSetSize of job (KB)
+...
+006 (1891925.006.000) 02/08 18:17:55 Image size of job updated: 1018492
+	311  -  MemoryUsage of job (MB)
+	318020  -  ResidentSetSize of job (KB)
+...
+006 (1891925.006.000) 02/08 18:22:55 Image size of job updated: 1018492
+	316  -  MemoryUsage of job (MB)
+	323260  -  ResidentSetSize of job (KB)
+...
+006 (1891925.006.000) 02/08 18:27:56 Image size of job updated: 1018492
+	316  -  MemoryUsage of job (MB)
+	323552  -  ResidentSetSize of job (KB)
+...
+006 (1891925.006.000) 02/08 18:42:58 Image size of job updated: 1018492
+	316  -  MemoryUsage of job (MB)
+	323556  -  ResidentSetSize of job (KB)
+...
+006 (1891925.006.000) 02/08 18:58:00 Image size of job updated: 1018492
+	316  -  MemoryUsage of job (MB)
+	323564  -  ResidentSetSize of job (KB)
+...
+006 (1891925.006.000) 02/08 19:03:00 Image size of job updated: 1018492
+	316  -  MemoryUsage of job (MB)
+	323568  -  ResidentSetSize of job (KB)
+...
+006 (1891925.006.000) 02/08 19:18:02 Image size of job updated: 1018492
+	316  -  MemoryUsage of job (MB)
+	323572  -  ResidentSetSize of job (KB)
+...
+006 (1891925.006.000) 02/08 19:23:02 Image size of job updated: 1018492
+	317  -  MemoryUsage of job (MB)
+	323768  -  ResidentSetSize of job (KB)
+...
+006 (1891925.006.000) 02/08 19:28:03 Image size of job updated: 1018492
+	317  -  MemoryUsage of job (MB)
+	323788  -  ResidentSetSize of job (KB)
+...
+006 (1891925.006.000) 02/08 19:33:04 Image size of job updated: 1018492
+	317  -  MemoryUsage of job (MB)
+	323796  -  ResidentSetSize of job (KB)
+...
+006 (1891925.006.000) 02/08 21:03:12 Image size of job updated: 1018492
+	317  -  MemoryUsage of job (MB)
+	323916  -  ResidentSetSize of job (KB)
+...
+006 (1891925.006.000) 02/08 22:28:22 Image size of job updated: 1018492
+	317  -  MemoryUsage of job (MB)
+	323968  -  ResidentSetSize of job (KB)
+...
+040 (1891925.006.000) 02/08 22:41:52 Started transferring output files
+...
+040 (1891925.006.000) 02/08 22:41:53 Finished transferring output files
+...
+009 (1891925.006.000) 02/08 22:41:53 Job was aborted by the user.
+	Job removed by SYSTEM_PERIODIC_REMOVE due to wall time exceeded allowed max.
+...
