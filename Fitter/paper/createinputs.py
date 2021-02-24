@@ -110,7 +110,7 @@ def main(args):
       ###################
       # observable/variables to be fitted in combine
       
-      if channel=='etau':
+      if channel=='mumu':
       
         observables = [
           Var('m_vis', 1, 60, 120, fname='mvis', ymargin=1.6, rrange=0.08),
@@ -154,6 +154,7 @@ def main(args):
         #  print ">>>   %r (%r)"%(ptcut,fname)
         #  observables.append(mvis_cut)
       
+      
       ############
       #   BINS   #
       ############
@@ -172,7 +173,7 @@ def main(args):
         tauwpbits = { wp: 2**i for i, wp in enumerate(tauwps)}
         tauwps    = ['Tight'] # only do Tight
         iso_1     = "iso_1<0.15"
-        iso_2     = "idDecayModeNewDMs_2 && idDeepTau2017v2p1VSjet_2>=16 && idDeepTau2017v2p1VSe_2>=2 && idDeepTau2017v2p1VSmu_2>=1"
+        iso_2     = "idDecayModeNewDMs_2 && idDeepTau2017v2p1VSjet_2>=$WP && idDeepTau2017v2p1VSe_2>=2 && idDeepTau2017v2p1VSmu_2>=8"
         baseline  = "q_1*q_2<0 && %s && %s && !lepton_vetoes_notau && metfilter"%(iso_1,iso_2)
         zttregion = "%s && mt_1<60 && dzeta>-25 && abs(deta_ll)<1.5"%(baseline)
         bins = [
