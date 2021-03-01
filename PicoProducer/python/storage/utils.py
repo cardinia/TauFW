@@ -5,8 +5,9 @@ import importlib
 from fnmatch import fnmatch
 from TauFW.PicoProducer import basedir
 from TauFW.common.tools.log import Logger
-from TauFW.common.tools.file import ensurefile
+from TauFW.common.tools.file import ensurefile, ensureTFile
 from TauFW.common.tools.utils import repkey, isglob
+from ROOT import TFile
 LOG  = Logger('Storage')
 host = platform.node()
 
@@ -103,6 +104,33 @@ def getsamples(era,channel="",tag="",dtype=[],filter=[],veto=[],moddict={},verb=
       samples.append(sample)
     sampledict[sample.name] = sample
   return samples
+  
+
+def getnevents(fname,treename='Events'):
+  file = ensureTFile(fname)
+  tree = file.Get(treename)
+  if not tree:
+    LOG.warning("getnevents: No %r tree in events in %r!"%(treename,fname))
+    return 0
+  nevts = tree.GetEntries()
+  file.Close()
+  return nevts
+  
+
+def isvalid(fname,hname='cutflow',bin=1):
+  """Check if a given file is valid, or corrupt."""
+  nevts = -1
+  file  = TFile.Open(fname,'READ')
+  if file and not file.IsZombie():
+    if file.GetListOfKeys().Contains('tree') and file.GetListOfKeys().Contains(hname):
+      nevts = file.Get(hname).GetBinContent(bin)
+      if nevts<=0:
+        LOG.warning("Cutflow of file %r has nevts=%s<=0..."%(fname,nevts))
+    if file.GetListOfKeys().Contains('Events'):
+      nevts = file.Get('Events').GetEntries()
+      if nevts<=0:
+        LOG.warning("'Events' tree of file %r has nevts=%s<=0..."%(fname,nevts))
+  return nevts
   
 
 def print_no_samples(dtype=[],filter=[],veto=[],jobdir="",jobcfgs=""):

@@ -10,7 +10,7 @@ from TauFW.common.tools.utils import repkey
 from TauFW.common.tools.math import partition_by_max, ceil, floor
 from TauFW.PicoProducer.storage.Sample import Sample
 LOG = Logger('Storage')
-evtsplitexp = re.compile(r"(.*.root):(\d+):(\d+)$") # input file split by events
+evtsplitexp = re.compile(r"(.+\.root):(\d+):(\d+)$") # input file split by events
 
 
 def chunkify_by_evts(fnames,maxevts,evenly=True,verb=0):
@@ -26,7 +26,7 @@ def chunkify_by_evts(fnames,maxevts,evenly=True,verb=0):
   if verb>=4:
     print ">>> chunkify_by_evts: events per file:"
   for fname in fnames[:]:
-    if evtsplitexp.match(fname): # already split
+    if evtsplitexp.match(fname): # already split; cannot be split again
       result.append([fname]) 
     else: # get number of events
       file  = ensureTFile(fname,'READ')

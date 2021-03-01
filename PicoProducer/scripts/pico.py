@@ -4,14 +4,13 @@ import os, sys, re, glob, json
 from datetime import datetime
 from collections import OrderedDict
 import ROOT; ROOT.PyConfig.IgnoreCommandLineOptions = True
-from ROOT import TFile
 import TauFW.PicoProducer.tools.config as GLOB
 from TauFW.common.tools.file import ensuredir, ensurefile, ensureinit, getline
 from TauFW.common.tools.utils import execute, chunkify, repkey, alphanum_key, lreplace
 from TauFW.common.tools.log import Logger, color, bold
 from TauFW.PicoProducer.analysis.utils import getmodule, ensuremodule
 from TauFW.PicoProducer.batch.utils import getbatch, getcfgsamples, chunkify_by_evts, evtsplitexp
-from TauFW.PicoProducer.storage.utils import getstorage, getsamples, print_no_samples
+from TauFW.PicoProducer.storage.utils import getstorage, getsamples, isvalid, print_no_samples
 from argparse import ArgumentParser
 os.chdir(GLOB.basedir)
 CONFIG = GLOB.getconfig(verb=0)
@@ -85,6 +84,7 @@ def main_get(args):
   writedir   = args.write      # write sample file list to text file
   tag        = args.tag
   verbosity  = args.verbosity
+  getnevts   = variable in ['nevents','nevts']
   cfgname    = CONFIG._path
   if verbosity>=1:
     print '-'*80
@@ -141,7 +141,7 @@ def main_get(args):
           print ">>> %s"%(bold(sample.name))
           for path in sample.paths:
             print ">>> %s"%(bold(path))
-            if variable in ['nevents','nevts'] or checkdas or checklocal:
+            if getnevts or checkdas or checklocal:
               nevents = sample.getnevents(das=(not checklocal),verb=verbosity+1)
               storage = sample.storage.__class__.__name__ if checklocal else "DAS"
               print ">>>   %-7s = %s (%s)"%('nevents',nevents,storage)
@@ -154,14 +154,11 @@ def main_get(args):
               for file in infiles:
                 print ">>>     %r"%file
               print ">>>   ]"
-            if writedir:
-              flistname = repkey(writedir,ERA=era,GROUP=sample.group,SAMPLE=sample.name,TAG=tag)
-              print ">>> Write list to %r..."%(flistname)
-              ensuredir(os.path.dirname(flistname))
-              with open(flistname,'w+') as flist:
-                for infile in infiles:
-                  flist.write(infile+'\n')
             print ">>> "
+          if writedir: # write files to text files
+            flistname = repkey(writedir,ERA=era,GROUP=sample.group,SAMPLE=sample.name,TAG=tag)
+            print ">>> Write list to %r..."%(flistname)
+            sample.writefiles(flistname,nevts=getnevts)
   
   # CONFIGURATION
   else:
@@ -169,6 +166,61 @@ def main_get(args):
       print ">>> Configuration of %r: %s"%(variable,color(CONFIG[variable]))
     else:
       print ">>> Did not find %r in the configuration"%(variable)
+  
+
+
+#############
+#   WRITE   #
+#############
+
+def main_write(args):
+  """Get information of given variable in configuration or samples."""
+  if args.verbosity>=1:
+    print ">>> main_write", args
+  listname   = args.listname   # write sample file list to text file
+  eras       = args.eras
+  channels   = args.channels or [""]
+  dtypes     = args.dtypes
+  filters    = args.samples
+  vetoes     = args.vetoes
+  checkdas   = args.checkdas or args.dasfiles # check file list in DAS
+  getnevts   = args.getnevts # check nevents in local files
+  verbosity  = args.verbosity
+  cfgname    = CONFIG._path
+  if verbosity>=1:
+    print '-'*80
+    print ">>> %-14s = %s"%('listname',listname)
+    print ">>> %-14s = %s"%('getnevts',getnevts)
+    print ">>> %-14s = %s"%('eras',eras)
+    print ">>> %-14s = %s"%('channels',channels)
+    print ">>> %-14s = %s"%('cfgname',cfgname)
+    print ">>> %-14s = %s"%('config',CONFIG)
+    print '-'*80
+  
+  # LOOP over ERAS & CHANNELS
+  if not eras:
+    LOG.warning("Please specify an era to get a sample for.")
+  for era in eras:
+    for channel in channels:
+      info = ">>> Getting file list for era %r"%(era)
+      if channel:
+        info += ", channel %r"%(channel)
+      print info
+      print ">>> "
+      
+      # VERBOSE
+      if verbosity>=1:
+        print ">>> %-12s = %r"%('channel',channel)
+      LOG.insist(era in CONFIG.eras,"Era '%s' not found in the configuration file. Available: %s"%(era,CONFIG.eras))
+      samples = getsamples(era,channel=channel,dtype=dtypes,filter=filters,veto=vetoes,verb=verbosity)
+      
+      # LOOP over SAMPLES
+      for sample in samples:
+        print ">>> %s"%(bold(sample.name))
+        #infiles = sample.getfiles(das=checkdas,url=inclurl,limit=limit,verb=verbosity+1)
+        flistname = repkey(listname,ERA=era,GROUP=sample.group,SAMPLE=sample.name) #,TAG=tag
+        sample.writefiles(flistname,nevts=getnevts,das=checkdas)
+        print ">>> "
   
 
 
@@ -511,19 +563,20 @@ def preparejobs(args):
   eras         = args.eras
   channels     = args.channels
   tag          = args.tag
-  dtypes       = args.dtypes
-  filters      = args.samples
-  vetoes       = args.vetoes
-  dasfiles     = args.dasfiles
-  checkdas     = args.checkdas
-  checkqueue   = args.checkqueue
+  dtypes       = args.dtypes       # filter (only include) these sample types ('data','mc','embed')
+  filters      = args.samples      # filter (only include) these samples (glob patterns)
+  vetoes       = args.vetoes       # exclude these sample (glob patterns)
+  dasfiles     = args.dasfiles     # explicitly process nanoAOD files stored on DAS (as opposed to local storage)
+  checkdas     = args.checkdas     # look up number of events in DAS and compare to processed events in job output
+  checkqueue   = args.checkqueue   # check job status to speed up if batch is slow: 0 (no check), 1 (check once), -1 (check every job)
   extraopts    = args.extraopts    # extra options for module (for all runs)
   prefetch     = args.prefetch     # copy input file first to local output directory
   preselect    = args.preselect    # preselection string for post-processing
   nfilesperjob = args.nfilesperjob # split jobs based on number of files
   maxevts      = args.maxevts      # split jobs based on events
-  split_nfpj   = args.split_nfpj   # split failed chunks into even smaller chunks
+  split_nfpj   = args.split_nfpj   # split failed (file-based) chunks into even smaller chunks
   testrun      = args.testrun      # only run a few test jobs
+  queue        = args.queue        # queue option for the batch system (job flavor for HTCondor)
   tmpdir       = args.tmpdir or CONFIG.get('tmpskimdir',None) # temporary dir for creating skimmed file before copying to outdir
   verbosity    = args.verbosity
   jobs         = [ ]
@@ -582,11 +635,12 @@ def preparejobs(args):
         
         # DIRECTORIES
         subtry     = sample.subtry+1 if resubmit else 1
-        jobids     = sample.jobcfg.get('jobids',[ ])
+        jobids     = sample.jobcfg.get('jobids',[ ]  )
+        queue_     = queue or sample.jobcfg.get('queue', None )
         dtype      = sample.dtype
         postfix    = "_%s%s"%(channel,tag)
-        jobtag     = '%s_try%d'%(postfix,subtry)
-        jobname    = sample.name+jobtag.rstrip('try1').rstrip('_')
+        jobtag     = "%s_try%d"%(postfix,subtry)
+        jobname    = "%s%s_%s%s"%(sample.name,postfix,era,"_try%d"%subtry if subtry>1 else "")
         extraopts_ = extrachopts[:] # extra options for module (for this channel & sample)
         if sample.extraopts:
           extraopts_.extend(sample.extraopts)
@@ -594,6 +648,10 @@ def preparejobs(args):
         maxevts_   = maxevts if maxevts>0 else sample.maxevts if sample.maxevts>0 else CONFIG.maxevtsperjob # priority: USER > SAMPLE > CONFIG
         if split_nfpj>1: # divide nfilesperjob by split_nfpj
           nfilesperjob_ = int(max(1,nfilesperjob_/float(split_nfpj)))
+        elif resubmit and maxevts<=0: # reuse previous maxevts settings if maxevts not set by user
+          maxevts_ = sample.jobcfg.get('maxevts',maxevts_)
+          if nfilesperjob<=0: # reuse previous nfilesperjob settings if nfilesperjob not set by user
+            nfilesperjob_ = sample.jobcfg.get('nfilesperjob',nfilesperjob_)
         daspath    = sample.paths[0].strip('/')
         outdir     = repkey(outdirformat,ERA=era,CHANNEL=channel,TAG=tag,SAMPLE=sample.name,
                                          DAS=daspath,PATH=daspath,GROUP=sample.group)
@@ -625,6 +683,7 @@ def preparejobs(args):
           print ">>> %-12s = %r"%('joblist',joblist)
           print ">>> %-12s = %s"%('try',subtry)
           print ">>> %-12s = %r"%('jobids',jobids)
+          print ">>> %-12s = %r"%('queue',queue_)
         
         # CHECKS
         if os.path.isfile(cfgname):
@@ -642,11 +701,11 @@ def preparejobs(args):
         # GET FILES
         nevents = 0
         if resubmit: # resubmission
-          if checkqueue==0 and not jobs: # check jobs only once
+          if checkqueue==0 and not jobs: # check jobs only once to speed up performance
             batch = getbatch(CONFIG,verb=verbosity)
             jobs  = batch.jobs(verb=verbosity-1)
           infiles, chunkdict = checkchunks(sample,channel=channel,tag=tag,jobs=jobs,
-                                           checkqueue=checkqueue,das=checkdas,verb=verbosity)
+                                           checkqueue=checkqueue,das=checkdas,verb=verbosity)[:2]
           nevents = sample.jobcfg['nevents'] # updated in checkchunks
         else: # first-time submission
           infiles   = sample.getfiles(das=dasfiles,verb=verbosity-1)
@@ -700,11 +759,11 @@ def preparejobs(args):
                 LOG.insist(len(fchunk)==1,"Chunks of event-split files can only have one input file: %s"%(fchunk))
                 jobfiles  = evtmatch.group(1) # input file
                 firstevt  = int(evtmatch.group(2))
-                maxevts__ = int(evtmatch.group(3))
+                maxevts__ = int(evtmatch.group(3)) # limit number of events
               else:
                 jobfiles  = ' '.join(fchunk) # list of input files
                 firstevt  = -1
-                maxevts__ = maxevts
+                maxevts__ = -1 # do not limit number of events
               filetag     = postfix
               if not skim:
                 filetag  += "_%d"%(ichunk)
@@ -727,7 +786,7 @@ def preparejobs(args):
                 jobcmd   += " --preselect '%s'"%(preselect)
               if firstevt>=0:
                 jobcmd   += " --firstevt %d"%(firstevt) # start at this entry (for event-based splitting)
-              if testrun:
+              if testrun: # override maxevts
                 jobcmd   += " -m %d"%(testrun) # process a limited amount of events for test jobs
               elif maxevts__>0:
                 jobcmd   += " -m %d"%(maxevts__) # process a limited amount of events for event-based splitting
@@ -746,9 +805,9 @@ def preparejobs(args):
           ('group',sample.group), ('paths',sample.paths), ('name',sample.name), ('nevents',nevents),
           ('dtype',dtype),        ('channel',channel),    ('module',module),    ('extraopts',extraopts_),
           ('jobname',jobname),    ('jobtag',jobtag),      ('tag',tag),          ('postfix',postfix),
-          ('try',subtry),         ('jobids',jobids),
+          ('try',subtry),         ('queue',queue_),       ('jobids',jobids),
           ('outdir',outdir),      ('jobdir',jobdir),      ('cfgdir',cfgdir),    ('logdir',logdir),
-          ('cfgname',cfgname),    ('joblist',joblist),    ('maxevts_',maxevts_),
+          ('cfgname',cfgname),    ('joblist',joblist),    ('maxevts',maxevts_),
           ('nfiles',nfiles),      ('files',infiles),      ('nfilesperjob',nfilesperjob_), #('nchunks',nchunks),
           ('nchunks',nchunks),    ('chunks',chunks),      ('chunkdict',chunkdict),
         ])
@@ -893,7 +952,7 @@ def checkchunks(sample,**kwargs):
       basename = os.path.basename(fname)
       infile   = chunkexp.sub(r"\1.root",basename) # reconstruct input file without path or postfix
       outmatch = chunkexp.match(basename)
-      ipart    = int(outmatch.group(2) or -1) if outmatch else -1 # if input file split by events
+      ipart    = int(outmatch.group(2) or -1) if outmatch else -1 # >0 if input file split by events
       nevents  = isvalid(fname) # check for corruption
       ichunk   = -1
       for i in chunkdict:
@@ -992,7 +1051,7 @@ def checkchunks(sample,**kwargs):
       match = chunkexp.search(fname)
       if match:
         ichunk = int(match.group(1))
-        LOG.insist(ichunk in chunkdict,"Found an impossible chunk %d for file %s!"%(ichunk,fname)+
+        LOG.insist(ichunk in chunkdict,"Found an impossible chunk %d for file %s! "%(ichunk,fname)+
                                        "Possible overcounting or conflicting job output file format!")
         if ichunk in pendchunks:
           continue
@@ -1088,22 +1147,7 @@ def checkchunks(sample,**kwargs):
       else:
         LOG.warning("Did not find log file for chunk %d"%(chunk))
   
-  return resubfiles, chunkdict
-  
-def isvalid(fname):
-  """Check if a given file is valid, or corrupt."""
-  nevts = -1
-  file  = TFile.Open(fname,'READ')
-  if file and not file.IsZombie():
-    if file.GetListOfKeys().Contains('tree') and file.GetListOfKeys().Contains('cutflow'):
-      nevts = file.Get('cutflow').GetBinContent(1)
-      if nevts<=0:
-        LOG.warning("Cutflow of file %r has nevts=%s<=0..."%(fname,nevts))
-    if file.GetListOfKeys().Contains('Events'):
-      nevts = file.Get('Events').GetEntries()
-      if nevts<=0:
-        LOG.warning("'Events' tree of file %r has nevts=%s<=0..."%(fname,nevts))
-  return nevts
+  return resubfiles, chunkdict, len(pendchunks)
   
 
 
@@ -1135,6 +1179,7 @@ def main_submit(args):
     joblist = jobcfg['joblist'] # text file with list of tasks to be executed per job
     jobname = jobcfg['jobname']
     nchunks = jobcfg['nchunks']
+    queue   = jobcfg['queue']
     jkwargs = { # key-word arguments for batch.submit
       'name': jobname, 'opt': batchopts, 'dry': dryrun,
       'short': (testrun>0), 'queue':queue, 'time':time
@@ -1289,9 +1334,9 @@ def main_status(args):
             print ">>> %-12s = %s"%('infiles',infiles)
             if subcmd=='hadd':
               print ">>> %-12s = %r"%('outfile',outfile)
-          resubfiles, chunkdict = checkchunks(sample,channel=channel,tag=tag,jobs=jobs,
-                                              checkqueue=checkqueue,das=checkdas,verb=verbosity)
-          if len(resubfiles)>0 and not force:
+          resubfiles, chunkdict, npend = checkchunks(sample,channel=channel,tag=tag,jobs=jobs,
+                                                     checkqueue=checkqueue,das=checkdas,verb=verbosity)
+          if (len(resubfiles)>0 or npend>0) and not force:
             LOG.warning("Cannot %s job output because %d chunks need to be resubmitted..."%(subcmd,len(resubfiles))+
                         " Please use -f or --force to %s anyway.\n"%(subcmd))
             continue
@@ -1397,7 +1442,7 @@ if __name__ == "__main__":
                                                 help='extra options for the batch system')
   parser_job.add_argument('-M','--time',        dest='time', default=None,
                                                 help='maximum run time of job')
-  parser_job.add_argument('-q','--queue',       dest='queue', default=None,
+  parser_job.add_argument('-q','--queue',       dest='queue', default=str(CONFIG.queue),
                                                 help='queue of batch system (job flavor on HTCondor)')
   parser_job.add_argument('-P','--prompt',      dest='prompt', action='store_true',
                                                 help='ask user permission before submitting a sample')
@@ -1419,6 +1464,7 @@ if __name__ == "__main__":
   help_get = "get information from configuration or samples"
   help_set = "set given variable in the configuration file"
   help_rmv = "remove given variable from the configuration file"
+  help_wrt = "write files to text file"
   help_chl = "link a channel to a module in the configuration file"
   help_era = "link an era to a sample list in the configuration file"
   help_run = "run nanoAOD processor locally"
@@ -1432,6 +1478,7 @@ if __name__ == "__main__":
   parser_get = subparsers.add_parser('get',      parents=[parser_sam], help=help_get, description=help_get)
   parser_set = subparsers.add_parser('set',      parents=[parser_cmn], help=help_set, description=help_set)
   parser_rmv = subparsers.add_parser('rm',       parents=[parser_cmn], help=help_rmv, description=help_rmv)
+  parser_wrt = subparsers.add_parser('write',    parents=[parser_sam], help=help_wrt, description=help_wrt)
   parser_chl = subparsers.add_parser('channel',  parents=[parser_lnk], help=help_chl, description=help_chl)
   parser_era = subparsers.add_parser('era',      parents=[parser_lnk], help=help_era, description=help_era)
   parser_run = subparsers.add_parser('run',      parents=[parser_sam], help=help_run, description=help_run)
@@ -1445,6 +1492,7 @@ if __name__ == "__main__":
   parser_set.add_argument('variable',           help='variable to change in the config file')
   parser_set.add_argument('key',                help='channel or era key name', nargs='?', default=None)
   parser_set.add_argument('value',              help='value for given value')
+  parser_wrt.add_argument('listname',           help='file name of text file for file list, default=%(default)r', nargs='?', default=str(CONFIG.filelistdir))
   parser_rmv.add_argument('variable',           help='variable to remove from the config file')
   parser_rmv.add_argument('key',                help='channel or era key name to remove', nargs='?', default=None)
   parser_chl.add_argument('key',                metavar='channel', help='channel key name')
@@ -1461,6 +1509,8 @@ if __name__ == "__main__":
                                                 help="compute total number of events in storage system (not DAS) for 'get files' or 'get nevents'" )
   parser_get.add_argument('-w','--write',       dest='write', type=str, nargs='?', const=str(CONFIG.filelistdir), default="",
                           metavar='FILE',       help="write file list, default=%(const)r" )
+  parser_wrt.add_argument('-n','--nevts',       dest='getnevts', action='store_true',
+                                                help="get nevents per file" )
   parser_run.add_argument('-m','--maxevts',     dest='maxevts', type=int, default=None,
                           metavar='NEVTS',      help='maximum number of events (per file) to process')
   parser_run.add_argument('--preselect',        dest='preselect', type=str, default=None,
@@ -1488,7 +1538,7 @@ if __name__ == "__main__":
     subcmds = [ # fix order for abbreviations
       'channel','era',
       'run','submit','resubmit','status','hadd','clean',
-      'install','list','set','rm'
+      'install','list','set','rm','write',
     ]
     for subcmd in subcmds:
       if args[0] in subcmd[:len(args[0])]: # match abbreviation
@@ -1508,6 +1558,8 @@ if __name__ == "__main__":
     main_get(args)
   elif args.subcommand=='set':
     main_set(args)
+  elif args.subcommand=='write':
+    main_write(args)
   elif args.subcommand in ['channel','era']:
     main_link(args)
   elif args.subcommand=='rm':

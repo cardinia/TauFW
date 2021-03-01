@@ -8,7 +8,7 @@ from TauFW.common.tools.log import Logger
 from TauFW.Plotter.plot import moddir
 import TauFW.Plotter.plot.CMSStyle as CMSStyle
 import ROOT; ROOT.PyConfig.IgnoreCommandLineOptions = True
-from ROOT import gDirectory, gROOT, gStyle, TH1, THStack, TGraphErrors, TGraphAsymmErrors, Double,\
+from ROOT import gDirectory, gROOT, gStyle, gPad, TH1, THStack, TGraph, TGraphErrors, TGraphAsymmErrors, Double,\
                  kSolid, kDashed, kDotted, kBlack, kWhite
 #moddir = os.path.dirname(__file__)
 gROOT.SetBatch(True)
@@ -28,6 +28,21 @@ def normalize(*hists,**kwargs):
       hist.Scale(scale/integral)
     else:
       LOG.warning("norm: Could not normalize; integral = 0!")
+  
+
+def getframe(pad,hist,xmin=None,xmax=None):
+  """Help function to get frame."""
+  garbage = [ ]
+  if isinstance(hist,THStack):
+    hist = hist.GetStack().Last()
+  elif isinstance(hist,TGraph):
+    hist = hist.GetHistogram()
+    garbage.append(hist)
+  xmin_ = hist.GetXaxis().GetXmin() if not xmin and xmin!=0 else xmin
+  xmax_ = hist.GetXaxis().GetXmax() if not xmax and xmax!=0 else xmax
+  frame = pad.DrawFrame(xmin_,hist.GetMinimum(),xmax_,hist.GetMaximum())
+  close(garbage)
+  return frame
   
 
 def close(*hists,**kwargs):
@@ -100,24 +115,29 @@ def printhist(hist,min_=0,max_=None,**kwargs):
     TAB.printrow(ibin,xval,hist.GetBinContent(ibin),hist.GetBinError(ibin))
   
 
-def grouphists(hists,searchterms,name=None,title=None,**kwargs):
+def grouphists(hists,searchterms,name=None,title=None,color=None,**kwargs):
   """Group histograms in a list corresponding to some searchterm, return their sum.
   E.g. grouphists(hists,['TT','ST'],'Top')
        grouphists(hists,['WW','WZ','ZZ'],'Diboson')"""
-  verbosity   = LOG.getverbosity(kwargs)
-  searchterms = ensurelist(searchterms)
-  replace     = kwargs.get('replace',   False ) # replace grouped histograms with sum in list
-  close       = kwargs.get('close',     False ) # close grouped histograms
+  verbosity      = LOG.getverbosity(kwargs)
+  searchterms    = ensurelist(searchterms)
+  replace        = kwargs.get('replace', False ) # replace grouped histograms with sum in list
+  close          = kwargs.get('close',   False ) # close grouped histograms
   kwargs['verb'] = verbosity-1
-  matches     = gethist(hists,*searchterms,warn=False,**kwargs) if searchterms else hists
-  histsum     = None
+  matches        = gethist(hists,*searchterms,warn=False,**kwargs) if searchterms else hists
+  if not isinstance(color,int):
+    import TauFW.Plotter.sample.SampleStyle as STYLE
+    color = STYLE.sample_colors.get(name,color)
+  histsum   = None
   if matches:
-    if title==None:
-      title   = matches[0].GetTitle() if name==None else name
     if name==None:
-      name    = matches[0].GetName()
-    histsum   = matches[0].Clone(name)
+      name  = matches[0].GetName()
+    if title==None:
+      title = matches[0].GetTitle() if name==None else name
+    histsum = matches[0].Clone(name)
     histsum.SetTitle(title)
+    if color:
+      histsum.SetFillColor(color)
     for hist in matches[1:]:
       histsum.Add(hist)
     LOG.verb("grouphists: Grouping %s into %r"%(quotestrs(h.GetName() for h in matches),name),verbosity,2)
@@ -128,7 +148,7 @@ def grouphists(hists,searchterms,name=None,title=None,**kwargs):
         if close:
           deletehist(hist)
   else:
-    LOG.warning("gethist: Did not find a histogram with searchterms %s..."%(quotestrs(searchterms)))
+    LOG.warning("grouphists: Did not find a histogram with searchterms %s..."%(quotestrs(searchterms)))
   return histsum
   
 
@@ -192,7 +212,7 @@ def seterrorbandstyle(hist,**kwargs):
   hist.SetFillStyle(style)
   
 
-def getbinedges(hist):
+def getbinedges(hist,**kwargs):
   """Get lower and upper edges of bins"""
   verbosity = LOG.getverbosity(kwargs)
   bins      = [ ]
@@ -231,7 +251,7 @@ def havesamebins(hist1,hist2,**kwargs):
       return hist1.GetXaxis().GetXmin()==hist2.GetXaxis().GetXmin() and\
              hist1.GetXaxis().GetXmax()==hist2.GetXaxis().GetXmax() and\
              hist1.GetXaxis().GetNbins()==hist2.GetXaxis().GetNbins()
-  else: # one is TGraph or TGraphAsymmErrors ?
+  else: # one is TGraph ?
     bins1 = getbinedges(hist1)
     bins2 = getbinedges(hist2)
     if bins1!=bins2 and errorX<=0: # only look at bin center
