@@ -70,7 +70,7 @@ class ModuleETau(ModuleTauPair):
       self.out.cutflow.fill('weight',1.)
       if event.PV_npvs>0:
         self.out.cutflow.fill('weight_no0PU',1.)
-    else:
+      else:
         return False
     else:
       self.out.cutflow.fill('weight',event.genWeight)
@@ -94,10 +94,10 @@ class ModuleETau(ModuleTauPair):
         if abs(electron.eta)<1.5 :
           electron.pt   *= self.ees
           electron.mass *= self.ees
-      elif self.ees==1.01 :
+        elif self.ees==1.01 :
           electron.pt   *= 1.025
           electron.mass *= 1.025
-      else :
+        else :
           electron.pt   *= 0.975
           electron.mass *= 0.975
       if electron.pt<self.eleCutPt: continue
@@ -130,7 +130,7 @@ class ModuleETau(ModuleTauPair):
         if genmatch==5: # real tau
           if self.tes!=None: # user-defined energy scale (for TES studies)
             tes = self.tes
-        else: # (apply by default)
+          else: # (apply by default)
             tes = self.tesTool.getTES(tau.pt,tau.decayMode,unc=self.tessys)
           if tes!=1:
             tau.pt   *= tes
@@ -140,12 +140,12 @@ class ModuleETau(ModuleTauPair):
           tau.pt   *= self.ltf
           tau.mass *= self.ltf
           tau.es    = self.ltf
-      elif genmatch in [1,3]: # electron -> tau fake (apply by default, override with 'ltf=1.0')
+        elif genmatch in [1,3]: # electron -> tau fake (apply by default, override with 'ltf=1.0')
           fes = self.fesTool.getFES(tau.eta,tau.decayMode,unc=self.fes)
           tau.pt   *= fes
           tau.mass *= fes
           tau.es    = fes
-      elif self.jtf!=1.0 and genmatch==0: # jet -> tau fake
+        elif self.jtf!=1.0 and genmatch==0: # jet -> tau fake
           tau.pt   *= self.jtf
           tau.mass *= self.jtf
           tau.es    = self.jtf

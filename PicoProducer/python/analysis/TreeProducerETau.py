@@ -91,6 +91,8 @@ class TreeProducerETau(TreeProducerTauPair):
       self.addBranch('idisoweight_1',            'f', 1., title="electron ID/iso efficiency SF")
       self.addBranch('idweight_2',               'f', 1., title="tau ID efficiency SF")
       self.addBranch('ltfweight_2',              'f', 1., title="lepton -> tau fake rate SF")
+      self.addBranch('m_vis_resoUp',             'f', title="mvis with reduced Z peak reso")
+      self.addBranch('m_vis_resoDown',           'f', title="mvis with increased Z peak reso")
       if not module.dotight:
         self.addBranch('idweightUp_2',           'f', 1.)
         self.addBranch('idweightDown_2',         'f', 1.)

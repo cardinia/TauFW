@@ -1513,7 +1513,6 @@ if __name__ == "__main__":
                                                 help="get nevents per file" )
   parser_run.add_argument('-m','--maxevts',     dest='maxevts', type=int, default=None,
                           metavar='NEVTS',      help='maximum number of events (per file) to process')
-
   parser_run.add_argument('--preselect',        dest='preselect', type=str, default=None,
                                                 help='preselection to be shipped to skimjob.py during run command')
   parser_run.add_argument('-n','--nfiles',      dest='nfiles', type=int, default=1,
