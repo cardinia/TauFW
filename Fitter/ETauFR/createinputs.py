@@ -226,7 +226,7 @@ def main(args):
         createinputs(fname,samplesets['EESDown'],observables_pass,bins_pass,filter=varprocs['EESDown'])
         createinputs(fname,samplesets['Nom']    ,observables_pass.replace('m_vis','m_vis_resoUp'),bins_pass,filter=varprocs['RESUp']  ,htag='RESUp'  )
         createinputs(fname,samplesets['Nom']    ,observables_pass.replace('m_vis','m_vis_resoDown'),bins_pass,filter=varprocs['RESDown'],htag='RESDown')
-      createinputs(fname,samplesets['Nom'],    observables_fail,bins_fail,recreate=True)
+      createinputs(fname,samplesets['Nom'],    observables_fail,bins_fail)
       if channel in ['mutau']:
         createinputs(fname,samplesets['TESUp'],  observables_fail,bins_fail,filter=varprocs['TESUp']  )
         createinputs(fname,samplesets['TESDown'],observables_fail,bins_fail,filter=varprocs['TESDown'])
