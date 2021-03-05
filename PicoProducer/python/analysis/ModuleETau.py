@@ -124,7 +124,7 @@ class ModuleETau(ModuleTauPair):
       if tau.idDecayModeNewDMs < 0.5: continue #LOR ADDED
       #if tau.idDeepTau2017v2p1VSe<1: continue  # VVVLoose
       if tau.idDeepTau2017v2p1VSmu<1: continue # VLoose
-      if tau.idDeepTau2017v2p1VSjet<16: continue   #self.tauwp: continue
+      #if tau.idDeepTau2017v2p1VSjet<16: continue   #self.tauwp: continue
       if self.ismc:
         tau.es   = 1 # store energy scale for propagating to MET
         genmatch = tau.genPartFlav
