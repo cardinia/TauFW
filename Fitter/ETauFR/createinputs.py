@@ -196,7 +196,7 @@ def main(args):
       
       else:
         
-        tauwps    = ['VVVLoose']#,'VVLoose','VLoose','Loose','Medium','Tight','VTight','VVTight']
+        tauwps    = ['VVVLoose','VVLoose','VLoose','Loose','Medium','Tight','VTight','VVTight']
         if channel=='mutau' :
           tauwps    = ['VLoose','Loose','Medium','Tight']
         tauwpbits = { wp: 2**i for i, wp in enumerate(tauwps)}
