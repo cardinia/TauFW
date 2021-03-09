@@ -241,10 +241,10 @@ def getlepvetoes(event, electrons, muons, taus, channel):
     if electron.pfRelIso03_all>0.3: continue
     if any(electron.DeltaR(tau)<0.4 for tau in taus): continue
     if electron.convVeto==1 and electron.lostHits<=1 and electron.mvaFall17V2noIso_WP90 and all(e._index!=electron._index for e in electrons):
-     extraelec_veto = True
+      extraelec_veto = True
     if electron.pt>15 and electron.cutBased>0 and electron.mvaFall17V2Iso_WPL:
       looseElectrons.append(electron)
-  
+
   # DILEPTON VETO
   if channel=='mutau':
     for muon1, muon2 in combinations(looseMuons,2):
@@ -256,6 +256,8 @@ def getlepvetoes(event, electrons, muons, taus, channel):
       if electron1.charge*electron2.charge<0 and electron1.DeltaR(electron2)>0.20:
         dilepton_veto = True
         break
+  else :
+    print "WARNING: dilepton veto implemented only for channel={mutau,etau,eletau}, please check implementation in PicoProducer/python/analysis/utils.py"
   
   return extramuon_veto, extraelec_veto, dilepton_veto
   

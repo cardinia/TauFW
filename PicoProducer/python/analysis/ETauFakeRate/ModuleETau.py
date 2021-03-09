@@ -250,7 +250,7 @@ class ModuleETau(ModuleTauPair):
         self.out.genvistaueta_2[0] = taumatch.eta
         self.out.genvistauphi_2[0] = taumatch.phi
         self.out.gendm_2[0]        = taumatch.status
-    else:
+      else:
         self.out.genvistaupt_2[0]  = -1
         self.out.genvistaueta_2[0] = -9
         self.out.genvistauphi_2[0] = -9
