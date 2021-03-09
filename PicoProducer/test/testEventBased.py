@@ -2,7 +2,9 @@
 # Author: Izaak Neutelings (September 2020)
 # Description: Test EventBased splitting
 #   test/testEventBased.py
-import os, platform
+#   test/testEventBased.py filesplit.root evtsplit.root
+#   test/testEventBased.py '*_filesplit.root' '*_evtsplit.root' -T Events
+import os, glob, platform
 from time import sleep
 from TauFW.common.tools.file import ensureTFile
 from TauFW.common.tools.math import partition_by_max, ceil
@@ -11,7 +13,7 @@ from TauFW.PicoProducer.storage.Sample import Data as D
 from TauFW.PicoProducer.storage.Sample import Sample, LOG
 from TauFW.PicoProducer.storage.utils import getsamples
 #from TauFW.PicoProducer.batch.utils import chunkify_by_evts
-from ROOT import TFile, TH1F
+from ROOT import TFile, TChain, TH1F
 
 
 def chunkify_by_evts(fnames,nmax,evenly=True):
@@ -93,7 +95,21 @@ def testEventBased(args,verb=0):
     chunks = chunkify_by_evts(files,nmax=100000)
     for chunk in chunks:
       print chunk
+  
 
+def gettree(fname,tree='tree'):
+  """Get file and tree. If glob pattern, expand and use TChain."""
+  if '*' in fname:
+    fnames = glob.glob(fname)
+    file = None
+    tree = TChain(tree)
+    for fname in fnames:
+      tree.Add(fname)
+  else:
+    file = ensureTFile(fname)
+    tree = file.Get(tree)
+  return file, tree
+  
 
 def compare_output(args,verb=0):
   """Quick comparison between job output."""
@@ -103,34 +119,38 @@ def compare_output(args,verb=0):
   fname2 = "/scratch/ineuteli/analysis/2016/DY/DYJetsToLL_M-2000to3000_tautau_test.root" # event-based split
   if len(args.infiles)>=2:
     fname1, fname2 = args.infiles[:2]
-  print ">>>  ",fname1
-  print ">>>  ",fname2
-  file1  = ensureTFile(fname1)
-  file2  = ensureTFile(fname2)
-  tree1  = file1.Get('tree')
-  tree2  = file2.Get('tree')
+  tname = args.tree
+  ename = args.evt
+  print ">>>  %s"%(fname1)
+  print ">>>  %s"%(fname2)
+  file1, tree1 = gettree(fname1,tname)
+  file2, tree2 = gettree(fname2,tname)
   hist1  = TH1F('h1','h1',nbins,0,1000000)
   hist2  = TH1F('h2','h2',nbins,0,1000000)
-  tree1.Draw("evt >> h1","","gOff")
-  tree2.Draw("evt >> h2","","gOff")
+  tree1.Draw("%s >> h1"%(ename),"","gOff")
+  tree2.Draw("%s >> h2"%(ename),"","gOff")
   print ">>>   tree1: %9d, hist1: %9d"%(tree1.GetEntries(),hist1.GetEntries())
   print ">>>   tree2: %9d, hist2: %9d"%(tree2.GetEntries(),hist2.GetEntries())
   hist1.Add(hist2,-1)
   nfound = 0
   for i in range(0,nbins+2):
     if nfound==20:
-      print ">>>    BREAK! Already found 20 different bins"
+      print ">>>   BREAK! Already found 20 different bins"
       break
     if hist1.GetBinContent(i)!=0.0:
-      print ">>>    difference in bin %4d!"
+      print ">>>   difference %3d in bin %3d, [%3d,%3d]!"%(i,hist1.GetBinContent(i),hist1.GetXaxis().GetBinLowEdge(i),hist1.GetXaxis().GetBinUpEdge(i))
       nfound += 1
-  file1.Close()
-  file2.Close()
+  if file1:
+    file1.Close()
+  if file2:
+    file2.Close()
   
 
 def main(args):
-  #testEventBased(args)
-  compare_output(args)
+  if args.infiles:
+    compare_output(args)
+  else:
+    testEventBased(args)
   
 
 if __name__ == "__main__":
@@ -139,30 +159,16 @@ if __name__ == "__main__":
   argv = sys.argv
   description = """Test event-based splitting of files."""
   parser = ArgumentParser(prog="testBatch",description=description,epilog="Good luck!")
-  parser.add_argument('infiles',            type=str, nargs='*', default=[], action='store',
-                                            help="files to compare" )
-  parser.add_argument('-v', '--verbose',    dest='verbosity', type=int, nargs='?', const=1, default=0, action='store',
-                                            help="set verbosity" )
-  parser.add_argument('-m','--maxevts',     dest='maxevts', type=int, default=None,
-                                            help='maximum number of events (per file) to process')
-  #parser.add_argument('-f','--force',       dest='force', action='store_true',
-  #                                          help='force overwrite')
-  #parser.add_argument('-d','--dry',         dest='dryrun', action='store_true',
-  #                                          help='dry run: prepare job without submitting for debugging purposes')
-  #parser.add_argument('-N','--ntasks',      dest='ntasks', type=int, default=2,
-  #                    metavar='N',          help='number of tasks per job to submit, default=%(default)d' )
-  #parser.add_argument('-n','--nchecks',     dest='nchecks', type=int, default=5,
-  #                    metavar='N',          help='number of job status checks, default=%(default)d' )
-  ##parser.add_argument('--getjobs',          dest='checkqueue', type=int, nargs='?', const=1, default=-1,
-  ##                        metavar='N',      help="check job status: 0 (no check), 1 (check once), -1 (check every job)" ) # speed up if batch is slow
-  #parser.add_argument('-B','--batch-opts',  dest='batchopts', default=None,
-  #                                          help='extra options for the batch system')
-  #parser.add_argument('-M','--time',        dest='time', default=None,
-  #                                          help='maximum run time of job')
-  #parser.add_argument('-q','--queue',       dest='queue', default=None,
-  #                                          help='queue of batch system (job flavor on HTCondor)')
-  ##parser.add_argument('-P','--prompt',      dest='prompt', action='store_true',
-  ##                                          help='ask user permission before submitting a sample')
+  parser.add_argument('infiles',         type=str, nargs='*', default=[], action='store',
+                                         help="files to compare" )
+  parser.add_argument('-T', '--tree',    action='store', default='tree',
+                                         help="tree name, default=%(default)s" )
+  parser.add_argument('-e', '--evt',     action='store', default='evt',
+                                         help="event branch name, default=%(default)s" )
+  parser.add_argument('-v', '--verbose', dest='verbosity', type=int, nargs='?', const=1, default=0, action='store',
+                                         help="set verbosity" )
+  parser.add_argument('-m','--maxevts',  dest='maxevts', type=int, default=None,
+                                         help='maximum number of events (per file) to process')
   args = parser.parse_args()
   LOG.verbosity = args.verbosity
   main(args)

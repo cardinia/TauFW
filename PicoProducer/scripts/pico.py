@@ -254,7 +254,7 @@ def main_set(args):
       GLOB.setdefaultconfig(verb=verb)
     else:
       LOG.warning("Did not recognize value '%s'. Did you mean 'default'?"%(value))
-  elif variable == 'nfilesperjob':
+  elif variable in ['nfilesperjob','maxevtsperjob']:
     CONFIG[variable] = int(value)
     CONFIG.write()
   else:
@@ -577,6 +577,8 @@ def preparejobs(args):
   split_nfpj   = args.split_nfpj   # split failed (file-based) chunks into even smaller chunks
   testrun      = args.testrun      # only run a few test jobs
   queue        = args.queue        # queue option for the batch system (job flavor for HTCondor)
+  force        = args.force        # force submission, even if old job output exists
+  prompt       = args.prompt       # ask user for confirmation
   tmpdir       = args.tmpdir or CONFIG.get('tmpskimdir',None) # temporary dir for creating skimmed file before copying to outdir
   verbosity    = args.verbosity
   jobs         = [ ]
@@ -626,17 +628,18 @@ def preparejobs(args):
         samples = samples[:2] # run at most two samples
       
       # SAMPLE over SAMPLES
-      found = False
+      found  = len(samples)>=0
+      failed = [ ] # failed samples
       for sample in samples:
-        found = True
         print ">>> %s"%(bold(sample.name))
         for path in sample.paths:
           print ">>> %s"%(bold(path))
         
         # DIRECTORIES
         subtry     = sample.subtry+1 if resubmit else 1
-        jobids     = sample.jobcfg.get('jobids',[ ]  )
-        queue_     = queue or sample.jobcfg.get('queue', None )
+        jobids     = sample.jobcfg.get('jobids',[ ])
+        queue_     = queue or sample.jobcfg.get('queue',None)
+        prefetch_  = sample.jobcfg.get('prefetch',prefetch) or prefetch # if resubmit: reuse old setting, or override by user
         dtype      = sample.dtype
         postfix    = "_%s%s"%(channel,tag)
         jobtag     = "%s_try%d"%(postfix,subtry)
@@ -674,7 +677,7 @@ def preparejobs(args):
           print ">>> %-12s = %r"%('postfix',postfix)
           print ">>> %-12s = %r"%('outdir',outdir)
           print ">>> %-12s = %r"%('extraopts',extraopts_)
-          print ">>> %-12s = %r"%('prefetch',prefetch)
+          print ">>> %-12s = %r"%('prefetch',prefetch_)
           print ">>> %-12s = %r"%('preselect',preselect)
           print ">>> %-12s = %r"%('cfgdir',cfgdir)
           print ">>> %-12s = %r"%('logdir',logdir)
@@ -687,10 +690,35 @@ def preparejobs(args):
         
         # CHECKS
         if os.path.isfile(cfgname):
-          # TODO: check for running jobs
-          LOG.warning("Job configuration %r already exists and will be overwritten! "%(cfgname)+
-                      "Beware of conflicting job output!")
-        if not resubmit:
+          # TODO: check for running jobs ?
+          skip = False
+          if force:
+            LOG.warning("Job configuration %r already exists and will be overwritten! "%(cfgname)+
+                        "Please beware of conflicting job output!")
+          elif args.prompt:
+            LOG.warning("Job configuration %r already exists and might cause conflicting job output!"%(cfgname))
+            while True:
+              submit = raw_input(">>> Submit anyway? [y/n] "%(nchunks))
+              if 'f' in submit.lower(): # submit this job, and stop asking
+                print ">>> Force all."
+                force = True; skip = True; break
+              elif 'y' in submit.lower(): # submit this job
+                print ">>> Continue submission..."
+                skip = True; break
+              elif 'n' in submit.lower(): # do not submit this job
+                print ">>> Not submitting."
+                break
+              else:
+                print ">>> '%s' is not a valid answer, please choose y/n."%submit
+          else:
+            skip = True
+            LOG.warning("Job configuration %r already exists and might cause conflicting job output! "%(cfgname)+
+                        "To submit anyway, please use the --force flag")
+          if skip: # do not submit this job
+            failed.append(sample)
+            print ""
+            continue
+        if not resubmit: # check for existing jobss
           cfgpattern = re.sub(r"(?<=try)\d+(?=.json$)",r"*",cfgname)
           cfgnames   = [f for f in glob.glob(cfgpattern) if not f.endswith("_try1.json")]
           if cfgnames:
@@ -732,7 +760,14 @@ def preparejobs(args):
         infiles.sort() # to have consistent order with resubmission
         chunks    = [ ] # chunk indices
         if maxevts_>1:
-          fchunks = chunkify_by_evts(infiles,maxevts_,verb=verbosity) # list of file chunks split by events
+          try:
+            fchunks = chunkify_by_evts(infiles,maxevts_,verb=verbosity) # list of file chunks split by events
+          except IOError as err: # capture if opening files fail
+            print "IOError: "+err.message
+            LOG.warning("Skipping submission...")
+            failed.append(sample)
+            print ""
+            continue # ignore this submission
           if testrun:
             fchunks = fchunks[:4]
         else:
@@ -780,7 +815,7 @@ def preparejobs(args):
               ###  jobcmd += " -o %s -t %s -i %s"%(outdir,filetag)
               else:
                 jobcmd   += " -y %s -d %r -c %s -M %s --copydir %s -t %s"%(era,dtype,channel,module,outdir,filetag)
-              if prefetch:
+              if prefetch_:
                 jobcmd   += " -p"
               if preselect and skim:
                 jobcmd   += " --preselect '%s'"%(preselect)
@@ -805,7 +840,7 @@ def preparejobs(args):
           ('group',sample.group), ('paths',sample.paths), ('name',sample.name), ('nevents',nevents),
           ('dtype',dtype),        ('channel',channel),    ('module',module),    ('extraopts',extraopts_),
           ('jobname',jobname),    ('jobtag',jobtag),      ('tag',tag),          ('postfix',postfix),
-          ('try',subtry),         ('queue',queue_),       ('jobids',jobids),
+          ('try',subtry),         ('queue',queue_),       ('jobids',jobids),    ('prefetch',prefetch_),
           ('outdir',outdir),      ('jobdir',jobdir),      ('cfgdir',cfgdir),    ('logdir',logdir),
           ('cfgname',cfgname),    ('joblist',joblist),    ('maxevts',maxevts_),
           ('nfiles',nfiles),      ('files',infiles),      ('nfilesperjob',nfilesperjob_), #('nchunks',nchunks),
@@ -818,6 +853,8 @@ def preparejobs(args):
       
       if not found:
         print_no_samples(dtypes,filters,vetoes,jobdir_,jobcfgs)
+      elif failed and len(failed)!=len(samples):
+        print ">>> %d/%d samples failed: %s\n"%(len(failed),len(samples),', '.join(s.name for s in failed))
     
 
 
@@ -922,11 +959,9 @@ def checkchunks(sample,**kwargs):
             break
           if matches2:
             file += ":%s"%(matches2[0][0]) #,matches2[0][1])
-            print file
           infiles.append(file)
         LOG.insist(infiles,"Did not find any ROOT files in job arguments %r, matches=%r"%(jobarg,matches))
         ichunk = -1
-        print chunkdict
         for i in chunkdict:
           if all(any(f in c for c in chunkdict[i]) for f in infiles):
             ichunk = i
@@ -983,27 +1018,32 @@ def checkchunks(sample,**kwargs):
         continue
     
     # GET FILES for RESUBMISSION + sanity checks
-    for ichunk in chunkdict.keys():
+    for ichunk in chunkdict.keys(): # chuckdict length might be changed (popped)
       if ichunk in pendchunks: # output still pending
         continue
       chunkfiles = chunkdict[ichunk]
-      if all(f in goodfiles for f in chunkfiles): # all files in this chunk were succesful
-        goodchunks.append(ichunk)
-        continue
-      bad = False # count each chunk only once: bad, else missing
-      for fname in chunkfiles:
+      keepfiles  = [ ] # do not redo good files in this chunk
+      bad        = False # count each chunk only once: bad, else missing
+      for fname in chunkfiles: # check bad (corrupted) or missing
         LOG.insist(fname not in resubfiles,"Found file for chunk '%d' more than once: %s "%(ichunk,fname)+
                                            "Possible overcounting or conflicting job output file format!")
-        if fname in badfiles:
-          bad = True
+        if fname in goodfiles: # good file, do not resubmit
+          keepfiles.append(fname)
+        else:
+          bad = bad or fname in badfiles # bad (corrupted) or missing, resubmit
           resubfiles.append(fname)
-        elif fname not in goodfiles: # output file missing
-          resubfiles.append(fname)
-      if bad:
-        badchunks.append(ichunk)
+      if len(keepfiles)==len(chunkfiles): # all files in this chunk were succesful
+        goodchunks.append(ichunk)
       else:
-        misschunks.append(ichunk)
-      chunkdict.pop(ichunk)
+        if len(keepfiles)==0: # all files bad or missing
+          chunkdict.pop(ichunk) # remove chunk from chunkdict to allow for reshuffling
+        else: # part of file list bad or missing
+          chunkdict[ichunk] = keepfiles # keep record of good ones for bookkeeping, resubmit bad ones
+        if bad:
+          badchunks.append(ichunk)
+        else:
+          misschunks.append(ichunk)
+  
   
   ###########################################################################
   # CHECK ANALYSIS OUTPUT: custom tree format, one output file per job, numbered post-fix
@@ -1501,7 +1541,7 @@ if __name__ == "__main__":
   parser_era.add_argument('value',              metavar='samples', help='samplelist linked to by given era')
   parser_ins.add_argument('type',               choices=['standalone','cmmsw'], #default=None,
                                                 help='type of installation: standalone or compiled in CMSSW')
-  parser_get.add_argument('-U','--URL',         dest='inclurl', action='store_true',
+  parser_get.add_argument('-U','--url',         dest='inclurl', action='store_true',
                                                 help="include XRootD url in filename for 'get files'" )
   parser_get.add_argument('-L','--limit',       dest='limit', type=int, default=-1,
                           metavar='NFILES',     help="limit number files in list for 'get files'" )

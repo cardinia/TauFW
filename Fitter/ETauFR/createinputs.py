@@ -1,5 +1,5 @@
 #! /usr/bin/env python
-# Author: Izaak Neutelings (August 2020)
+# Author: Izaak Neutelings (August 2020) edited by Andrea Cardini
 # Description: Create input histograms for datacards
 #   ./createinputs.py -c mutau -y UL2017
 import sys
@@ -7,7 +7,7 @@ from collections import OrderedDict
 sys.path.append("../../Plotter/") # for config.samples
 from config.samples import *
 from TauFW.Plotter.plot.utils import LOG as PLOG
-from TauFW.Plotter.plot.datacard import createinputs, plotinputs
+from TauFW.Fitter.plot.datacard import createinputs, plotinputs, preparesysts
 
 
 def main(args):
@@ -16,10 +16,11 @@ def main(args):
   parallel  = args.parallel
   verbosity = args.verbosity
   plot      = True
-  outdir    = ensuredir("input")
-  plotdir   = ensuredir(outdir,"plots")
   analysis  = 'zee_fr' # $PROCESS_$ANALYSIS
   tag       = ""
+  fileexp   = "$OUTDIR/$ANALYSIS_$OBS_$CHANNEL-$ERA$TAG.inputs.root"
+  outdir    = ensuredir("input")
+  plotdir   = "input/plots/$ERA"
   
   for era in eras:
     for channel in channels:
@@ -69,27 +70,28 @@ def main(args):
         sampleset.datasample.name = 'data_obs'
         
         # SYSTEMATIC VARIATIONS
-        varprocs = OrderedDict([ # processes to be varied
-          ('Nom',     ['ZTT','ZL','ZJ','W','VV','ST','TTT','TTL','TTJ','QCD','data_obs']), #,'STT','STJ'
-          ('TESUp',   ['ZTT']),
-          ('TESDown', ['ZTT']),
-          ('FESUp',   ['ZL']),
-          ('FESDown', ['ZL']),
-          ('EESUp',   ['ZL']), #Electron energy scale
-          ('EESDown', ['ZL']),
+        systs = preparesysts( # processes to be varied
+          ('Nom', "",     ['ZTT','ZL','ZJ','W','VV','ST','TTT','TTL','TTJ','QCD','data_obs']), #,'STT','STJ'
+          ('TES',"_shape_tes",   ['ZTT']),
+          ('FES',"_shape_fes",   ['ZL']),
+          #Add other samples when EES rerun for all
+          ('EES',"_shape_ees",   ['ZL','ZTT','ZJ']),#'W','VV','ST','TTT','TTL','TTJ']), #Electron energy scale
+          ('RES',"_shape_res",   ['ZL','ZTT','ZJ','W','VV','ST','TTT','TTL','TTJ']),
           #('JTFUp',   ['ZJ', 'TTJ', 'QCD', 'W']),
           #('JTFDown', ['ZJ', 'TTJ', 'QCD', 'W']),
-        ])
+          ERA=era,CHANNEL=channel)
         samplesets = { # sets of samples per variation
           'Nom':     sampleset, # nominal
-          'TESUp':   sampleset.shift(varprocs['TESUp'],  "_TES1p05","_TESUp",  " +5% TES", split=True,filter=False,share=True),
-          'TESDown': sampleset.shift(varprocs['TESDown'],"_TES0p95","_TESDown"," -5% TES", split=True,filter=False,share=True),
-          'FESUp':   sampleset.shift(varprocs['FESUp'],  "_FES1p25","_FESUp",  " +25% FES", split=True,filter=False,share=True),
-          'FESDown': sampleset.shift(varprocs['FESDown'],"_FES0p75","_FESDown"," -25% FES", split=True,filter=False,share=True),
-          'EESUp':   sampleset.shift(varprocs['EESUp'],  "_EES1p01","_EESUp",  " +1% EES", split=True,filter=False,share=True),
-          'EESDown': sampleset.shift(varprocs['EESDown'],"_EES0p99","_EESDown"," -1% EES", split=True,filter=False,share=True),
+          'TESUp':   sampleset.shift(systs['TES'].procs,"_TES1p05",systs['TES'].up," +5% TES", split=True,filter=False,share=True),
+          'TESDown': sampleset.shift(systs['TES'].procs,"_TES0p95",systs['TES'].dn," -5% TES", split=True,filter=False,share=True),
+          'FESUp':   sampleset.shift(systs['FES'].procs,"_FES1p25",systs['FES'].up," +25% FES", split=True,filter=False,share=True),
+          'FESDown': sampleset.shift(systs['FES'].procs,"_FES0p75",systs['FES'].dn," -25% FES", split=True,filter=False,share=True),
+          'EESUp':   sampleset.shift(systs['EES'].procs,"_EES1p01",systs['EES'].up," +1% EES", split=True,filter=False,share=True),
+          'EESDown': sampleset.shift(systs['EES'].procs,"_EES0p99",systs['EES'].dn," -1% EES", split=True,filter=False,share=True),
+          'RESUp':   sampleset.shift(systs['RES'].procs,"",systs['RES'].up," +3% mvisRES", split=True,filter=False,share=True),
+          'RESDown': sampleset.shift(systs['RES'].procs,"",systs['RES'].dn," -3% mvisRES", split=True,filter=False,share=True),
         }
-        keys = samplesets.keys() if verbosity>=1 else ['Nom','TESUp','TESDown']
+        keys = samplesets.keys() if verbosity>=1 else ['Nom','TESUp','TESDown','FESUp','FESDown','EESUp','EESDown','RESUp','RESDown']
         for shift in keys:
           if not shift in samplesets: continue
           samplesets[shift].printtable(merged=True,split=True)
@@ -112,8 +114,16 @@ def main(args):
         
         mvis_pass = Var('m_vis', 11, 60, 120)
         mvis_fail = Var('m_vis', 1, 60, 120)
+        mvis_pass_resUp = Var('m_vis_resoUp', 11, 60, 120)
+        mvis_fail_resUp = Var('m_vis_resoUp', 1, 60, 120)
+        mvis_pass_resDown = Var('m_vis_resoDown', 11, 60, 120)
+        mvis_fail_resDown = Var('m_vis_resoDown', 1, 60, 120)
         observables_pass = []
         observables_fail = []
+        observables_pass_resUp =[]
+        observables_fail_resUp =[]
+        observables_pass_resDown =[]
+        observables_fail_resDown =[]
         
         # ADDED Eta for E->Tau FR
         # PT & DM BINS
@@ -151,17 +161,25 @@ def main(args):
         else :
           print ">>> eta cuts:"
           for imax,etamin in enumerate(etabins,1):
-            if imax<len(etabins):
+            if imax==2 or imax>=len(etabins):
+              continue
+            else:
               etamax = etabins[imax]
               etacut = "abs(eta_2)>%s && abs(eta_2)<=%s"%(etamin,etamax)
               fname = "$VAR_eta%sto%s"%(etamin,etamax)
-            else: 
-              continue # skip overflow bin
             mvis_pass_cut = mvis_pass.clone(fname=fname,cut=etacut) # create observable with extra cut for eta bin
             mvis_fail_cut = mvis_fail.clone(fname=fname,cut=etacut) # create observable with extra cut for eta bin
+            mvis_pass_resUp_cut = mvis_pass_resUp.clone(fname=fname,cut=etacut) 
+            mvis_fail_resUp_cut = mvis_fail_resUp.clone(fname=fname,cut=etacut) 
+            mvis_pass_resDown_cut = mvis_pass_resDown.clone(fname=fname,cut=etacut) 
+            mvis_fail_resDown_cut = mvis_fail_resDown.clone(fname=fname,cut=etacut) 
             print ">>>   %r (%r)"%(etacut,fname)
             observables_pass.append(mvis_pass_cut)
             observables_fail.append(mvis_fail_cut)
+            observables_pass_resUp.append(mvis_pass_resUp_cut)
+            observables_fail_resUp.append(mvis_fail_resUp_cut)
+            observables_pass_resDown.append(mvis_pass_resDown_cut)
+            observables_fail_resDown.append(mvis_fail_resDown_cut)
           
       
       ############
@@ -212,30 +230,29 @@ def main(args):
       #   DATACARD INPUTS   #
       #######################
       # histogram inputs for the datacards
-      
+
       # https://twiki.cern.ch/twiki/bin/viewauth/CMS/SMTauTau2016
       chshort = channel.replace('tau','t').replace('mu','m') # abbreviation of channel
-      fname   = "%s/%s_$OBS_%s-%s$TAG%s.inputs.root"%(outdir,analysis,chshort,era,tag)
-      createinputs(fname,samplesets['Nom'],    observables_pass,bins_pass,recreate=True)
-      if channel in ['mutau']:
-        createinputs(fname,samplesets['TESUp'],  observables_pass,bins_pass,filter=varprocs['TESUp']  )
-        createinputs(fname,samplesets['TESDown'],observables_pass,bins_pass,filter=varprocs['TESDown'])
-        createinputs(fname,samplesets['FESUp'],  observables_pass,bins_pass,filter=varprocs['FESUp']  )
-        createinputs(fname,samplesets['FESDown'],observables_pass,bins_pass,filter=varprocs['FESDown'])
-        createinputs(fname,samplesets['EESUp'],  observables_pass,bins_pass,filter=varprocs['EESUp']  )
-        createinputs(fname,samplesets['EESDown'],observables_pass,bins_pass,filter=varprocs['EESDown'])
-        createinputs(fname,samplesets['Nom']    ,observables_pass.replace('m_vis','m_vis_resoUp'),bins_pass,filter=varprocs['RESUp']  ,htag='RESUp'  )
-        createinputs(fname,samplesets['Nom']    ,observables_pass.replace('m_vis','m_vis_resoDown'),bins_pass,filter=varprocs['RESDown'],htag='RESDown')
-      createinputs(fname,samplesets['Nom'],    observables_fail,bins_fail)
-      if channel in ['mutau']:
-        createinputs(fname,samplesets['TESUp'],  observables_fail,bins_fail,filter=varprocs['TESUp']  )
-        createinputs(fname,samplesets['TESDown'],observables_fail,bins_fail,filter=varprocs['TESDown'])
-        createinputs(fname,samplesets['FESUp'],  observables_fail,bins_fail,filter=varprocs['FESUp']  )
-        createinputs(fname,samplesets['FESDown'],observables_fail,bins_fail,filter=varprocs['FESDown'])
-        createinputs(fname,samplesets['EESUp'],  observables_fail,bins_fail,filter=varprocs['EESUp']  )
-        createinputs(fname,samplesets['EESDown'],observables_fail,bins_fail,filter=varprocs['EESDown'])
-        createinputs(fname,samplesets['Nom']    ,observables_fail.replace('m_vis','m_vis_resoUp'),bins_fail,filter=varprocs['RESUp']  ,htag='RESUp'  )
-        createinputs(fname,samplesets['Nom']    ,observables_fail.replace('m_vis','m_vis_resoDown'),bins_fail,filter=varprocs['RESDown'],htag='RESDown')
+      fname   = repkey(fileexp,OUTDIR=outdir,ANALYSIS=analysis,CHANNEL=chshort,ERA=era,TAG=tag)
+      createinputs(fname,samplesets['Nom'],observables_pass,bins_pass,recreate=True)
+      createinputs(fname,samplesets['Nom'],observables_fail,bins_fail,recreate=False)
+      if channel in ['etau']:
+        createinputs(fname,samplesets['TESUp'],  observables_pass,bins_pass,systs['TES'].up,filter=systs['TES'].procs)
+        createinputs(fname,samplesets['TESDown'],observables_pass,bins_pass,systs['TES'].dn,filter=systs['TES'].procs)
+        createinputs(fname,samplesets['FESUp'],  observables_pass,bins_pass,systs['FES'].up,filter=systs['FES'].procs)
+        createinputs(fname,samplesets['FESDown'],observables_pass,bins_pass,systs['FES'].dn,filter=systs['FES'].procs)
+        createinputs(fname,samplesets['EESUp'],  observables_pass,bins_pass,systs['EES'].up,filter=systs['EES'].procs)
+        createinputs(fname,samplesets['EESDown'],observables_pass,bins_pass,systs['EES'].dn,filter=systs['EES'].procs)
+        createinputs(fname,samplesets['RESUp'],observables_pass_resUp,bins_pass,systs['RES'].up,filter=systs['RES'].procs)
+        createinputs(fname,samplesets['RESDown'],observables_pass_resDown,bins_pass,systs['RES'].dn,filter=systs['RES'].procs)
+        createinputs(fname,samplesets['TESUp'],  observables_fail,bins_fail,systs['TES'].up,filter=systs['TES'].procs)
+        createinputs(fname,samplesets['TESDown'],observables_fail,bins_fail,systs['TES'].dn,filter=systs['TES'].procs)
+        createinputs(fname,samplesets['FESUp'],  observables_fail,bins_fail,systs['FES'].up,filter=systs['FES'].procs)
+        createinputs(fname,samplesets['FESDown'],observables_fail,bins_fail,systs['FES'].dn,filter=systs['FES'].procs)
+        createinputs(fname,samplesets['EESUp'],  observables_fail,bins_fail,systs['EES'].up,filter=systs['EES'].procs)
+        createinputs(fname,samplesets['EESDown'],observables_fail,bins_fail,systs['EES'].dn,filter=systs['EES'].procs)
+        createinputs(fname,samplesets['RESUp'],observables_fail_resUp,bins_fail,systs['RES'].up,filter=systs['RES'].procs)
+        createinputs(fname,samplesets['RESDown'],observables_fail_resDown,bins_fail,systs['RES'].dn,filter=systs['RES'].procs)
       
       
       ############
@@ -244,11 +261,13 @@ def main(args):
       # control plots of the histogram inputs
       
       if plot:
-        pname  = "%s/%s_$OBS_%s-$BIN-%s$TAG%s.png"%(plotdir,analysis,chshort,era,tag)
-        text   = "%s: $BIN"%(channel.replace("mu","#mu").replace("tau","#tau_{h}"))
-        groups = [ ] #(['^TT','ST'],'Top'),]
-        plotinputs(fname,varprocs,observables_pass,bins_pass,text=text,
+        plotdir_ = ensuredir(repkey(plotdir,ERA=era,CHANNEL=channel))
+        pname    = repkey(fileexp,OUTDIR=plotdir_,ANALYSIS=analysis,CHANNEL=chshort+"-$BIN",ERA=era,TAG='$TAG'+tag).replace('.root','.png')
+        text     = "%s: $BIN"%(channel.replace("mu","#mu").replace("tau","#tau_{h}"))
+        groups   = [ ] #(['^TT','ST'],'Top'),]
+        plotinputs(fname,systs,observables_pass,bins_pass,text=text,
                    pname=pname,tag=tag,group=groups)
+
       
 
 if __name__ == "__main__":

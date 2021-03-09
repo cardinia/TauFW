@@ -1,0 +1,8 @@
+<Flags CXXFLAGS="-Wno-unused-variable -Wno-error=unused-but-set-variable -Wno-error=maybe-uninitialized" />
+<bin name="templateFittingETauFR" file="templateFittingETauFR.cpp">
+  <use name="root"/>
+  <use name="rootgraphics"/>
+  <use name="rootmath"/>
+  <use name="rootpy"/>
+  <use name="CombineHarvester/CombineTools"/>
+</bin>
