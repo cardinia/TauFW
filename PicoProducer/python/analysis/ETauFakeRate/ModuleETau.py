@@ -17,6 +17,8 @@ class ModuleETau(ModuleTauPair):
     kwargs['channel'] = 'etau'
     super(ModuleETau,self).__init__(fname,**kwargs)
     self.out = TreeProducerETau(fname,self)
+    self.resoScale = 0.
+
     
     # TRIGGERS
     jsonfile       = os.path.join(datadir,"trigger/tau_triggers_%d.json"%(self.year))
