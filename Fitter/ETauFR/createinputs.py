@@ -215,7 +215,7 @@ def main(args):
           #Sel('zttregion',repkey(zttregion,WP=16)),
         ]
         bins_fail = []
-        TPRegion = ['Pass','Fail']
+        TPRegion = ['_pass','_fail']
         for wpname in tauwps: # loop over tauVsEle WPs
           wpbit = tauwpbits[wpname]
           for regionname in TPRegion:
