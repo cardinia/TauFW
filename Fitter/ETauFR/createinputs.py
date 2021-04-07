@@ -75,7 +75,7 @@ def main(args):
           ('TES',"_shape_tes",   ['ZTT']),
           ('FES',"_shape_fes",   ['ZL']),
           #Add other samples when EES rerun for all
-          ('EES',"_shape_ees",   ['ZL','ZTT','ZJ']),#'W','VV','ST','TTT','TTL','TTJ']), #Electron energy scale
+          ('EES',"_shape_ees",   ['ZL','ZTT','ZJ','W','VV','ST','TTT','TTL','TTJ']), #Electron energy scale
           ('RES',"_shape_res",   ['ZL','ZTT','ZJ','W','VV','ST','TTT','TTL','TTJ']),
           #('JTFUp',   ['ZJ', 'TTJ', 'QCD', 'W']),
           #('JTFDown', ['ZJ', 'TTJ', 'QCD', 'W']),
@@ -208,18 +208,18 @@ def main(args):
           iso_2_fail     = "idDecayModeNewDMs_2 && idDeepTau2017v2p1VSjet_2>=16 && idDeepTau2017v2p1VSe_2>=1 && idDeepTau2017v2p1VSmu_2>=$WP"
           
         passregion  = "q_1*q_2<0 && mt_1<60 && %s && %s && !lepton_vetoes_notau && metfilter"%(iso_1,iso_2)
-        failregion = "q_1*q_2<0 && mt_1<60 && %s && %s && !lepton_vetoes_notau && metfilter"%(iso_1,iso_2_fail)
+        failregion = "q_1*q_2<0 && mt_1<60 && %s && %s && !lepton_vetoes_notau && metfilter && idDeepTau2017v2p1VSe_2 > 1"%(iso_1,iso_2_fail)
         #zttregion = "%s && mt_1<60 && dzeta>-25 && abs(deta_ll)<1.5"%(baseline)
         bins_pass = [
           #Sel('baseline', repkey(baseline,WP=16)),
           #Sel('zttregion',repkey(zttregion,WP=16)),
         ]
         bins_fail = []
-        TPRegion = ['Pass','Fail']
+        TPRegion = ['_pass','_fail']
         for wpname in tauwps: # loop over tauVsEle WPs
           wpbit = tauwpbits[wpname]
           for regionname in TPRegion:
-            if regionname =='Pass':
+            if regionname =='_pass':
                 bins_pass.append(Sel(wpname+regionname,repkey(passregion,WP=wpbit)))
             else:
                 bins_fail.append(Sel(wpname+regionname,repkey(failregion,WP=wpbit)))
