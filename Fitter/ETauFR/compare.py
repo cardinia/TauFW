@@ -55,12 +55,14 @@ for i in range(fpf_s.getSize()):
     flag = False;
     mean_p, sigma_p = 0,0
     print name, ": ", nuis_s.getVal(), "+-", nuis_s.getError()
+    print "nuis_p: ", nuis_p
     if nuis_p == None:
         if not options.abs: continue
         row += [ "[%.2f, %.2f]" % (nuis_s.getMin(), nuis_s.getMax()) ]
     else:
         mean_p, sigma_p = (nuis_p.getVal(), nuis_p.getError())
         if options.abs: row += [ "%.2f +/- %.2f" % (nuis_p.getVal(), nuis_p.getError()) ]
+        print name, ": ", mean_p, "+-", sigma_p
     #for fit_name, nuis_x in [('b', nuis_b), ('s',nuis_s)]:
     for fit_name, nuis_x in [('s',nuis_s)]:
 	if nuis_x == None:
