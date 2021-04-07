@@ -21,26 +21,28 @@ for ieta in eta :
         signals = ['ZL']
 
         categories = {
-            'etau' : [( 1, '_pass' ),( 2, '_fail' )],
+            'et' : [( 1, '_pass' ),( 2, '_fail' )],
         }
 
-        cb.AddObservations(['*'], ['ETauFR'], ['2016'], ['etau'],              categories['etau']) # adding observed data
-        cb.AddProcesses(   ['*'], ['ETauFR'], ['2016'], ['etau'], backgrounds, categories['etau'], False) # adding backgrounds
-        cb.AddProcesses(   ['*'], ['ETauFR'], ['2016'], ['etau'], signals,     categories['etau'], True) # adding signals
+        cb.AddObservations(['*'], ['ETauFR'], ['2016'], ['et'],              categories['et']) # adding observed data
+        cb.AddProcesses(   ['*'], ['ETauFR'], ['2016'], ['et'], backgrounds, categories['et'], False) # adding backgrounds
+        cb.AddProcesses(   ['90'], ['ETauFR'], ['2016'], ['et'], signals,     categories['et'], True) # adding signals
 
         cb.cp().process(mc_backgrounds).AddSyst(cb,'lumi_2016', 'lnN', ch.SystMap()(1.026))
         cb.cp().process(mc_backgrounds).AddSyst(cb,'muon_eff', 'lnN', ch.SystMap()(1.02))
 
         cb.cp().process(['TTT','TTL','TTJ','ST']).AddSyst(cb, 'xsec_top', 'lnN', ch.SystMap()(1.10))
-        cb.cp().process(['VV']).AddSyst(cb, 'xsec_vv', 'lnN', ch.SystMap()(1.15))
-        cb.cp().process(['ZL','ZTT','ZJ']).AddSyst(cb, 'xsec_z', 'lnN', ch.SystMap()(1.03))
-        cb.cp().process(['W']).AddSyst(cb, 'w_estimation', 'lnN', ch.SystMap()(1.20))
+        cb.cp().process(['VV']).AddSyst(cb, 'normalizationVV', 'lnN', ch.SystMap()(1.15))
+        cb.cp().process(['ZL','ZTT','ZJ']).AddSyst(cb, 'normalizationDY', 'lnN', ch.SystMap()(1.03))
+        cb.cp().process(['W']).AddSyst(cb, 'normalizationW', 'lnN', ch.SystMap()(1.20))
         cb.cp().process(['ZJ','TTJ']).AddSyst(cb, 'jet_to_tauFR', 'lnN', ch.SystMap()(1.30))
-        cb.cp().process(['QCD']).AddSyst(cb, 'ss_to_os_extrap', 'lnN', ch.SystMap()(1.2))
-        cb.cp().process(['ZL']).AddSyst(cb, 'vsjetSF', 'rateParam', ch.SystMap()(1.0))
+        cb.cp().process(['QCD']).AddSyst(cb, 'normalizationQCD', 'lnN', ch.SystMap()(1.2))
+        cb.cp().process(['ZL']).AddSyst(cb, 'normalizationZEE', 'rateParam', ch.SystMap()(1.0))
         cb.cp().process(['ZTT']).AddSyst(cb, 'shape_tes', 'shape', ch.SystMap()(1.0))
-        cb.cp().process(['ZL']).AddSyst(cb, 'shape_fes', 'shape', ch.SystMap()(1.0))
-        cb.cp().process(['ZTT','ZL','ZJ','W','VV','ST','TTT','TTL','TTJ']).AddSyst(cb, 'shape_ees', 'shape', ch.SystMap()(1.0))
+        cb.cp().process(['ZL']).AddSyst(cb, 'shape_fes', 'shapeU', ch.SystMap()(1.0))
+        cb.cp().process(['ZL']).AddSyst(cb, 'shape_ees', 'shape', ch.SystMap()(1.0))
+        cb.cp().process(['ZTT','ZL','ZJ','VV','ST','TTT','TTL','TTJ']).AddSyst(cb, 'CMS_eff_e', 'lnN', ch.SystMap()(1.05))
+        cb.cp().process(['ZTT','ZL','VV','ST','TTT','TTL','TTJ']).AddSyst(cb, 'CMS_eff_t', 'lnN', ch.SystMap()(1.05))
 
         filepath = os.path.join(os.environ['CMSSW_BASE'],'src/TauFW/Fitter/ETauFR/input', "zee_fr_m_vis_eta%s_et-2016.inputs.root")%(ieta)
         processName = '%s$BIN/$PROCESS'%(iwp)

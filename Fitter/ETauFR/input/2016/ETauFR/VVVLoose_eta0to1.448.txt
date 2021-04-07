@@ -3,18 +3,18 @@ imax    2 number of bins
 jmax    9 number of processes minus 1
 kmax    * number of nuisance parameters
 --------------------------------------------------------------------------------
-shapes * _fail common/Medium_eta0to1.448.root _fail/$PROCESS _fail/$PROCESS_$SYSTEMATIC
-shapes ZL _fail common/Medium_eta0to1.448.root _fail/ZL$MASS _fail/ZL$MASS_$SYSTEMATIC
-shapes * _pass common/Medium_eta0to1.448.root _pass/$PROCESS _pass/$PROCESS_$SYSTEMATIC
-shapes ZL _pass common/Medium_eta0to1.448.root _pass/ZL$MASS _pass/ZL$MASS_$SYSTEMATIC
+shapes * _fail common/VVVLoose_eta0to1.448.root _fail/$PROCESS _fail/$PROCESS_$SYSTEMATIC
+shapes ZL _fail common/VVVLoose_eta0to1.448.root _fail/ZL$MASS _fail/ZL$MASS_$SYSTEMATIC
+shapes * _pass common/VVVLoose_eta0to1.448.root _pass/$PROCESS _pass/$PROCESS_$SYSTEMATIC
+shapes ZL _pass common/VVVLoose_eta0to1.448.root _pass/ZL$MASS _pass/ZL$MASS_$SYSTEMATIC
 --------------------------------------------------------------------------------
 bin          _pass           _fail           
-observation  43099.0         98005.0         
+observation  185409.0        0.0             
 --------------------------------------------------------------------------------
 bin                                         _pass           _pass           _pass           _pass           _pass           _pass           _pass           _pass           _pass           _fail           _fail           _fail           _fail           _fail           _fail           _fail           _fail           _fail           _pass           _fail           
 process                                     ZTT             ZJ              W               VV              ST              TTT             TTL             TTJ             QCD             ZTT             ZJ              W               VV              ST              TTT             TTL             TTJ             QCD             ZL              ZL              
 process                                     1               2               3               4               5               6               7               8               9               1               2               3               4               5               6               7               8               9               0               0               
-rate                                        62945           1989.68         24950.3         594.336         767.409         4567.28         42.8239         1628.95         1796.08         6720.5          2104.63         4268.72         273.734         124.917         403.297         326.128         252.481         0               18500.1         232125          
+rate                                        69782.9         5248.51         29279.5         965.175         910.724         4974.96         519.126         1890.13         1551.73         0               0               0               0               0               0               0               0               0               367808          0               
 --------------------------------------------------------------------------------
 CMS_ETauFR_et__pass_2016_QCD_bin_1  shape   -               -               -               -               -               -               -               -               1               -               -               -               -               -               -               -               -               -               -               -               
 CMS_ETauFR_et__pass_2016_QCD_bin_10 shape   -               -               -               -               -               -               -               -               1               -               -               -               -               -               -               -               -               -               -               -               

@@ -1,3 +1,3 @@
-CMS_ETauFR_et_Loose_pass_13TeV_QCD_bin_1 :  -0.0548955997426 +- 0.932245372663
-nuis_p:  <ROOT.RooRealVar object ("CMS_ETauFR_et_Loose_pass_13TeV_QCD_bin_1") at 0x4803410>
-CMS_ETauFR_et_Loose_pass_13TeV_QCD_bin_1 :  0.0 +- 0.0
+CMS_ETauFR_et__pass_2016_QCD_bin_1 :  -0.674985557019 +- 0.94732085667
+nuis_p:  <ROOT.RooRealVar object ("CMS_ETauFR_et__pass_2016_QCD_bin_1") at 0x5c5e650>
+CMS_ETauFR_et__pass_2016_QCD_bin_1 :  0.0 +- 0.0
