@@ -1,3 +1,4 @@
-CMS_ETauFR_et__pass_2016_QCD_bin_1 :  -0.674985557019 +- 0.94732085667
-nuis_p:  <ROOT.RooRealVar object ("CMS_ETauFR_et__pass_2016_QCD_bin_1") at 0x5c5e650>
+CMS_ETauFR_et__pass_2016_QCD_bin_1 :  -0.667348137885 +- 0.945520640361
+nuis_p:  <ROOT.RooRealVar object ("CMS_ETauFR_et__pass_2016_QCD_bin_1") at 0x4ea09c0>
+CMS_ETauFR_et__pass_2016_QCD_bin_1 :  0.0 +- 0.0
 CMS_ETauFR_et__pass_2016_QCD_bin_1 :  0.0 +- 0.0

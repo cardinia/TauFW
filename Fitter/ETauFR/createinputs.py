@@ -208,7 +208,7 @@ def main(args):
           iso_2_fail     = "idDecayModeNewDMs_2 && idDeepTau2017v2p1VSjet_2>=16 && idDeepTau2017v2p1VSe_2>=1 && idDeepTau2017v2p1VSmu_2>=$WP"
           
         passregion  = "q_1*q_2<0 && mt_1<60 && %s && %s && !lepton_vetoes_notau && metfilter"%(iso_1,iso_2)
-        failregion = "q_1*q_2<0 && mt_1<60 && %s && %s && !lepton_vetoes_notau && metfilter && idDeepTau2017v2p1VSe_2 > 1"%(iso_1,iso_2_fail)
+        failregion = "q_1*q_2<0 && mt_1<60 && %s && %s && !lepton_vetoes_notau && metfilter && idDeepTau2017v2p1VSe_2 >= 1"%(iso_1,iso_2_fail)
         #zttregion = "%s && mt_1<60 && dzeta>-25 && abs(deta_ll)<1.5"%(baseline)
         bins_pass = [
           #Sel('baseline', repkey(baseline,WP=16)),
