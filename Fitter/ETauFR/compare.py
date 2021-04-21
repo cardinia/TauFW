@@ -62,6 +62,7 @@ for i in range(fpf_s.getSize()):
     else:
         mean_p, sigma_p = (nuis_p.getVal(), nuis_p.getError())
         if options.abs: row += [ "%.2f +/- %.2f" % (nuis_p.getVal(), nuis_p.getError()) ]
+        print name, ": ", nuis_p.getVal(), "+-", nuis_p.getError()
         print name, ": ", mean_p, "+-", sigma_p
     #for fit_name, nuis_x in [('b', nuis_b), ('s',nuis_s)]:
     for fit_name, nuis_x in [('s',nuis_s)]:
