@@ -4,7 +4,7 @@
     "skim-jec": "skimjob.py --jec-sys", 
     "gen": "GenDumper", 
     "mutau": "ModuleMuTauSimple", 
-    "etau": "ModuleETau"
+    "etau": "ETauFakeRate.ModuleETau jec=False"
   }, 
   "eras": {
     "2016": "ETauFakeRate/samples_2016.py", 
@@ -15,11 +15,11 @@
   }, 
   "nfilesperjob": 5, 
   "filelistdir": "samples/files/$ERA/$SAMPLE.txt", 
-  "jobdir": "output_2017ReReco18/$ERA/$CHANNEL/$SAMPLE", 
+  "jobdir": "output_ETauFR3/$ERA/$CHANNEL/$SAMPLE", 
   "basedir": "/afs/cern.ch/work/l/lvigilan/TauWork/CMSSW_10_6_17_patch1/src/TauFW/PicoProducer", 
-  "outdir": "/eos/home-l/lvigilan/output_2017ReReco18/$ERA/$CHANNEL/$SAMPLE", 
-  "nanodir": "/eos/home-l/lvigilan/samples_2017ReReco18/nano/$ERA/$DAS", 
-  "picodir": "/eos/home-l/lvigilan/analysis_2017ReReco18/$ERA/$GROUP", 
+  "outdir": "/eos/home-l/lvigilan/output_ETauFR3/$ERA/$CHANNEL/$SAMPLE", 
+  "nanodir": "/eos/home-l/lvigilan/samples_ETauFR3/nano/$ERA/$DAS", 
+  "picodir": "/eos/home-l/lvigilan/analysis_ETauFR3/$ERA/$GROUP", 
   "tmpskimdir": "", 
   "batch": "HTCondor"
 }
