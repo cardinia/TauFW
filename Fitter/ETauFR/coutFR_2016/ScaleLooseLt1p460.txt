@@ -10,5 +10,5 @@ SimNLL created with 0 channels, 1 generic constraints, 23 fast gaussian constrai
 SimNLL created with 2 channels, 1 generic constraints, 23 fast gaussian constraints, 0 fast poisson constraints, 0 fast group constraints, 
 
  --- FitDiagnostics ---
-Best fit r: 0.948219  -0.0143605/+0.0145814  (68% CL)
+Best fit r: 0.938919  -0.00983841/+0.00987916  (68% CL)
 Done in 0.01 min (cpu), 0.01 min (real)

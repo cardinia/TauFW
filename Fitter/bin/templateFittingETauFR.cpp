@@ -34,8 +34,8 @@ int main(int argc, char * argv[]) {
 
   TString WP="VVVLoose";
   if(argc>1)WP=argv[2];
-  TString PassBin=WP+"Pass";
-  TString FailBin=WP+"Fail";
+  TString PassBin=WP+"_pass";
+  TString FailBin=WP+"_fail";
   // Each entry in the vector below specifies a bin name and corresponding bin_id.
   ch::Categories cats = {
     {1, PassBin.Data()},

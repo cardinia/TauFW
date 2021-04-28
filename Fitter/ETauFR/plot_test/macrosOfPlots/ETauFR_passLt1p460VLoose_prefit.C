@@ -1,8 +1,8 @@
 void ETauFR_passLt1p460VLoose_prefit()
 {
 //=========Macro generated from canvas: canv1/
-//=========  (Wed Apr 21 12:39:29 2021) by ROOT version 6.14/09
-   TCanvas *canv1 = new TCanvas("canv1", "",47,24,1000,755);
+//=========  (Mon Apr 26 11:09:49 2021) by ROOT version 6.14/09
+   TCanvas *canv1 = new TCanvas("canv1", "",0,23,1000,755);
    canv1->Range(0,0,1,1);
    canv1->SetFillColor(0);
    canv1->SetBorderMode(0);
