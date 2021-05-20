@@ -88,6 +88,7 @@ def main(args):
               syst.procs = ['ZTT_DM0','ZTT_DM1','ZTT_DM10','ZTT_DM11']+syst.procs[1:]
         samplesets = { # sets of samples per variation
           'Nom':     sampleset, # nominal
+
           'TESUp':   sampleset.shift(systs['TES'].procs,"_TES1p05",systs['TES'].up," +5% TES", split=True,filter=False,share=True),
           'TESDown': sampleset.shift(systs['TES'].procs,"_TES0p95",systs['TES'].dn," -5% TES", split=True,filter=False,share=True),
           #'TESUp':   sampleset.shift(systs['TES'].procs,"_TESUp",  systs['TES'].up," +3% TES", split=True,filter=False,share=True),
@@ -154,28 +155,6 @@ def main(args):
       #    mvis_cut = mvis.clone(fname=fname,cut=ptcut) # create observable with extra cut for pt bin
       #    print ">>>   %r (%r)"%(ptcut,fname)
       #    observables.append(mvis_cut)
-        #dmbins = [0,1,10,11]
-        #ptbins = [20,25,30,35,40,50,70,2000] #500,1000]
-        #print ">>> DM cuts:"
-        #for dm in dmbins:
-        #  dmcut = "pt_2>40 && dm_2==%d"%(dm)
-        #  fname = "$FILE_dm%s"%(dm)
-        #  mvis_cut = mvis.clone(fname=fname,cut=dmcut) # create observable with extra cut for dm bin
-        #  print ">>>   %r (%r)"%(dmcut,fname)
-        #  observables.append(mvis_cut)
-        #print ">>> pt cuts:"
-        #for imax, ptmin in enumerate(ptbins,1):
-        #  if imax<len(ptbins):
-        #    ptmax = ptbins[imax]
-        #    ptcut = "pt_2>%s && pt_2<=%s"%(ptmin,ptmax)
-        #    fname = "$FILE_pt%sto%s"%(ptmin,ptmax)
-        #  else: # overflow
-        #    #ptcut = "pt_2>%s"%(ptmin)
-        #    #fname = "$FILE_ptgt%s"%(ptmin)
-        #    continue # skip overflow bin
-        #  mvis_cut = mvis.clone(fname=fname,cut=ptcut) # create observable with extra cut for pt bin
-        #  print ">>>   %r (%r)"%(ptcut,fname)
-        #  observables.append(mvis_cut)
       
       ############
       #   BINS   #

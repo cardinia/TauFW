@@ -605,6 +605,7 @@ class Sample(object):
       weight = joinweights(self.weight,self.extraweight,kwargs.get('weight',""))
     else:
       weight = joinweights(selection.weight,self.weight,self.extraweight,kwargs.get('weight',""))
+<<<<<<< HEAD
     cuts     = joincuts(selection.selection,self.cuts,kwargs.get('cuts',""),kwargs.get('extracuts',""))
     if replaceweight:
       if len(replaceweight)==2 and not islist(replaceweight[0]):
@@ -612,6 +613,22 @@ class Sample(object):
       for pattern, newweight in replaceweight:
         LOG.verb('Sample.gethist: replacing weight: before %r'%weight,verbosity,3)
         weight = re.sub(pattern,newweight,weight)
+=======
+    cuts = joincuts(selection.selection,self.cuts,kwargs.get('cuts',""),kwargs.get('extracuts',""))
+    if replaceweight:
+      if len(replaceweight) in [2,3] and not islist(replaceweight[0]):
+        replaceweight = [replaceweight]
+      for wargs in replaceweight:
+        if len(wargs)>=3:
+          pattern, newweight, regexp = wargs[:3]
+        else:
+          pattern, newweight, regexp = wargs[0], wargs[1], False
+        LOG.verb('Sample.gethist: replacing weight: before %r'%weight,verbosity,3)
+        if regexp:
+          weight = re.sub(pattern,newweight,weight)
+        else:
+          weight = weight.replace(pattern,newweight)
+>>>>>>> b2e27a611b8c7f5e066abc5928038ef5fd815f08
         weight = weight.replace("**","*").strip('*')
         LOG.verb('Sample.gethist: replacing weight: after  %r'%weight,verbosity,3)
     cuts = joincuts(cuts,weight=weight)
@@ -629,8 +646,8 @@ class Sample(object):
         if blind:
           if isinstance(blind,tuple) and len(blind)==2:
             blindcuts = variable.blind(*blind)
-          elif variable.name_ in self.blinddict:
-            blindcuts = variable.blind(*self.blinddict[variable.name_])
+          elif variable._name in self.blinddict:
+            blindcuts = variable.blind(*self.blinddict[variable._name])
           elif variable.blindcuts:
             blindcuts = variable.blindcuts
         varcut = joincuts(blindcuts,variable.cut,weight=variable.dataweight)

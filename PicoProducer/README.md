@@ -132,9 +132,9 @@ pico.py channel skimjec 'skimjob.py --jec-sys'
 ### Analysis
 This framework allows to implement many analysis modules called "channels"
 (e.g. different final states like mutau or etau).
-All analysis code should be saved in [`python/analysis/`](python/analysis), or a subdirectory.
+All analysis code should be saved in [`python/analysis/`](python/analysis) or a [subdirectory](https://github.com/cms-tau-pog/TauFW/tree/master/PicoProducer/python/analysis#hierarchy).
 A simple example of an analysis is given in [`ModuleMuTauSimple.py`](python/analysis/ModuleMuTauSimple.py),
-a more fuller example in [`ModuleMuTau.py`](python/analysis/ModuleMuTau.py) 
+a more full example in [`ModuleMuTau.py`](python/analysis/ModuleMuTau.py) 
 with more detailed instructions are in [`python/analysis/README.md`](python/analysis).
 The `pico.py` script runs all analysis modules with the post-processor [`picojob.py`](python/processors/picojob.py).
 
@@ -204,24 +204,27 @@ Other optional keyword arguments are
 * `opts`: Extra key-worded options (`key=value`) to be passed to the analysis modules.
   Can be a comma-separated string (`'opt1=val1,opt2=val2'`) or a list of strings (`['opt1=val1','opt2=val2']`).
 
-Note that a priori skimming and analysis channels use the same sample lists (and therefore the same nanoAOD files)
-for the same era as specified in the configuration.
-While skimming is an optional step, typically you first want to skim nanoAOD from existing files on the GRID (given by DAS)
-and store them locally for faster and more reliable access.
-To run on skimmed nanoAOD files, you need to change `store` for each skimmed sample to point to the storage location.
-
 To get a file list for a particular sample in the sample list, you can use the `get files` subcommand.
 If you include `--write`, the list will be written to a text file as defined by `filelistdir` in the [configuration](#Configuration):
 ```
 pico.py get files -y 2016 -s DYJets --write
 ```
+Pass the full path of this text file to the sample via `files`.
+It may contain variables, e.g. `samples/files/$ERA/$SAMPLE.txt`.
 If you like to split jobs based on events (`maxevtsperjob`) instead of files, do
 ```
 pico.py write -y 2016 -s DYJets --nevts
 ```
 which will save the number of events per file as well.
 In this way the submission script does not have to open each file
-and get the number of nanoAOD events on the fly, which can take long.
+and get the number of nanoAOD events on the fly, which can take much long.
+
+Note that a priori skimming and analysis channels use the same sample lists (and therefore the same nanoAOD files)
+for the same era as specified in the configuration.
+While skimming is an optional step, typically you first want to skim nanoAOD from existing files on the GRID (given by DAS)
+and store them locally for faster and more reliable access.
+To run on skimmed nanoAOD files, you need to change `store` for each skimmed sample to point to the storage location.
+If you have a text file with the file list, you also need to remember to remove or update this list.
 
 
 ## Local run
@@ -444,6 +447,7 @@ Here are some frequently asked questions and hints during troubleshooting.
 * [How do I make my own analysis module ?](#how-do-i-make-my-own-analysis-module-)<br>
 * [What should be the format of my "pico" analysis ntuples ?](#what-should-be-the-format-of-the-pico-analysis-ntuples-)<br>
 * [How do I plot my analysis output ?](#how-do-i-plot-my-analysis-output-)<br>
+* [Why do I get a `ImportError: No module named TauPOG.TauIDSFs.TauIDSFTool` error message ?](Why-do-I-get-a-ImportError-No-module-named-TauPOG-TauIDSFs-TauIDSFTool-error-message-)<br>
 * [Why do I get a `no branch named ...` error message ?](#why-do-i-get-a-no-branch-named--error-message-)<br>
 * [Why do I get a `no branch named MET_pt_nom` error message ?](#why-do-i-get-a-no-branch-named-met_pt_nom-error-message-)<br>
 * [Why do my jobs fail ?](#why-do-my-jobs-fail-)<br>
@@ -480,6 +484,11 @@ It really depends how you like to do your analysis.
 See the instructions in the [`Plotter` package](../Plotter).
 To interface with your analysis tuples, use the [`Plotter.sample.Sample` class](../Plotter/python/sample/Sample.py).
 For a full example, hone into [these instructions](../Plotter#Plotting-script).
+
+
+### Why do I get a `ImportError: No module named TauPOG.TauIDSFs.TauIDSFTool` error message ?
+
+Please install `TauIDSFs` as instructed [here](https://github.com/cms-tau-pog/TauFW#picoproducer).
 
 
 ### Why do I get a `no branch named ...` error message ?
