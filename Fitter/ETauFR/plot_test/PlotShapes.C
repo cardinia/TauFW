@@ -26,13 +26,16 @@ void PlotShapes(
 		TString varName= "m_vis",
 		TString xtitle = "m_{vis} [GeV]",
 		TString ytitle = "dN/dm_{vis}[1/GeV]",
-		TString eta = "Lt1p460",
-		TString wp = "VLoose",
+		//TString eta = "Lt1p46",
+		TString eta = "Lt2p300",
+		TString wp = "VVLoose",
 		float xmin = 60,
 		float xmax = 120,
 		int numberofbins = 12,
-		bool posfit = false,
-		bool passProbe = true,
+		//bool posfit = false,
+		bool posfit = true,
+		//bool passProbe = true,
+		bool passProbe = false,
 		bool logY = false,
 		bool legLeft = false
 		)
@@ -197,6 +200,8 @@ void PlotShapes(
   InitHist(VV,TColor::GetColor("#6F2D35"));
   InitHist(ZJ,TColor::GetColor("#FFCC66"));
   if(W!=NULL) {InitHist(W,TColor::GetColor("#4496C8"));}
+  data_obs->SetTitle("");
+  data_obs->SetStats(0);
   data_obs->GetXaxis()->SetTitle(xtitle);
   data_obs->GetYaxis()->SetTitle(ytitle);
   data_obs->GetYaxis()->SetTitleOffset(1.5);
@@ -283,7 +288,7 @@ void PlotShapes(
   //plotchannel("e#mu");
   //if (!applyPU) suffix = "_noPU";
 
-  TLatex * cms = new TLatex(0.50,0.94,"L = 59.9 fb^{-1} at #sqrt{s} = 13 TeV");
+  TLatex * cms = new TLatex(0.65,0.94,"L = 59.9 fb^{-1} at #sqrt{s} = 13 TeV");
 
   cms->SetNDC();
   cms->SetTextSize(0.05);

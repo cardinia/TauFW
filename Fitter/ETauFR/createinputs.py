@@ -132,7 +132,7 @@ def main(args):
         #    instead of looping over many selection,
         #    also, each pt/DM bin will be a separate file
         dmbins = [0,1,10,11]
-        etabins = [0,1.448,1.560,2.3] #ETauFR binning
+        etabins = [0,1.460,1.560,2.3] #ETauFR binning
         if channel=='mutau' :
           etabins = [0,0.4,0.8,1.2,1.7,2.3] #MuTauFR binning
           

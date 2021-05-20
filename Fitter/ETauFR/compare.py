@@ -50,12 +50,18 @@ for i in range(fpf_s.getSize()):
     nuis_s = fpf_s.at(i)
     name   = nuis_s.GetName();
     #nuis_b = fpf_b.find(name)
+    #print "nuis_s name", name
     nuis_p = prefit.find(name)
     row = []
     flag = False;
     mean_p, sigma_p = 0,0
+    #print name, ": ", nuis_s.getVal(), "+-", nuis_s.getError()
+    #print "nuis_p: ", nuis_p.getVal()
+    #print "nuis_p Error: ", nuis_p.getError()
+    #print "nuis_p SOLO: ", nuis_p
     print name, ": ", nuis_s.getVal(), "+-", nuis_s.getError()
-    print "nuis_p: ", nuis_p
+    
+
     if nuis_p == None:
         if not options.abs: continue
         row += [ "[%.2f, %.2f]" % (nuis_s.getMin(), nuis_s.getMax()) ]
@@ -63,7 +69,7 @@ for i in range(fpf_s.getSize()):
         mean_p, sigma_p = (nuis_p.getVal(), nuis_p.getError())
         if options.abs: row += [ "%.2f +/- %.2f" % (nuis_p.getVal(), nuis_p.getError()) ]
         print name, ": ", nuis_p.getVal(), "+-", nuis_p.getError()
-        print name, ": ", mean_p, "+-", sigma_p
+        #print name, ": ", mean_p, "+-", sigma_p
     #for fit_name, nuis_x in [('b', nuis_b), ('s',nuis_s)]:
     for fit_name, nuis_x in [('s',nuis_s)]:
 	if nuis_x == None:
@@ -71,6 +77,7 @@ for i in range(fpf_s.getSize()):
         else:
             row += [ "%+.2f +/- %.2f" % (nuis_x.getVal(), nuis_x.getError()) ]
             if nuis_p != None:
+                print name, nuis_x.Print(), nuis_x.getVal(), nuis_x.getError(), mean_p, sigma_p
                 valShift = (nuis_x.getVal() - mean_p)/sigma_p
                     #if fit_name == 'b':
                     #pulls.append(valShift)

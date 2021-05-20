@@ -7,7 +7,7 @@ import os
 import ROOT as R
 import math
 #eta = ['0to0.4','0.4to0.8','0.8to1.2','1.2to1.7','1.7to3.0']
-eta = ['0to1.448','1.56to2.3']#'0.8to1.2','1.2to1.7','1.7to3.0']
+eta = ['0to1.46','1.56to2.3']#'0.8to1.2','1.2to1.7','1.7to3.0']
 wp = ['VVVLoose','VVLoose','VLoose','Loose','Medium','Tight','VTight','VVTight']
 for ieta in eta :
     print '<<<<<<< eta range: ', ieta
@@ -21,7 +21,7 @@ for ieta in eta :
         signals = ['ZL']
 
         categories = {
-            'et' : [( 1, '_pass' ),( 2, '_fail' )],
+            'et' : [( 1, '%s_pass'%(iwp) ),( 2, '%s_fail'%(iwp) )],
         }
 
         cb.AddObservations(['*'], ['ETauFR'], ['2016'], ['et'],              categories['et']) # adding observed data
@@ -45,8 +45,8 @@ for ieta in eta :
         cb.cp().process(['ZTT','ZL','VV','ST','TTT','TTL','TTJ']).AddSyst(cb, 'CMS_eff_t', 'lnN', ch.SystMap()(1.05))
 
         filepath = os.path.join(os.environ['CMSSW_BASE'],'src/TauFW/Fitter/ETauFR/input', "zee_fr_m_vis_eta%s_et-2016.inputs.root")%(ieta)
-        processName = '%s$BIN/$PROCESS'%(iwp)
-        systematicName = '%s$BIN/$PROCESS_$SYSTEMATIC'%(iwp)
+        processName = '$BIN/$PROCESS'
+        systematicName = '$BIN/$PROCESS_$SYSTEMATIC'
         cb.cp().backgrounds().ExtractShapes(filepath, processName, systematicName)
         cb.cp().signals().ExtractShapes(filepath, processName, systematicName)
         ch.SetStandardBinNames(cb, '$BIN') # Define the name of the category names
@@ -65,12 +65,12 @@ for ieta in eta :
         #cb.PrintAll()
         #writer.WriteCards(channel, cb.cp().channel([channel])) # writing datacards for each final state in a corresponding folder to be able to perform the measurement individually in each final state
         print 'pre-fit fake rate:'
-        print cb.cp().bin(['_pass']).process(['ZL']).GetRate() / ((cb.cp().bin(['_pass']).process(['ZL']).GetRate()+cb.cp().bin(['_fail']).process(['ZL']).GetRate()))
+        print cb.cp().bin(['%s_pass'%(iwp)]).process(['ZL']).GetRate() / ((cb.cp().bin(['%s_pass'%(iwp)]).process(['ZL']).GetRate()+cb.cp().bin(['%s_fail'%(iwp)]).process(['ZL']).GetRate()))
 
-        sigRatePassPre = cb.cp().bin(['_pass']).process(['ZL']).GetRate()
-        sigRateFailPre = cb.cp().bin(['_fail']).process(['ZL']).GetRate()
-        sigErrPassPre = cb.cp().bin(['_pass']).process(['ZL']).GetUncertainty()
-        sigErrFailPre = cb.cp().bin(['_fail']).process(['ZL']).GetUncertainty()
+        sigRatePassPre = cb.cp().bin(['%s_pass'%(iwp)]).process(['ZL']).GetRate()
+        sigRateFailPre = cb.cp().bin(['%s_fail'%(iwp)]).process(['ZL']).GetRate()
+        sigErrPassPre = cb.cp().bin(['%s_pass'%(iwp)]).process(['ZL']).GetUncertainty()
+        sigErrFailPre = cb.cp().bin(['%s_fail'%(iwp)]).process(['ZL']).GetUncertainty()
         
         dfdxPre = sigRateFailPre /((sigRatePassPre+sigRateFailPre)*(sigRatePassPre+sigRateFailPre))
         dfdyPre = -sigRatePassPre / ((sigRatePassPre+sigRateFailPre)*(sigRatePassPre+sigRateFailPre))

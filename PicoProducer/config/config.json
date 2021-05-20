@@ -21,5 +21,7 @@
   "nanodir": "/eos/home-l/lvigilan/samples_ETauFR3/nano/$ERA/$DAS", 
   "picodir": "/eos/home-l/lvigilan/analysis_ETauFR3/$ERA/$GROUP", 
   "tmpskimdir": "", 
-  "batch": "HTCondor"
+  "batch": "HTCondor", 
+  "queue": "", 
+  "maxevtsperjob": -1
 }
