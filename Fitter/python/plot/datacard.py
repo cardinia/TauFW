@@ -1,11 +1,8 @@
 # -*- coding: utf-8 -*-
 # Author: Izaak Neutelings (August 2020)
 # Description: Help function to create and plot input histogram for datacards
-<<<<<<< HEAD:Fitter/python/plot/datacard.py
 import os
-=======
 import os, re
->>>>>>> b2e27a611b8c7f5e066abc5928038ef5fd815f08:Fitter/python/plot/datacard.py
 from collections import OrderedDict
 from TauFW.common.tools.utils import ensurelist, repkey, lreplace #, rreplace
 from TauFW.common.tools.file import ensuredir, ensureTDirectory, ensureTFile, gethist
@@ -22,22 +19,14 @@ class Systematic(object):
   """Container class for systematics."""
   
   def __init__(self, systag, procs, replaceweight=('','',''), **kwargs):
-<<<<<<< HEAD:Fitter/python/plot/datacard.py
-=======
     regexp     = kwargs.pop('regex',False)
->>>>>>> b2e27a611b8c7f5e066abc5928038ef5fd815f08:Fitter/python/plot/datacard.py
     self.procs = procs # list of processes
     self.tag   = repkey(systag,**kwargs)
     self.dn    = self.tag +'Down'
     self.up    = self.tag +'Up'
-<<<<<<< HEAD:Fitter/python/plot/datacard.py
-    self.wgtup = (replaceweight[0],replaceweight[1]) # (oldweight,newweightUp)
-    self.wgtdn = (replaceweight[0],replaceweight[2]) # (oldweight,newweightDown)
-=======
     #weightnom  = replaceweight[0] if regexp else re.escape(replaceweight[0]) # escape non regexp
     self.wgtup = (replaceweight[0],replaceweight[1],regexp) # (oldweight,newweightUp)
     self.wgtdn = (replaceweight[0],replaceweight[2],regexp) # (oldweight,newweightDown)
->>>>>>> b2e27a611b8c7f5e066abc5928038ef5fd815f08:Fitter/python/plot/datacard.py
     
 
 def preparesysts(*args,**kwargs):
@@ -48,11 +37,7 @@ def preparesysts(*args,**kwargs):
   return systs
   
 
-<<<<<<< HEAD:Fitter/python/plot/datacard.py
-def createinputs(fname,sampleset,observables,bins,htag="",**kwargs):
-=======
 def createinputs(fname,sampleset,obsset,bins,syst="",**kwargs):
->>>>>>> b2e27a611b8c7f5e066abc5928038ef5fd815f08:Fitter/python/plot/datacard.py
   """Create histogram inputs in ROOT file for datacards.
        fname:     filename pattern of ROOT file
        sampleset: SampleSet object
@@ -114,14 +99,11 @@ def createinputs(fname,sampleset,obsset,bins,syst="",**kwargs):
     if htag: # hist tag for systematic
       print ">>> systematic uncertainty: %s"%(color(htag.lstrip('_'),'grey'))
     if shift:
-      selection.shift(shift)
+      #selection.shift(shift)#LOR COMM      
+      selection.shift(shift,None)
     if recreate or verbosity>=1:
       print ">>> %r"%(selection.selection)
-<<<<<<< HEAD:Fitter/python/plot/datacard.py
-    hists = sampleset.gethists(observables,selection,method=method,split=True,
-=======
     hists = sampleset.gethists(obsset,selection,method=method,split=True,
->>>>>>> b2e27a611b8c7f5e066abc5928038ef5fd815f08:Fitter/python/plot/datacard.py
                                parallel=parallel,filter=filters,veto=vetoes,replaceweight=replaceweight)
     
     # SAVE HIST
@@ -185,11 +167,7 @@ def plotinputs(fname,varprocs,obsset,bins,**kwargs):
       else:
         varprocs[syst.up.lstrip('_')] = syst.procs
         varprocs[syst.dn.lstrip('_')] = syst.procs
-<<<<<<< HEAD:Fitter/python/plot/datacard.py
-  for obs in observables:
-=======
   for obs in obsset:
->>>>>>> b2e27a611b8c7f5e066abc5928038ef5fd815f08:Fitter/python/plot/datacard.py
     obsname = obs.filename
     ftag    = tag+obs.tag
     fname_  = repkey(fname,OBS=obsname,TAG=ftag)
