@@ -72,24 +72,24 @@ def main(args):
         # SYSTEMATIC VARIATIONS
         systs = preparesysts( # processes to be varied
           ('Nom', "",     ['ZTT','ZL','ZJ','W','VV','ST','TTT','TTL','TTJ','QCD','data_obs']), #,'STT','STJ'
-       #   ('TES',"_shape_tes",   ['ZTT']),
-       #   ('FES',"_shape_fes",   ['ZL']),
+          ('TES',"_shape_tes",   ['ZTT']),
+          ('FES',"_shape_fes",   ['ZL']),
           #Add other samples when EES rerun for all
-       #   ('EES',"_shape_ees",   ['ZL','ZTT','ZJ','W','VV','ST','TTT','TTL','TTJ']), #Electron energy scale
+          ('EES',"_shape_ees",   ['ZL','ZTT','ZJ','W','VV','ST','TTT','TTL','TTJ']), #Electron energy scale
           ('RES',"_shape_res",   ['ZL','ZTT','ZJ','W','VV','ST','TTT','TTL','TTJ']),
           #('JTFUp',   ['ZJ', 'TTJ', 'QCD', 'W']),
           #('JTFDown', ['ZJ', 'TTJ', 'QCD', 'W']),
           ERA=era,CHANNEL=channel)
         samplesets = { # sets of samples per variation
           'Nom':     sampleset, # nominal
-        #  'TESUp':   sampleset.shift(systs['TES'].procs,"_TES1p05",systs['TES'].up," +5% TES", split=True,filter=False,share=True),
-        #  'TESDown': sampleset.shift(systs['TES'].procs,"_TES0p95",systs['TES'].dn," -5% TES", split=True,filter=False,share=True),
-        #  'FESUp':   sampleset.shift(systs['FES'].procs,"_FES1p25",systs['FES'].up," +25% FES", split=True,filter=False,share=True),
-        #  'FESDown': sampleset.shift(systs['FES'].procs,"_FES0p75",systs['FES'].dn," -25% FES", split=True,filter=False,share=True),
-        #  'EESUp':   sampleset.shift(systs['EES'].procs,"_EES1p01",systs['EES'].up," +1% EES", split=True,filter=False,share=True),
-        #  'EESDown': sampleset.shift(systs['EES'].procs,"_EES0p99",systs['EES'].dn," -1% EES", split=True,filter=False,share=True),
-          'RESUp':   sampleset.shift(systs['RES'].procs,"",systs['RES'].up," +3% mvisRES", split=True,filter=False,share=True),
-          'RESDown': sampleset.shift(systs['RES'].procs,"",systs['RES'].dn," -3% mvisRES", split=True,filter=False,share=True),
+          'TESUp':   sampleset.shift(systs['TES'].procs,"_TES1p05",systs['TES'].up," +5% TES", split=True,filter=False,share=True),
+          'TESDown': sampleset.shift(systs['TES'].procs,"_TES0p95",systs['TES'].dn," -5% TES", split=True,filter=False,share=True),
+          'FESUp':   sampleset.shift(systs['FES'].procs,"_FES1p25",systs['FES'].up," +25% FES", split=True,filter=False,share=True),
+          'FESDown': sampleset.shift(systs['FES'].procs,"_FES0p75",systs['FES'].dn," -25% FES", split=True,filter=False,share=True),
+          'EESUp':   sampleset.shift(systs['EES'].procs,"_EES1p01",systs['EES'].up," +1% EES", split=True,filter=False,share=True),
+          'EESDown': sampleset.shift(systs['EES'].procs,"_EES0p99",systs['EES'].dn," -1% EES", split=True,filter=False,share=True),
+          #'RESUp':   sampleset.shift(systs['RES'].procs,"",systs['RES'].up," +3% mvisRES", split=True,filter=False,share=True),
+          #'RESDown': sampleset.shift(systs['RES'].procs,"",systs['RES'].dn," -3% mvisRES", split=True,filter=False,share=True),
         }
         keys = samplesets.keys() if verbosity>=1 else ['Nom','TESUp','TESDown','FESUp','FESDown','EESUp','EESDown','RESUp','RESDown']
         for shift in keys:
@@ -237,26 +237,26 @@ def main(args):
       createinputs(fname,samplesets['Nom'],observables_pass,bins_pass,recreate=True)
       createinputs(fname,samplesets['Nom'],observables_fail,bins_fail,recreate=False)
       if channel in ['etau']:
-       # createinputs(fname,samplesets['TESUp'],  observables_pass,bins_pass,systs['TES'].up,filter=systs['TES'].procs)
-       # createinputs(fname,samplesets['TESDown'],observables_pass,bins_pass,systs['TES'].dn,filter=systs['TES'].procs)
-       # createinputs(fname,samplesets['FESUp'],  observables_pass,bins_pass,systs['FES'].up,filter=systs['FES'].procs)
-       # createinputs(fname,samplesets['FESDown'],observables_pass,bins_pass,systs['FES'].dn,filter=systs['FES'].procs)
-       # createinputs(fname,samplesets['EESUp'],  observables_pass,bins_pass,systs['EES'].up,filter=systs['EES'].procs)
-       # createinputs(fname,samplesets['EESDown'],observables_pass,bins_pass,systs['EES'].dn,filter=systs['EES'].procs)
+        createinputs(fname,samplesets['TESUp'],  observables_pass,bins_pass,systs['TES'].up,filter=systs['TES'].procs)
+        createinputs(fname,samplesets['TESDown'],observables_pass,bins_pass,systs['TES'].dn,filter=systs['TES'].procs)
+        createinputs(fname,samplesets['FESUp'],  observables_pass,bins_pass,systs['FES'].up,filter=systs['FES'].procs)
+        createinputs(fname,samplesets['FESDown'],observables_pass,bins_pass,systs['FES'].dn,filter=systs['FES'].procs)
+        createinputs(fname,samplesets['EESUp'],  observables_pass,bins_pass,systs['EES'].up,filter=systs['EES'].procs)
+        createinputs(fname,samplesets['EESDown'],observables_pass,bins_pass,systs['EES'].dn,filter=systs['EES'].procs)
         createinputs(fname,samplesets['Nom'],observables_pass,bins_pass,shift="_resoUp")
-        #createinputs(fname,samplesets['Nom'],observables_pass,bins_pass,shift="_resoDown")
+        createinputs(fname,samplesets['Nom'],observables_pass,bins_pass,shift="_resoDown")
         #createinputs(fname,samplesets['RESUp'],observables_pass_resUp,bins_pass,systs['RES'].up,filter=systs['RES'].procs, shift="_resoUp")
         #createinputs(fname,samplesets['RESDown'],observables_pass_resDown,bins_pass,systs['RES'].dn,filter=systs['RES'].procs, shift="_resoDown")
-       # createinputs(fname,samplesets['TESUp'],  observables_fail,bins_fail,systs['TES'].up,filter=systs['TES'].procs)
-       # createinputs(fname,samplesets['TESDown'],observables_fail,bins_fail,systs['TES'].dn,filter=systs['TES'].procs)
-       # createinputs(fname,samplesets['FESUp'],  observables_fail,bins_fail,systs['FES'].up,filter=systs['FES'].procs)
-       # createinputs(fname,samplesets['FESDown'],observables_fail,bins_fail,systs['FES'].dn,filter=systs['FES'].procs)
-       # createinputs(fname,samplesets['EESUp'],  observables_fail,bins_fail,systs['EES'].up,filter=systs['EES'].procs)
-       # createinputs(fname,samplesets['EESDown'],observables_fail,bins_fail,systs['EES'].dn,filter=systs['EES'].procs)
-        #createinputs(fname,samplesets['Nom'],observables_pass,bins_pass,shift="_resoUp")
-        #createinputs(fname,samplesets['Nom'],observables_pass,bins_pass,shift="_resoDown")
-       #createinputs(fname,samplesets['RESUp'],observables_fail_resUp,bins_fail,systs['RES'].up,filter=systs['RES'].procs,shift="_resoUp")
-       #createinputs(fname,samplesets['RESDown'],observables_fail_resDown,bins_fail,systs['RES'].dn,filter=systs['RES'].procs,shift="_resoDown")
+        createinputs(fname,samplesets['TESUp'],  observables_fail,bins_fail,systs['TES'].up,filter=systs['TES'].procs)
+        createinputs(fname,samplesets['TESDown'],observables_fail,bins_fail,systs['TES'].dn,filter=systs['TES'].procs)
+        createinputs(fname,samplesets['FESUp'],  observables_fail,bins_fail,systs['FES'].up,filter=systs['FES'].procs)
+        createinputs(fname,samplesets['FESDown'],observables_fail,bins_fail,systs['FES'].dn,filter=systs['FES'].procs)
+        createinputs(fname,samplesets['EESUp'],  observables_fail,bins_fail,systs['EES'].up,filter=systs['EES'].procs)
+        createinputs(fname,samplesets['EESDown'],observables_fail,bins_fail,systs['EES'].dn,filter=systs['EES'].procs)
+        createinputs(fname,samplesets['Nom'],observables_pass,bins_pass,shift="_resoUp")
+        createinputs(fname,samplesets['Nom'],observables_pass,bins_pass,shift="_resoDown")
+        #createinputs(fname,samplesets['RESUp'],observables_fail_resUp,bins_fail,systs['RES'].up,filter=systs['RES'].procs,shift="_resoUp")
+        #createinputs(fname,samplesets['RESDown'],observables_fail_resDown,bins_fail,systs['RES'].dn,filter=systs['RES'].procs,shift="_resoDown")
       
       ############
       #   PLOT   #

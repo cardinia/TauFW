@@ -16,4 +16,5 @@ Plotter/plots
 PicoProducer/output_ETauFR2/
 PicoProducer/output_ETauFR3/
 Plotter/plots_18_02_21/
-Fitter/ETauFR/input/plots/
+Fitter/ETauFR/input
+Fitter/ETauFR/coutFR_2016

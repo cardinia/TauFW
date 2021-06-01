@@ -176,9 +176,11 @@ class Plot(object):
     enderrorsize = kwargs.get('enderrorsize', 2.0             ) # size of line at end of error bar
     errorX       = kwargs.get('errorX',       True            ) # horizontal error bars
     dividebins   = kwargs.get('dividebins',   self.dividebins )
+    lines        = kwargs.get('line',         [ ]             )
     lcolors      = ensurelist(lcolors)
     fcolors      = ensurelist(fcolors)
     lstyles      = ensurelist(lstyles)
+    lines        = ensurelist(lines)
     self.ratio   = ratio
     self.lcolors = lcolors
     self.fcolors = fcolors
