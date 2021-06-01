@@ -311,4 +311,3 @@ class ModuleETau(ModuleTauPair):
     
     self.out.fill()
     return True
-    

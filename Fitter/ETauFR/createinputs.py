@@ -258,7 +258,6 @@ def main(args):
        #createinputs(fname,samplesets['RESUp'],observables_fail_resUp,bins_fail,systs['RES'].up,filter=systs['RES'].procs,shift="_resoUp")
        #createinputs(fname,samplesets['RESDown'],observables_fail_resDown,bins_fail,systs['RES'].dn,filter=systs['RES'].procs,shift="_resoDown")
       
-      
       ############
       #   PLOT   #
       ############

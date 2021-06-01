@@ -1,3 +1,4 @@
+
 # Author: Izaak Neutelings (May 2020)
 import os, sys
 from math import sqrt, sin, cos, pi
@@ -251,7 +252,6 @@ def getlepvetoes(event, electrons, muons, taus, channel):
         dilepton_veto = True
         break
   elif channel=='eletau' or channel =='etau':
-
     for electron1, electron2 in combinations(looseElectrons,2):
       if electron1.charge*electron2.charge<0 and electron1.DeltaR(electron2)>0.20:
         dilepton_veto = True

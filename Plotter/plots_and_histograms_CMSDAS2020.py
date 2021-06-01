@@ -195,7 +195,6 @@ def plot(sampleset,channel,parallel=True,tag="",outdir="plots",histdir="",era=""
   
   # SELECTIONS
   inclusive = "(q_1*q_2<0)"
-  
   inclusive_cr_qcd = inclusive.replace("q_1*q_2<0","q_1*q_2>0") # inverting the opposite-sign requirement of the mutau pair into a same-sign requirment
   #general_cuts = "(iso_1<0.1)&&(pt_1>26.0)&&(pt_2>20.0)&&(eta_1>-2.1)&&(eta_1<2.1)&&(eta_2>-2.3)&&(eta_2<2.3)&&!lepton_vetoes_notau&&metfilter"
   general_cuts='iso_1<0.1 && pt_1>26.0 && pt_2>20.0 && abs(eta_1)<2.1 && abs(eta_2)<2.3 && idDecayModeNewDMs_2 && idDeepTau2017v2p1VSjet_2>=16 && idDeepTau2017v2p1VSe_2>=1 && idDeepTau2017v2p1VSmu_2>=1  && q_1*q_2<0 && !lepton_vetoes_notau && metfilter'
@@ -339,7 +338,7 @@ def plot(sampleset,channel,parallel=True,tag="",outdir="plots",histdir="",era=""
   
   # PLOT and HIST
   outdir   = ensuredir(repkey(outdir,CHANNEL=channel,ERA=era))
-  histdir  = ensuredir(repkey(histdir,CHANNEL=channel,ERA=era,TAG=tag))
+  histdir  = ensuredir(repkey(histdir,CHANNEL=channel,ERA=era))
   outhists = R.TFile.Open(histdir,'recreate')
   exts     = ['png','pdf']
   for selection in selections:
@@ -371,8 +370,8 @@ def main(args):
   era     = args.era
   parallel = args.parallel
   outdir   = "plots/$ERA"
-  histdir  = "hists/$ERA/$CHANNEL$TAG.root"
-  tag      = args.tag
+  histdir  = "hists/$ERA/$CHANNEL.root"
+  tag      = ""
   fpattern = args.picopattern
 
   setera(era,extra="Work in progress") # set era for plot style and lumi-xsec normalization
@@ -390,8 +389,6 @@ if __name__ == "__main__":
                                          help="Set era. Default: %(default)s" )
   parser.add_argument('-c', '--channel', dest='channel', type=str, default="mutau",
                                          help="Set channel. Default: %(default)s" )
-  parser.add_argument('-t', '--tag',     dest='tag', type=str, default="",
-                                         help="Set tag. Default: %(default)s" )
   parser.add_argument('-s', '--serial',  dest='parallel', action='store_false',
                                          help="Run Tree::MultiDraw serial instead of in parallel" )
   parser.add_argument('-v', '--verbose', dest='verbosity', type=int, nargs='?', const=1, default=0, action='store',

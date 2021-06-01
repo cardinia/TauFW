@@ -93,10 +93,10 @@ class Ratio(object):
     """Draw all objects."""
     verbosity   = LOG.getverbosity(kwargs,self)
     ratios      = self.ratios
-    xmin        = kwargs.get('xmin', self.histden.GetXaxis().GetXmin() )
-    xmax        = kwargs.get('xmax', self.histden.GetXaxis().GetXmax() )
-    ymin        = kwargs.get('ymin',    0.5     )
-    ymax        = kwargs.get('ymax',    1.5     )
+    xmin        = kwargs.get('xmin',    self.frame.GetXaxis().GetXmin() )
+    xmax        = kwargs.get('xmax',    self.frame.GetXaxis().GetXmax() )
+    ymin        = kwargs.get('ymin',    0.75     )
+    ymax        = kwargs.get('ymax',    1.25     )
     data        = kwargs.get('data',    False   )
     ytitle      = kwargs.get('ytitle', "Obs. / Exp." if data else "Ratio" )
     xtitle      = kwargs.get('xtitle', ""      )

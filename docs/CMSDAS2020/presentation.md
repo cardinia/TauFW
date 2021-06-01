@@ -13,3 +13,4 @@ not use too many slides to explain the analysis.
 * Do not loose yourself in details - figure out which points are relevant to explain the analysis. Details can be put always as backup slides after the conclusion.
 * Practice the talk, especially if you present as a group. Everyone of you should know which slides to present.
 * And most important: Have fun presenting your results and what you have learned! :)
+
