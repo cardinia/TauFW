@@ -74,12 +74,15 @@ def MultiDraw(self, varexps, selection='1', drawoption="", **kwargs):
         
         # EXPAND varexp
         weight = None
-        if isinstance(varexp,tuple):
+        if isinstance(varexp,(tuple,list)) and len(varexp)==2:
           varexp, weight = varexp
+        elif not isinstance(varexp,str):
+          raise IOError("MultiDraw: given varexp is not a string or tuple of length 2! Got varexp=%s (%s)"%(varexp,type(varexp)))
         if not varexp: varexp = '1'
         if not weight: weight = '1'
         
         # PREPARE histogram
+        #print varexp, type(varexp)
         match = varregex.match(varexp)
         if match:
             xvar, name, binning = match.group(1), match.group(2), match.group(3)

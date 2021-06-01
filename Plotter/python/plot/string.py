@@ -1,7 +1,7 @@
 # -*- coding: utf-8 -*-
 # Author: Izaak Neutelings (2017)
 import re
-from TauFW.Plotter.plot.utils import LOG, unwraplistargs, ensurelist
+from TauFW.Plotter.plot.utils import LOG, unwraplistargs, ensurelist, islist
 
 var_dict = {
     'njets':     "Number of jets",          'njets20':  "Number of jets (pt>20 GeV)",
@@ -342,22 +342,26 @@ def cleanbool(string):
   
 
 def undoshift(string):
-  shiftless = re.sub(r"_[a-zA-Z]+(Up|Down|nom)","",string)
+  if islist(string):
+    return [undoshift(s) for s in string]
+  else:
+    shiftless = re.sub(r"_[a-zA-Z]+([Uu]p|[Dd]own|[Nn]om)","",string)
   return shiftless
   
 
-def shift(oldstr, shift, vars, **kwargs):
+def shift(oldstr, shift, vars=["\w+"], **kwargs):
   """Shift all jet variable in a given string (e.g. to propagate JEC/JER).
   E.g. shift('jpt_1>50 && met<50','jecUp',['jpt_[12]','met']) -> 'jpt_1_jecUp>50 && met_jecUp<50'
   """
-  verbosity   = LOG.getverbosity(kwargs)
-  newstr      = oldstr
+  verbosity = LOG.getverbosity(kwargs)
+  newstr    = oldstr
+  vars      = ensurelist(vars)
   if re.search(r"(Up|Down)",oldstr):
     print "shift: already shifts in %r"%(oldstr)
   if kwargs.get('us',True) and len(shift)>0 and shift[0]!='_': # ensure underscore in front
     shift = '_'+shift
   for oldvar in vars: # shift each jet/MET variable
-    oldexp = r'\b('+oldvar+r')\b'
+    oldexp = r"\b("+oldvar+r")\b"
     newexp = r"\1%s"%(shift)
     newstr = re.sub(oldexp,newexp,newstr)
   if verbosity>=1:

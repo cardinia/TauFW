@@ -36,7 +36,7 @@ class Variable(object):
     self.nbins        = None
     self.min          = None
     self.max          = None
-    self.bins         = None
+    self.bins         = None # bin edges
     self.cut          = kwargs.get('cut',         ""            ) # extra cut when filling histograms
     self.weight       = kwargs.get('weight',      ""            ) # extra weight when filling histograms (MC only)
     self.dataweight   = kwargs.get('dataweight',  ""            ) # extra weight when filling histograms for data
@@ -119,7 +119,7 @@ class Variable(object):
   def clone(self,*args,**kwargs):
     """Shallow copy."""
     if not args:
-      args = self.nbins,self.min,self.max
+      args = self.nbins, self.min, self.max
     newdict = self.__dict__.copy()
     if 'fname' in kwargs:
       kwargs['filename'] = kwargs['fname']
@@ -154,11 +154,11 @@ class Variable(object):
       self.max      = numbers[2]
       self.bins     = None
     elif len(bins)>0:
-      bins          = list(bins[0])
-      self.nbins    = len(bins)-1
-      self.min      = bins[0]
-      self.max      = bins[-1]
-      self.bins     = bins
+      edges          = list(bins[0])
+      self.nbins    = len(edges)-1
+      self.min      = edges[0]
+      self.max      = edges[-1]
+      self.bins     = edges
     else:
       LOG.throw(IOError,'Variable: bad arguments "%s" for binning!'%(args,))
   
@@ -323,14 +323,15 @@ class Variable(object):
     if len(vshift)>0 and vshift[0]!='_':
       vshift = '_'+vshift
     if vars: # shift only the variables in this list
-      newname = shift(self.name,vshift,**kwargs)
+      newname = shift(self.name,vshift,vars,**kwargs)
     else: # simply add shift at the end
       newname = self.name+vshift
     newvar = deepcopy(self)
     newvar.name = newname # overwrite name
     if not kwargs.get('keepfile',False) and self.name!=newname:
       newvar.filename += vshift # overwrite file name
-    return newvariable
+    #return newvariable#LOR COMM
+    return newvar #LOR MODIFIED
   
   def shiftjme(self,jshift,**kwargs):
     """Create new variable with a shift tag added to its name."""
@@ -341,8 +342,9 @@ class Variable(object):
     newvar.name = newname # overwrite name
     if not kwargs.get('keepfile',False) and self.name!=newname:
       newvar.filename += jshift # overwrite file name
-    return newvariable
-  
+    #return newvariable#LOR COMM
+    return newvar#LOR ADDED
+
   def shiftname(self,vshift,**kwargs):
     """Shift name and return string only (without creating new Variable object)."""
     return shift(self.name,vshift,**kwargs)
