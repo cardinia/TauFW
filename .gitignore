@@ -7,6 +7,7 @@
 core.*
 __init__.py
 */compare
+*.png
 PicoProducer/config
 PicoProducer/samples/files
 PicoProducer/output
@@ -18,3 +19,4 @@ PicoProducer/output_ETauFR3/
 Plotter/plots_18_02_21/
 Fitter/ETauFR/input
 Fitter/ETauFR/coutFR_2016
+Fitter/ETauFR/input/plots/2016/

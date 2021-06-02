@@ -154,7 +154,7 @@ class Variable(object):
       self.max      = numbers[2]
       self.bins     = None
     elif len(bins)>0:
-      edges          = list(bins[0])
+      edges         = list(bins[0])
       self.nbins    = len(edges)-1
       self.min      = edges[0]
       self.max      = edges[-1]
@@ -178,7 +178,7 @@ class Variable(object):
     if self.hasvariablebins():
       return self.bins[i]
     return self.min+i*(self.max-self.min)/self.nbins
-
+  
   def hasvariablebins(self):
     """True if bins is set."""
     return self.bins!=None
@@ -341,8 +341,7 @@ class Variable(object):
     newvar.name = newname # overwrite name
     if not kwargs.get('keepfile',False) and self.name!=newname:
       newvar.filename += vshift # overwrite file name
-    #return newvariable#LOR COMM
-    return newvar #LOR MODIFIED
+    return newvar
   
   def shiftjme(self,jshift,**kwargs):
     """Create new variable with a shift tag added to its name."""
@@ -353,9 +352,8 @@ class Variable(object):
     newvar.name = newname # overwrite name
     if not kwargs.get('keepfile',False) and self.name!=newname:
       newvar.filename += jshift # overwrite file name
-    #return newvariable#LOR COMM
-    return newvar#LOR ADDED
-
+    return newvar
+  
   def shiftname(self,vshift,**kwargs):
     """Shift name and return string only (without creating new Variable object)."""
     return shift(self.name,vshift,**kwargs)

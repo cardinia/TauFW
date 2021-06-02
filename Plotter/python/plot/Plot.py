@@ -21,7 +21,7 @@ gROOT.SetBatch(True)
 
 # CMS style
 #TGaxis.SetExponentOffset(-0.074,0.015,'y')
-CMSStyle.extraText    = "Work in Progress"
+CMSStyle.extraText    = "Preliminary"
 #CMSStyle.cmsTextSize  = 0.75
 #CMSStyle.lumiTextSize = 0.70
 #CMSStyle.relPosX      = 0.12
@@ -131,6 +131,8 @@ class Plot(object):
     verbosity    = LOG.getverbosity(self,kwargs)
     xtitle       = (args[0] if args else self.xtitle) or ""
     ratio        = kwargs.get('ratio',        self.ratio      ) # make ratio plot
+    cwidth       = kwargs.get('cwidth',       None            ) # canvas width
+    cheight      = kwargs.get('cheight',      None            ) # canvas height
     square       = kwargs.get('square',       False           ) # square canvas
     lmargin      = kwargs.get('lmargin',      1.              ) # canvas left margin
     rmargin      = kwargs.get('rmargin',      1.              ) # canvas righ margin
@@ -149,8 +151,8 @@ class Plot(object):
     xmax         = kwargs.get('xmax',         self.xmax       )
     ymin         = kwargs.get('ymin',         self.ymin       )
     ymax         = kwargs.get('ymax',         self.ymax       )
-    rmin         = kwargs.get('rmin',         0.75            )# LOR CHANGE,DEFAULT IS self.rmin       ) or 0.45 # ratio ymin
-    rmax         = kwargs.get('rmax',         1.25            )#LOR CHANGE, DEFAULT IS self.rmax       ) or 1.55 # ratio ymax
+    rmin         = kwargs.get('rmin',         self.rmin       ) or 0.45 # ratio ymin
+    rmax         = kwargs.get('rmax',         self.rmax       ) or 1.55 # ratio ymax
     ratiorange   = kwargs.get('rrange',       self.ratiorange ) # ratio range around 1.0
     binlabels    = kwargs.get('binlabels',    self.binlabels  ) # list of alphanumeric bin labels
     ytitleoffset = kwargs.get('ytitleoffset', 1.0             )
@@ -166,7 +168,8 @@ class Plot(object):
     lcolors      = kwargs.get('colors',       None            )
     lcolors      = kwargs.get('lcolors',      lcolors         ) or self.lcolors # line colors
     fcolors      = kwargs.get('fcolors',      None            ) or self.fcolors # fill colors
-    lstyles      = kwargs.get('lstyle',       None            )
+    lstyles      = kwargs.get('style',        None            )
+    lstyles      = kwargs.get('lstyle',       lstyles         )
     lstyles      = kwargs.get('lstyles',      lstyles         ) or self.lstyles # line styles
     lwidth       = kwargs.get('lwidth',       2               ) # line width
     mstyle       = kwargs.get('mstyle',       None            ) # marker style
@@ -176,11 +179,9 @@ class Plot(object):
     enderrorsize = kwargs.get('enderrorsize', 2.0             ) # size of line at end of error bar
     errorX       = kwargs.get('errorX',       True            ) # horizontal error bars
     dividebins   = kwargs.get('dividebins',   self.dividebins )
-    lines        = kwargs.get('line',         [ ]             )
     lcolors      = ensurelist(lcolors)
     fcolors      = ensurelist(fcolors)
     lstyles      = ensurelist(lstyles)
-    lines        = ensurelist(lines)
     self.ratio   = ratio
     self.lcolors = lcolors
     self.fcolors = fcolors
@@ -236,7 +237,7 @@ class Plot(object):
       gStyle.SetErrorX(0)
     
     # CANVAS
-    self.canvas = self.setcanvas(square=square,ratio=ratio,
+    self.canvas = self.setcanvas(square=square,ratio=ratio,width=cwidth,height=cheight,
                                  lmargin=lmargin,rmargin=rmargin,tmargin=tmargin,bmargin=bmargin)
     
     # STYLE
@@ -257,7 +258,8 @@ class Plot(object):
     
     # DRAW LINE
     for line in self.lines:
-      line.Draw("LSAME")
+      if line.pad==1:
+        line.Draw("LSAME")
     
     # DRAW HISTS
     for i, (hist, option1) in enumerate(zip(hists,options)):
@@ -292,6 +294,9 @@ class Plot(object):
       self.ratio.draw(roption,xmin=xmin,xmax=xmax)
       self.setaxes(self.ratio,xmin=xmin,xmax=xmax,ymin=rmin,ymax=rmax,logx=logx,binlabels=binlabels,center=True,nydiv=506,
                    rrange=ratiorange,xtitle=xtitle,ytitle=rtitle,xtitleoffset=xtitleoffset,grid=grid,latex=latex)
+      for line in self.lines:
+        if line.pad==2:
+          line.Draw("LSAME")
       self.canvas.cd(1)
     
   
@@ -348,8 +353,8 @@ class Plot(object):
     """Make canvas and pads for ratio plots."""
     square  = kwargs.get('square',  False )
     double  = kwargs.get('ratio',   False ) # include lower panel
-    width   = kwargs.get('width',   900 if square else 800 if double else 800 )
-    height  = kwargs.get('height',  900 if square else 750 if double else 600 )
+    width   = kwargs.get('width',   None  ) or (900 if square else 800 if double else 800)
+    height  = kwargs.get('height',  None  ) or (900 if square else 750 if double else 600)
     lmargin = kwargs.get('lmargin', 1.    )
     rmargin = kwargs.get('rmargin', 1.    )
     tmargin = kwargs.get('tmargin', 1.    )
@@ -396,10 +401,12 @@ class Plot(object):
     verbosity = LOG.getverbosity(self,kwargs)
     hists     = [ ]
     binning   = [ ]
+    lower     = False # lower panel (e.g. for ratio)
     for arg in args[:]:
       if hasattr(arg,'GetXaxis'):
         hists.append(arg)
       elif isinstance(arg,Ratio):
+        lower = True
         hists.append(arg.frame)
       elif isnumber(arg):
         binning.append(arg)
@@ -433,6 +440,7 @@ class Plot(object):
     nxdivisions   = kwargs.get('nxdiv',        510              )
     nydivisions   = kwargs.get('nydiv',        510              )
     main          = kwargs.get('main',         False            ) # main panel of ratio plot
+    lower         = kwargs.get('lower',        lower            )
     scale         = 600./min(gPad.GetWh()*gPad.GetHNDC(),gPad.GetWw()*gPad.GetWNDC())
     xtitlesize    = kwargs.get('xtitlesize',   _tsize           )*scale
     ytitlesize    = kwargs.get('ytitlesize',   _tsize           )*scale
@@ -581,7 +589,7 @@ class Plot(object):
       print ">>> Plot.setaxes: xtitlesize=%4.4g, xlabelsize=%4.4g, xtitleoffset=%4.4g, xtitle=%r"%(xtitlesize,xlabelsize,xtitleoffset,xtitle)
       print ">>> Plot.setaxes: ytitlesize=%4.4g, ylabelsize=%4.4g, ytitleoffset=%4.4g, ytitle=%r"%(ytitlesize,ylabelsize,ytitleoffset,ytitle)
       print ">>> Plot.setaxes: scale=%4.4g, nxdivisions=%s, nydivisions=%s, ymargin=%.3f, logyrange=%.3f"%(scale,nxdivisions,nydivisions,ymargin,logyrange)
-    if main:
+    if main or not lower:
       #if any(a!=None and a!=b for a, b in [(self.xmin,xmin),(self.xmax,xmax)]):
       #  LOG.warning("Plot.setaxes: x axis range changed: [xmin,xmax] = [%6.6g,%6.6g] -> [%6.6g,%6.6g]"%(
       #              self.xmin,self.xmax,xmin,xmax))
@@ -590,6 +598,8 @@ class Plot(object):
       #              self.ymin,self.ymax,ymin,ymax))
       self.xmin, self.xmax = xmin, xmax
       self.ymin, self.ymax = ymin, ymax
+    else:
+      self.rmin, self.rmax = ymin, ymax
     return xmin, xmax, ymin, ymax
     
   
@@ -766,7 +776,7 @@ class Plot(object):
     if transparent: legend.SetFillStyle(0) # 0 = transparent
     else: legend.SetFillColor(0)
     legend.SetBorderSize(border)
-    legend.SetTextSize(tsize*0.7)#LOR CHANGES ADD *0.7 to reduce the size
+    legend.SetTextSize(tsize)
     legend.SetTextFont(headerfont) # bold for title
     if ncols>1:
       legend.SetNColumns(ncols)
@@ -895,8 +905,10 @@ class Plot(object):
     line.SetLineStyle(style)
     line.pad = pad
     if self.canvas:
+      oldpad = gPad
       self.canvas.cd(pad)
       line.Draw("LSAME")
+      oldpad.cd()
     self.lines.append(line)
     return line
     

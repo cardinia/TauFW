@@ -421,7 +421,7 @@ def geterrorband(*hists,**kwargs):
     ylow2, yupp2 = statlow2+syslow2, statupp2+sysupp2,
     error.SetPoint(ip,xval,yval)
     error.SetPointError(ip,xerr,xerr,sqrt(ylow2),sqrt(yupp2))
-    #TAB.printrow(ibin,xval,xerr,yval,sqrt(yval),sqrt(statupp2),sqrt(statlow2),sqrt(sysupp2),sqrt(syslow2),sqrt(yupp2),sqrt(ylow2)) #LOR COMMENTED IT
+    TAB.printrow(ibin,xval,xerr,yval,sqrt(abs(yval)),sqrt(statupp2),sqrt(statlow2),sqrt(sysupp2),sqrt(syslow2),sqrt(yupp2),sqrt(ylow2))
     ip += 1
   seterrorbandstyle(error,color=color)
   #error.SetLineColor(hist0.GetLineColor())

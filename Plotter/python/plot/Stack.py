@@ -65,8 +65,8 @@ class Stack(Plot):
     xmax         = kwargs.get('xmax',         self.xmax       )
     ymin         = kwargs.get('ymin',         self.ymin       )
     ymax         = kwargs.get('ymax',         self.ymax       )
-    rmin         = kwargs.get('rmin',         0.75            )#LOR CHANGE. DEFAULT IS self.rmin       ) or 0.45 # ratio ymin
-    rmax         = kwargs.get('rmax',         1.25            )#LOR CHANGE. DEFAULT IS self.rmax       ) or 1.55 # ratio ymax
+    rmin         = kwargs.get('rmin',         self.rmin       ) or 0.45 # ratio ymin
+    rmax         = kwargs.get('rmax',         self.rmax       ) or 1.55 # ratio ymax
     ratiorange   = kwargs.get('rrange',       self.ratiorange ) # ratio range around 1.0
     binlabels    = kwargs.get('binlabels',    self.binlabels  ) # list of alphanumeric bin labels
     ytitleoffset = kwargs.get('ytitleoffset', 1.0             )
@@ -142,7 +142,6 @@ class Stack(Plot):
     for hist in reversed(self.exphists): # stacked bottom to top
       stack.Add(hist)
     
-    
     # DRAW FRAME
     self.canvas.cd(1)
     if not self.frame: # if not given by user
@@ -150,6 +149,11 @@ class Stack(Plot):
       #self.frame.Draw('AXIS') # 'AXIS' breaks GRID?
     else:
       self.frame.Draw('AXIS') # 'AXIS' breaks GRID?
+    
+    # DRAW LINE
+    for line in self.lines:
+      if line.pad==1:
+        line.Draw("LSAME")
     
     # DRAW
     stack.Draw('HIST SAME')
@@ -199,6 +203,9 @@ class Stack(Plot):
       self.ratio.draw(xmin=xmin,xmax=xmax,data=True)
       self.setaxes(self.ratio,xmin=xmin,xmax=xmax,ymin=rmin,ymax=rmax,logx=logx,binlabels=binlabels,center=True,nydiv=506,
                    rrange=ratiorange,xtitle=xtitle,ytitle=rtitle,xtitleoffset=xtitleoffset,grid=grid,latex=latex)
+      for line in self.lines:
+        if line.pad==2:
+          line.Draw("LSAME")
       self.canvas.cd(1)
     
 
