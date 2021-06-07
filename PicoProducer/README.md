@@ -218,6 +218,7 @@ pico.py write -y 2016 -s DYJets --nevts
 which will save the number of events per file as well.
 In this way the submission script does not have to open each file
 and get the number of nanoAOD events on the fly, which can take much long.
+Sometimes some GRID files as not available, and several retries are needed.
 
 Note that a priori skimming and analysis channels use the same sample lists (and therefore the same nanoAOD files)
 for the same era as specified in the configuration.
@@ -294,6 +295,8 @@ Check the job status with
 pico.py status -y 2016 -c mutau
 ```
 This will check which jobs are still running, and if the output files exist and are not corrupted.
+You can skip the validation step and only look for missing files with `--skipevts` to speed up the status check.
+
 For skimming jobs, the nanoAOD output files should appear in `nanodir`, and they are checked for having an `Events` tree.
 For analysis jobs, the pico output files should appear in `outdir`, and they are checked for having a tree called `tree`,
 and a histogram called `cutflow`.
@@ -311,6 +314,8 @@ This will resubmit files that are missing or corrupted (unless they are associat
 In case the jobs take too long, you can specify a smaller number of files per job with `--filesperjob` on the fly,
 or use `--split` to split the previous number.
 Otherwise you can limit the number of events per job with `--maxevts` if it was not already set in the first submission.
+
+Use `--skipevts` to speed up the resubmission by checking for missing files. 
 
 
 ### Finalize
@@ -523,6 +528,27 @@ pico.py run -c mutau -y 2018
 Alternatively, you could edit the module file locally, setting the
 [hardcoded default](https://github.com/cms-tau-pog/TauFW/blob/828faddc0862229e827207fc04a7903562930eb7/PicoProducer/python/analysis/ModuleTauPair.py#L44)
 to `False`.
+
+At some point the jet/MET correction tools in `nanoAOD-tools` were updated to include T1 smearing,
+and now corrected MET branches are called `MET_T1_nom`, etc.
+If you have nanoAOD files with this new correction method, please use `useT1=True`. Specify it during running:
+```
+pico.py run -c mutau -y 2018 -E useT1=True
+```
+or change it in the channel:
+```
+pico.py channel mutau 'MuTauModule useT1=True'
+pico.py run -c mutau -y 2018
+```
+or set the
+[hardcoded default](https://github.com/cms-tau-pog/TauFW/blob/f0ff144d7a003f197a627e70c92980a077a01c28/PicoProducer/python/analysis/ModuleTauPair.py#L49)
+to `True`,
+or add this option to all the new samples in the sample list:
+```
+  M('DY','DYJetsToLL_M-50',
+    "/DYJetsToLL_M-50_TuneCP5_13TeV-madgraphMLM-pythia8/RunIISummer19UL16NanoAODAPVv2-106X_mcRun2_asymptotic_preVFP_v9-v1/NANOAODSIM",
+    store=storage,url=url,files=filelist,opts=['zpt=True','useT1=True']),
+```
 
 
 ### Why do my jobs fail ?
