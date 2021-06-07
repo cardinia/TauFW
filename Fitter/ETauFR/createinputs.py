@@ -76,7 +76,7 @@ def main(args):
           ('FES',"_shape_fes",   ['ZL']),
           #Add other samples when EES rerun for all
           ('EES',"_shape_ees",   ['ZL','ZTT','ZJ','W','VV','ST','TTT','TTL','TTJ']), #Electron energy scale
-          ('RES',"_shape_res",   ['ZL','ZTT','ZJ','W','VV','ST','TTT','TTL','TTJ']),
+          #('RES',"_shape_res",   ['ZL','ZTT','ZJ','W','VV','ST','TTT','TTL','TTJ']),
           #('JTFUp',   ['ZJ', 'TTJ', 'QCD', 'W']),
           #('JTFDown', ['ZJ', 'TTJ', 'QCD', 'W']),
           ERA=era,CHANNEL=channel)
@@ -243,8 +243,8 @@ def main(args):
         createinputs(fname,samplesets['FESDown'],observables_pass,bins_pass,systs['FES'].dn,filter=systs['FES'].procs)
         createinputs(fname,samplesets['EESUp'],  observables_pass,bins_pass,systs['EES'].up,filter=systs['EES'].procs)
         createinputs(fname,samplesets['EESDown'],observables_pass,bins_pass,systs['EES'].dn,filter=systs['EES'].procs)
-        createinputs(fname,samplesets['Nom'],observables_pass,bins_pass,shift="_resoUp")
-        createinputs(fname,samplesets['Nom'],observables_pass,bins_pass,shift="_resoDown")
+        createinputs(fname,samplesets['Nom'],observables_pass,bins_pass,"_shape_resUp",shift="_resoUp")
+        createinputs(fname,samplesets['Nom'],observables_pass,bins_pass,"_shape_resDown",shift="_resoDown")
         #createinputs(fname,samplesets['RESUp'],observables_pass_resUp,bins_pass,systs['RES'].up,filter=systs['RES'].procs, shift="_resoUp")
         #createinputs(fname,samplesets['RESDown'],observables_pass_resDown,bins_pass,systs['RES'].dn,filter=systs['RES'].procs, shift="_resoDown")
         createinputs(fname,samplesets['TESUp'],  observables_fail,bins_fail,systs['TES'].up,filter=systs['TES'].procs)
@@ -253,8 +253,8 @@ def main(args):
         createinputs(fname,samplesets['FESDown'],observables_fail,bins_fail,systs['FES'].dn,filter=systs['FES'].procs)
         createinputs(fname,samplesets['EESUp'],  observables_fail,bins_fail,systs['EES'].up,filter=systs['EES'].procs)
         createinputs(fname,samplesets['EESDown'],observables_fail,bins_fail,systs['EES'].dn,filter=systs['EES'].procs)
-        createinputs(fname,samplesets['Nom'],observables_pass,bins_pass,shift="_resoUp")
-        createinputs(fname,samplesets['Nom'],observables_pass,bins_pass,shift="_resoDown")
+        createinputs(fname,samplesets['Nom'],observables_fail,bins_fail,"_shape_resUp",shift="_resoUp")
+        createinputs(fname,samplesets['Nom'],observables_fail,bins_fail,"_shape_resDown",shift="_resoDown")
         #createinputs(fname,samplesets['RESUp'],observables_fail_resUp,bins_fail,systs['RES'].up,filter=systs['RES'].procs,shift="_resoUp")
         #createinputs(fname,samplesets['RESDown'],observables_fail_resDown,bins_fail,systs['RES'].dn,filter=systs['RES'].procs,shift="_resoDown")
       

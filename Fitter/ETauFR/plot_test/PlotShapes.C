@@ -28,7 +28,7 @@ void PlotShapes(
 		TString ytitle = "dN/dm_{vis}[1/GeV]",
 		//TString eta = "Lt1p46",
 		TString eta = "Lt2p300",
-		TString wp = "VVLoose",
+		TString wp = "VVTight",
 		float xmin = 60,
 		float xmax = 120,
 		int numberofbins = 12,

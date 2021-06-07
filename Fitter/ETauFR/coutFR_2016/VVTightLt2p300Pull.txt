@@ -1,128 +1,133 @@
-CMS_ETauFR_et_VVTight_pass_2016_QCD_bin_5 :  0.299390829957 +- 0.696641551714
+CMS_ETauFR_et_VVTight_pass_2016_QCD_bin_5 :  0.276655947067 +- 0.700720011572
 CMS_ETauFR_et_VVTight_pass_2016_QCD_bin_5 :  0.0 +- 1.0
-CMS_ETauFR_et_VVTight_pass_2016_QCD_bin_5RooRealVar::CMS_ETauFR_et_VVTight_pass_2016_QCD_bin_5 = 0.299391 +/- 0.696642  L(-INF - +INF) 
- None 0.299390829957 0.696641551714 0.0 1.0
-CMS_ETauFR_et_VVTight_pass_2016_QCD_bin_9 :  0.0839104298408 +- 0.828200238773
+CMS_ETauFR_et_VVTight_pass_2016_QCD_bin_5RooRealVar::CMS_ETauFR_et_VVTight_pass_2016_QCD_bin_5 = 0.276656 +/- 0.70072  L(-INF - +INF) 
+ None 0.276655947067 0.700720011572 0.0 1.0
+CMS_ETauFR_et_VVTight_pass_2016_QCD_bin_9 :  0.0815118014216 +- 0.839699804907
 CMS_ETauFR_et_VVTight_pass_2016_QCD_bin_9 :  0.0 +- 1.0
-CMS_ETauFR_et_VVTight_pass_2016_QCD_bin_9RooRealVar::CMS_ETauFR_et_VVTight_pass_2016_QCD_bin_9 = 0.0839104 +/- 0.8282  L(-INF - +INF) 
- None 0.0839104298408 0.828200238773 0.0 1.0
-CMS_ETauFR_et_VVTight_pass_2016_W_bin_1 :  -0.495445500341 +- 0.875120818924
+CMS_ETauFR_et_VVTight_pass_2016_QCD_bin_9RooRealVar::CMS_ETauFR_et_VVTight_pass_2016_QCD_bin_9 = 0.0815118 +/- 0.8397  L(-INF - +INF) 
+ None 0.0815118014216 0.839699804907 0.0 1.0
+CMS_ETauFR_et_VVTight_pass_2016_W_bin_1 :  -0.49352464314 +- 0.878001717281
 CMS_ETauFR_et_VVTight_pass_2016_W_bin_1 :  0.0 +- 1.0
-CMS_ETauFR_et_VVTight_pass_2016_W_bin_1RooRealVar::CMS_ETauFR_et_VVTight_pass_2016_W_bin_1 = -0.495446 +/- 0.875121  L(-INF - +INF) 
- None -0.495445500341 0.875120818924 0.0 1.0
-CMS_ETauFR_et_VVTight_pass_2016_W_bin_10 :  -0.231603305812 +- 0.637748599656
+CMS_ETauFR_et_VVTight_pass_2016_W_bin_1RooRealVar::CMS_ETauFR_et_VVTight_pass_2016_W_bin_1 = -0.493525 +/- 0.878002  L(-INF - +INF) 
+ None -0.49352464314 0.878001717281 0.0 1.0
+CMS_ETauFR_et_VVTight_pass_2016_W_bin_10 :  -0.223623245065 +- 0.644396008978
 CMS_ETauFR_et_VVTight_pass_2016_W_bin_10 :  0.0 +- 1.0
-CMS_ETauFR_et_VVTight_pass_2016_W_bin_10RooRealVar::CMS_ETauFR_et_VVTight_pass_2016_W_bin_10 = -0.231603 +/- 0.637749  L(-INF - +INF) 
- None -0.231603305812 0.637748599656 0.0 1.0
-CMS_ETauFR_et_VVTight_pass_2016_W_bin_11 :  0.5277430303 +- 0.686254256502
+CMS_ETauFR_et_VVTight_pass_2016_W_bin_10RooRealVar::CMS_ETauFR_et_VVTight_pass_2016_W_bin_10 = -0.223623 +/- 0.644396  L(-INF - +INF) 
+ None -0.223623245065 0.644396008978 0.0 1.0
+CMS_ETauFR_et_VVTight_pass_2016_W_bin_11 :  0.534253956478 +- 0.687606924678
 CMS_ETauFR_et_VVTight_pass_2016_W_bin_11 :  0.0 +- 1.0
-CMS_ETauFR_et_VVTight_pass_2016_W_bin_11RooRealVar::CMS_ETauFR_et_VVTight_pass_2016_W_bin_11 = 0.527743 +/- 0.686254  L(-INF - +INF) 
- None 0.5277430303 0.686254256502 0.0 1.0
-CMS_ETauFR_et_VVTight_pass_2016_W_bin_2 :  0.458900483533 +- 0.852596175008
+CMS_ETauFR_et_VVTight_pass_2016_W_bin_11RooRealVar::CMS_ETauFR_et_VVTight_pass_2016_W_bin_11 = 0.534254 +/- 0.687607  L(-INF - +INF) 
+ None 0.534253956478 0.687606924678 0.0 1.0
+CMS_ETauFR_et_VVTight_pass_2016_W_bin_2 :  0.473324211179 +- 0.85688225929
 CMS_ETauFR_et_VVTight_pass_2016_W_bin_2 :  0.0 +- 1.0
-CMS_ETauFR_et_VVTight_pass_2016_W_bin_2RooRealVar::CMS_ETauFR_et_VVTight_pass_2016_W_bin_2 = 0.4589 +/- 0.852596  L(-INF - +INF) 
- None 0.458900483533 0.852596175008 0.0 1.0
-CMS_ETauFR_et_VVTight_pass_2016_W_bin_3 :  -0.521043733819 +- 0.843412335591
+CMS_ETauFR_et_VVTight_pass_2016_W_bin_2RooRealVar::CMS_ETauFR_et_VVTight_pass_2016_W_bin_2 = 0.473324 +/- 0.856882  L(-INF - +INF) 
+ None 0.473324211179 0.85688225929 0.0 1.0
+CMS_ETauFR_et_VVTight_pass_2016_W_bin_3 :  -0.505300429295 +- 0.846878693949
 CMS_ETauFR_et_VVTight_pass_2016_W_bin_3 :  0.0 +- 1.0
-CMS_ETauFR_et_VVTight_pass_2016_W_bin_3RooRealVar::CMS_ETauFR_et_VVTight_pass_2016_W_bin_3 = -0.521044 +/- 0.843412  L(-INF - +INF) 
- None -0.521043733819 0.843412335591 0.0 1.0
-CMS_ETauFR_et_VVTight_pass_2016_W_bin_4 :  0.0146661178192 +- 0.860019329021
+CMS_ETauFR_et_VVTight_pass_2016_W_bin_3RooRealVar::CMS_ETauFR_et_VVTight_pass_2016_W_bin_3 = -0.5053 +/- 0.846879  L(-INF - +INF) 
+ None -0.505300429295 0.846878693949 0.0 1.0
+CMS_ETauFR_et_VVTight_pass_2016_W_bin_4 :  0.0344194736357 +- 0.867234341477
 CMS_ETauFR_et_VVTight_pass_2016_W_bin_4 :  0.0 +- 1.0
-CMS_ETauFR_et_VVTight_pass_2016_W_bin_4RooRealVar::CMS_ETauFR_et_VVTight_pass_2016_W_bin_4 = 0.0146661 +/- 0.860019  L(-INF - +INF) 
- None 0.0146661178192 0.860019329021 0.0 1.0
-CMS_ETauFR_et_VVTight_pass_2016_W_bin_6 :  0.357367976575 +- 0.741560200615
+CMS_ETauFR_et_VVTight_pass_2016_W_bin_4RooRealVar::CMS_ETauFR_et_VVTight_pass_2016_W_bin_4 = 0.0344195 +/- 0.867234  L(-INF - +INF) 
+ None 0.0344194736357 0.867234341477 0.0 1.0
+CMS_ETauFR_et_VVTight_pass_2016_W_bin_6 :  0.256581380098 +- 0.889857013196
 CMS_ETauFR_et_VVTight_pass_2016_W_bin_6 :  0.0 +- 1.0
-CMS_ETauFR_et_VVTight_pass_2016_W_bin_6RooRealVar::CMS_ETauFR_et_VVTight_pass_2016_W_bin_6 = 0.357368 +/- 0.74156  L(-INF - +INF) 
- None 0.357367976575 0.741560200615 0.0 1.0
-CMS_ETauFR_et_VVTight_pass_2016_W_bin_7 :  -0.451376434273 +- 0.760254314922
+CMS_ETauFR_et_VVTight_pass_2016_W_bin_6RooRealVar::CMS_ETauFR_et_VVTight_pass_2016_W_bin_6 = 0.256581 +/- 0.889857  L(-INF - +INF) 
+ None 0.256581380098 0.889857013196 0.0 1.0
+CMS_ETauFR_et_VVTight_pass_2016_W_bin_7 :  -0.376035492689 +- 0.810994873515
 CMS_ETauFR_et_VVTight_pass_2016_W_bin_7 :  0.0 +- 1.0
-CMS_ETauFR_et_VVTight_pass_2016_W_bin_7RooRealVar::CMS_ETauFR_et_VVTight_pass_2016_W_bin_7 = -0.451376 +/- 0.760254  L(-INF - +INF) 
- None -0.451376434273 0.760254314922 0.0 1.0
-CMS_ETauFR_et_VVTight_pass_2016_W_bin_8 :  0.227775672789 +- 0.659427906134
+CMS_ETauFR_et_VVTight_pass_2016_W_bin_7RooRealVar::CMS_ETauFR_et_VVTight_pass_2016_W_bin_7 = -0.376035 +/- 0.810995  L(-INF - +INF) 
+ None -0.376035492689 0.810994873515 0.0 1.0
+CMS_ETauFR_et_VVTight_pass_2016_W_bin_8 :  0.191697835691 +- 0.680071315888
 CMS_ETauFR_et_VVTight_pass_2016_W_bin_8 :  0.0 +- 1.0
-CMS_ETauFR_et_VVTight_pass_2016_W_bin_8RooRealVar::CMS_ETauFR_et_VVTight_pass_2016_W_bin_8 = 0.227776 +/- 0.659428  L(-INF - +INF) 
- None 0.227775672789 0.659427906134 0.0 1.0
-CMS_ETauFR_et_VVTight_pass_2016_W_bin_9 :  0.0830068032319 +- 0.842557204332
+CMS_ETauFR_et_VVTight_pass_2016_W_bin_8RooRealVar::CMS_ETauFR_et_VVTight_pass_2016_W_bin_8 = 0.191698 +/- 0.680071  L(-INF - +INF) 
+ None 0.191697835691 0.680071315888 0.0 1.0
+CMS_ETauFR_et_VVTight_pass_2016_W_bin_9 :  0.0808184528546 +- 0.854159300885
 CMS_ETauFR_et_VVTight_pass_2016_W_bin_9 :  0.0 +- 1.0
-CMS_ETauFR_et_VVTight_pass_2016_W_bin_9RooRealVar::CMS_ETauFR_et_VVTight_pass_2016_W_bin_9 = 0.0830068 +/- 0.842557  L(-INF - +INF) 
- None 0.0830068032319 0.842557204332 0.0 1.0
-CMS_eff_e :  -0.871294072901 +- 0.856014480067
+CMS_ETauFR_et_VVTight_pass_2016_W_bin_9RooRealVar::CMS_ETauFR_et_VVTight_pass_2016_W_bin_9 = 0.0808185 +/- 0.854159  L(-INF - +INF) 
+ None 0.0808184528546 0.854159300885 0.0 1.0
+CMS_eff_e :  -0.845674406368 +- 0.860761354046
 CMS_eff_e :  0.0 +- 1.0
-CMS_eff_eRooRealVar::CMS_eff_e = -0.871294 +/- 0.856014  L(-INF - +INF) 
- None -0.871294072901 0.856014480067 0.0 1.0
-CMS_eff_t :  -0.85280841443 +- 0.85917845371
+CMS_eff_eRooRealVar::CMS_eff_e = -0.845674 +/- 0.860761  L(-INF - +INF) 
+ None -0.845674406368 0.860761354046 0.0 1.0
+CMS_eff_t :  -0.824160309735 +- 0.864110674913
 CMS_eff_t :  0.0 +- 1.0
-CMS_eff_tRooRealVar::CMS_eff_t = -0.852808 +/- 0.859178  L(-INF - +INF) 
- None -0.85280841443 0.85917845371 0.0 1.0
-jet_to_tauFR :  -0.0839657880651 +- 0.975303229528
+CMS_eff_tRooRealVar::CMS_eff_t = -0.82416 +/- 0.864111  L(-INF - +INF) 
+ None -0.824160309735 0.864110674913 0.0 1.0
+jet_to_tauFR :  -0.0930108503004 +- 0.975613089788
 jet_to_tauFR :  0.0 +- 1.0
-jet_to_tauFRRooRealVar::jet_to_tauFR = -0.0839658 +/- 0.975303  L(-INF - +INF) 
- None -0.0839657880651 0.975303229528 0.0 1.0
-lumi_2016 :  -0.493057052663 +- 0.950050476724
+jet_to_tauFRRooRealVar::jet_to_tauFR = -0.0930109 +/- 0.975613  L(-INF - +INF) 
+ None -0.0930108503004 0.975613089788 0.0 1.0
+lumi_2016 :  -0.487859072044 +- 0.949971482179
 lumi_2016 :  0.0 +- 1.0
-lumi_2016RooRealVar::lumi_2016 = -0.493057 +/- 0.95005  L(-INF - +INF) 
- None -0.493057052663 0.950050476724 0.0 1.0
-muon_eff :  -0.380392737628 +- 0.96830021997
+lumi_2016RooRealVar::lumi_2016 = -0.487859 +/- 0.949971  L(-INF - +INF) 
+ None -0.487859072044 0.949971482179 0.0 1.0
+muon_eff :  -0.376380358614 +- 0.9682543992
 muon_eff :  0.0 +- 1.0
-muon_effRooRealVar::muon_eff = -0.380393 +/- 0.9683  L(-INF - +INF) 
- None -0.380392737628 0.96830021997 0.0 1.0
-normalizationDY :  -0.529853493436 +- 0.945524204008
+muon_effRooRealVar::muon_eff = -0.37638 +/- 0.968254  L(-INF - +INF) 
+ None -0.376380358614 0.9682543992 0.0 1.0
+normalizationDY :  -0.510892724928 +- 0.947762150809
 normalizationDY :  0.0 +- 1.0
-normalizationDYRooRealVar::normalizationDY = -0.529853 +/- 0.945524  L(-INF - +INF) 
- None -0.529853493436 0.945524204008 0.0 1.0
-normalizationQCD :  -0.429338477634 +- 0.80720544858
+normalizationDYRooRealVar::normalizationDY = -0.510893 +/- 0.947762  L(-INF - +INF) 
+ None -0.510892724928 0.947762150809 0.0 1.0
+normalizationQCD :  -0.45758602426 +- 0.813321453039
 normalizationQCD :  0.0 +- 1.0
-normalizationQCDRooRealVar::normalizationQCD = -0.429338 +/- 0.807205  L(-INF - +INF) 
- None -0.429338477634 0.80720544858 0.0 1.0
-normalizationVV :  -0.00812605866043 +- 0.993808735373
+normalizationQCDRooRealVar::normalizationQCD = -0.457586 +/- 0.813321  L(-INF - +INF) 
+ None -0.45758602426 0.813321453039 0.0 1.0
+normalizationVV :  -0.00890097536093 +- 0.993776189549
 normalizationVV :  0.0 +- 1.0
-normalizationVVRooRealVar::normalizationVV = -0.00812606 +/- 0.993809  L(-INF - +INF) 
- None -0.00812605866043 0.993808735373 0.0 1.0
-normalizationW :  -0.241449433424 +- 0.734433880942
+normalizationVVRooRealVar::normalizationVV = -0.00890098 +/- 0.993776  L(-INF - +INF) 
+ None -0.00890097536093 0.993776189549 0.0 1.0
+normalizationW :  -0.301031175772 +- 0.769463775796
 normalizationW :  0.0 +- 1.0
-normalizationWRooRealVar::normalizationW = -0.241449 +/- 0.734434  L(-INF - +INF) 
- None -0.241449433424 0.734433880942 0.0 1.0
-normalizationZEE :  1.26777435296 +- 0.0747883404602
-r :  1.81054956345 +- 1.01276448666
-shape_ees :  -0.141887274495 +- 0.848537198913
+normalizationWRooRealVar::normalizationW = -0.301031 +/- 0.769464  L(-INF - +INF) 
+ None -0.301031175772 0.769463775796 0.0 1.0
+normalizationZEE :  1.26241394727 +- 0.0744267973031
+r :  1.93286066031 +- 1.05540188757
+shape_ees :  -0.125690356344 +- 0.852160129793
 shape_ees :  0.0 +- 1.0
-shape_eesRooRealVar::shape_ees = -0.141887 +/- 0.848537  L(-INF - +INF) 
- None -0.141887274495 0.848537198913 0.0 1.0
-shape_fes :  0.185833193347 +- 0.365069517142
+shape_eesRooRealVar::shape_ees = -0.12569 +/- 0.85216  L(-INF - +INF) 
+ None -0.125690356344 0.852160129793 0.0 1.0
+shape_fes :  0.224580166304 +- 0.38738529248
 shape_fes :  0.0 +- 0.841470984808
-shape_fesRooRealVar::shape_fes = 0.185833 +/- 0.36507  L(-1 - 1) 
- None 0.185833193347 0.365069517142 0.0 0.841470984808
-shape_tes :  -0.0725443993254 +- 0.240914902615
+shape_fesRooRealVar::shape_fes = 0.22458 +/- 0.387385  L(-1 - 1) 
+ None 0.224580166304 0.38738529248 0.0 0.841470984808
+shape_res :  0.408309990601 +- 0.915986483929
+shape_res :  0.0 +- 1.0
+shape_resRooRealVar::shape_res = 0.40831 +/- 0.915986  L(-INF - +INF) 
+ None 0.408309990601 0.915986483929 0.0 1.0
+shape_tes :  -0.0711044095968 +- 0.240059408628
 shape_tes :  0.0 +- 1.0
-shape_tesRooRealVar::shape_tes = -0.0725444 +/- 0.240915  L(-INF - +INF) 
- None -0.0725443993254 0.240914902615 0.0 1.0
-xsec_top :  0.00939670509821 +- 0.990211577276
+shape_tesRooRealVar::shape_tes = -0.0711044 +/- 0.240059  L(-INF - +INF) 
+ None -0.0711044095968 0.240059408628 0.0 1.0
+xsec_top :  0.00155135256822 +- 0.990412577214
 xsec_top :  0.0 +- 1.0
-xsec_topRooRealVar::xsec_top = 0.00939671 +/- 0.990212  L(-INF - +INF) 
- None 0.00939670509821 0.990211577276 0.0 1.0
+xsec_topRooRealVar::xsec_top = 0.00155135 +/- 0.990413  L(-INF - +INF) 
+ None 0.00155135256822 0.990412577214 0.0 1.0
 name                                               s+b fit         rho
-CMS_ETauFR_et_VVTight_pass_2016_QCD_bin_5    * +0.30, 0.70*       -0.23
-CMS_ETauFR_et_VVTight_pass_2016_QCD_bin_9    * +0.08, 0.83*       -0.04
-CMS_ETauFR_et_VVTight_pass_2016_W_bin_1     * -0.50, 0.88*       +0.12
-CMS_ETauFR_et_VVTight_pass_2016_W_bin_10    * -0.23, 0.64*       +0.32
-CMS_ETauFR_et_VVTight_pass_2016_W_bin_11    * +0.53, 0.69*       +0.46
-CMS_ETauFR_et_VVTight_pass_2016_W_bin_2     * +0.46, 0.85*       +0.06
-CMS_ETauFR_et_VVTight_pass_2016_W_bin_3     * -0.52, 0.84*       +0.07
-CMS_ETauFR_et_VVTight_pass_2016_W_bin_4     * +0.01, 0.86*       +0.20
-CMS_ETauFR_et_VVTight_pass_2016_W_bin_6     * +0.36, 0.74*       -0.38
-CMS_ETauFR_et_VVTight_pass_2016_W_bin_7     * -0.45, 0.76*       -0.55
-CMS_ETauFR_et_VVTight_pass_2016_W_bin_8     * +0.23, 0.66*       -0.17
-CMS_ETauFR_et_VVTight_pass_2016_W_bin_9     * +0.08, 0.84*       -0.03
-CMS_eff_e                                   * -0.87, 0.86*       +0.18
-CMS_eff_t                                   * -0.85, 0.86*       +0.19
-jet_to_tauFR                                   -0.08, 0.98       -0.07
+CMS_ETauFR_et_VVTight_pass_2016_QCD_bin_5    * +0.28, 0.70*       -0.22
+CMS_ETauFR_et_VVTight_pass_2016_QCD_bin_9    * +0.08, 0.84*       -0.07
+CMS_ETauFR_et_VVTight_pass_2016_W_bin_1     * -0.49, 0.88*       +0.12
+CMS_ETauFR_et_VVTight_pass_2016_W_bin_10    * -0.22, 0.64*       +0.27
+CMS_ETauFR_et_VVTight_pass_2016_W_bin_11    * +0.53, 0.69*       +0.44
+CMS_ETauFR_et_VVTight_pass_2016_W_bin_2     * +0.47, 0.86*       +0.08
+CMS_ETauFR_et_VVTight_pass_2016_W_bin_3     * -0.51, 0.85*       +0.08
+CMS_ETauFR_et_VVTight_pass_2016_W_bin_4     * +0.03, 0.87*       +0.22
+CMS_ETauFR_et_VVTight_pass_2016_W_bin_6     * +0.26, 0.89*       -0.43
+CMS_ETauFR_et_VVTight_pass_2016_W_bin_7     * -0.38, 0.81*       -0.32
+CMS_ETauFR_et_VVTight_pass_2016_W_bin_8     * +0.19, 0.68*       -0.25
+CMS_ETauFR_et_VVTight_pass_2016_W_bin_9     * +0.08, 0.85*       -0.06
+CMS_eff_e                                   * -0.85, 0.86*       +0.21
+CMS_eff_t                                   * -0.82, 0.86*       +0.21
+jet_to_tauFR                                   -0.09, 0.98       -0.08
 lumi_2016                                   * -0.49, 0.95*       +0.04
 muon_eff                                    * -0.38, 0.97*       +0.03
-normalizationDY                             * -0.53, 0.95*       +0.12
-normalizationQCD                            * -0.43, 0.81*       -0.34
-normalizationVV                                -0.01, 0.99       -0.00
-normalizationW                              * -0.24, 0.73*       -0.45
-shape_ees                                   * -0.14, 0.85*       -0.16
-shape_fes                                   ! +0.22, 0.43!       +0.21
-shape_tes                                   ! -0.07, 0.24!       -0.11
-xsec_top                                       +0.01, 0.99       -0.06
+normalizationDY                             * -0.51, 0.95*       +0.14
+normalizationQCD                            * -0.46, 0.81*       -0.36
+normalizationVV                                -0.01, 0.99       -0.01
+normalizationW                              * -0.30, 0.77*       -0.51
+shape_ees                                   * -0.13, 0.85*       -0.11
+shape_fes                                   ! +0.27, 0.46!       +0.33
+shape_res                                   * +0.41, 0.92*       +0.21
+shape_tes                                   ! -0.07, 0.24!       -0.06
+xsec_top                                       +0.00, 0.99       -0.07

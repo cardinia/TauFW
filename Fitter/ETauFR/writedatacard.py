@@ -41,6 +41,7 @@ for ieta in eta :
         cb.cp().process(['ZTT']).AddSyst(cb, 'shape_tes', 'shape', ch.SystMap()(1.0))
         cb.cp().process(['ZL']).AddSyst(cb, 'shape_fes', 'shapeU', ch.SystMap()(1.0))
         cb.cp().process(['ZL']).AddSyst(cb, 'shape_ees', 'shape', ch.SystMap()(1.0))
+        cb.cp().process(['ZL']).AddSyst(cb, 'shape_res', 'shape', ch.SystMap()(1.0))
         cb.cp().process(['ZTT','ZL','ZJ','VV','ST','TTT','TTL','TTJ']).AddSyst(cb, 'CMS_eff_e', 'lnN', ch.SystMap()(1.05))
         cb.cp().process(['ZTT','ZL','VV','ST','TTT','TTL','TTJ']).AddSyst(cb, 'CMS_eff_t', 'lnN', ch.SystMap()(1.05))
 

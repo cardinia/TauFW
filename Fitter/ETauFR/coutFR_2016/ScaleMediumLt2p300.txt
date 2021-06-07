@@ -6,9 +6,9 @@ Configured fallback algorithm , type Minuit2, algo Migrad, strategy 0, tolerance
         Type,Algo  Minuit2,Migrad
 >>> method used is FitDiagnostics
 >>> random number generator seed is 123456
-SimNLL created with 0 channels, 1 generic constraints, 23 fast gaussian constraints, 0 fast poisson constraints, 0 fast group constraints, 
-SimNLL created with 2 channels, 1 generic constraints, 23 fast gaussian constraints, 0 fast poisson constraints, 0 fast group constraints, 
+SimNLL created with 0 channels, 1 generic constraints, 24 fast gaussian constraints, 0 fast poisson constraints, 0 fast group constraints, 
+SimNLL created with 2 channels, 1 generic constraints, 24 fast gaussian constraints, 0 fast poisson constraints, 0 fast group constraints, 
 
  --- FitDiagnostics ---
-Best fit r: 0.984689  -0.0531553/+0.0527621  (68% CL)
+Best fit r: 0.899999  -0.0657135/+0.0647112  (68% CL)
 Done in 0.01 min (cpu), 0.01 min (real)
