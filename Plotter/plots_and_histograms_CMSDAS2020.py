@@ -141,7 +141,7 @@ def getsampleset(channel,era,**kwargs):
     if year == 2017 or year==2016:
       dataset = "SingleElectron_Run%d?"%year
     else:
-      dataset = "EGamma_Run2017?"# LOR CHANGES. MADE FOR 2018
+      dataset = "EGamma_Run2017?"
   else:
     LOG.throw(IOError,"Did not recognize channel %r!"%(channel))
   datasample = ('Data',dataset) # Data for chosen channel
@@ -174,15 +174,14 @@ def getsampleset(channel,era,**kwargs):
   # What is the major contribution from Drell-Yan to genmatch_2!=5? How does this look like for other processes?
   GMR = "genmatch_2==5"
   GMO = "genmatch_2!=5"
-#LOR CHANGES FOR FITTING
   GMEE= "genmatch_2==1||genmatch_2==3"
   GMJ="genmatch_2!=1&&genmatch_2!=3&&genmatch_2!=5"
 
-  #sampleset.split('DY', [('ZTT',GMR),('ZEE',GMEE),("ZJ",GMJ)])#LOR CHANGE DEFAULT IS NEXT Line
+  #sampleset.split('DY', [('ZTT',GMR),('ZEE',GMEE),("ZJ",GMJ)])
   sampleset.split('DY', [('ZTT',GMR),('ZL',GMO)])
   
-  sampleset.split('Top',[('TopT',GMR),('TopJ',GMO)]) #LOR commented it out
-  sampleset.split('EWK',[('EWKT',GMR),('EWKJ',GMO)]) #LOR commented it out
+  sampleset.split('Top',[('TopT',GMR),('TopJ',GMO)]) 
+  sampleset.split('EWK',[('EWKT',GMR),('EWKJ',GMO)]) 
  
   if table:
     sampleset.printtable(merged=True,split=True)
@@ -199,7 +198,7 @@ def plot(sampleset,channel,parallel=True,tag="",outdir="plots",histdir="",era=""
   #general_cuts = "(iso_1<0.1)&&(pt_1>26.0)&&(pt_2>20.0)&&(eta_1>-2.1)&&(eta_1<2.1)&&(eta_2>-2.3)&&(eta_2<2.3)&&!lepton_vetoes_notau&&metfilter"
   general_cuts='iso_1<0.1 && pt_1>26.0 && pt_2>20.0 && abs(eta_1)<2.1 && abs(eta_2)<2.3 && idDecayModeNewDMs_2 && idDeepTau2017v2p1VSjet_2>=16 && idDeepTau2017v2p1VSe_2>=1 && idDeepTau2017v2p1VSmu_2>=1  && q_1*q_2<0 && !lepton_vetoes_notau && metfilter'
   mvis_cuts1 = "(m_vis>60) && (m_vis < 120) && (mt_2 < 60) && (idDeepTau2017v2p1VSe_2 >= 16 )"
-  mvis_cuts2 = "(m_vis>60) && (m_vis < 120) && (mt_2 < 60) && (idDeepTau2017v2p1VSe_2 >= 32 )" #LOR CUTS 16 DIC 2020
+  mvis_cuts2 = "(m_vis>60) && (m_vis < 120) && (mt_2 < 60) && (idDeepTau2017v2p1VSe_2 >= 32 )" 
 
   mvis_cuts3 = "(m_vis>60) && (m_vis < 120) && (mt_1 < 60) && (idDeepTau2017v2p1VSe_2 >= 1 )"#VVVLose
   mvis_cuts4 = "(m_vis>60) && (m_vis < 120) && (mt_1 < 60) && (idDeepTau2017v2p1VSe_2 >= 4 )"#VLose
@@ -217,8 +216,7 @@ def plot(sampleset,channel,parallel=True,tag="",outdir="plots",histdir="",era=""
   DTM_cuts4="(idDeepTau2017v2p1VSe_2<16)&&((eta_2<-1.556)||(eta_2>1.556))"
 
   mt1_cuts= "(mt_1 < 60)"
-  #prepara VVL e VT, no taglio m_t
-  #da fare pt,phi e eta ele e tau, njet,mt,mvis,jetpt e discrimani,
+
   inclusive = inclusive.replace(" ","")
   general_cuts = general_cuts.replace(" ","")
   mvis_cuts1 = mvis_cuts1.replace(" ","")

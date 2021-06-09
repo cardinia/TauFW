@@ -31,7 +31,7 @@ class ModuleETau(ModuleTauPair):
     self.trigger   = TrigObjMatcher(jsonfile,trigger='SingleElectron',isdata=self.isdata)
     self.eleCutPt  = self.trigger.ptmins[0]
     self.tauCutPt  = 20
-    self.eleCutEta = 2.1 #LOR CHANGED DEFAULT IS 2.3
+    self.eleCutEta = 2.1 
     self.tauCutEta = 2.3
     
     # CORRECTIONS
@@ -119,9 +119,9 @@ class ModuleETau(ModuleTauPair):
     for tau in Collection(event,'Tau'):
       if abs(tau.eta)>self.tauCutEta: continue
       if abs(tau.dz)>0.2: continue
-      if tau.decayMode in [5,6]: continue #not in [0,1,10,11]: continue #LOR CHANGED
+      if tau.decayMode in [5,6]: continue #not in [0,1,10,11]: continue
       if abs(tau.charge)!=1: continue
-      if tau.idDecayModeNewDMs < 0.5: continue #LOR ADDED
+      if tau.idDecayModeNewDMs < 0.5: continue       
       #if tau.idDeepTau2017v2p1VSe<1: continue  # VVVLoose
       if tau.idDeepTau2017v2p1VSmu<1: continue # VLoose
       if tau.idDeepTau2017v2p1VSjet<16: continue   #self.tauwp: continue
@@ -294,8 +294,8 @@ class ModuleETau(ModuleTauPair):
         self.btagTool.fillEffMaps(jets,usejec=self.dojec)
       
       # MUON WEIGHTS
-      self.out.trigweight[0]              = self.eleSFs.getTriggerSF(electron.pt,electron.eta)#LOR COMMENT
-      self.out.idisoweight_1[0]           = self.eleSFs.getIdIsoSF(electron.pt,electron.eta)#LOR COMMENT
+      self.out.trigweight[0]              = self.eleSFs.getTriggerSF(electron.pt,electron.eta)
+      self.out.idisoweight_1[0]           = self.eleSFs.getIdIsoSF(electron.pt,electron.eta)
       
       # TAU WEIGHTS
       if tau.genPartFlav==5: # real tau
