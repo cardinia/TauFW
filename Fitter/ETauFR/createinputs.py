@@ -75,8 +75,8 @@ def main(args):
           ('TES',"_shape_tes",   ['ZTT']),
           ('FES',"_shape_fes",   ['ZL']),
           #Add other samples when EES rerun for all
-          ('EES',"_shape_ees",   ['ZL','ZTT','ZJ']),#'W','VV','ST','TTT','TTL','TTJ']), #Electron energy scale
-          ('RES',"_shape_res",   ['ZL','ZTT','ZJ','W','VV','ST','TTT','TTL','TTJ']),
+          ('EES',"_shape_ees",   ['ZL','ZTT','ZJ','W','VV','ST','TTT','TTL','TTJ']), #Electron energy scale
+          #('RES',"_shape_res",   ['ZL','ZTT','ZJ','W','VV','ST','TTT','TTL','TTJ']),
           #('JTFUp',   ['ZJ', 'TTJ', 'QCD', 'W']),
           #('JTFDown', ['ZJ', 'TTJ', 'QCD', 'W']),
           ERA=era,CHANNEL=channel)
@@ -132,7 +132,7 @@ def main(args):
         #    instead of looping over many selection,
         #    also, each pt/DM bin will be a separate file
         dmbins = [0,1,10,11]
-        etabins = [0,1.448,1.560,2.3] #ETauFR binning
+        etabins = [0,1.460,1.560,2.3] #ETauFR binning
         if channel=='mutau' :
           etabins = [0,0.4,0.8,1.2,1.7,2.3] #MuTauFR binning
           
@@ -208,7 +208,7 @@ def main(args):
           iso_2_fail     = "idDecayModeNewDMs_2 && idDeepTau2017v2p1VSjet_2>=16 && idDeepTau2017v2p1VSe_2>=1 && idDeepTau2017v2p1VSmu_2>=$WP"
           
         passregion  = "q_1*q_2<0 && mt_1<60 && %s && %s && !lepton_vetoes_notau && metfilter"%(iso_1,iso_2)
-        failregion = "q_1*q_2<0 && mt_1<60 && %s && %s && !lepton_vetoes_notau && metfilter"%(iso_1,iso_2_fail)
+        failregion = "q_1*q_2<0 && mt_1<60 && %s && %s && !lepton_vetoes_notau && metfilter && idDeepTau2017v2p1VSe_2 >= 1"%(iso_1,iso_2_fail)
         #zttregion = "%s && mt_1<60 && dzeta>-25 && abs(deta_ll)<1.5"%(baseline)
         bins_pass = [
           #Sel('baseline', repkey(baseline,WP=16)),
@@ -243,6 +243,8 @@ def main(args):
         createinputs(fname,samplesets['FESDown'],observables_pass,bins_pass,systs['FES'].dn,filter=systs['FES'].procs)
         createinputs(fname,samplesets['EESUp'],  observables_pass,bins_pass,systs['EES'].up,filter=systs['EES'].procs)
         createinputs(fname,samplesets['EESDown'],observables_pass,bins_pass,systs['EES'].dn,filter=systs['EES'].procs)
+        createinputs(fname,samplesets['Nom'],observables_pass,bins_pass,"_shape_resUp",shift="_resoUp")
+        createinputs(fname,samplesets['Nom'],observables_pass,bins_pass,"_shape_resDown",shift="_resoDown")
         #createinputs(fname,samplesets['RESUp'],observables_pass_resUp,bins_pass,systs['RES'].up,filter=systs['RES'].procs)
         #createinputs(fname,samplesets['RESDown'],observables_pass_resDown,bins_pass,systs['RES'].dn,filter=systs['RES'].procs)
         createinputs(fname,samplesets['TESUp'],  observables_fail,bins_fail,systs['TES'].up,filter=systs['TES'].procs)
@@ -251,9 +253,10 @@ def main(args):
         createinputs(fname,samplesets['FESDown'],observables_fail,bins_fail,systs['FES'].dn,filter=systs['FES'].procs)
         createinputs(fname,samplesets['EESUp'],  observables_fail,bins_fail,systs['EES'].up,filter=systs['EES'].procs)
         createinputs(fname,samplesets['EESDown'],observables_fail,bins_fail,systs['EES'].dn,filter=systs['EES'].procs)
+        createinputs(fname,samplesets['Nom'],observables_fail,bins_fail,"_shape_resUp",shift="_resoUp")
+        createinputs(fname,samplesets['Nom'],observables_fail,bins_fail,"_shape_resDown",shift="_resoDown")
         #createinputs(fname,samplesets['RESUp'],observables_fail_resUp,bins_fail,systs['RES'].up,filter=systs['RES'].procs)
         #createinputs(fname,samplesets['RESDown'],observables_fail_resDown,bins_fail,systs['RES'].dn,filter=systs['RES'].procs)
-      
       
       ############
       #   PLOT   #

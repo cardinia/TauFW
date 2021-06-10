@@ -348,6 +348,8 @@ class ModuleTauPair(Module):
     self.out.mt_2[0]      = sqrt( 2*self.out.pt_2[0]*met.Pt()*(1-cos(deltaPhi(self.out.phi_2[0],met.Phi()))) )
     ###self.out.puppimetpt[0]             = event.PuppiMET_pt
     ###self.out.puppimetphi[0]            = event.PuppiMET_phi
+    ###self.out.mt_puppimet_1[0]      = sqrt( 2*self.out.pt_1[0]*event.PuppiMET_pt*(1-cos(deltaPhi(self.out.phi_1[0],event.PuppiMET_phi))) )
+    ###self.out.mt_puppimet_2[0]      = sqrt( 2*self.out.pt_2[0]*event.PuppiMET_pt*(1-cos(deltaPhi(self.out.phi_2[0],event.PuppiMET_phi))) )
     ###self.out.metsignificance[0]        = event.MET_significance
     ###self.out.metcov00[0]               = event.MET_covXX
     ###self.out.metcov01[0]               = event.MET_covXY

@@ -597,6 +597,7 @@ class Sample(object):
     replaceweight = kwargs.get('replaceweight', None ) # replace weight, e.g. replaceweight=('idweight_2','idweightUp_2')
     undoshifts = self.isdata and (any('Up' in v.name or 'Down' in v.name for v in variables)
                                   or 'Up' in selection or 'Down' in selection)
+    undoshifts = kwargs.get('undoshifts', undoshifts   ) # remove up/down from variable names
     drawopt = 'E0' if self.isdata else 'HIST'
     drawopt = kwargs.get('option', drawopt ) + 'gOff'
     
@@ -605,13 +606,22 @@ class Sample(object):
       weight = joinweights(self.weight,self.extraweight,kwargs.get('weight',""))
     else:
       weight = joinweights(selection.weight,self.weight,self.extraweight,kwargs.get('weight',""))
-    cuts     = joincuts(selection.selection,self.cuts,kwargs.get('cuts',""),kwargs.get('extracuts',""))
+    cuts = joincuts(selection.selection,self.cuts,kwargs.get('cuts',""),kwargs.get('extracuts',""))
+    if undoshifts: # remove up/down from variable names in selection string
+      cuts = undoshift(cuts)
     if replaceweight:
-      if len(replaceweight)==2 and not islist(replaceweight[0]):
+      if len(replaceweight) in [2,3] and not islist(replaceweight[0]):
         replaceweight = [replaceweight]
-      for pattern, newweight in replaceweight:
+      for wargs in replaceweight:
+        if len(wargs)>=3:
+          pattern, newweight, regexp = wargs[:3]
+        else:
+          pattern, newweight, regexp = wargs[0], wargs[1], False
         LOG.verb('Sample.gethist: replacing weight: before %r'%weight,verbosity,3)
-        weight = re.sub(pattern,newweight,weight)
+        if regexp:
+          weight = re.sub(pattern,newweight,weight)
+        else:
+          weight = weight.replace(pattern,newweight)
         weight = weight.replace("**","*").strip('*')
         LOG.verb('Sample.gethist: replacing weight: after  %r'%weight,verbosity,3)
     cuts = joincuts(cuts,weight=weight)
@@ -629,19 +639,17 @@ class Sample(object):
         if blind:
           if isinstance(blind,tuple) and len(blind)==2:
             blindcuts = variable.blind(*blind)
-          elif variable.name_ in self.blinddict:
-            blindcuts = variable.blind(*self.blinddict[variable.name_])
+          elif variable._name in self.blinddict:
+            blindcuts = variable.blind(*self.blinddict[variable._name])
           elif variable.blindcuts:
             blindcuts = variable.blindcuts
         varcut = joincuts(blindcuts,variable.cut,weight=variable.dataweight)
       elif not self.isdata and (variable.cut or variable.weight):
         varcut = joincuts(variable.cut,weight=variable.weight)
       if varcut:
-        varexp = (variable.drawcmd(hname),varcut)
+        varexp = (variable.drawcmd(hname,undoshift=undoshifts),varcut)
       else:
-        varexp = variable.drawcmd(hname)
-      if undoshifts:
-        varexp = undoshift(varexp)
+        varexp = variable.drawcmd(hname,undoshift=undoshifts)
       varexps.append(varexp)
       
       # HISTOGRAM
@@ -695,10 +703,10 @@ class Sample(object):
     """Create and fill a 2D histogram from a tree."""
     variables, selection, issingle = unwrap_gethist2D_args(*args)
     verbosity = LOG.getverbosity(kwargs)
-    scale     = kwargs.get('scale',         1.0        ) * self.scale * self.norm
-    name      = kwargs.get('name',          self.name  )
-    name     += kwargs.get('tag',           ""         )
-    title     = kwargs.get('title',         self.title )
+    scale     = kwargs.get('scale', 1.0        ) * self.scale * self.norm
+    name      = kwargs.get('name',  self.name  )
+    name     += kwargs.get('tag',   ""         )
+    title     = kwargs.get('title', self.title )
     drawopt   = 'COLZ'
     drawopt   = 'gOff'+kwargs.get('option', drawopt    )
     
@@ -715,7 +723,7 @@ class Sample(object):
     for xvar, yvar in variables:
       
       # VAREXP
-      hname = makehistname("%s_vs_%s"%(xvar,yvar),name)
+      hname = makehistname("%s_vs_%s"%(xvar.filename,yvar.filename),name)
       if xvar.cut or yvar.cut or ((xvar.weight or yvar.weight) and not self.isdata):
         if self.isdata:
           varcut = joincuts(xvar.cut,yvar.cut)

@@ -1,0 +1,9 @@
+000 (1756859.004.000) 01/20 12:47:07 Job submitted from host: <188.185.70.244:9618?addrs=188.185.70.244-9618+[2001-1458-d00-7--100-2ee]-9618&alias=bigbird10.cern.ch&noUDP&sock=schedd_1929_b647_195>
+...
+012 (1756859.004.000) 01/20 13:10:32 Job was held.
+	No condor_shadow installed that supports vanilla jobs on V6.3.3 or newer resources
+	Code 24 Subcode 0
+...
+009 (1756859.004.000) 01/20 15:23:58 Job was aborted by the user.
+	via condor_rm (by user lvigilan)
+...

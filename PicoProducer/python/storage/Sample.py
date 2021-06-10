@@ -62,7 +62,7 @@ class Sample(object):
     self.storepath    = kwargs.get('store',         None   ) # if stored elsewhere than DAS
     self.url          = kwargs.get('url',           None   ) # URL if stored elsewhere
     self.dasurl       = kwargs.get('dasurl',        None   ) or "root://cms-xrd-global.cern.ch/" # URL for DAS
-    self.blacklist    = kwargs.get('blacklist',     [ ]    ) # black list file
+    self.blacklist    = kwargs.get('blacklist',     [ ]    ) # black list for ROOT files
     self.instance     = kwargs.get('instance', 'prod/phys03' if path.endswith('USER') else 'prod/global') # if None, does not exist in DAS
     self.nfilesperjob = kwargs.get('nfilesperjob',  -1     ) # number of nanoAOD files per job
     self.maxevts      = kwargs.get('maxevtsperjob', -1     ) # maximum number of events processed per job
@@ -72,13 +72,18 @@ class Sample(object):
     self.jobcfg       = kwargs.get('jobcfg',        { }    ) # to help keep track of resubmission
     self.nevents      = kwargs.get('nevts',         0      ) # number of nanoAOD events that can be processed
     self.nevents      = kwargs.get('nevents', self.nevents ) # cache of number of events
+    self.filelist     = None # text file
     self.files        = kwargs.get('files',         [ ]    ) # list of ROOT files, OR text file with list of files
-    self.filenevts    = { } # cache of number of events for each file
+    if isinstance(self.files,str):
+      self.filelist = self.files.replace("$SAMPLE",name) # text file
+      self.files    = [ ] # list of ROOT files
+    self.pathfiles    = { } # dictionary of DAS dataset path -> file list
+    self.filenevts    = { } # cache of number of events for each file; might speed up event splitting, if sample is submitted multiple times
     self.postfix      = kwargs.get('postfix',       None   ) or "" # post-fix (before '.root') for stored ROOT files
     self.era          = kwargs.get('era',           ""     ) # for expansion of $ERA variable
     self.dosplit      = kwargs.get('split', len(self.paths)>=2 ) # allow splitting (if multiple DAS datasets)
-    self.verbosity    = kwargs.get('verbosity',     0      ) # verbosity level for debugging
-    self.refreshable  = not self.files                       # allow refresh on file list in getfiles()
+    self.verbosity    = kwargs.get('verbosity', LOG.verbosity ) # verbosity level for debugging
+    self.refreshable  = not self.files                       # allow refresh of file list in getfiles()
     
     # ENSURE LIST
     if self.channels!=None and not isinstance(self.channels,list):
@@ -86,7 +91,8 @@ class Sample(object):
     if isinstance(self.extraopts,str):
       if ',' in self.extraopts:
         self.extraopts = self.extraopts.split(',')
-      self.extraopts = [self.extraopts]
+      else:
+        self.extraopts = [self.extraopts]
     
     # STORAGE & URL DEFAULTS
     if self.storepath:
@@ -102,10 +108,6 @@ class Sample(object):
           self.url = self.storage.fileurl
       else:
         self.url = self.dasurl
-    
-    # GET FILE LIST FROM TEXT FILE
-    if isinstance(self.files,str):
-      self.loadfiles(self.files)
   
   def __str__(self):
     return self.name
@@ -173,11 +175,19 @@ class Sample(object):
   
   def getfiles(self,das=False,refresh=False,url=True,limit=-1,verb=0):
     """Get list of files from storage system (default), or DAS (if no storage system of das=True)."""
-    files   = self.files
-    url_    = self.dasurl if (das and self.storage) else self.url
-    if self.refreshable and (not files or das or refresh):
+    LOG.verb("getfiles: das=%r, refresh=%r, url=%r, limit=%r"%(das,refresh,url,limit),verb,1)
+    if self.filelist and not self.files: # get file list from text file for first time
+      self.loadfiles(self.filelist)
+    files = self.files # cache for efficiency
+    url_  = self.dasurl if (das and self.storage) else self.url
+    if self.refreshable and (not files or das or refresh): # (re)derive file list
+      if not files or das:
+        LOG.verb("getfiles: Retrieving files...",verb,2)
+      else:
+        LOG.verb("getfiles: Refreshing file list...",verb,2)
       files = [ ]
-      for daspath in self.paths:
+      for daspath in self.paths: # loop over DAS dataset paths
+        self.pathfiles[daspath] = [ ]
         if (self.storage and not das) or (not self.instance): # get files from storage system
           postfix = self.postfix+'.root'
           sepath  = repkey(self.storepath,PATH=daspath,DAS=daspath).replace('//','/')
@@ -193,29 +203,38 @@ class Sample(object):
             if url and url_ not in line and 'root://' not in line:
               line = url_+line
             files.append(line)
+            self.pathfiles[daspath].append(line)
+        self.pathfiles[daspath].sort()
+        if not self.pathfiles[daspath]:
+          LOG.warning("getfiles: Did not find any files for %s"%(daspath))
       files.sort() # for consistent list order
       if not das or not self.storage:
-        self.files = files # save for efficiency
+        self.files = files # store cache for efficiency
     elif url and any(url_ not in f for f in files): # add url if missing
       files = [(url_+f if url_ not in f else f) for f in files]
     elif not url and any(url_ in f for f in files): # remove url
       files = [f.replace(url_,"") for f in files]
-    return files
+    return files[:] # pass copy to protect private self.files
   
   def _getnevents(self,das=True,refresh=False,tree='Events',limit=-1,checkfiles=False,verb=0):
     """Get number of nanoAOD events from DAS (default), or from files on storage system (das=False)."""
+    if self.filelist and not self.files: # get file list from text file for first time
+      self.loadfiles(self.filelist)
     nevents   = self.nevents
     filenevts = self.filenevts
     treename  = tree
     if nevents<=0 or refresh:
-      if checkfiles or (self.storage and not das): # get number of events from storage system
+      if checkfiles or (self.storage and not das): # get number of events per file from storage system
         files = self.getfiles(url=True,das=das,refresh=refresh,limit=limit,verb=verb)
         for fname in files:
-          nevts = getnevents(fname,treename)
-          filenevts[fname] = nevts # cache
+          if refresh or fname not in filenevts:
+            nevts = getnevents(fname,treename)
+            filenevts[fname] = nevts # cache
+          else: # get from cache or efficiency
+            nevts = filenevts[fname]
           nevents += nevts
           LOG.verb("_getnevents: Found %d events in %r."%(nevts,fname),verb,3)
-      else: # get number of events from DAS
+      else: # get total number of events from DAS
         for daspath in self.paths:
           nevents += getdasnevents(daspath,instance=self.instance,verb=verb-1)
       if limit<0:
@@ -231,48 +250,104 @@ class Sample(object):
     return self._getnevents(*args,**kwargs)[0]
   
   def writefiles(self,listname,**kwargs):
-    """Write filenames to text file for fast look up in future."""
+    """Write filenames to text file for fast look up in future.
+    If there is more than one DAS dataset path, write lists separately for each path."""
     writeevts = kwargs.pop('nevts',False) # also write nevents to file
     listname  = repkey(listname,ERA=self.era,GROUP=self.group,SAMPLE=self.name)
-    print ">>> Write list to %r..."%(listname)
     ensuredir(os.path.dirname(listname))
     filenevts = self.getfilenevts(checkfiles=True,**kwargs) if writeevts else None
     treename  = kwargs.pop('tree','Events')
     files     = self.getfiles(**kwargs)
-    with open(listname,'w+') as lfile:
-      for infile in files:
-        if writeevts:
-          nevts  = filenevts.get(infile,-1)
-          if nevts<0:
-            LOG.warning("Did not find nevents of %s. Trying again..."%(infile))
-            nevts = getnevents(infile,treename)
-          infile = "%s:%d"%(infile,nevts) # write $FILENAM(:NEVTS)
-        lfile.write(infile+'\n')
+    if not files:
+      LOG.warning("writefiles: Did not find any files!")
+    def _writefile(ofile,fname,prefix=""):
+      """Help function to write individual files."""
+      if writeevts: # add nevents at end of infile string
+        nevts = filenevts.get(fname,-1) # retrieve from cache
+        if nevts<0:
+          LOG.warning("Did not find nevents of %s. Trying again..."%(fname))
+          nevts = getnevents(fname,treename) # get nevents from file
+        fname = "%s:%d"%(fname,nevts) # write $FILENAM(:NEVTS)
+      ofile.write(prefix+fname+'\n')
+    paths = self.paths if '$PATH' in listname else [self.paths[0]]
+    for path in paths:
+      listname_ = repkey(listname,PATH=path.strip('/').replace('/','__'))
+      with open(listname_,'w+') as lfile:
+        if '$PATH' in listname: # write only the file list of this path to this text file
+          print ">>> Write %s files to list %r..."%(len(self.pathfiles[path]),listname_)
+          for infile in self.pathfiles[path]:
+            _writefile(lfile,infile)
+        elif len(self.paths)<=1: # write file list for the only path
+          print ">>> Write %s files to list %r..."%(len(files),listname_)
+          for infile in files:
+            _writefile(lfile,infile)
+        else: # divide up list per DAS dataset path
+          print ">>> Write %s files to list %r..."%(len(files),listname_)
+          for i, path in enumerate(self.paths):
+            lfile.write("DASPATH=%s\n"%(path)) # write special line to text file, which loadfiles() can parse
+            for infile in self.pathfiles[path]: # loop over this list (general list is sorted)
+              LOG.insist(infile in files,"Did not find file %s in general list! %s"%(infile,files))
+              _writefile(lfile,infile,prefix="  ")
+            if i+1<len(self.paths): # add extra white line between blocks
+              lfile.write("\n")
   
   def loadfiles(self,listname,**kwargs):
     """Load filenames from text file for fast look up in future."""
     listname  = repkey(listname,ERA=self.era,GROUP=self.group,SAMPLE=self.name)
     filenevts = self.filenevts
     nevents   = 0
-    if self.verbosity+2>=1:
-      print ">>> Loading sample files from '%r'"%(listname)
-    ensurefile(listname,fatal=True)
+    #listname = ensurefile(listname,fatal=False)
     filelist = [ ]
-    with open(listname,'r') as file:
-      for line in file:
-        line = line.strip().split()
-        if not line: continue
-        line = line[0].strip() # remove spaces, one per line
-        if line[0]=='#': continue # do not consider out-commented
-        #if v.endswith('.root'):
-        match = fevtsexp.match(line) # match $FILENAM(:NEVTS)
-        if not match: continue
-        infile = match.group(1)
-        if match.group(2): # found nevents in filename
-          nevts  = int(match.group(2))
-          filenevts[infile] = nevts # store/cache in dictionary
-          nevents += nevts
-        filelist.append(infile)
+    paths = self.paths if '$PATH' in listname else [self.paths[0]]
+    for path in paths:
+      listname_ = repkey(listname,PATH=path.strip('/').replace('/','__'))
+      if self.verbosity>=1:
+        print ">>> Loading sample files from %r..."%(listname_)
+      self.pathfiles[path] = [ ]
+      if os.path.isfile(listname_):
+        skip = False
+        subpaths = [ ] # for sanity check
+        with open(listname_,'r') as file:
+          for line in file:
+            line = line.strip().split() # split at space to allow comments at end
+            if not line: continue
+            line = line[0].strip() # remove spaces, consider only first part of the line
+            if line[0]=='#': continue # do not consider comments
+            #if line.endswith('.root'):
+            if line.startswith("DASPATH="): # to keep track of multiple DAS data set paths
+              path = line.split('=')[-1] # DAS data set path
+              LOG.insist(path.count('/')>=3 and path.startswith('/'),
+                "DAS path %r in %s has wrong format. Need /SAMPLE/CAMPAIGN/FORMAT..."%(path,listname_))
+              if path in self.paths: # store file list for this path
+                self.pathfiles[path] = [ ]
+                subpaths.append(path)
+                skip = False
+              else: # do not store file list for this path
+                skip = True
+            else:
+              if skip: continue # only load files for this sample's DAS dataset paths
+              match = fevtsexp.match(line) # match $FILENAM(:NEVTS)
+              if not match: continue
+              infile = match.group(1)
+              if match.group(2): # found nevents in filename
+                nevts  = int(match.group(2))
+                filenevts[infile] = nevts # store/cache in dictionary
+                nevents += nevts
+              filelist.append(infile)
+              self.pathfiles[path].append(infile)
+        if not filelist:
+          LOG.warning("loadfiles: Did not find any files in %s!"%(listname_))
+          self.refreshable = True
+        else: # sanity check for empty list
+          for subpath in subpaths:
+            if not self.pathfiles[subpath]:
+              LOG.warning("loadfiles: Did not find any files for path %s in %s!"%(subpath,listname_))
+      else:
+        LOG.warning("loadfiles: file list %s does not exist!"%(listname_))
+        self.refreshable = True
+    for path in self.paths:
+      if path not in self.pathfiles: # nonexistent list
+        LOG.warning("loadfiles: Did not find any files for path %s in %s!"%(path,listname))
     if self.nevents<=0:
       self.nevents = nevents
     elif self.nevents!=nevents:

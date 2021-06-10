@@ -1,0 +1,167 @@
+{
+  "time": "2021-06-08 10:09:02.254088", 
+  "group": "DY", 
+  "paths": [
+    "/DYJetsToTauTauToMuTauh_M-50_TuneCP5_13TeV-madgraphMLM-pythia8/RunIISummer19UL17NanoAODv2-106X_mc2017_realistic_v8-v1/NANOAODSIM"
+  ], 
+  "name": "DYJetsToMuTauh_M-50", 
+  "nevents": 0, 
+  "dtype": "mc", 
+  "channel": "etau", 
+  "module": "ETauFakeRate.ModuleETau", 
+  "extraopts": [
+    "ees=1.01", 
+    "useT1=True", 
+    "zpt=True"
+  ], 
+  "jobname": "DYJetsToMuTauh_M-50_etau_EES1p01_UL2017", 
+  "jobtag": "_etau_EES1p01_try1", 
+  "tag": "_EES1p01", 
+  "postfix": "_etau_EES1p01", 
+  "try": 1, 
+  "queue": null, 
+  "jobids": [
+    2368938
+  ], 
+  "prefetch": false, 
+  "outdir": "/eos/home-l/lvigilan/output_ETauFR_UL17_RUN1/UL2017/etau/DYJetsToMuTauh_M-50", 
+  "jobdir": "output_ETauFR_UL17_RUN1/UL2017/etau/DYJetsToMuTauh_M-50", 
+  "cfgdir": "output_ETauFR_UL17_RUN1/UL2017/etau/DYJetsToMuTauh_M-50/config", 
+  "logdir": "output_ETauFR_UL17_RUN1/UL2017/etau/DYJetsToMuTauh_M-50/log", 
+  "cfgname": "output_ETauFR_UL17_RUN1/UL2017/etau/DYJetsToMuTauh_M-50/config/jobconfig_etau_EES1p01_try1.json", 
+  "joblist": "output_ETauFR_UL17_RUN1/UL2017/etau/DYJetsToMuTauh_M-50/config/jobarglist_etau_EES1p01_try1.txt", 
+  "maxevts": -1, 
+  "nfiles": 47, 
+  "files": [
+    "/eos/cms/store/group/phys_tau/TauFW/nano/UL2017/DYJetsToTauTauToMuTauh_M-50_TuneCP5_13TeV-madgraphMLM-pythia8/RunIISummer19UL17NanoAODv2-106X_mc2017_realistic_v8-v1/NANOAODSIM/086E6FB4-4797-974B-BE04-4CCF09DA540E_skimjec_0.root", 
+    "/eos/cms/store/group/phys_tau/TauFW/nano/UL2017/DYJetsToTauTauToMuTauh_M-50_TuneCP5_13TeV-madgraphMLM-pythia8/RunIISummer19UL17NanoAODv2-106X_mc2017_realistic_v8-v1/NANOAODSIM/086E6FB4-4797-974B-BE04-4CCF09DA540E_skimjec_1.root", 
+    "/eos/cms/store/group/phys_tau/TauFW/nano/UL2017/DYJetsToTauTauToMuTauh_M-50_TuneCP5_13TeV-madgraphMLM-pythia8/RunIISummer19UL17NanoAODv2-106X_mc2017_realistic_v8-v1/NANOAODSIM/0F298FF1-D737-854C-B5E1-01EDB7D0242B_skimjec_0.root", 
+    "/eos/cms/store/group/phys_tau/TauFW/nano/UL2017/DYJetsToTauTauToMuTauh_M-50_TuneCP5_13TeV-madgraphMLM-pythia8/RunIISummer19UL17NanoAODv2-106X_mc2017_realistic_v8-v1/NANOAODSIM/0F298FF1-D737-854C-B5E1-01EDB7D0242B_skimjec_1.root", 
+    "/eos/cms/store/group/phys_tau/TauFW/nano/UL2017/DYJetsToTauTauToMuTauh_M-50_TuneCP5_13TeV-madgraphMLM-pythia8/RunIISummer19UL17NanoAODv2-106X_mc2017_realistic_v8-v1/NANOAODSIM/0F298FF1-D737-854C-B5E1-01EDB7D0242B_skimjec_2.root", 
+    "/eos/cms/store/group/phys_tau/TauFW/nano/UL2017/DYJetsToTauTauToMuTauh_M-50_TuneCP5_13TeV-madgraphMLM-pythia8/RunIISummer19UL17NanoAODv2-106X_mc2017_realistic_v8-v1/NANOAODSIM/0F298FF1-D737-854C-B5E1-01EDB7D0242B_skimjec_3.root", 
+    "/eos/cms/store/group/phys_tau/TauFW/nano/UL2017/DYJetsToTauTauToMuTauh_M-50_TuneCP5_13TeV-madgraphMLM-pythia8/RunIISummer19UL17NanoAODv2-106X_mc2017_realistic_v8-v1/NANOAODSIM/0F298FF1-D737-854C-B5E1-01EDB7D0242B_skimjec_4.root", 
+    "/eos/cms/store/group/phys_tau/TauFW/nano/UL2017/DYJetsToTauTauToMuTauh_M-50_TuneCP5_13TeV-madgraphMLM-pythia8/RunIISummer19UL17NanoAODv2-106X_mc2017_realistic_v8-v1/NANOAODSIM/13314AC4-9C42-4444-A932-26BDB295C823_skimjec_0.root", 
+    "/eos/cms/store/group/phys_tau/TauFW/nano/UL2017/DYJetsToTauTauToMuTauh_M-50_TuneCP5_13TeV-madgraphMLM-pythia8/RunIISummer19UL17NanoAODv2-106X_mc2017_realistic_v8-v1/NANOAODSIM/13314AC4-9C42-4444-A932-26BDB295C823_skimjec_1.root", 
+    "/eos/cms/store/group/phys_tau/TauFW/nano/UL2017/DYJetsToTauTauToMuTauh_M-50_TuneCP5_13TeV-madgraphMLM-pythia8/RunIISummer19UL17NanoAODv2-106X_mc2017_realistic_v8-v1/NANOAODSIM/13314AC4-9C42-4444-A932-26BDB295C823_skimjec_2.root", 
+    "/eos/cms/store/group/phys_tau/TauFW/nano/UL2017/DYJetsToTauTauToMuTauh_M-50_TuneCP5_13TeV-madgraphMLM-pythia8/RunIISummer19UL17NanoAODv2-106X_mc2017_realistic_v8-v1/NANOAODSIM/13314AC4-9C42-4444-A932-26BDB295C823_skimjec_3.root", 
+    "/eos/cms/store/group/phys_tau/TauFW/nano/UL2017/DYJetsToTauTauToMuTauh_M-50_TuneCP5_13TeV-madgraphMLM-pythia8/RunIISummer19UL17NanoAODv2-106X_mc2017_realistic_v8-v1/NANOAODSIM/13314AC4-9C42-4444-A932-26BDB295C823_skimjec_4.root", 
+    "/eos/cms/store/group/phys_tau/TauFW/nano/UL2017/DYJetsToTauTauToMuTauh_M-50_TuneCP5_13TeV-madgraphMLM-pythia8/RunIISummer19UL17NanoAODv2-106X_mc2017_realistic_v8-v1/NANOAODSIM/6CC64D4B-68BA-8C4D-9C74-B010E3ACF44A_skimjec_0.root", 
+    "/eos/cms/store/group/phys_tau/TauFW/nano/UL2017/DYJetsToTauTauToMuTauh_M-50_TuneCP5_13TeV-madgraphMLM-pythia8/RunIISummer19UL17NanoAODv2-106X_mc2017_realistic_v8-v1/NANOAODSIM/6CC64D4B-68BA-8C4D-9C74-B010E3ACF44A_skimjec_1.root", 
+    "/eos/cms/store/group/phys_tau/TauFW/nano/UL2017/DYJetsToTauTauToMuTauh_M-50_TuneCP5_13TeV-madgraphMLM-pythia8/RunIISummer19UL17NanoAODv2-106X_mc2017_realistic_v8-v1/NANOAODSIM/6CC64D4B-68BA-8C4D-9C74-B010E3ACF44A_skimjec_2.root", 
+    "/eos/cms/store/group/phys_tau/TauFW/nano/UL2017/DYJetsToTauTauToMuTauh_M-50_TuneCP5_13TeV-madgraphMLM-pythia8/RunIISummer19UL17NanoAODv2-106X_mc2017_realistic_v8-v1/NANOAODSIM/736D0F53-2323-E24A-91D0-39BD5A1056EE_skimjec_0.root", 
+    "/eos/cms/store/group/phys_tau/TauFW/nano/UL2017/DYJetsToTauTauToMuTauh_M-50_TuneCP5_13TeV-madgraphMLM-pythia8/RunIISummer19UL17NanoAODv2-106X_mc2017_realistic_v8-v1/NANOAODSIM/736D0F53-2323-E24A-91D0-39BD5A1056EE_skimjec_1.root", 
+    "/eos/cms/store/group/phys_tau/TauFW/nano/UL2017/DYJetsToTauTauToMuTauh_M-50_TuneCP5_13TeV-madgraphMLM-pythia8/RunIISummer19UL17NanoAODv2-106X_mc2017_realistic_v8-v1/NANOAODSIM/736D0F53-2323-E24A-91D0-39BD5A1056EE_skimjec_2.root", 
+    "/eos/cms/store/group/phys_tau/TauFW/nano/UL2017/DYJetsToTauTauToMuTauh_M-50_TuneCP5_13TeV-madgraphMLM-pythia8/RunIISummer19UL17NanoAODv2-106X_mc2017_realistic_v8-v1/NANOAODSIM/736D0F53-2323-E24A-91D0-39BD5A1056EE_skimjec_3.root", 
+    "/eos/cms/store/group/phys_tau/TauFW/nano/UL2017/DYJetsToTauTauToMuTauh_M-50_TuneCP5_13TeV-madgraphMLM-pythia8/RunIISummer19UL17NanoAODv2-106X_mc2017_realistic_v8-v1/NANOAODSIM/73C31CFE-C750-D849-9DA3-E7BB61890BBA_skimjec.root", 
+    "/eos/cms/store/group/phys_tau/TauFW/nano/UL2017/DYJetsToTauTauToMuTauh_M-50_TuneCP5_13TeV-madgraphMLM-pythia8/RunIISummer19UL17NanoAODv2-106X_mc2017_realistic_v8-v1/NANOAODSIM/85D6D564-D188-384A-9F51-9625D412EBC0_skimjec_0.root", 
+    "/eos/cms/store/group/phys_tau/TauFW/nano/UL2017/DYJetsToTauTauToMuTauh_M-50_TuneCP5_13TeV-madgraphMLM-pythia8/RunIISummer19UL17NanoAODv2-106X_mc2017_realistic_v8-v1/NANOAODSIM/85D6D564-D188-384A-9F51-9625D412EBC0_skimjec_1.root", 
+    "/eos/cms/store/group/phys_tau/TauFW/nano/UL2017/DYJetsToTauTauToMuTauh_M-50_TuneCP5_13TeV-madgraphMLM-pythia8/RunIISummer19UL17NanoAODv2-106X_mc2017_realistic_v8-v1/NANOAODSIM/85D6D564-D188-384A-9F51-9625D412EBC0_skimjec_2.root", 
+    "/eos/cms/store/group/phys_tau/TauFW/nano/UL2017/DYJetsToTauTauToMuTauh_M-50_TuneCP5_13TeV-madgraphMLM-pythia8/RunIISummer19UL17NanoAODv2-106X_mc2017_realistic_v8-v1/NANOAODSIM/85D6D564-D188-384A-9F51-9625D412EBC0_skimjec_3.root", 
+    "/eos/cms/store/group/phys_tau/TauFW/nano/UL2017/DYJetsToTauTauToMuTauh_M-50_TuneCP5_13TeV-madgraphMLM-pythia8/RunIISummer19UL17NanoAODv2-106X_mc2017_realistic_v8-v1/NANOAODSIM/85D6D564-D188-384A-9F51-9625D412EBC0_skimjec_4.root", 
+    "/eos/cms/store/group/phys_tau/TauFW/nano/UL2017/DYJetsToTauTauToMuTauh_M-50_TuneCP5_13TeV-madgraphMLM-pythia8/RunIISummer19UL17NanoAODv2-106X_mc2017_realistic_v8-v1/NANOAODSIM/9C10D01D-2D96-F141-A671-9F95851F2B22_skimjec_0.root", 
+    "/eos/cms/store/group/phys_tau/TauFW/nano/UL2017/DYJetsToTauTauToMuTauh_M-50_TuneCP5_13TeV-madgraphMLM-pythia8/RunIISummer19UL17NanoAODv2-106X_mc2017_realistic_v8-v1/NANOAODSIM/9C10D01D-2D96-F141-A671-9F95851F2B22_skimjec_1.root", 
+    "/eos/cms/store/group/phys_tau/TauFW/nano/UL2017/DYJetsToTauTauToMuTauh_M-50_TuneCP5_13TeV-madgraphMLM-pythia8/RunIISummer19UL17NanoAODv2-106X_mc2017_realistic_v8-v1/NANOAODSIM/9C10D01D-2D96-F141-A671-9F95851F2B22_skimjec_2.root", 
+    "/eos/cms/store/group/phys_tau/TauFW/nano/UL2017/DYJetsToTauTauToMuTauh_M-50_TuneCP5_13TeV-madgraphMLM-pythia8/RunIISummer19UL17NanoAODv2-106X_mc2017_realistic_v8-v1/NANOAODSIM/9C10D01D-2D96-F141-A671-9F95851F2B22_skimjec_3.root", 
+    "/eos/cms/store/group/phys_tau/TauFW/nano/UL2017/DYJetsToTauTauToMuTauh_M-50_TuneCP5_13TeV-madgraphMLM-pythia8/RunIISummer19UL17NanoAODv2-106X_mc2017_realistic_v8-v1/NANOAODSIM/9FFAE1FE-C308-704C-8A31-D4E66EADE004_skimjec.root", 
+    "/eos/cms/store/group/phys_tau/TauFW/nano/UL2017/DYJetsToTauTauToMuTauh_M-50_TuneCP5_13TeV-madgraphMLM-pythia8/RunIISummer19UL17NanoAODv2-106X_mc2017_realistic_v8-v1/NANOAODSIM/C74E9EA4-E41E-B14C-8FA9-9527BEB15C91_skimjec_0.root", 
+    "/eos/cms/store/group/phys_tau/TauFW/nano/UL2017/DYJetsToTauTauToMuTauh_M-50_TuneCP5_13TeV-madgraphMLM-pythia8/RunIISummer19UL17NanoAODv2-106X_mc2017_realistic_v8-v1/NANOAODSIM/C74E9EA4-E41E-B14C-8FA9-9527BEB15C91_skimjec_1.root", 
+    "/eos/cms/store/group/phys_tau/TauFW/nano/UL2017/DYJetsToTauTauToMuTauh_M-50_TuneCP5_13TeV-madgraphMLM-pythia8/RunIISummer19UL17NanoAODv2-106X_mc2017_realistic_v8-v1/NANOAODSIM/C74E9EA4-E41E-B14C-8FA9-9527BEB15C91_skimjec_2.root", 
+    "/eos/cms/store/group/phys_tau/TauFW/nano/UL2017/DYJetsToTauTauToMuTauh_M-50_TuneCP5_13TeV-madgraphMLM-pythia8/RunIISummer19UL17NanoAODv2-106X_mc2017_realistic_v8-v1/NANOAODSIM/C74E9EA4-E41E-B14C-8FA9-9527BEB15C91_skimjec_3.root", 
+    "/eos/cms/store/group/phys_tau/TauFW/nano/UL2017/DYJetsToTauTauToMuTauh_M-50_TuneCP5_13TeV-madgraphMLM-pythia8/RunIISummer19UL17NanoAODv2-106X_mc2017_realistic_v8-v1/NANOAODSIM/D3C7BA59-F779-B14A-8AA5-239AE93490CD_skimjec_0.root", 
+    "/eos/cms/store/group/phys_tau/TauFW/nano/UL2017/DYJetsToTauTauToMuTauh_M-50_TuneCP5_13TeV-madgraphMLM-pythia8/RunIISummer19UL17NanoAODv2-106X_mc2017_realistic_v8-v1/NANOAODSIM/D3C7BA59-F779-B14A-8AA5-239AE93490CD_skimjec_1.root", 
+    "/eos/cms/store/group/phys_tau/TauFW/nano/UL2017/DYJetsToTauTauToMuTauh_M-50_TuneCP5_13TeV-madgraphMLM-pythia8/RunIISummer19UL17NanoAODv2-106X_mc2017_realistic_v8-v1/NANOAODSIM/E408B9DD-0E79-F640-B655-9B1AD7E1A713_skimjec_0.root", 
+    "/eos/cms/store/group/phys_tau/TauFW/nano/UL2017/DYJetsToTauTauToMuTauh_M-50_TuneCP5_13TeV-madgraphMLM-pythia8/RunIISummer19UL17NanoAODv2-106X_mc2017_realistic_v8-v1/NANOAODSIM/E408B9DD-0E79-F640-B655-9B1AD7E1A713_skimjec_1.root", 
+    "/eos/cms/store/group/phys_tau/TauFW/nano/UL2017/DYJetsToTauTauToMuTauh_M-50_TuneCP5_13TeV-madgraphMLM-pythia8/RunIISummer19UL17NanoAODv2-106X_mc2017_realistic_v8-v1/NANOAODSIM/E408B9DD-0E79-F640-B655-9B1AD7E1A713_skimjec_2.root", 
+    "/eos/cms/store/group/phys_tau/TauFW/nano/UL2017/DYJetsToTauTauToMuTauh_M-50_TuneCP5_13TeV-madgraphMLM-pythia8/RunIISummer19UL17NanoAODv2-106X_mc2017_realistic_v8-v1/NANOAODSIM/F459233D-FCD9-724A-89B0-2889BF75A139_skimjec.root", 
+    "/eos/cms/store/group/phys_tau/TauFW/nano/UL2017/DYJetsToTauTauToMuTauh_M-50_TuneCP5_13TeV-madgraphMLM-pythia8/RunIISummer19UL17NanoAODv2-106X_mc2017_realistic_v8-v1/NANOAODSIM/F4C9BE75-A8FD-E944-AF81-53B4D1CDEB82_skimjec_0.root", 
+    "/eos/cms/store/group/phys_tau/TauFW/nano/UL2017/DYJetsToTauTauToMuTauh_M-50_TuneCP5_13TeV-madgraphMLM-pythia8/RunIISummer19UL17NanoAODv2-106X_mc2017_realistic_v8-v1/NANOAODSIM/F4C9BE75-A8FD-E944-AF81-53B4D1CDEB82_skimjec_1.root", 
+    "/eos/cms/store/group/phys_tau/TauFW/nano/UL2017/DYJetsToTauTauToMuTauh_M-50_TuneCP5_13TeV-madgraphMLM-pythia8/RunIISummer19UL17NanoAODv2-106X_mc2017_realistic_v8-v1/NANOAODSIM/F4C9BE75-A8FD-E944-AF81-53B4D1CDEB82_skimjec_2.root", 
+    "/eos/cms/store/group/phys_tau/TauFW/nano/UL2017/DYJetsToTauTauToMuTauh_M-50_TuneCP5_13TeV-madgraphMLM-pythia8/RunIISummer19UL17NanoAODv2-106X_mc2017_realistic_v8-v1/NANOAODSIM/F4C9BE75-A8FD-E944-AF81-53B4D1CDEB82_skimjec_3.root", 
+    "/eos/cms/store/group/phys_tau/TauFW/nano/UL2017/DYJetsToTauTauToMuTauh_M-50_TuneCP5_13TeV-madgraphMLM-pythia8/RunIISummer19UL17NanoAODv2-106X_mc2017_realistic_v8-v1/NANOAODSIM/F52D3E1B-6358-AB42-8417-6A2DE7E92FC3_skimjec_0.root", 
+    "/eos/cms/store/group/phys_tau/TauFW/nano/UL2017/DYJetsToTauTauToMuTauh_M-50_TuneCP5_13TeV-madgraphMLM-pythia8/RunIISummer19UL17NanoAODv2-106X_mc2017_realistic_v8-v1/NANOAODSIM/F52D3E1B-6358-AB42-8417-6A2DE7E92FC3_skimjec_1.root", 
+    "/eos/cms/store/group/phys_tau/TauFW/nano/UL2017/DYJetsToTauTauToMuTauh_M-50_TuneCP5_13TeV-madgraphMLM-pythia8/RunIISummer19UL17NanoAODv2-106X_mc2017_realistic_v8-v1/NANOAODSIM/FFBAC600-06AD-3442-9C68-DE87AD1524E9_skimjec.root"
+  ], 
+  "nfilesperjob": 5, 
+  "nchunks": 10, 
+  "chunks": [
+    0, 
+    1, 
+    2, 
+    3, 
+    4, 
+    5, 
+    6, 
+    7, 
+    8, 
+    9
+  ], 
+  "chunkdict": {
+    "0": [
+      "/eos/cms/store/group/phys_tau/TauFW/nano/UL2017/DYJetsToTauTauToMuTauh_M-50_TuneCP5_13TeV-madgraphMLM-pythia8/RunIISummer19UL17NanoAODv2-106X_mc2017_realistic_v8-v1/NANOAODSIM/086E6FB4-4797-974B-BE04-4CCF09DA540E_skimjec_0.root", 
+      "/eos/cms/store/group/phys_tau/TauFW/nano/UL2017/DYJetsToTauTauToMuTauh_M-50_TuneCP5_13TeV-madgraphMLM-pythia8/RunIISummer19UL17NanoAODv2-106X_mc2017_realistic_v8-v1/NANOAODSIM/086E6FB4-4797-974B-BE04-4CCF09DA540E_skimjec_1.root", 
+      "/eos/cms/store/group/phys_tau/TauFW/nano/UL2017/DYJetsToTauTauToMuTauh_M-50_TuneCP5_13TeV-madgraphMLM-pythia8/RunIISummer19UL17NanoAODv2-106X_mc2017_realistic_v8-v1/NANOAODSIM/0F298FF1-D737-854C-B5E1-01EDB7D0242B_skimjec_0.root", 
+      "/eos/cms/store/group/phys_tau/TauFW/nano/UL2017/DYJetsToTauTauToMuTauh_M-50_TuneCP5_13TeV-madgraphMLM-pythia8/RunIISummer19UL17NanoAODv2-106X_mc2017_realistic_v8-v1/NANOAODSIM/0F298FF1-D737-854C-B5E1-01EDB7D0242B_skimjec_1.root", 
+      "/eos/cms/store/group/phys_tau/TauFW/nano/UL2017/DYJetsToTauTauToMuTauh_M-50_TuneCP5_13TeV-madgraphMLM-pythia8/RunIISummer19UL17NanoAODv2-106X_mc2017_realistic_v8-v1/NANOAODSIM/0F298FF1-D737-854C-B5E1-01EDB7D0242B_skimjec_2.root"
+    ], 
+    "1": [
+      "/eos/cms/store/group/phys_tau/TauFW/nano/UL2017/DYJetsToTauTauToMuTauh_M-50_TuneCP5_13TeV-madgraphMLM-pythia8/RunIISummer19UL17NanoAODv2-106X_mc2017_realistic_v8-v1/NANOAODSIM/0F298FF1-D737-854C-B5E1-01EDB7D0242B_skimjec_3.root", 
+      "/eos/cms/store/group/phys_tau/TauFW/nano/UL2017/DYJetsToTauTauToMuTauh_M-50_TuneCP5_13TeV-madgraphMLM-pythia8/RunIISummer19UL17NanoAODv2-106X_mc2017_realistic_v8-v1/NANOAODSIM/0F298FF1-D737-854C-B5E1-01EDB7D0242B_skimjec_4.root", 
+      "/eos/cms/store/group/phys_tau/TauFW/nano/UL2017/DYJetsToTauTauToMuTauh_M-50_TuneCP5_13TeV-madgraphMLM-pythia8/RunIISummer19UL17NanoAODv2-106X_mc2017_realistic_v8-v1/NANOAODSIM/13314AC4-9C42-4444-A932-26BDB295C823_skimjec_0.root", 
+      "/eos/cms/store/group/phys_tau/TauFW/nano/UL2017/DYJetsToTauTauToMuTauh_M-50_TuneCP5_13TeV-madgraphMLM-pythia8/RunIISummer19UL17NanoAODv2-106X_mc2017_realistic_v8-v1/NANOAODSIM/13314AC4-9C42-4444-A932-26BDB295C823_skimjec_1.root", 
+      "/eos/cms/store/group/phys_tau/TauFW/nano/UL2017/DYJetsToTauTauToMuTauh_M-50_TuneCP5_13TeV-madgraphMLM-pythia8/RunIISummer19UL17NanoAODv2-106X_mc2017_realistic_v8-v1/NANOAODSIM/13314AC4-9C42-4444-A932-26BDB295C823_skimjec_2.root"
+    ], 
+    "2": [
+      "/eos/cms/store/group/phys_tau/TauFW/nano/UL2017/DYJetsToTauTauToMuTauh_M-50_TuneCP5_13TeV-madgraphMLM-pythia8/RunIISummer19UL17NanoAODv2-106X_mc2017_realistic_v8-v1/NANOAODSIM/13314AC4-9C42-4444-A932-26BDB295C823_skimjec_3.root", 
+      "/eos/cms/store/group/phys_tau/TauFW/nano/UL2017/DYJetsToTauTauToMuTauh_M-50_TuneCP5_13TeV-madgraphMLM-pythia8/RunIISummer19UL17NanoAODv2-106X_mc2017_realistic_v8-v1/NANOAODSIM/13314AC4-9C42-4444-A932-26BDB295C823_skimjec_4.root", 
+      "/eos/cms/store/group/phys_tau/TauFW/nano/UL2017/DYJetsToTauTauToMuTauh_M-50_TuneCP5_13TeV-madgraphMLM-pythia8/RunIISummer19UL17NanoAODv2-106X_mc2017_realistic_v8-v1/NANOAODSIM/6CC64D4B-68BA-8C4D-9C74-B010E3ACF44A_skimjec_0.root", 
+      "/eos/cms/store/group/phys_tau/TauFW/nano/UL2017/DYJetsToTauTauToMuTauh_M-50_TuneCP5_13TeV-madgraphMLM-pythia8/RunIISummer19UL17NanoAODv2-106X_mc2017_realistic_v8-v1/NANOAODSIM/6CC64D4B-68BA-8C4D-9C74-B010E3ACF44A_skimjec_1.root", 
+      "/eos/cms/store/group/phys_tau/TauFW/nano/UL2017/DYJetsToTauTauToMuTauh_M-50_TuneCP5_13TeV-madgraphMLM-pythia8/RunIISummer19UL17NanoAODv2-106X_mc2017_realistic_v8-v1/NANOAODSIM/6CC64D4B-68BA-8C4D-9C74-B010E3ACF44A_skimjec_2.root"
+    ], 
+    "3": [
+      "/eos/cms/store/group/phys_tau/TauFW/nano/UL2017/DYJetsToTauTauToMuTauh_M-50_TuneCP5_13TeV-madgraphMLM-pythia8/RunIISummer19UL17NanoAODv2-106X_mc2017_realistic_v8-v1/NANOAODSIM/736D0F53-2323-E24A-91D0-39BD5A1056EE_skimjec_0.root", 
+      "/eos/cms/store/group/phys_tau/TauFW/nano/UL2017/DYJetsToTauTauToMuTauh_M-50_TuneCP5_13TeV-madgraphMLM-pythia8/RunIISummer19UL17NanoAODv2-106X_mc2017_realistic_v8-v1/NANOAODSIM/736D0F53-2323-E24A-91D0-39BD5A1056EE_skimjec_1.root", 
+      "/eos/cms/store/group/phys_tau/TauFW/nano/UL2017/DYJetsToTauTauToMuTauh_M-50_TuneCP5_13TeV-madgraphMLM-pythia8/RunIISummer19UL17NanoAODv2-106X_mc2017_realistic_v8-v1/NANOAODSIM/736D0F53-2323-E24A-91D0-39BD5A1056EE_skimjec_2.root", 
+      "/eos/cms/store/group/phys_tau/TauFW/nano/UL2017/DYJetsToTauTauToMuTauh_M-50_TuneCP5_13TeV-madgraphMLM-pythia8/RunIISummer19UL17NanoAODv2-106X_mc2017_realistic_v8-v1/NANOAODSIM/736D0F53-2323-E24A-91D0-39BD5A1056EE_skimjec_3.root", 
+      "/eos/cms/store/group/phys_tau/TauFW/nano/UL2017/DYJetsToTauTauToMuTauh_M-50_TuneCP5_13TeV-madgraphMLM-pythia8/RunIISummer19UL17NanoAODv2-106X_mc2017_realistic_v8-v1/NANOAODSIM/73C31CFE-C750-D849-9DA3-E7BB61890BBA_skimjec.root"
+    ], 
+    "4": [
+      "/eos/cms/store/group/phys_tau/TauFW/nano/UL2017/DYJetsToTauTauToMuTauh_M-50_TuneCP5_13TeV-madgraphMLM-pythia8/RunIISummer19UL17NanoAODv2-106X_mc2017_realistic_v8-v1/NANOAODSIM/85D6D564-D188-384A-9F51-9625D412EBC0_skimjec_0.root", 
+      "/eos/cms/store/group/phys_tau/TauFW/nano/UL2017/DYJetsToTauTauToMuTauh_M-50_TuneCP5_13TeV-madgraphMLM-pythia8/RunIISummer19UL17NanoAODv2-106X_mc2017_realistic_v8-v1/NANOAODSIM/85D6D564-D188-384A-9F51-9625D412EBC0_skimjec_1.root", 
+      "/eos/cms/store/group/phys_tau/TauFW/nano/UL2017/DYJetsToTauTauToMuTauh_M-50_TuneCP5_13TeV-madgraphMLM-pythia8/RunIISummer19UL17NanoAODv2-106X_mc2017_realistic_v8-v1/NANOAODSIM/85D6D564-D188-384A-9F51-9625D412EBC0_skimjec_2.root", 
+      "/eos/cms/store/group/phys_tau/TauFW/nano/UL2017/DYJetsToTauTauToMuTauh_M-50_TuneCP5_13TeV-madgraphMLM-pythia8/RunIISummer19UL17NanoAODv2-106X_mc2017_realistic_v8-v1/NANOAODSIM/85D6D564-D188-384A-9F51-9625D412EBC0_skimjec_3.root", 
+      "/eos/cms/store/group/phys_tau/TauFW/nano/UL2017/DYJetsToTauTauToMuTauh_M-50_TuneCP5_13TeV-madgraphMLM-pythia8/RunIISummer19UL17NanoAODv2-106X_mc2017_realistic_v8-v1/NANOAODSIM/85D6D564-D188-384A-9F51-9625D412EBC0_skimjec_4.root"
+    ], 
+    "5": [
+      "/eos/cms/store/group/phys_tau/TauFW/nano/UL2017/DYJetsToTauTauToMuTauh_M-50_TuneCP5_13TeV-madgraphMLM-pythia8/RunIISummer19UL17NanoAODv2-106X_mc2017_realistic_v8-v1/NANOAODSIM/9C10D01D-2D96-F141-A671-9F95851F2B22_skimjec_0.root", 
+      "/eos/cms/store/group/phys_tau/TauFW/nano/UL2017/DYJetsToTauTauToMuTauh_M-50_TuneCP5_13TeV-madgraphMLM-pythia8/RunIISummer19UL17NanoAODv2-106X_mc2017_realistic_v8-v1/NANOAODSIM/9C10D01D-2D96-F141-A671-9F95851F2B22_skimjec_1.root", 
+      "/eos/cms/store/group/phys_tau/TauFW/nano/UL2017/DYJetsToTauTauToMuTauh_M-50_TuneCP5_13TeV-madgraphMLM-pythia8/RunIISummer19UL17NanoAODv2-106X_mc2017_realistic_v8-v1/NANOAODSIM/9C10D01D-2D96-F141-A671-9F95851F2B22_skimjec_2.root", 
+      "/eos/cms/store/group/phys_tau/TauFW/nano/UL2017/DYJetsToTauTauToMuTauh_M-50_TuneCP5_13TeV-madgraphMLM-pythia8/RunIISummer19UL17NanoAODv2-106X_mc2017_realistic_v8-v1/NANOAODSIM/9C10D01D-2D96-F141-A671-9F95851F2B22_skimjec_3.root", 
+      "/eos/cms/store/group/phys_tau/TauFW/nano/UL2017/DYJetsToTauTauToMuTauh_M-50_TuneCP5_13TeV-madgraphMLM-pythia8/RunIISummer19UL17NanoAODv2-106X_mc2017_realistic_v8-v1/NANOAODSIM/9FFAE1FE-C308-704C-8A31-D4E66EADE004_skimjec.root"
+    ], 
+    "6": [
+      "/eos/cms/store/group/phys_tau/TauFW/nano/UL2017/DYJetsToTauTauToMuTauh_M-50_TuneCP5_13TeV-madgraphMLM-pythia8/RunIISummer19UL17NanoAODv2-106X_mc2017_realistic_v8-v1/NANOAODSIM/C74E9EA4-E41E-B14C-8FA9-9527BEB15C91_skimjec_0.root", 
+      "/eos/cms/store/group/phys_tau/TauFW/nano/UL2017/DYJetsToTauTauToMuTauh_M-50_TuneCP5_13TeV-madgraphMLM-pythia8/RunIISummer19UL17NanoAODv2-106X_mc2017_realistic_v8-v1/NANOAODSIM/C74E9EA4-E41E-B14C-8FA9-9527BEB15C91_skimjec_1.root", 
+      "/eos/cms/store/group/phys_tau/TauFW/nano/UL2017/DYJetsToTauTauToMuTauh_M-50_TuneCP5_13TeV-madgraphMLM-pythia8/RunIISummer19UL17NanoAODv2-106X_mc2017_realistic_v8-v1/NANOAODSIM/C74E9EA4-E41E-B14C-8FA9-9527BEB15C91_skimjec_2.root", 
+      "/eos/cms/store/group/phys_tau/TauFW/nano/UL2017/DYJetsToTauTauToMuTauh_M-50_TuneCP5_13TeV-madgraphMLM-pythia8/RunIISummer19UL17NanoAODv2-106X_mc2017_realistic_v8-v1/NANOAODSIM/C74E9EA4-E41E-B14C-8FA9-9527BEB15C91_skimjec_3.root", 
+      "/eos/cms/store/group/phys_tau/TauFW/nano/UL2017/DYJetsToTauTauToMuTauh_M-50_TuneCP5_13TeV-madgraphMLM-pythia8/RunIISummer19UL17NanoAODv2-106X_mc2017_realistic_v8-v1/NANOAODSIM/D3C7BA59-F779-B14A-8AA5-239AE93490CD_skimjec_0.root"
+    ], 
+    "7": [
+      "/eos/cms/store/group/phys_tau/TauFW/nano/UL2017/DYJetsToTauTauToMuTauh_M-50_TuneCP5_13TeV-madgraphMLM-pythia8/RunIISummer19UL17NanoAODv2-106X_mc2017_realistic_v8-v1/NANOAODSIM/D3C7BA59-F779-B14A-8AA5-239AE93490CD_skimjec_1.root", 
+      "/eos/cms/store/group/phys_tau/TauFW/nano/UL2017/DYJetsToTauTauToMuTauh_M-50_TuneCP5_13TeV-madgraphMLM-pythia8/RunIISummer19UL17NanoAODv2-106X_mc2017_realistic_v8-v1/NANOAODSIM/E408B9DD-0E79-F640-B655-9B1AD7E1A713_skimjec_0.root", 
+      "/eos/cms/store/group/phys_tau/TauFW/nano/UL2017/DYJetsToTauTauToMuTauh_M-50_TuneCP5_13TeV-madgraphMLM-pythia8/RunIISummer19UL17NanoAODv2-106X_mc2017_realistic_v8-v1/NANOAODSIM/E408B9DD-0E79-F640-B655-9B1AD7E1A713_skimjec_1.root", 
+      "/eos/cms/store/group/phys_tau/TauFW/nano/UL2017/DYJetsToTauTauToMuTauh_M-50_TuneCP5_13TeV-madgraphMLM-pythia8/RunIISummer19UL17NanoAODv2-106X_mc2017_realistic_v8-v1/NANOAODSIM/E408B9DD-0E79-F640-B655-9B1AD7E1A713_skimjec_2.root", 
+      "/eos/cms/store/group/phys_tau/TauFW/nano/UL2017/DYJetsToTauTauToMuTauh_M-50_TuneCP5_13TeV-madgraphMLM-pythia8/RunIISummer19UL17NanoAODv2-106X_mc2017_realistic_v8-v1/NANOAODSIM/F459233D-FCD9-724A-89B0-2889BF75A139_skimjec.root"
+    ], 
+    "8": [
+      "/eos/cms/store/group/phys_tau/TauFW/nano/UL2017/DYJetsToTauTauToMuTauh_M-50_TuneCP5_13TeV-madgraphMLM-pythia8/RunIISummer19UL17NanoAODv2-106X_mc2017_realistic_v8-v1/NANOAODSIM/F4C9BE75-A8FD-E944-AF81-53B4D1CDEB82_skimjec_0.root", 
+      "/eos/cms/store/group/phys_tau/TauFW/nano/UL2017/DYJetsToTauTauToMuTauh_M-50_TuneCP5_13TeV-madgraphMLM-pythia8/RunIISummer19UL17NanoAODv2-106X_mc2017_realistic_v8-v1/NANOAODSIM/F4C9BE75-A8FD-E944-AF81-53B4D1CDEB82_skimjec_1.root", 
+      "/eos/cms/store/group/phys_tau/TauFW/nano/UL2017/DYJetsToTauTauToMuTauh_M-50_TuneCP5_13TeV-madgraphMLM-pythia8/RunIISummer19UL17NanoAODv2-106X_mc2017_realistic_v8-v1/NANOAODSIM/F4C9BE75-A8FD-E944-AF81-53B4D1CDEB82_skimjec_2.root", 
+      "/eos/cms/store/group/phys_tau/TauFW/nano/UL2017/DYJetsToTauTauToMuTauh_M-50_TuneCP5_13TeV-madgraphMLM-pythia8/RunIISummer19UL17NanoAODv2-106X_mc2017_realistic_v8-v1/NANOAODSIM/F4C9BE75-A8FD-E944-AF81-53B4D1CDEB82_skimjec_3.root", 
+      "/eos/cms/store/group/phys_tau/TauFW/nano/UL2017/DYJetsToTauTauToMuTauh_M-50_TuneCP5_13TeV-madgraphMLM-pythia8/RunIISummer19UL17NanoAODv2-106X_mc2017_realistic_v8-v1/NANOAODSIM/F52D3E1B-6358-AB42-8417-6A2DE7E92FC3_skimjec_0.root"
+    ], 
+    "9": [
+      "/eos/cms/store/group/phys_tau/TauFW/nano/UL2017/DYJetsToTauTauToMuTauh_M-50_TuneCP5_13TeV-madgraphMLM-pythia8/RunIISummer19UL17NanoAODv2-106X_mc2017_realistic_v8-v1/NANOAODSIM/F52D3E1B-6358-AB42-8417-6A2DE7E92FC3_skimjec_1.root", 
+      "/eos/cms/store/group/phys_tau/TauFW/nano/UL2017/DYJetsToTauTauToMuTauh_M-50_TuneCP5_13TeV-madgraphMLM-pythia8/RunIISummer19UL17NanoAODv2-106X_mc2017_realistic_v8-v1/NANOAODSIM/FFBAC600-06AD-3442-9C68-DE87AD1524E9_skimjec.root"
+    ]
+  }
+}

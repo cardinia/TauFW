@@ -88,8 +88,8 @@ def main(args):
               syst.procs = ['ZTT_DM0','ZTT_DM1','ZTT_DM10','ZTT_DM11']+syst.procs[1:]
         samplesets = { # sets of samples per variation
           'Nom':     sampleset, # nominal
-          'TESUp':   sampleset.shift(systs['TES'].procs,"_TES1p030",systs['TES'].up," +3% TES", split=True,filter=False,share=True),
-          'TESDown': sampleset.shift(systs['TES'].procs,"_TES0p970",systs['TES'].dn," -3% TES", split=True,filter=False,share=True),
+          'TESUp':   sampleset.shift(systs['TES'].procs,"_TES1p05",systs['TES'].up," +5% TES", split=True,filter=False,share=True),
+          'TESDown': sampleset.shift(systs['TES'].procs,"_TES0p95",systs['TES'].dn," -5% TES", split=True,filter=False,share=True),
           #'TESUp':   sampleset.shift(systs['TES'].procs,"_TESUp",  systs['TES'].up," +3% TES", split=True,filter=False,share=True),
           #'TESDown': sampleset.shift(systs['TES'].procs,"_TESDown",systs['TES'].dn," -3% TES", split=True,filter=False,share=True),
           'LTFUp':   sampleset.shift(systs['LTF'].procs,"_LTF1p030",systs['LTF'].up," +3% LTF", split=True,filter=False,share=True),
@@ -110,7 +110,7 @@ def main(args):
       ###################
       # observable/variables to be fitted in combine
       
-      if channel=='mumu':
+      if channel=='etau':
       
         observables = [
           Var('m_vis', 1, 60, 120, fname='mvis', ymargin=1.6, rrange=0.08),
@@ -131,29 +131,29 @@ def main(args):
         # => use 'cut' option as hack to save time drawing pt or DM bins
         #    instead of looping over many selection,
         #    also, each pt/DM bin will be a separate file
-        #dmbins = [0,1,10,11]
-        #ptbins = [20,25,30,35,40,50,70,2000] #500,1000]
-        #print ">>> DM cuts:"
-        #for dm in dmbins:
-        #  dmcut = "pt_2>40 && dm_2==%d"%(dm)
-        #  fname = "$FILE_dm%s"%(dm)
-        #  mvis_cut = mvis.clone(fname=fname,cut=dmcut) # create observable with extra cut for dm bin
-        #  print ">>>   %r (%r)"%(dmcut,fname)
-        #  observables.append(mvis_cut)
-        #print ">>> pt cuts:"
-        #for imax, ptmin in enumerate(ptbins,1):
-        #  if imax<len(ptbins):
-        #    ptmax = ptbins[imax]
-        #    ptcut = "pt_2>%s && pt_2<=%s"%(ptmin,ptmax)
-        #    fname = "$FILE_pt%sto%s"%(ptmin,ptmax)
-        #  else: # overflow
-        #    #ptcut = "pt_2>%s"%(ptmin)
-        #    #fname = "$FILE_ptgt%s"%(ptmin)
-        #    continue # skip overflow bin
-        #  mvis_cut = mvis.clone(fname=fname,cut=ptcut) # create observable with extra cut for pt bin
-        #  print ">>>   %r (%r)"%(ptcut,fname)
-        #  observables.append(mvis_cut)
-      
+      # if channel=='mutau':
+      #  dmbins = [0,1,10,11]
+      #  ptbins = [20,25,30,35,40,50,70,2000] #500,1000]
+      #  print ">>> DM cuts:"
+      #  for dm in dmbins:
+      #    dmcut = "pt_2>40 && dm_2==%d"%(dm)
+      #    fname = "$VAR_dm%s"%(dm)
+      #    mvis_cut = mvis.clone(fname=fname,cut=dmcut) # create observable with extra cut for dm bin
+      #    print ">>>   %r (%r)"%(dmcut,fname)
+      #    observables.append(mvis_cut)
+      #  print ">>> pt cuts:"
+      #  for imax, ptmin in enumerate(ptbins,1):
+      #    if imax<len(ptbins):
+      #      ptmax = ptbins[imax]
+      #      ptcut = "pt_2>%s && pt_2<=%s"%(ptmin,ptmax)
+      #      fname = "$VAR_pt%sto%s"%(ptmin,ptmax)
+      #    else: # overflow
+      #      #ptcut = "pt_2>%s"%(ptmin)
+      #      #fname = "$VAR_ptgt%s"%(ptmin)
+      #      continue # skip overflow bin
+      #    mvis_cut = mvis.clone(fname=fname,cut=ptcut) # create observable with extra cut for pt bin
+      #    print ">>>   %r (%r)"%(ptcut,fname)
+      #    observables.append(mvis_cut)
       
       ############
       #   BINS   #
@@ -173,7 +173,7 @@ def main(args):
         tauwpbits = { wp: 2**i for i, wp in enumerate(tauwps)}
         tauwps    = ['Tight'] # only do Tight
         iso_1     = "iso_1<0.15"
-        iso_2     = "idDecayModeNewDMs_2 && idDeepTau2017v2p1VSjet_2>=$WP && idDeepTau2017v2p1VSe_2>=2 && idDeepTau2017v2p1VSmu_2>=8"
+        iso_2     = "idDecayModeNewDMs_2 && idDeepTau2017v2p1VSjet_2>=16 && idDeepTau2017v2p1VSe_2>=2 && idDeepTau2017v2p1VSmu_2>=1"
         baseline  = "q_1*q_2<0 && %s && %s && !lepton_vetoes_notau && metfilter"%(iso_1,iso_2)
         zttregion = "%s && mt_1<60 && dzeta>-25 && abs(deta_ll)<1.5"%(baseline)
         bins = [
@@ -229,7 +229,7 @@ if __name__ == "__main__":
   parser = ArgumentParser(prog="createInputs",description=description,epilog="Good luck!")
   parser.add_argument('-y', '--era',     dest='eras', nargs='*', choices=['2016','2017','2018','UL2017'], default=['UL2017'], action='store',
                                          help="set era" )
-  parser.add_argument('-c', '--channel', dest='channels', nargs='*', choices=['mutau','mumu'], default=['mutau'], action='store',
+  parser.add_argument('-c', '--channel', dest='channels', nargs='*', choices=['mutau','mumu', 'etau'], default=['mutau'], action='store',
                                          help="set channel" )
   parser.add_argument('-s', '--serial',  dest='parallel', action='store_false',
                                          help="run Tree::MultiDraw serial instead of in parallel" )

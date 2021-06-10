@@ -1,16 +1,30 @@
 {
   "channels": {
     "skim": "skimjob.py", 
-    "skim-jec": "skimjob.py --jec-sys",
+    "skim-jec": "skimjob.py --jec-sys", 
     "gen": "GenDumper", 
-    "mutau": "ModuleMuTauSimple"
+    "mutau": "ModuleMuTauSimple", 
+    "etau": "ETauFakeRate.ModuleETau"
   }, 
   "eras": {
-    "2016": "examples/samples_2016.py", 
-    "2017": "examples/samples_2017.py", 
-    "2018": "examples/samples_2018.py"
+    "2016": "ETauFakeRate/samples_2016.py", 
+    "2017": "ETauFakeRate/samples_2017.py", 
+    "2018": "ETauFakeRate/samples_2018.py", 
+    "2017UL": "ETauFakeRate/samples_UL2017.py", 
+    "UL2017": "ETauFakeRate/samples_UL2017.py", 
+    "UL2016": "ETauFakeRate/samples_UL2016.py", 
+    "UL2016_preVFP": "ETauFakeRate/samples_UL2016_preVFP.py", 
+    "UL2018": "ETauFakeRate/samples_UL2018.py"
   }, 
-  "nfilesperjob": 1, 
+  "nfilesperjob": 5, 
   "filelistdir": "samples/files/$ERA/$SAMPLE.txt", 
-  "jobdir": "output/$ERA/$CHANNEL/$SAMPLE"
+  "jobdir": "output_ETauFR_UL17_RUN1/$ERA/$CHANNEL/$SAMPLE", 
+  "basedir": "/afs/cern.ch/work/l/lvigilan/TauWork/CMSSW_10_6_17_patch1/src/TauFW/PicoProducer", 
+  "outdir": "/eos/home-l/lvigilan/output_ETauFR_UL17_RUN1/$ERA/$CHANNEL/$SAMPLE", 
+  "nanodir": "/eos/home-l/lvigilan/samples_ETauFR_UL17_RUN1/nano/$ERA/$DAS", 
+  "picodir": "/eos/home-l/lvigilan/analysis_ETauFR_UL17_RUN1/$ERA/$GROUP", 
+  "tmpskimdir": "", 
+  "batch": "HTCondor", 
+  "queue": "", 
+  "maxevtsperjob": -1
 }

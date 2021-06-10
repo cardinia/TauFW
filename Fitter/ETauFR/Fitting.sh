@@ -1,9 +1,7 @@
-###WIP###
+###WIP###                                                                                                                                                    
 ERA=2016
 OUTDIR=coutFR_$ERA
 mkdir $OUTDIR
-
-
 
 templateFittingETauFR zee_fr_m_vis_eta0to1.448_et-2016.inputs.root VVLoose | tee ./zee_fr_m_vis_eta0to1.448_et-2016.inputs.txt
 text2workspace.py -m 90 -P TauFW.Fitter.ETauFR.zttmodels:ztt_eff --PO "eff=0.681402" zee_fr_m_vis_eta0to1.448_et-2016.inputs.txt -o  WorkSpaceVVLooseLt1p460.root

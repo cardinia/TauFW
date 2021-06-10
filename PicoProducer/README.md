@@ -132,9 +132,9 @@ pico.py channel skimjec 'skimjob.py --jec-sys'
 ### Analysis
 This framework allows to implement many analysis modules called "channels"
 (e.g. different final states like mutau or etau).
-All analysis code should be saved in [`python/analysis/`](python/analysis), or a subdirectory.
+All analysis code should be saved in [`python/analysis/`](python/analysis) or a [subdirectory](https://github.com/cms-tau-pog/TauFW/tree/master/PicoProducer/python/analysis#hierarchy).
 A simple example of an analysis is given in [`ModuleMuTauSimple.py`](python/analysis/ModuleMuTauSimple.py),
-a more fuller example in [`ModuleMuTau.py`](python/analysis/ModuleMuTau.py) 
+a more full example in [`ModuleMuTau.py`](python/analysis/ModuleMuTau.py) 
 with more detailed instructions are in [`python/analysis/README.md`](python/analysis).
 The `pico.py` script runs all analysis modules with the post-processor [`picojob.py`](python/processors/picojob.py).
 
@@ -204,24 +204,28 @@ Other optional keyword arguments are
 * `opts`: Extra key-worded options (`key=value`) to be passed to the analysis modules.
   Can be a comma-separated string (`'opt1=val1,opt2=val2'`) or a list of strings (`['opt1=val1','opt2=val2']`).
 
-Note that a priori skimming and analysis channels use the same sample lists (and therefore the same nanoAOD files)
-for the same era as specified in the configuration.
-While skimming is an optional step, typically you first want to skim nanoAOD from existing files on the GRID (given by DAS)
-and store them locally for faster and more reliable access.
-To run on skimmed nanoAOD files, you need to change `store` for each skimmed sample to point to the storage location.
-
 To get a file list for a particular sample in the sample list, you can use the `get files` subcommand.
 If you include `--write`, the list will be written to a text file as defined by `filelistdir` in the [configuration](#Configuration):
 ```
 pico.py get files -y 2016 -s DYJets --write
 ```
+Pass the full path of this text file to the sample via `files`.
+It may contain variables, e.g. `samples/files/$ERA/$SAMPLE.txt`.
 If you like to split jobs based on events (`maxevtsperjob`) instead of files, do
 ```
 pico.py write -y 2016 -s DYJets --nevts
 ```
 which will save the number of events per file as well.
 In this way the submission script does not have to open each file
-and get the number of nanoAOD events on the fly, which can take long.
+and get the number of nanoAOD events on the fly, which can take much long.
+Sometimes some GRID files as not available, and several retries are needed.
+
+Note that a priori skimming and analysis channels use the same sample lists (and therefore the same nanoAOD files)
+for the same era as specified in the configuration.
+While skimming is an optional step, typically you first want to skim nanoAOD from existing files on the GRID (given by DAS)
+and store them locally for faster and more reliable access.
+To run on skimmed nanoAOD files, you need to change `store` for each skimmed sample to point to the storage location.
+If you have a text file with the file list, you also need to remember to remove or update this list.
 
 
 ## Local run
@@ -291,6 +295,8 @@ Check the job status with
 pico.py status -y 2016 -c mutau
 ```
 This will check which jobs are still running, and if the output files exist and are not corrupted.
+You can skip the validation step and only look for missing files with `--skipevts` to speed up the status check.
+
 For skimming jobs, the nanoAOD output files should appear in `nanodir`, and they are checked for having an `Events` tree.
 For analysis jobs, the pico output files should appear in `outdir`, and they are checked for having a tree called `tree`,
 and a histogram called `cutflow`.
@@ -308,6 +314,8 @@ This will resubmit files that are missing or corrupted (unless they are associat
 In case the jobs take too long, you can specify a smaller number of files per job with `--filesperjob` on the fly,
 or use `--split` to split the previous number.
 Otherwise you can limit the number of events per job with `--maxevts` if it was not already set in the first submission.
+
+Use `--skipevts` to speed up the resubmission by checking for missing files. 
 
 
 ### Finalize
@@ -444,6 +452,7 @@ Here are some frequently asked questions and hints during troubleshooting.
 * [How do I make my own analysis module ?](#how-do-i-make-my-own-analysis-module-)<br>
 * [What should be the format of my "pico" analysis ntuples ?](#what-should-be-the-format-of-the-pico-analysis-ntuples-)<br>
 * [How do I plot my analysis output ?](#how-do-i-plot-my-analysis-output-)<br>
+* [Why do I get a `ImportError: No module named TauPOG.TauIDSFs.TauIDSFTool` error message ?](Why-do-I-get-a-ImportError-No-module-named-TauPOG-TauIDSFs-TauIDSFTool-error-message-)<br>
 * [Why do I get a `no branch named ...` error message ?](#why-do-i-get-a-no-branch-named--error-message-)<br>
 * [Why do I get a `no branch named MET_pt_nom` error message ?](#why-do-i-get-a-no-branch-named-met_pt_nom-error-message-)<br>
 * [Why do my jobs fail ?](#why-do-my-jobs-fail-)<br>
@@ -482,6 +491,11 @@ To interface with your analysis tuples, use the [`Plotter.sample.Sample` class](
 For a full example, hone into [these instructions](../Plotter#Plotting-script).
 
 
+### Why do I get a `ImportError: No module named TauPOG.TauIDSFs.TauIDSFTool` error message ?
+
+Please install `TauIDSFs` as instructed [here](https://github.com/cms-tau-pog/TauFW#picoproducer).
+
+
 ### Why do I get a `no branch named ...` error message ?
 
 Because the branch is not available in your nanoAOD input file.
@@ -514,6 +528,27 @@ pico.py run -c mutau -y 2018
 Alternatively, you could edit the module file locally, setting the
 [hardcoded default](https://github.com/cms-tau-pog/TauFW/blob/828faddc0862229e827207fc04a7903562930eb7/PicoProducer/python/analysis/ModuleTauPair.py#L44)
 to `False`.
+
+At some point the jet/MET correction tools in `nanoAOD-tools` were updated to include T1 smearing,
+and now corrected MET branches are called `MET_T1_nom`, etc.
+If you have nanoAOD files with this new correction method, please use `useT1=True`. Specify it during running:
+```
+pico.py run -c mutau -y 2018 -E useT1=True
+```
+or change it in the channel:
+```
+pico.py channel mutau 'MuTauModule useT1=True'
+pico.py run -c mutau -y 2018
+```
+or set the
+[hardcoded default](https://github.com/cms-tau-pog/TauFW/blob/f0ff144d7a003f197a627e70c92980a077a01c28/PicoProducer/python/analysis/ModuleTauPair.py#L49)
+to `True`,
+or add this option to all the new samples in the sample list:
+```
+  M('DY','DYJetsToLL_M-50',
+    "/DYJetsToLL_M-50_TuneCP5_13TeV-madgraphMLM-pythia8/RunIISummer19UL16NanoAODAPVv2-106X_mcRun2_asymptotic_preVFP_v9-v1/NANOAODSIM",
+    store=storage,url=url,files=filelist,opts=['zpt=True','useT1=True']),
+```
 
 
 ### Why do my jobs fail ?

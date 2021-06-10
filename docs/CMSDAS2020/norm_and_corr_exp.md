@@ -118,6 +118,7 @@ In case of cross-sections, several Twiki pages can be consulted:
 + Single top production: [SingleTopSigma](https://twiki.cern.ch/twiki/bin/viewauth/CMS/SingleTopSigma)
 + Higgs boson production: [LHCHXSWG](https://twiki.cern.ch/twiki/bin/view/LHCPhysics/LHCHXSWG#Higgs_cross_sections_and_decay_b)
 
+
 In some cases, the cross-section is not known for a particular phase-space simulated by the generator. The most precise possibility is to use the
 [GenXSecAnalyzer](https://twiki.cern.ch/twiki/bin/viewauth/CMS/HowToGenXSecAnalyzer) in this case. Sometimes, the cross-sections are also given in [XSDB](https://cms-gen-dev.cern.ch/xsdb/),
 however, you need to be sure to select the right `DAS` name for the sample you search for. Sometimes, the info is not available because the datbase is not updated accordingly.
@@ -492,3 +493,4 @@ pair p<sub>T</sub> and the MET vector.
 Those of you, who would like to take care of the corrections discussed in the previous subsections, please implement the required procedures, and document the
 impact of each correction step by step in form of control plots. For the presentation, please explain the purpose of each correction, if needed, by making use of
 sketches and plots of provided correction factors.
+

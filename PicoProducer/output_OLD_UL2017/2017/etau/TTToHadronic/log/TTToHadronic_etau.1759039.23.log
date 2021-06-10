@@ -1,0 +1,202 @@
+Could not find platform independent libraries <prefix>
+Could not find platform dependent libraries <exec_prefix>
+Consider setting $PYTHONHOME to <prefix>[:<exec_prefix>]
+ImportError: No module named site
+Job start at Wed Jan 20 16:30:31 CET 2021
+Running job on machine Linux b7g41n1984.cern.ch 3.10.0-1062.12.1.el7.x86_64 #1 SMP Tue Feb 4 23:02:59 UTC 2020 x86_64 x86_64 x86_64 GNU/Linux, host b7g41n1984.cern.ch
+============================================================
+$PWD=/pool/condor/dir_19501
+$JOBID=1759039
+$TASKID=23
+$HOSTNAME=b7g41n1984.cern.ch
+$TASKCMD=/afs/cern.ch/work/l/lvigilan/TauWork/CMSSW_10_6_17_patch1/src/TauFW/PicoProducer/python/processors/picojob.py -y 2017 -d 'mc' -c etau -M ModuleETau --copydir /eos/home-l/lvigilan/output_UL2017/2017/etau/TTToHadronic -t _etau_23 --opt 'toppt=True' -i root://cms-xrd-global.cern.ch//store/mc/RunIISummer19UL17NanoAOD/TTToHadronic_TuneCP5_13TeV-powheg-pythia8/NANOAODSIM/106X_mc2017_realistic_v6-v4/280000/E1A1BD89-DFC2-6747-B54C-99331FBF73AE.root root://cms-xrd-global.cern.ch//store/mc/RunIISummer19UL17NanoAOD/TTToHadronic_TuneCP5_13TeV-powheg-pythia8/NANOAODSIM/106X_mc2017_realistic_v6-v4/280000/E32CA5F8-053B-2E4D-BAAF-CE3E0499D615.root root://cms-xrd-global.cern.ch//store/mc/RunIISummer19UL17NanoAOD/TTToHadronic_TuneCP5_13TeV-powheg-pythia8/NANOAODSIM/106X_mc2017_realistic_v6-v4/280000/FB53B29A-D1CD-374A-9830-A2C5CAAFA172.root root://cms-xrd-global.cern.ch//store/mc/RunIISummer19UL17NanoAOD/TTToHadronic_TuneCP5_13TeV-powheg-pythia8/NANOAODSIM/106X_mc2017_realistic_v6-v4/280000/FE9795EC-1544-9F48-B07D-7ECE5DB76E55.root
+$WORKDIR=/pool/condor/dir_19501
+>>> cd /afs/cern.ch/work/l/lvigilan/TauWork/CMSSW_10_6_17_patch1/src
+>>> eval `scramv1 runtime -sh`
+>>> cd /pool/condor/dir_19501
+$PWD=/pool/condor/dir_19501
+>>> /afs/cern.ch/work/l/lvigilan/TauWork/CMSSW_10_6_17_patch1/src/TauFW/PicoProducer/python/processors/picojob.py -y 2017 -d 'mc' -c etau -M ModuleETau --copydir /eos/home-l/lvigilan/output_UL2017/2017/etau/TTToHadronic -t _etau_23 --opt 'toppt=True' -i root://cms-xrd-global.cern.ch//store/mc/RunIISummer19UL17NanoAOD/TTToHadronic_TuneCP5_13TeV-powheg-pythia8/NANOAODSIM/106X_mc2017_realistic_v6-v4/280000/E1A1BD89-DFC2-6747-B54C-99331FBF73AE.root root://cms-xrd-global.cern.ch//store/mc/RunIISummer19UL17NanoAOD/TTToHadronic_TuneCP5_13TeV-powheg-pythia8/NANOAODSIM/106X_mc2017_realistic_v6-v4/280000/E32CA5F8-053B-2E4D-BAAF-CE3E0499D615.root root://cms-xrd-global.cern.ch//store/mc/RunIISummer19UL17NanoAOD/TTToHadronic_TuneCP5_13TeV-powheg-pythia8/NANOAODSIM/106X_mc2017_realistic_v6-v4/280000/FB53B29A-D1CD-374A-9830-A2C5CAAFA172.root root://cms-xrd-global.cern.ch//store/mc/RunIISummer19UL17NanoAOD/TTToHadronic_TuneCP5_13TeV-powheg-pythia8/NANOAODSIM/106X_mc2017_realistic_v6-v4/280000/FE9795EC-1544-9F48-B07D-7ECE5DB76E55.root
+Error in <TGClient::TGClient>: can't open display "localhost:37.0", switching to batch mode...
+ In case you run from a remote ssh session, reconnect with ssh -Y
+--------------------------------------------------------------------------------
+>>> era          = '2017'
+>>> year         = 2017
+>>> channel      = 'etau'
+>>> modname      = 'ModuleETau'
+>>> dtype        = 'mc'
+>>> kwargs       = {'toppt': True, 'dtype': 'mc', 'verb': 0, 'era': '2017', 'year': 2017}
+>>> maxevts      = None
+>>> outdir       = '.'
+>>> copydir      = '/eos/home-l/lvigilan/output_UL2017/2017/etau/TTToHadronic'
+>>> infiles      = ['root://cms-xrd-global.cern.ch//store/mc/RunIISummer19UL17NanoAOD/TTToHadronic_TuneCP5_13TeV-powheg-pythia8/NANOAODSIM/106X_mc2017_realistic_v6-v4/280000/E1A1BD89-DFC2-6747-B54C-99331FBF73AE.root', 'root://cms-xrd-global.cern.ch//store/mc/RunIISummer19UL17NanoAOD/TTToHadronic_TuneCP5_13TeV-powheg-pythia8/NANOAODSIM/106X_mc2017_realistic_v6-v4/280000/E32CA5F8-053B-2E4D-BAAF-CE3E0499D615.root', 'root://cms-xrd-global.cern.ch//store/mc/RunIISummer19UL17NanoAOD/TTToHadronic_TuneCP5_13TeV-powheg-pythia8/NANOAODSIM/106X_mc2017_realistic_v6-v4/280000/FB53B29A-D1CD-374A-9830-A2C5CAAFA172.root', 'root://cms-xrd-global.cern.ch//store/mc/RunIISummer19UL17NanoAOD/TTToHadronic_TuneCP5_13TeV-powheg-pythia8/NANOAODSIM/106X_mc2017_realistic_v6-v4/280000/FE9795EC-1544-9F48-B07D-7ECE5DB76E55.root']
+>>> outfname     = './pico_etau_etau_23.root'
+>>> branchsel    = '/afs/cern.ch/work/l/lvigilan/TauWork/CMSSW_10_6_17_patch1/python/TauFW/PicoProducer/processors/keep_and_drop_skim.txt'
+>>> json         = None
+>>> prefetch     = False
+>>> cwd          = /pool/condor/dir_19501
+--------------------------------------------------------------------------------
+
+   ################
+   #  ModuleETau  #
+   ################
+
+Loading PileupWeightTool for '/afs/cern.ch/work/l/lvigilan/TauWork/CMSSW_10_6_17_patch1/src/TauFW/PicoProducer/data/pileup/Data_PileUp_2017_69p2.root' and '/afs/cern.ch/work/l/lvigilan/TauWork/CMSSW_10_6_17_patch1/src/TauFW/PicoProducer/data/pileup/MC_PileUp_2017_Winter17_V2_new_pmx.root'
+Loading BTagWeightTool for DeepCSV (medium WP)...
+>>> BTagTool: [1m[33mWarning! [0m[33mHistogram 'etau/eff_DeepCSV_udsg_medium' does not exist in /afs/cern.ch/work/l/lvigilan/TauWork/CMSSW_10_6_17_patch1/src/TauFW/PicoProducer/data/btag/DeepCSV_2017_12Apr2017_eff.root! Reverting to default efficiency histogram...[0m
+>>> BTagTool: [1m[33mWarning! [0m[33mHistogram 'etau/eff_DeepCSV_c_medium' does not exist in /afs/cern.ch/work/l/lvigilan/TauWork/CMSSW_10_6_17_patch1/src/TauFW/PicoProducer/data/btag/DeepCSV_2017_12Apr2017_eff.root! Reverting to default efficiency histogram...[0m
+>>> BTagTool: [1m[33mWarning! [0m[33mHistogram 'etau/eff_DeepCSV_b_medium' does not exist in /afs/cern.ch/work/l/lvigilan/TauWork/CMSSW_10_6_17_patch1/src/TauFW/PicoProducer/data/btag/DeepCSV_2017_12Apr2017_eff.root! Reverting to default efficiency histogram...[0m
+>>> BTagTool: [1m[33mWarning! [0m[33mMade use of default efficiency histograms! The b tag weights from this module should be regarded as placeholders only,
+and should NOT be used for analyses. B (mis)tag efficiencies in MC are analysis dependent. Please create your own
+efficiency histogram with data/btag/getBTagEfficiencies.py after running all MC samples with BTagWeightTool.[0m
+Loading TreeProducerETau for './pico_etau_etau_23.root'
+--------------------------------------------------------------------------------
+>>> filename     = './pico_etau_etau_23.root'
+>>> year         = 2017
+>>> dtype        = 'mc'
+>>> channel      = 'etau'
+>>> ismc         = True
+>>> isdata       = False
+>>> isembed      = False
+>>> tes          = None
+>>> tessys       = None
+>>> ltf          = 1.0
+>>> jtf          = 1.0
+>>> dotoppt      = True
+>>> dozpt        = False
+>>> dojec        = True
+>>> dojecsys     = True
+>>> dotight      = False
+>>> jetCutPt     = 30
+>>> bjetCutEta   = 2.7
+>>> tauwp        = 0
+>>> eleCutPt     = 36
+>>> eleCutEta    = 2.1
+>>> tauCutPt     = 20
+>>> tauCutEta    = 2.3
+Pre-select 961800 entries out of 961800 (100.00%)
+Processed    10000/  961800 entries,  1.04% (elapsed time     1.8s, curr speed    5.560 kHz, avg speed    5.560 kHz), accepted        0/   10001 events ( 0.00%)
+Processed    20000/  961800 entries,  2.08% (elapsed time     2.7s, curr speed   11.596 kHz, avg speed    7.516 kHz), accepted        0/   20001 events ( 0.00%)
+Processed    30000/  961800 entries,  3.12% (elapsed time     4.3s, curr speed    6.087 kHz, avg speed    6.970 kHz), accepted        0/   30001 events ( 0.00%)
+Processed    40000/  961800 entries,  4.16% (elapsed time     5.0s, curr speed   13.481 kHz, avg speed    7.927 kHz), accepted        0/   40001 events ( 0.00%)
+Processed    50000/  961800 entries,  5.20% (elapsed time     7.3s, curr speed    4.360 kHz, avg speed    6.813 kHz), accepted        0/   50001 events ( 0.00%)
+Processed    60000/  961800 entries,  6.24% (elapsed time     8.8s, curr speed    6.976 kHz, avg speed    6.839 kHz), accepted        0/   60001 events ( 0.00%)
+Processed    70000/  961800 entries,  7.28% (elapsed time    10.6s, curr speed    5.557 kHz, avg speed    6.621 kHz), accepted        0/   70001 events ( 0.00%)
+Processed    80000/  961800 entries,  8.32% (elapsed time    12.1s, curr speed    6.375 kHz, avg speed    6.589 kHz), accepted        0/   80001 events ( 0.00%)
+Processed    90000/  961800 entries,  9.36% (elapsed time    14.3s, curr speed    4.741 kHz, avg speed    6.316 kHz), accepted        0/   90001 events ( 0.00%)
+Processed   100000/  961800 entries, 10.40% (elapsed time    15.6s, curr speed    7.499 kHz, avg speed    6.417 kHz), accepted        0/  100001 events ( 0.00%)
+Processed   110000/  961800 entries, 11.44% (elapsed time    18.1s, curr speed    3.927 kHz, avg speed    6.067 kHz), accepted        0/  110001 events ( 0.00%)
+Processed   120000/  961800 entries, 12.48% (elapsed time    19.1s, curr speed   10.315 kHz, avg speed    6.283 kHz), accepted        0/  120001 events ( 0.00%)
+Processed   130000/  961800 entries, 13.52% (elapsed time    20.4s, curr speed    7.453 kHz, avg speed    6.360 kHz), accepted        0/  130001 events ( 0.00%)
+Processed   140000/  961800 entries, 14.56% (elapsed time    21.8s, curr speed    7.515 kHz, avg speed    6.430 kHz), accepted        0/  140001 events ( 0.00%)
+Processed   150000/  961800 entries, 15.60% (elapsed time    23.4s, curr speed    6.132 kHz, avg speed    6.409 kHz), accepted        0/  150001 events ( 0.00%)
+Processed   160000/  961800 entries, 16.64% (elapsed time    25.8s, curr speed    4.137 kHz, avg speed    6.197 kHz), accepted        0/  160001 events ( 0.00%)
+Processed   170000/  961800 entries, 17.68% (elapsed time    27.1s, curr speed    7.679 kHz, avg speed    6.268 kHz), accepted        0/  170001 events ( 0.00%)
+Processed   180000/  961800 entries, 18.71% (elapsed time    27.9s, curr speed   12.524 kHz, avg speed    6.447 kHz), accepted        0/  180001 events ( 0.00%)
+Processed   190000/  961800 entries, 19.75% (elapsed time    30.0s, curr speed    4.701 kHz, avg speed    6.323 kHz), accepted        0/  190001 events ( 0.00%)
+Processed   200000/  961800 entries, 20.79% (elapsed time    31.1s, curr speed    9.221 kHz, avg speed    6.424 kHz), accepted        0/  200001 events ( 0.00%)
+Processed   210000/  961800 entries, 21.83% (elapsed time    32.4s, curr speed    8.164 kHz, avg speed    6.490 kHz), accepted        0/  210001 events ( 0.00%)
+Processed   220000/  961800 entries, 22.87% (elapsed time    34.3s, curr speed    5.198 kHz, avg speed    6.418 kHz), accepted        0/  220001 events ( 0.00%)
+Processed   230000/  961800 entries, 23.91% (elapsed time    35.5s, curr speed    8.318 kHz, avg speed    6.482 kHz), accepted        0/  230001 events ( 0.00%)
+Processed   240000/  961800 entries, 24.95% (elapsed time    38.0s, curr speed    3.979 kHz, avg speed    6.316 kHz), accepted        0/  240001 events ( 0.00%)
+Processed   250000/  961800 entries, 25.99% (elapsed time    39.4s, curr speed    7.271 kHz, avg speed    6.350 kHz), accepted        0/  250001 events ( 0.00%)
+Processed   260000/  961800 entries, 27.03% (elapsed time    41.1s, curr speed    5.643 kHz, avg speed    6.319 kHz), accepted        0/  260001 events ( 0.00%)
+Processed   270000/  961800 entries, 28.07% (elapsed time    43.2s, curr speed    4.948 kHz, avg speed    6.255 kHz), accepted        0/  270001 events ( 0.00%)
+Processed   280000/  961800 entries, 29.11% (elapsed time    44.5s, curr speed    7.778 kHz, avg speed    6.299 kHz), accepted        0/  280001 events ( 0.00%)
+Processed   290000/  961800 entries, 30.15% (elapsed time    47.0s, curr speed    3.900 kHz, avg speed    6.168 kHz), accepted        0/  290001 events ( 0.00%)
+Processed   300000/  961800 entries, 31.19% (elapsed time    48.4s, curr speed    7.414 kHz, avg speed    6.203 kHz), accepted        0/  300001 events ( 0.00%)
+Processed   310000/  961800 entries, 32.23% (elapsed time    49.6s, curr speed    7.784 kHz, avg speed    6.244 kHz), accepted        0/  310001 events ( 0.00%)
+Processed   320000/  961800 entries, 33.27% (elapsed time    50.8s, curr speed    8.882 kHz, avg speed    6.302 kHz), accepted        0/  320001 events ( 0.00%)
+Processed   330000/  961800 entries, 34.31% (elapsed time    52.1s, curr speed    7.361 kHz, avg speed    6.330 kHz), accepted        0/  330001 events ( 0.00%)
+Processed   340000/  961800 entries, 35.35% (elapsed time    53.8s, curr speed    5.985 kHz, avg speed    6.319 kHz), accepted        0/  340001 events ( 0.00%)
+Processed   350000/  961800 entries, 36.39% (elapsed time    55.2s, curr speed    6.955 kHz, avg speed    6.336 kHz), accepted        0/  350001 events ( 0.00%)
+Processed   360000/  961800 entries, 37.43% (elapsed time    56.4s, curr speed    8.588 kHz, avg speed    6.382 kHz), accepted        0/  360001 events ( 0.00%)
+Processed   370000/  961800 entries, 38.47% (elapsed time    58.6s, curr speed    4.590 kHz, avg speed    6.316 kHz), accepted        0/  370001 events ( 0.00%)
+Processed   380000/  961800 entries, 39.51% (elapsed time    59.9s, curr speed    7.627 kHz, avg speed    6.344 kHz), accepted        0/  380001 events ( 0.00%)
+Processed   390000/  961800 entries, 40.55% (elapsed time    61.1s, curr speed    8.322 kHz, avg speed    6.383 kHz), accepted        0/  390001 events ( 0.00%)
+Processed   400000/  961800 entries, 41.59% (elapsed time    62.3s, curr speed    8.172 kHz, avg speed    6.418 kHz), accepted        0/  400001 events ( 0.00%)
+Processed   410000/  961800 entries, 42.63% (elapsed time    63.8s, curr speed    6.964 kHz, avg speed    6.431 kHz), accepted        0/  410001 events ( 0.00%)
+Processed   420000/  961800 entries, 43.67% (elapsed time    65.6s, curr speed    5.434 kHz, avg speed    6.403 kHz), accepted        0/  420001 events ( 0.00%)
+Processed   430000/  961800 entries, 44.71% (elapsed time    67.4s, curr speed    5.592 kHz, avg speed    6.381 kHz), accepted        0/  430001 events ( 0.00%)
+Processed   440000/  961800 entries, 45.75% (elapsed time    68.1s, curr speed   13.993 kHz, avg speed    6.461 kHz), accepted        0/  440001 events ( 0.00%)
+Processed   450000/  961800 entries, 46.79% (elapsed time    68.7s, curr speed   15.491 kHz, avg speed    6.546 kHz), accepted        0/  450001 events ( 0.00%)
+Processed   460000/  961800 entries, 47.83% (elapsed time    70.0s, curr speed    7.774 kHz, avg speed    6.568 kHz), accepted        0/  460001 events ( 0.00%)
+Processed   470000/  961800 entries, 48.87% (elapsed time    72.0s, curr speed    5.074 kHz, avg speed    6.528 kHz), accepted        0/  470001 events ( 0.00%)
+Processed   480000/  961800 entries, 49.91% (elapsed time    73.8s, curr speed    5.685 kHz, avg speed    6.507 kHz), accepted        0/  480001 events ( 0.00%)
+Processed   490000/  961800 entries, 50.95% (elapsed time    75.1s, curr speed    7.332 kHz, avg speed    6.522 kHz), accepted        0/  490001 events ( 0.00%)
+Processed   500000/  961800 entries, 51.99% (elapsed time    76.3s, curr speed    8.627 kHz, avg speed    6.554 kHz), accepted        0/  500001 events ( 0.00%)
+Processed   510000/  961800 entries, 53.03% (elapsed time    78.0s, curr speed    5.958 kHz, avg speed    6.542 kHz), accepted        0/  510001 events ( 0.00%)
+Processed   520000/  961800 entries, 54.07% (elapsed time    79.5s, curr speed    6.390 kHz, avg speed    6.539 kHz), accepted        0/  520001 events ( 0.00%)
+Processed   530000/  961800 entries, 55.11% (elapsed time    80.6s, curr speed    9.021 kHz, avg speed    6.573 kHz), accepted        0/  530001 events ( 0.00%)
+Processed   540000/  961800 entries, 56.14% (elapsed time    82.0s, curr speed    7.196 kHz, avg speed    6.583 kHz), accepted        0/  540001 events ( 0.00%)
+Processed   550000/  961800 entries, 57.18% (elapsed time    84.4s, curr speed    4.190 kHz, avg speed    6.516 kHz), accepted        0/  550001 events ( 0.00%)
+Processed   560000/  961800 entries, 58.22% (elapsed time    86.0s, curr speed    6.234 kHz, avg speed    6.510 kHz), accepted        0/  560001 events ( 0.00%)
+Processed   570000/  961800 entries, 59.26% (elapsed time    86.9s, curr speed   11.216 kHz, avg speed    6.559 kHz), accepted        0/  570001 events ( 0.00%)
+Processed   580000/  961800 entries, 60.30% (elapsed time    88.4s, curr speed    6.538 kHz, avg speed    6.558 kHz), accepted        0/  580001 events ( 0.00%)
+Processed   590000/  961800 entries, 61.34% (elapsed time    89.2s, curr speed   13.689 kHz, avg speed    6.617 kHz), accepted        0/  590001 events ( 0.00%)
+Processed   600000/  961800 entries, 62.38% (elapsed time    91.0s, curr speed    5.592 kHz, avg speed    6.597 kHz), accepted        0/  600001 events ( 0.00%)
+Processed   610000/  961800 entries, 63.42% (elapsed time    91.7s, curr speed   12.867 kHz, avg speed    6.650 kHz), accepted        0/  610001 events ( 0.00%)
+Processed   620000/  961800 entries, 64.46% (elapsed time    93.9s, curr speed    4.559 kHz, avg speed    6.601 kHz), accepted        0/  620001 events ( 0.00%)
+Processed   630000/  961800 entries, 65.50% (elapsed time    95.1s, curr speed    8.710 kHz, avg speed    6.626 kHz), accepted        0/  630001 events ( 0.00%)
+Processed   640000/  961800 entries, 66.54% (elapsed time    95.9s, curr speed   12.735 kHz, avg speed    6.676 kHz), accepted        0/  640001 events ( 0.00%)
+Processed   650000/  961800 entries, 67.58% (elapsed time    98.2s, curr speed    4.280 kHz, avg speed    6.619 kHz), accepted        0/  650001 events ( 0.00%)
+Processed   660000/  961800 entries, 68.62% (elapsed time    99.9s, curr speed    5.911 kHz, avg speed    6.607 kHz), accepted        0/  660001 events ( 0.00%)
+Processed   670000/  961800 entries, 69.66% (elapsed time   101.2s, curr speed    7.560 kHz, avg speed    6.620 kHz), accepted        0/  670001 events ( 0.00%)
+Processed   680000/  961800 entries, 70.70% (elapsed time   103.3s, curr speed    4.856 kHz, avg speed    6.585 kHz), accepted        0/  680001 events ( 0.00%)
+Processed   690000/  961800 entries, 71.74% (elapsed time   104.6s, curr speed    7.428 kHz, avg speed    6.595 kHz), accepted        0/  690001 events ( 0.00%)
+Processed   700000/  961800 entries, 72.78% (elapsed time   106.0s, curr speed    7.388 kHz, avg speed    6.606 kHz), accepted        0/  700001 events ( 0.00%)
+Processed   710000/  961800 entries, 73.82% (elapsed time   107.7s, curr speed    5.774 kHz, avg speed    6.592 kHz), accepted        0/  710001 events ( 0.00%)
+Processed   720000/  961800 entries, 74.86% (elapsed time   108.8s, curr speed    8.759 kHz, avg speed    6.615 kHz), accepted        0/  720001 events ( 0.00%)
+Processed   730000/  961800 entries, 75.90% (elapsed time   110.0s, curr speed    9.007 kHz, avg speed    6.639 kHz), accepted        0/  730001 events ( 0.00%)
+Processed   740000/  961800 entries, 76.94% (elapsed time   111.2s, curr speed    7.822 kHz, avg speed    6.653 kHz), accepted        0/  740001 events ( 0.00%)
+Processed   750000/  961800 entries, 77.98% (elapsed time   112.9s, curr speed    6.127 kHz, avg speed    6.645 kHz), accepted        0/  750001 events ( 0.00%)
+Processed   760000/  961800 entries, 79.02% (elapsed time   113.7s, curr speed   12.573 kHz, avg speed    6.687 kHz), accepted        0/  760001 events ( 0.00%)
+Processed   770000/  961800 entries, 80.06% (elapsed time   115.1s, curr speed    6.788 kHz, avg speed    6.688 kHz), accepted        0/  770001 events ( 0.00%)
+Processed   780000/  961800 entries, 81.10% (elapsed time   117.0s, curr speed    5.395 kHz, avg speed    6.667 kHz), accepted        0/  780001 events ( 0.00%)
+Processed   790000/  961800 entries, 82.14% (elapsed time   118.8s, curr speed    5.383 kHz, avg speed    6.647 kHz), accepted        0/  790001 events ( 0.00%)
+Processed   800000/  961800 entries, 83.18% (elapsed time   120.6s, curr speed    5.593 kHz, avg speed    6.632 kHz), accepted        0/  800001 events ( 0.00%)
+Processed   810000/  961800 entries, 84.22% (elapsed time   122.4s, curr speed    5.707 kHz, avg speed    6.618 kHz), accepted        0/  810001 events ( 0.00%)
+Processed   820000/  961800 entries, 85.26% (elapsed time   123.5s, curr speed    8.756 kHz, avg speed    6.638 kHz), accepted        0/  820001 events ( 0.00%)
+Processed   830000/  961800 entries, 86.30% (elapsed time   124.6s, curr speed    9.412 kHz, avg speed    6.662 kHz), accepted        0/  830001 events ( 0.00%)
+Processed   840000/  961800 entries, 87.34% (elapsed time   127.2s, curr speed    3.885 kHz, avg speed    6.606 kHz), accepted        0/  840001 events ( 0.00%)
+Processed   850000/  961800 entries, 88.38% (elapsed time   129.5s, curr speed    4.223 kHz, avg speed    6.562 kHz), accepted        0/  850001 events ( 0.00%)
+Traceback (most recent call last):
+  File "/afs/cern.ch/work/l/lvigilan/TauWork/CMSSW_10_6_17_patch1/src/TauFW/PicoProducer/python/processors/picojob.py", line 111, in <module>
+    p.run()
+  File "/afs/cern.ch/work/l/lvigilan/TauWork/CMSSW_10_6_17_patch1/python/PhysicsTools/NanoAODTools/postprocessing/framework/postprocessor.py", line 234, in run
+    eventRange=eventRange, maxEvents=self.maxEntries
+  File "/afs/cern.ch/work/l/lvigilan/TauWork/CMSSW_10_6_17_patch1/python/PhysicsTools/NanoAODTools/postprocessing/framework/eventloop.py", line 82, in eventLoop
+    ret = m.analyze(e)
+  File "/afs/cern.ch/work/l/lvigilan/TauWork/CMSSW_10_6_17_patch1/python/TauFW/PicoProducer/analysis/ModuleETau.py", line 177, in analyze
+    self.fillEventBranches(event)
+  File "/afs/cern.ch/work/l/lvigilan/TauWork/CMSSW_10_6_17_patch1/python/TauFW/PicoProducer/analysis/ModuleTauPair.py", line 148, in fillEventBranches
+    self.out.metfilter[0]       = self.filter(event)
+  File "<string>", line 1, in <lambda>
+  File "/afs/cern.ch/work/l/lvigilan/TauWork/CMSSW_10_6_17_patch1/python/PhysicsTools/NanoAODTools/postprocessing/framework/datamodel.py", line 18, in __getattr__
+    return self._tree.readBranch(name)
+  File "/afs/cern.ch/work/l/lvigilan/TauWork/CMSSW_10_6_17_patch1/python/PhysicsTools/NanoAODTools/postprocessing/framework/treeReaderArrayTools.py", line 76, in readBranch
+    raise RuntimeError("Unknown branch %s" % branchName)
+RuntimeError: Unknown branch Flag_ecalBadCalibFilterV2
+
+Job complete at Wed Jan 20 16:33:02 CET 2021
+Took 2 minutes 31 seconds040 (1759039.023.000) 01/20 16:33:45 Started transferring output files
+	Seconds spent in queue: 2707
+...
+040 (1759039.023.000) 01/20 16:33:45 Finished transferring output files
+...
+005 (1759039.023.000) 01/20 16:33:46 Job terminated.
+	(1) Normal termination (return value 0)
+		Usr 0 00:00:45, Sys 0 00:00:04  -  Run Remote Usage
+		Usr 0 00:00:00, Sys 0 00:00:00  -  Run Local Usage
+		Usr 0 00:00:45, Sys 0 00:00:04  -  Total Remote Usage
+		Usr 0 00:00:00, Sys 0 00:00:00  -  Total Local Usage
+	22637  -  Run Bytes Sent By Job
+	9902  -  Run Bytes Received By Job
+	22637  -  Total Bytes Sent By Job
+	9902  -  Total Bytes Received By Job
+	Partitionable Resources :    Usage  Request Allocated 
+	   Cpus                 :        0        1         1 
+	   Disk (KB)            :       92        1    343150 
+	   Memory (MB)          :       94     2000      2000 
+
+	Job terminated of its own accord at 2021-01-20T15:33:02Z.
+...

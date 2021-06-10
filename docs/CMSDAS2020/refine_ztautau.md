@@ -144,3 +144,4 @@ are consistent with the corrections to be applied, in particular in the context 
 * For the presentation, explain the purpose of each selection step you have defined to enrich Z&rarr;&tau;&tau; signal and indicate the imposed threshold in the plot of
 the used variable with lines and arrows.
 * Demonstrate the effect of each selection step on the distribution of the visible mass of the &mu;&tau;<sub>h</sub> pair, m<sub>vis</sub>.
+

@@ -2,6 +2,7 @@
 # Author: Izaak Neutelings (August 2020)
 # Description: Help function to create and plot input histogram for datacards
 import os
+import os, re
 from collections import OrderedDict
 from TauFW.common.tools.utils import ensurelist, repkey, lreplace #, rreplace
 from TauFW.common.tools.file import ensuredir, ensureTDirectory, ensureTFile, gethist
@@ -18,12 +19,14 @@ class Systematic(object):
   """Container class for systematics."""
   
   def __init__(self, systag, procs, replaceweight=('','',''), **kwargs):
+    regexp     = kwargs.pop('regex',False)
     self.procs = procs # list of processes
     self.tag   = repkey(systag,**kwargs)
     self.dn    = self.tag +'Down'
     self.up    = self.tag +'Up'
-    self.wgtup = (replaceweight[0],replaceweight[1]) # (oldweight,newweightUp)
-    self.wgtdn = (replaceweight[0],replaceweight[2]) # (oldweight,newweightDown)
+    #weightnom  = replaceweight[0] if regexp else re.escape(replaceweight[0]) # escape non regexp
+    self.wgtup = (replaceweight[0],replaceweight[1],regexp) # (oldweight,newweightUp)
+    self.wgtdn = (replaceweight[0],replaceweight[2],regexp) # (oldweight,newweightDown)
     
 
 def preparesysts(*args,**kwargs):
@@ -34,14 +37,16 @@ def preparesysts(*args,**kwargs):
   return systs
   
 
-def createinputs(fname,sampleset,observables,bins,htag="",**kwargs):
+def createinputs(fname,sampleset,obsset,bins,syst="",**kwargs):
   """Create histogram inputs in ROOT file for datacards.
-       fname:       filename pattern of ROOT file
-       sampleset:   SampleSet object
-       observables: list of Variables objects
-       bins:        list of Selection objects
+       fname:     filename pattern of ROOT file
+       sampleset: SampleSet object
+       obsset:    list of Variables objects
+       bins:      list of Selection objects
+       syst:      tag for histogram name for this systematic
   """
   #LOG.header("createinputs")
+  htag          = syst
   outdir        = kwargs.get('outdir',        ""     )
   era           = kwargs.get('era',           ""     ) # era to replace in htag
   tag           = kwargs.get('tag',           ""     ) # file tag
@@ -49,8 +54,10 @@ def createinputs(fname,sampleset,observables,bins,htag="",**kwargs):
   vetoes        = kwargs.get('veto',          None   ) # veto these processes
   parallel      = kwargs.get('parallel',      True   ) # MultiDraw histograms in parallel
   recreate      = kwargs.get('recreate',      False  ) # recreate ROOT file
-  replaceweight = kwargs.get('replaceweight', None   ) # replace weight
+  replaceweight = kwargs.get('replaceweight', None   ) # replace weight (e.g. for syst. variations)
   extraweight   = kwargs.get('weight',        ""     ) # extraweight
+  shift         = kwargs.get('shift',         ""     ) # shift variable (e.g. for syst. variations)
+  shiftjme      = kwargs.get('shiftjme',      ""     ) # shift jet/MET variable (e.g. 'jer', 'jec')
   shiftQCD      = kwargs.get('shiftQCD',      0      ) # e.g 0.30 for 30%
   verbosity     = kwargs.get('verb',          0      )
   option        = 'RECREATE' if recreate else 'UPDATE'
@@ -61,10 +68,19 @@ def createinputs(fname,sampleset,observables,bins,htag="",**kwargs):
   files = { }
   ensuredir(outdir)
   fname = os.path.join(outdir,fname)
-  for obs in observables:
+  if shift: # shift observable name
+    if isinstance(shift,str): # shift only variable by adding tag, e.g. shift='_ResUp'
+      obsset = [o.shift(shift,keepfile=True) for o in obsset]
+    else: # shift specified variables, e.g. shift=('_ResUp','m_vis')
+      obsset = [o.shift(*shift,keepfile=True) for o in obsset]
+      bins = [s.shift(*shift,keepfile=True) for s in bins]
+  if shiftjme: # shift jet/MET variables, e.g. shiftjme='jec', 'jer', 'unclen'
+    obsset = [o.shiftjme(shiftjme,keepfile=True) for o in obsset]
+    bins = [s.shiftjme(shiftjme,keepfile=True) for s in bins]
+  for obs in obsset:
     obsname = obs.filename
     ftag    = tag+obs.tag
-    fname_  = repkey(fname,OBS=obsname,TAG=tag)
+    fname_  = repkey(fname,OBS=obsname,TAG=tag) # replace keys
     file    = TFile.Open(fname_,option)
     if recreate:
       print ">>> created file %s"%(fname_)
@@ -87,7 +103,7 @@ def createinputs(fname,sampleset,observables,bins,htag="",**kwargs):
       print ">>> systematic uncertainty: %s"%(color(htag.lstrip('_'),'grey'))
     if recreate or verbosity>=1:
       print ">>> %r"%(selection.selection)
-    hists = sampleset.gethists(observables,selection,method=method,split=True,
+    hists = sampleset.gethists(obsset,selection,method=method,split=True,
                                parallel=parallel,filter=filters,veto=vetoes,replaceweight=replaceweight)
     
     # SAVE HIST
@@ -121,14 +137,14 @@ def createinputs(fname,sampleset,observables,bins,htag="",**kwargs):
   
 
 
-def plotinputs(fname,varprocs,observables,bins,**kwargs):
+def plotinputs(fname,varprocs,obsset,bins,**kwargs):
   """Plot histogram inputs from ROOT file for datacards, and write to ROOT file.
-       fname:       filename pattern of ROOT file
-       varprocs:    dictionary for systematic variation to list of processes,
-                    e.g. { 'Nom':   ['ZTT','TTT','W','QCD','data_obs'],
-                           'TESUp': ['ZTT','TTT'], 'TESDown': ['ZTT','TTT'] }
-       observables: list of Variables objects
-       bins:        list of Selection objects
+       fname:    filename pattern of ROOT file
+       varprocs: dictionary for systematic variation to list of processes,
+                 e.g. { 'Nom':   ['ZTT','TTT','W','QCD','data_obs'],
+                        'TESUp': ['ZTT','TTT'], 'TESDown': ['ZTT','TTT'] }
+       obsset:   list of Variables objects
+       bins:     list of Selection objects
   """
   #LOG.header("plotinputs")
   tag       = kwargs.get('tag',    ""      )
@@ -151,7 +167,7 @@ def plotinputs(fname,varprocs,observables,bins,**kwargs):
       else:
         varprocs[syst.up.lstrip('_')] = syst.procs
         varprocs[syst.dn.lstrip('_')] = syst.procs
-  for obs in observables:
+  for obs in obsset:
     obsname = obs.filename
     ftag    = tag+obs.tag
     fname_  = repkey(fname,OBS=obsname,TAG=ftag)

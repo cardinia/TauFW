@@ -84,4 +84,3 @@ def getparent(dataset,depth=0,verb=0):
       parents = getparent(parent,depth=depth+1,verb=verb) # recursive
     parents.append(parent)
   return parents
-  

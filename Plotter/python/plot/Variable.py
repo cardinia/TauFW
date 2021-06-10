@@ -22,13 +22,13 @@ class Variable(object):
   
   def __init__(self, name, *args, **kwargs):
     strings           = [a for a in args if isinstance(a,str) ]
-    self.name         = name
-    self.name_        = name # backup for addoverflow
+    self.name         = name # variable name in tree, to be used in draw command
+    self._name        = name # backup for addoverflow
     self.title        = strings[0] if strings else self.name
     self.filename     = makefilename(self.name.replace('/','_'))
     self.title        = kwargs.get('title',       self.title    ) # for plot axes
-    self.filename     = kwargs.get('fname',       self.filename )
-    self.filename     = kwargs.get('filename',    self.filename ) # name for files, histograms
+    self.filename     = kwargs.get('fname',       self.filename ) # file-friendly name for files & histograms
+    self.filename     = kwargs.get('filename',    self.filename ) # alias
     self.filename     = self.filename.replace('$NAME',self.name).replace('$VAR',self.name) #.replace('$FILE',self.filename)
     self.tag          = kwargs.get('tag',         ""            )
     self.units        = kwargs.get('units',       True          ) # for plot axes
@@ -36,7 +36,7 @@ class Variable(object):
     self.nbins        = None
     self.min          = None
     self.max          = None
-    self.bins         = None
+    self.bins         = None # bin edges
     self.cut          = kwargs.get('cut',         ""            ) # extra cut when filling histograms
     self.weight       = kwargs.get('weight',      ""            ) # extra weight when filling histograms (MC only)
     self.dataweight   = kwargs.get('dataweight',  ""            ) # extra weight when filling histograms for data
@@ -62,7 +62,8 @@ class Variable(object):
     self.only         = kwargs.get('only',        [ ]           ) # only plot for these patterns
     self.veto         = kwargs.get('veto',        [ ]           ) # do not plot for these patterns
     self.blindcuts    = kwargs.get('blind',       ""            ) # string for blind cuts to blind data
-    self.addoverflow_ = kwargs.get('addoverflow', False         ) # add overflow to last bin
+    self._addoverflow = kwargs.get('addof',       False         ) # add overflow to last bin
+    self._addoverflow = kwargs.get('addoverflow', self._addoverflow ) # add overflow to last bin
     if self.latex:
       self.title = makelatex(self.title,units=self.units)
       if 'ctitle' in kwargs:
@@ -74,7 +75,7 @@ class Variable(object):
       self.veto = ensurelist(self.veto)
     if self.binlabels and len(self.binlabels)<self.nbins:
       LOG.warning("Variable.init: len(binlabels)=%d < %d=nbins"%(len(self.binlabels),self.nbins))
-    if self.addoverflow_:
+    if self._addoverflow:
       self.addoverflow()
     if islist(self.blindcuts):
       LOG.insist(len(self.blindcuts)==2,"Variable.init: blind cuts must be a string, or a pair of floats! Got: %s"%(self.blindcuts,))
@@ -119,7 +120,7 @@ class Variable(object):
   def clone(self,*args,**kwargs):
     """Shallow copy."""
     if not args:
-      args = self.nbins,self.min,self.max
+      args = self.nbins, self.min, self.max
     newdict = self.__dict__.copy()
     if 'fname' in kwargs:
       kwargs['filename'] = kwargs['fname']
@@ -154,11 +155,11 @@ class Variable(object):
       self.max      = numbers[2]
       self.bins     = None
     elif len(bins)>0:
-      bins          = list(bins[0])
-      self.nbins    = len(bins)-1
-      self.min      = bins[0]
-      self.max      = bins[-1]
-      self.bins     = bins
+      edges         = list(bins[0])
+      self.nbins    = len(edges)-1
+      self.min      = edges[0]
+      self.max      = edges[-1]
+      self.bins     = edges
     else:
       LOG.throw(IOError,'Variable: bad arguments "%s" for binning!'%(args,))
   
@@ -170,6 +171,14 @@ class Variable(object):
       return [self.min+i*(self.max-self.min)/self.nbins for i in xrange(self.nbins+1)]
     else:
       return (self.nbins,self.min,self.max)
+  
+  def getedge(self,i):
+    """Get edge. 0=first edge, nbins+1=last edge"""
+    LOG.insist(i>=0,"getedge: Number of bin edge has to be >= 0! Got: %s"%(i))
+    LOG.insist(i<=self.nbins+1,"getedge: Number of bin edge has to be <= %d! Got: %s"%(self.nbins+1,i))
+    if self.hasvariablebins():
+      return self.bins[i]
+    return self.min+i*(self.max-self.min)/self.nbins
   
   def hasvariablebins(self):
     """True if bins is set."""
@@ -196,7 +205,7 @@ class Variable(object):
         bins = (bins,)
       if bins!=None:
         self.setbins(*bins)
-      if self.addoverflow_:
+      if self._addoverflow:
         self.addoverflow() # in case the last bin changed
       self.dividebybinsize = kwargs.get('dividebybinsize',self.hasvariablebins())
     if self.ctxposition:
@@ -292,13 +301,16 @@ class Variable(object):
     hist.GetXaxis().SetTitle(xtitle)
     return hist
   
-  def drawcmd(self,name=None,tag="",bins=False):
+  def drawcmd(self,name=None,tag="",bins=False,**kwargs):
     """Create variable expression for the Tree.Draw method."""
     histname, title = self.getnametitle(name,None,tag)
+    varname = self.name
+    if kwargs.get('undoshift',False): # remove up/down tags from varname
+      varname = undoshift(varname)
     if bins:
-      dcmd = "%s >> %s(%d,%s,%s)"%(self.name,histname,self.nbins,self.min,self.max)
+      dcmd = "%s >> %s(%d,%s,%s)"%(varname,histname,self.nbins,self.min,self.max)
     else:
-      dcmd = "%s >> %s"%(self.name,histname)
+      dcmd = "%s >> %s"%(varname,histname)
     return dcmd
   
   def drawcmd2D(self,yvar,name=None,tag="",bins=False):
@@ -318,19 +330,34 @@ class Variable(object):
     tree.Draw(dcmd,cut,option)
     return hist
   
-  def shift(self,jshift,**kwargs):
+  def shift(self,vshift,vars=None,**kwargs):
+    """Create new variable with a shift tag added to its name."""
+    if len(vshift)>0 and vshift[0]!='_':
+      vshift = '_'+vshift
+    if vars: # shift only the variables in this list
+      newname = shift(self.name,vshift,vars,**kwargs)
+    else: # simply add shift at the end
+      newname = self.name+vshift
+    newvar = deepcopy(self)
+    newvar.name = newname # overwrite name
+    if not kwargs.get('keepfile',False) and self.name!=newname:
+      newvar.filename += vshift # overwrite file name
+    return newvar
+  
+  def shiftjme(self,jshift,**kwargs):
     """Create new variable with a shift tag added to its name."""
     if len(jshift)>0 and jshift[0]!='_':
       jshift = '_'+jshift
-    newname     = shift(self.name,jshift,**kwargs)
-    newvar      = deepcopy(self)
-    newvar.name = newname
+    newname  = shiftjme(self.name,jshift,**kwargs)
+    newvar   = deepcopy(self)
+    newvar.name = newname # overwrite name
     if not kwargs.get('keepfile',False) and self.name!=newname:
-      newvar.filename += jshift
-    return newvariable
+      newvar.filename += jshift # overwrite file name
+    return newvar
   
-  def shiftname(self,jshift,**kwargs):
-    return shift(self.name,jshift,**kwargs)
+  def shiftname(self,vshift,**kwargs):
+    """Shift name and return string only (without creating new Variable object)."""
+    return shift(self.name,vshift,**kwargs)
   
   def blind(self,bmin=None,bmax=None,**kwargs):
     """Return selection string that blinds some window (bmin,bmax),
@@ -340,7 +367,7 @@ class Variable(object):
       bmin = self.blindcuts[0]
     if bmax<bmin:
       bmax, bmin = bmin, bmax
-    LOG.insist(bmax>bmin,'Variable.blind: "%s" has window a = %s <= %s = b !'%(self.name_,bmin,bmax))
+    LOG.insist(bmax>bmin,'Variable.blind: "%s" has window a = %s <= %s = b !'%(self._name,bmin,bmax))
     blindcut = ""
     xlow, xhigh = bmin, bmax
     nbins, xmin, xmax = self.nbins, self.min, self.max
@@ -375,8 +402,8 @@ class Variable(object):
     else:
       width     = (self.max-self.min)/float(self.nbins)
       threshold = self.max - 0.90*width
-    self.name   = "min(%s,%s)"%(self.name_,threshold)
-    LOG.verb("Variable.addoverflow: '%s' -> '%s' for binning '%s'"%(self.name_,self.name,self.getbins()),verbosity,2)
+    self.name   = "min(%s,%s)"%(self._name,threshold)
+    LOG.verb("Variable.addoverflow: '%s' -> '%s' for binning '%s'"%(self._name,self.name,self.getbins()),verbosity,2)
     return self.name
   
 Var = Variable # short alias

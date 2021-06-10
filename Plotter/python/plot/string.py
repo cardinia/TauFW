@@ -1,7 +1,7 @@
 # -*- coding: utf-8 -*-
 # Author: Izaak Neutelings (2017)
 import re
-from TauFW.Plotter.plot.utils import LOG, unwraplistargs, ensurelist
+from TauFW.Plotter.plot.utils import LOG, unwraplistargs, ensurelist, islist
 
 var_dict = {
     'njets':     "Number of jets",          'njets20':  "Number of jets (pt>20 GeV)",
@@ -200,7 +200,7 @@ def makehistname(*strings,**kwargs):
   """Use label and var to make an unique and valid histogram name."""
   hname = '_'.join(getfilename(s).strip('_') for s in strings)
   hname = hname.replace('+','-').replace(' - ','-').replace('.','p').replace(',','-').replace(' ','_').replace(
-                        '(','-').replace(')','-').replace('[','-').replace(']','-').replace('||','OR').replace('&&','AND').replace(
+                        '(','-').replace(')','').replace('[','-').replace(']','-').replace('||','OR').replace('&&','AND').replace(
                         '/','_').replace('<','lt').replace('>','gt').replace('=','e').replace('*','x')
   return hname
   
@@ -214,8 +214,8 @@ def makefilename(*strings,**kwargs):
     fname = re.sub(r"abs\(([^\)]*)\)",r"\1",fname).replace('eta_2','eta')
   if 'm_t' in fname:
     fname = re.sub(r"(?<!zoo)m_t(?!au)",r"mt",fname)
-  fname = fname.replace(" and ",'-').replace(',','-').replace(',','-').replace('+','-').replace(':','-').replace(
-                        '(','').replace(')','').replace('{','').replace('}','').replace(
+  fname = fname.replace(" and ",'-').replace(',','-').replace(',','-').replace('+','-').replace('::','-').replace(':','-').replace(
+                        '(','-').replace(')','').replace('{','').replace('}','').replace(
                         '|','').replace('&','').replace('#','').replace('!','not').replace(
                         'pt_mu','pt').replace('m_T','mt').replace(
                         '>=',"geq").replace('<=',"leq").replace('>',"gt").replace('<',"lt").replace("=","eq").replace(
@@ -335,41 +335,55 @@ def joincuts(*cuts,**kwargs):
   return cuts
   
 
-def shift(*args,**kwargs):
-  """Shift all jet variable in a given string (e.g. to propagate JEC/JER)."""
-  return shiftjetvars(*args,**kwargs)
-  
-
-def undoshift(string):
-  shiftless = re.sub(r"_[a-zA-Z]+(Up|Down|nom)","",string)
-  return shiftless
-  
-
-def shiftjetvars(var, jshift, **kwargs):
-  """Shift all jet variable in a given string (e.g. to propagate JEC/JER)."""
-  vars        = [r'mt_1',r'met(?!filter)'] if "unclusten" in jshift.lower() else\
-                [r'jpt_[12]',r'jeta_[12]',r'jets\w*',r'nc?btag\w*',r'mt_1',r'met(?!filter)',r'dphi_ll_bj']
-  verbosity   = LOG.getverbosity(kwargs)
-  vars        = kwargs.get('vars',  vars )
-  varshift    = var[:]
-  if re.search(r"(Up|Down)",var):
-    LOG.warning("shiftjetvars: Already shifts in %r"%(var))
-  if len(jshift)>0 and jshift[0]!='_': jshift = '_'+jshift
-  for jvar in vars:
-    oldvarpattern = r'('+jvar+r')'
-    newvarpattern = r"\1%s"%(jshift)
-    varshift = re.sub(oldvarpattern,newvarpattern,varshift)
-  if verbosity>0:
-    print "shiftjetvars with %r shift"%varshift
-    print ">>>   %r"%var
-    print ">>>    -> %r"%jshift
-  return varshift
-  
-
 doubleboolrexp = re.compile(r"(?:&&|\|\|) *(?:&&|\|\|)")
 def cleanbool(string):
   """Clean boolean operators."""
   return doubleboolrexp.sub(r"&&",string).strip(' ').strip('&').strip(' ')
+  
+
+def undoshift(string):
+  if islist(string):
+    shiftless = [undoshift(s) for s in string]
+  else:
+    shiftless = re.sub(r"_[a-zA-Z]+([Uu]p|[Dd]own|[Nn]om)","",string)
+  return shiftless
+  
+
+def shift(oldstr, shift, vars=["\w+"], **kwargs):
+  """Shift all jet variable in a given string (e.g. to propagate JEC/JER).
+  E.g. shift('jpt_1>50 && met<50','jecUp',['jpt_[12]','met']) -> 'jpt_1_jecUp>50 && met_jecUp<50'
+  """
+  verbosity = LOG.getverbosity(kwargs)
+  newstr    = oldstr
+  vars      = ensurelist(vars)
+  if re.search(r"(Up|Down)",oldstr):
+    print "shift: already shifts in %r"%(oldstr)
+  if kwargs.get('us',True) and len(shift)>0 and shift[0]!='_': # ensure underscore in front
+    shift = '_'+shift
+  for oldvar in vars: # shift each jet/MET variable
+    oldexp = r"\b("+oldvar+r")\b"
+    newexp = r"\1%s"%(shift)
+    newstr = re.sub(oldexp,newexp,newstr)
+  if verbosity>=1:
+    verbstr = ">>> shift: shift with %r shift: "%(newstr)
+    if len(newstr)<20:
+      verbstr += " %r -> %r"%(oldstr,newstr)
+    elif len(newstr)<35:
+      verbstr += "\n>>>   %r -> %r"%(oldstr,newstr)
+    else:
+      verbstr += "\n>>>   %r\n>>>   -> %r"%(oldstr,newstr)
+    print verbstr
+  return newstr
+  
+
+def shiftjme(oldstr, shift, jmevars=None, **kwargs):
+  """Shift all jet variable in a given string (e.g. to propagate JEC/JER).
+  E.g. shiftjme('jpt_1>50 && met<50','jecUp') -> 'jpt_1_jecUp>50 && met_jecUp<50'
+  """
+  if jmevars==None: # default jet/MET variables to shift
+    jmevars   = [r'\w*mt_1',r'met(?!filter)'] if "unclusten" in shift.lower() else\
+                [r'jpt_[12]',r'jeta_[12]',r'n\w*jets\w*',r'nc?btag\w*',r'\w*mt_1',r'met(?!filter)',r'dphi_ll_bj']
+  return shift(oldstr,shift,jmevars,**kwargs)
   
 
 def invertcharge(oldcuts,target='SS',**kwargs):

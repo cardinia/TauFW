@@ -1,0 +1,463 @@
+{
+  "time": "2020-11-19 16:32:45.173026", 
+  "group": "DY", 
+  "paths": [
+    "/DY3JetsToLL_M-50_TuneCP5_13TeV-madgraphMLM-pythia8/RunIISummer19UL17NanoAOD-106X_mc2017_realistic_v6-v1/NANOAODSIM"
+  ], 
+  "name": "DY3JetsToLL_M-50", 
+  "nevents": 0, 
+  "dtype": "mc", 
+  "channel": "skim", 
+  "module": "skimjob.py", 
+  "extraopts": [
+    "zpt=True"
+  ], 
+  "jobname": "DY3JetsToLL_M-50_skim", 
+  "jobtag": "_skim_try1", 
+  "tag": "", 
+  "postfix": "_skim", 
+  "try": 1, 
+  "jobids": [
+    1562274
+  ], 
+  "outdir": "/eos/user/l/lvigilan/samples/nano/2017/DY3JetsToLL_M-50_TuneCP5_13TeV-madgraphMLM-pythia8/RunIISummer19UL17NanoAOD-106X_mc2017_realistic_v6-v1/NANOAODSIM", 
+  "jobdir": "output/2017/skim/DY3JetsToLL_M-50", 
+  "cfgdir": "output/2017/skim/DY3JetsToLL_M-50/config", 
+  "logdir": "output/2017/skim/DY3JetsToLL_M-50/log", 
+  "cfgname": "output/2017/skim/DY3JetsToLL_M-50/config/jobconfig_skim_try1.json", 
+  "joblist": "output/2017/skim/DY3JetsToLL_M-50/config/jobarglist_skim_try1.txt", 
+  "nfiles": 85, 
+  "files": [
+    "root://cms-xrd-global.cern.ch//store/mc/RunIISummer19UL17NanoAOD/DY3JetsToLL_M-50_TuneCP5_13TeV-madgraphMLM-pythia8/NANOAODSIM/106X_mc2017_realistic_v6-v1/270000/0205FF87-ADC7-474A-9DD1-AA52CB967E38.root", 
+    "root://cms-xrd-global.cern.ch//store/mc/RunIISummer19UL17NanoAOD/DY3JetsToLL_M-50_TuneCP5_13TeV-madgraphMLM-pythia8/NANOAODSIM/106X_mc2017_realistic_v6-v1/270000/0CA166A8-8059-9E4C-B49C-9A34A492121D.root", 
+    "root://cms-xrd-global.cern.ch//store/mc/RunIISummer19UL17NanoAOD/DY3JetsToLL_M-50_TuneCP5_13TeV-madgraphMLM-pythia8/NANOAODSIM/106X_mc2017_realistic_v6-v1/270000/1A779134-01E4-8C48-AF4A-CE66631C5234.root", 
+    "root://cms-xrd-global.cern.ch//store/mc/RunIISummer19UL17NanoAOD/DY3JetsToLL_M-50_TuneCP5_13TeV-madgraphMLM-pythia8/NANOAODSIM/106X_mc2017_realistic_v6-v1/270000/27E0F5F9-FC3B-854D-A1E3-4019C2BB0220.root", 
+    "root://cms-xrd-global.cern.ch//store/mc/RunIISummer19UL17NanoAOD/DY3JetsToLL_M-50_TuneCP5_13TeV-madgraphMLM-pythia8/NANOAODSIM/106X_mc2017_realistic_v6-v1/270000/2B858C28-2F23-8246-8251-7EDA67DF7B04.root", 
+    "root://cms-xrd-global.cern.ch//store/mc/RunIISummer19UL17NanoAOD/DY3JetsToLL_M-50_TuneCP5_13TeV-madgraphMLM-pythia8/NANOAODSIM/106X_mc2017_realistic_v6-v1/270000/2BFF544B-F20F-BC4B-A723-EB87C1897127.root", 
+    "root://cms-xrd-global.cern.ch//store/mc/RunIISummer19UL17NanoAOD/DY3JetsToLL_M-50_TuneCP5_13TeV-madgraphMLM-pythia8/NANOAODSIM/106X_mc2017_realistic_v6-v1/270000/370188F4-7959-6248-837C-DA3A6B06680D.root", 
+    "root://cms-xrd-global.cern.ch//store/mc/RunIISummer19UL17NanoAOD/DY3JetsToLL_M-50_TuneCP5_13TeV-madgraphMLM-pythia8/NANOAODSIM/106X_mc2017_realistic_v6-v1/270000/38D39D5D-C4B0-D24D-8EAB-5D9DC81017D6.root", 
+    "root://cms-xrd-global.cern.ch//store/mc/RunIISummer19UL17NanoAOD/DY3JetsToLL_M-50_TuneCP5_13TeV-madgraphMLM-pythia8/NANOAODSIM/106X_mc2017_realistic_v6-v1/270000/3BBE43AB-A807-A046-8F65-FBFD24AFE19C.root", 
+    "root://cms-xrd-global.cern.ch//store/mc/RunIISummer19UL17NanoAOD/DY3JetsToLL_M-50_TuneCP5_13TeV-madgraphMLM-pythia8/NANOAODSIM/106X_mc2017_realistic_v6-v1/270000/40CE935B-294B-FB49-A978-3C04AC00BA0D.root", 
+    "root://cms-xrd-global.cern.ch//store/mc/RunIISummer19UL17NanoAOD/DY3JetsToLL_M-50_TuneCP5_13TeV-madgraphMLM-pythia8/NANOAODSIM/106X_mc2017_realistic_v6-v1/270000/4A12D34A-2F8F-174D-96C4-DC9D28ADCC72.root", 
+    "root://cms-xrd-global.cern.ch//store/mc/RunIISummer19UL17NanoAOD/DY3JetsToLL_M-50_TuneCP5_13TeV-madgraphMLM-pythia8/NANOAODSIM/106X_mc2017_realistic_v6-v1/270000/4C369591-5D63-7640-B139-5940F8F2244B.root", 
+    "root://cms-xrd-global.cern.ch//store/mc/RunIISummer19UL17NanoAOD/DY3JetsToLL_M-50_TuneCP5_13TeV-madgraphMLM-pythia8/NANOAODSIM/106X_mc2017_realistic_v6-v1/270000/514D0B44-D268-D14E-866A-86C7A48877A3.root", 
+    "root://cms-xrd-global.cern.ch//store/mc/RunIISummer19UL17NanoAOD/DY3JetsToLL_M-50_TuneCP5_13TeV-madgraphMLM-pythia8/NANOAODSIM/106X_mc2017_realistic_v6-v1/270000/53B9BBA8-5B21-0540-8834-397D27CD34BD.root", 
+    "root://cms-xrd-global.cern.ch//store/mc/RunIISummer19UL17NanoAOD/DY3JetsToLL_M-50_TuneCP5_13TeV-madgraphMLM-pythia8/NANOAODSIM/106X_mc2017_realistic_v6-v1/270000/5D68EE54-7831-9341-99D9-F6372F013CB3.root", 
+    "root://cms-xrd-global.cern.ch//store/mc/RunIISummer19UL17NanoAOD/DY3JetsToLL_M-50_TuneCP5_13TeV-madgraphMLM-pythia8/NANOAODSIM/106X_mc2017_realistic_v6-v1/270000/5E956B23-5BEB-5E4A-B9B4-393D316FF28A.root", 
+    "root://cms-xrd-global.cern.ch//store/mc/RunIISummer19UL17NanoAOD/DY3JetsToLL_M-50_TuneCP5_13TeV-madgraphMLM-pythia8/NANOAODSIM/106X_mc2017_realistic_v6-v1/270000/666B810D-F39C-E94D-8B9A-0FB1C180FDB9.root", 
+    "root://cms-xrd-global.cern.ch//store/mc/RunIISummer19UL17NanoAOD/DY3JetsToLL_M-50_TuneCP5_13TeV-madgraphMLM-pythia8/NANOAODSIM/106X_mc2017_realistic_v6-v1/270000/670BC2A1-FA8E-1C4F-A190-1076FBD7CBF4.root", 
+    "root://cms-xrd-global.cern.ch//store/mc/RunIISummer19UL17NanoAOD/DY3JetsToLL_M-50_TuneCP5_13TeV-madgraphMLM-pythia8/NANOAODSIM/106X_mc2017_realistic_v6-v1/270000/7E5736A4-5F5C-ED4A-B878-70852B32F0A9.root", 
+    "root://cms-xrd-global.cern.ch//store/mc/RunIISummer19UL17NanoAOD/DY3JetsToLL_M-50_TuneCP5_13TeV-madgraphMLM-pythia8/NANOAODSIM/106X_mc2017_realistic_v6-v1/270000/822D9BF7-2773-9C4D-AFCC-32FC863A4289.root", 
+    "root://cms-xrd-global.cern.ch//store/mc/RunIISummer19UL17NanoAOD/DY3JetsToLL_M-50_TuneCP5_13TeV-madgraphMLM-pythia8/NANOAODSIM/106X_mc2017_realistic_v6-v1/270000/97E5513D-1C7E-EC4A-AB87-263B3E2193DA.root", 
+    "root://cms-xrd-global.cern.ch//store/mc/RunIISummer19UL17NanoAOD/DY3JetsToLL_M-50_TuneCP5_13TeV-madgraphMLM-pythia8/NANOAODSIM/106X_mc2017_realistic_v6-v1/270000/A8E7E698-B405-7246-AB82-BEFA3A38C65A.root", 
+    "root://cms-xrd-global.cern.ch//store/mc/RunIISummer19UL17NanoAOD/DY3JetsToLL_M-50_TuneCP5_13TeV-madgraphMLM-pythia8/NANOAODSIM/106X_mc2017_realistic_v6-v1/270000/B404F15C-A7EA-4C48-A389-7A83DD6A8588.root", 
+    "root://cms-xrd-global.cern.ch//store/mc/RunIISummer19UL17NanoAOD/DY3JetsToLL_M-50_TuneCP5_13TeV-madgraphMLM-pythia8/NANOAODSIM/106X_mc2017_realistic_v6-v1/270000/B662CD50-1CD9-2946-927E-71D1DFA9E78D.root", 
+    "root://cms-xrd-global.cern.ch//store/mc/RunIISummer19UL17NanoAOD/DY3JetsToLL_M-50_TuneCP5_13TeV-madgraphMLM-pythia8/NANOAODSIM/106X_mc2017_realistic_v6-v1/270000/BC00AD74-8029-6741-8D7B-D00A6609813D.root", 
+    "root://cms-xrd-global.cern.ch//store/mc/RunIISummer19UL17NanoAOD/DY3JetsToLL_M-50_TuneCP5_13TeV-madgraphMLM-pythia8/NANOAODSIM/106X_mc2017_realistic_v6-v1/270000/C04D23D3-F77F-8348-8F9D-79E3A7934FEC.root", 
+    "root://cms-xrd-global.cern.ch//store/mc/RunIISummer19UL17NanoAOD/DY3JetsToLL_M-50_TuneCP5_13TeV-madgraphMLM-pythia8/NANOAODSIM/106X_mc2017_realistic_v6-v1/270000/C1E50CBD-D19D-A44D-A45D-E0AE52FCF7B8.root", 
+    "root://cms-xrd-global.cern.ch//store/mc/RunIISummer19UL17NanoAOD/DY3JetsToLL_M-50_TuneCP5_13TeV-madgraphMLM-pythia8/NANOAODSIM/106X_mc2017_realistic_v6-v1/270000/C1EA2268-F342-0C46-B0DA-F721EDDEE912.root", 
+    "root://cms-xrd-global.cern.ch//store/mc/RunIISummer19UL17NanoAOD/DY3JetsToLL_M-50_TuneCP5_13TeV-madgraphMLM-pythia8/NANOAODSIM/106X_mc2017_realistic_v6-v1/270000/D1AF9610-D965-E946-9FAC-BB1E3B27AE51.root", 
+    "root://cms-xrd-global.cern.ch//store/mc/RunIISummer19UL17NanoAOD/DY3JetsToLL_M-50_TuneCP5_13TeV-madgraphMLM-pythia8/NANOAODSIM/106X_mc2017_realistic_v6-v1/270000/D7C010B5-7478-5046-91DB-12399E863644.root", 
+    "root://cms-xrd-global.cern.ch//store/mc/RunIISummer19UL17NanoAOD/DY3JetsToLL_M-50_TuneCP5_13TeV-madgraphMLM-pythia8/NANOAODSIM/106X_mc2017_realistic_v6-v1/270000/E106D6D0-D76D-5D44-9BCC-BA382890F634.root", 
+    "root://cms-xrd-global.cern.ch//store/mc/RunIISummer19UL17NanoAOD/DY3JetsToLL_M-50_TuneCP5_13TeV-madgraphMLM-pythia8/NANOAODSIM/106X_mc2017_realistic_v6-v1/270000/E34BAA73-2B8A-314B-9C4B-6DDC4C740EEB.root", 
+    "root://cms-xrd-global.cern.ch//store/mc/RunIISummer19UL17NanoAOD/DY3JetsToLL_M-50_TuneCP5_13TeV-madgraphMLM-pythia8/NANOAODSIM/106X_mc2017_realistic_v6-v1/270000/EA2F4574-97FB-5C4C-9CF4-D0A1CC4983CE.root", 
+    "root://cms-xrd-global.cern.ch//store/mc/RunIISummer19UL17NanoAOD/DY3JetsToLL_M-50_TuneCP5_13TeV-madgraphMLM-pythia8/NANOAODSIM/106X_mc2017_realistic_v6-v1/270000/EC38B7F1-F871-AF47-BE49-84A86BAF2EE6.root", 
+    "root://cms-xrd-global.cern.ch//store/mc/RunIISummer19UL17NanoAOD/DY3JetsToLL_M-50_TuneCP5_13TeV-madgraphMLM-pythia8/NANOAODSIM/106X_mc2017_realistic_v6-v1/270000/FC27EFFE-2D93-3B4D-BA8A-30FACEB0A665.root", 
+    "root://cms-xrd-global.cern.ch//store/mc/RunIISummer19UL17NanoAOD/DY3JetsToLL_M-50_TuneCP5_13TeV-madgraphMLM-pythia8/NANOAODSIM/106X_mc2017_realistic_v6-v1/280000/04690099-932D-C34C-94C4-F2724D13555E.root", 
+    "root://cms-xrd-global.cern.ch//store/mc/RunIISummer19UL17NanoAOD/DY3JetsToLL_M-50_TuneCP5_13TeV-madgraphMLM-pythia8/NANOAODSIM/106X_mc2017_realistic_v6-v1/280000/096F68D4-7DFA-8B4E-A1C8-50340CD5CB77.root", 
+    "root://cms-xrd-global.cern.ch//store/mc/RunIISummer19UL17NanoAOD/DY3JetsToLL_M-50_TuneCP5_13TeV-madgraphMLM-pythia8/NANOAODSIM/106X_mc2017_realistic_v6-v1/280000/0C0CB099-C243-F841-8D09-5CA88ACAE009.root", 
+    "root://cms-xrd-global.cern.ch//store/mc/RunIISummer19UL17NanoAOD/DY3JetsToLL_M-50_TuneCP5_13TeV-madgraphMLM-pythia8/NANOAODSIM/106X_mc2017_realistic_v6-v1/280000/11D3983D-3111-CD41-BA1F-3B686A601371.root", 
+    "root://cms-xrd-global.cern.ch//store/mc/RunIISummer19UL17NanoAOD/DY3JetsToLL_M-50_TuneCP5_13TeV-madgraphMLM-pythia8/NANOAODSIM/106X_mc2017_realistic_v6-v1/280000/13790DC3-F0DC-3E43-9E2E-D36172B0AE70.root", 
+    "root://cms-xrd-global.cern.ch//store/mc/RunIISummer19UL17NanoAOD/DY3JetsToLL_M-50_TuneCP5_13TeV-madgraphMLM-pythia8/NANOAODSIM/106X_mc2017_realistic_v6-v1/280000/15C86FF3-2048-1A4C-9832-E1708EC6A429.root", 
+    "root://cms-xrd-global.cern.ch//store/mc/RunIISummer19UL17NanoAOD/DY3JetsToLL_M-50_TuneCP5_13TeV-madgraphMLM-pythia8/NANOAODSIM/106X_mc2017_realistic_v6-v1/280000/1782BC91-3129-F443-B19A-A957C5BF7401.root", 
+    "root://cms-xrd-global.cern.ch//store/mc/RunIISummer19UL17NanoAOD/DY3JetsToLL_M-50_TuneCP5_13TeV-madgraphMLM-pythia8/NANOAODSIM/106X_mc2017_realistic_v6-v1/280000/1C51BA60-403E-C143-AFB5-6F4C698CB215.root", 
+    "root://cms-xrd-global.cern.ch//store/mc/RunIISummer19UL17NanoAOD/DY3JetsToLL_M-50_TuneCP5_13TeV-madgraphMLM-pythia8/NANOAODSIM/106X_mc2017_realistic_v6-v1/280000/1FCA2E3D-EE3F-AE44-BBC1-98E7DF8A2E4C.root", 
+    "root://cms-xrd-global.cern.ch//store/mc/RunIISummer19UL17NanoAOD/DY3JetsToLL_M-50_TuneCP5_13TeV-madgraphMLM-pythia8/NANOAODSIM/106X_mc2017_realistic_v6-v1/280000/20523FF0-4E43-E44B-AA8E-EA6277419E65.root", 
+    "root://cms-xrd-global.cern.ch//store/mc/RunIISummer19UL17NanoAOD/DY3JetsToLL_M-50_TuneCP5_13TeV-madgraphMLM-pythia8/NANOAODSIM/106X_mc2017_realistic_v6-v1/280000/25EA8EFE-D3C8-2D4C-BC36-EAE6871A73C1.root", 
+    "root://cms-xrd-global.cern.ch//store/mc/RunIISummer19UL17NanoAOD/DY3JetsToLL_M-50_TuneCP5_13TeV-madgraphMLM-pythia8/NANOAODSIM/106X_mc2017_realistic_v6-v1/280000/2AACD69E-69FD-9641-BBD5-27908EAFD2DF.root", 
+    "root://cms-xrd-global.cern.ch//store/mc/RunIISummer19UL17NanoAOD/DY3JetsToLL_M-50_TuneCP5_13TeV-madgraphMLM-pythia8/NANOAODSIM/106X_mc2017_realistic_v6-v1/280000/2B1B6AC0-7CAE-424A-8CE8-30900395D5EE.root", 
+    "root://cms-xrd-global.cern.ch//store/mc/RunIISummer19UL17NanoAOD/DY3JetsToLL_M-50_TuneCP5_13TeV-madgraphMLM-pythia8/NANOAODSIM/106X_mc2017_realistic_v6-v1/280000/2E672683-944B-CB47-830F-846FB0547E50.root", 
+    "root://cms-xrd-global.cern.ch//store/mc/RunIISummer19UL17NanoAOD/DY3JetsToLL_M-50_TuneCP5_13TeV-madgraphMLM-pythia8/NANOAODSIM/106X_mc2017_realistic_v6-v1/280000/3CCA490D-DFB6-E145-AF5B-C3DE312262A7.root", 
+    "root://cms-xrd-global.cern.ch//store/mc/RunIISummer19UL17NanoAOD/DY3JetsToLL_M-50_TuneCP5_13TeV-madgraphMLM-pythia8/NANOAODSIM/106X_mc2017_realistic_v6-v1/280000/481A6381-5036-3343-8E0E-D4D0BBF7D83A.root", 
+    "root://cms-xrd-global.cern.ch//store/mc/RunIISummer19UL17NanoAOD/DY3JetsToLL_M-50_TuneCP5_13TeV-madgraphMLM-pythia8/NANOAODSIM/106X_mc2017_realistic_v6-v1/280000/49C8EEB2-D489-BC4F-A37E-5ABE25F179C4.root", 
+    "root://cms-xrd-global.cern.ch//store/mc/RunIISummer19UL17NanoAOD/DY3JetsToLL_M-50_TuneCP5_13TeV-madgraphMLM-pythia8/NANOAODSIM/106X_mc2017_realistic_v6-v1/280000/4DB4F022-C646-3744-91A5-6766DF0943B7.root", 
+    "root://cms-xrd-global.cern.ch//store/mc/RunIISummer19UL17NanoAOD/DY3JetsToLL_M-50_TuneCP5_13TeV-madgraphMLM-pythia8/NANOAODSIM/106X_mc2017_realistic_v6-v1/280000/53A0F0C5-C06F-144F-B651-8156CDC9B6CE.root", 
+    "root://cms-xrd-global.cern.ch//store/mc/RunIISummer19UL17NanoAOD/DY3JetsToLL_M-50_TuneCP5_13TeV-madgraphMLM-pythia8/NANOAODSIM/106X_mc2017_realistic_v6-v1/280000/5A42FD79-E77F-4048-9E5C-C096FAE29A7C.root", 
+    "root://cms-xrd-global.cern.ch//store/mc/RunIISummer19UL17NanoAOD/DY3JetsToLL_M-50_TuneCP5_13TeV-madgraphMLM-pythia8/NANOAODSIM/106X_mc2017_realistic_v6-v1/280000/6127CE69-FA48-624E-BCAD-C9EAFE1EA1BF.root", 
+    "root://cms-xrd-global.cern.ch//store/mc/RunIISummer19UL17NanoAOD/DY3JetsToLL_M-50_TuneCP5_13TeV-madgraphMLM-pythia8/NANOAODSIM/106X_mc2017_realistic_v6-v1/280000/640A5B68-F65E-194C-AAD5-A0AB3EC46D16.root", 
+    "root://cms-xrd-global.cern.ch//store/mc/RunIISummer19UL17NanoAOD/DY3JetsToLL_M-50_TuneCP5_13TeV-madgraphMLM-pythia8/NANOAODSIM/106X_mc2017_realistic_v6-v1/280000/6BD37EFB-B80F-0049-A82A-59F327C7A4BD.root", 
+    "root://cms-xrd-global.cern.ch//store/mc/RunIISummer19UL17NanoAOD/DY3JetsToLL_M-50_TuneCP5_13TeV-madgraphMLM-pythia8/NANOAODSIM/106X_mc2017_realistic_v6-v1/280000/6C561A89-6E97-2643-A85E-D80925AD840C.root", 
+    "root://cms-xrd-global.cern.ch//store/mc/RunIISummer19UL17NanoAOD/DY3JetsToLL_M-50_TuneCP5_13TeV-madgraphMLM-pythia8/NANOAODSIM/106X_mc2017_realistic_v6-v1/280000/72AC3A17-4CFB-FC42-A5F0-98F63924432E.root", 
+    "root://cms-xrd-global.cern.ch//store/mc/RunIISummer19UL17NanoAOD/DY3JetsToLL_M-50_TuneCP5_13TeV-madgraphMLM-pythia8/NANOAODSIM/106X_mc2017_realistic_v6-v1/280000/7BD65402-29AC-084C-A3BD-F15AF843A3C8.root", 
+    "root://cms-xrd-global.cern.ch//store/mc/RunIISummer19UL17NanoAOD/DY3JetsToLL_M-50_TuneCP5_13TeV-madgraphMLM-pythia8/NANOAODSIM/106X_mc2017_realistic_v6-v1/280000/7CF9AE11-ECF4-9F4F-838C-F2FB8A882467.root", 
+    "root://cms-xrd-global.cern.ch//store/mc/RunIISummer19UL17NanoAOD/DY3JetsToLL_M-50_TuneCP5_13TeV-madgraphMLM-pythia8/NANOAODSIM/106X_mc2017_realistic_v6-v1/280000/7E9220EA-1A55-A54C-BB87-178FBADEB1DB.root", 
+    "root://cms-xrd-global.cern.ch//store/mc/RunIISummer19UL17NanoAOD/DY3JetsToLL_M-50_TuneCP5_13TeV-madgraphMLM-pythia8/NANOAODSIM/106X_mc2017_realistic_v6-v1/280000/81550F95-0C55-A44D-BBBA-D39064DCACE4.root", 
+    "root://cms-xrd-global.cern.ch//store/mc/RunIISummer19UL17NanoAOD/DY3JetsToLL_M-50_TuneCP5_13TeV-madgraphMLM-pythia8/NANOAODSIM/106X_mc2017_realistic_v6-v1/280000/85E92DD9-613F-3741-AA6E-32AD4E168148.root", 
+    "root://cms-xrd-global.cern.ch//store/mc/RunIISummer19UL17NanoAOD/DY3JetsToLL_M-50_TuneCP5_13TeV-madgraphMLM-pythia8/NANOAODSIM/106X_mc2017_realistic_v6-v1/280000/8971624C-6927-8645-B8D0-E481196E1E69.root", 
+    "root://cms-xrd-global.cern.ch//store/mc/RunIISummer19UL17NanoAOD/DY3JetsToLL_M-50_TuneCP5_13TeV-madgraphMLM-pythia8/NANOAODSIM/106X_mc2017_realistic_v6-v1/280000/954FEEF4-57A7-BE44-9617-3619343EED0B.root", 
+    "root://cms-xrd-global.cern.ch//store/mc/RunIISummer19UL17NanoAOD/DY3JetsToLL_M-50_TuneCP5_13TeV-madgraphMLM-pythia8/NANOAODSIM/106X_mc2017_realistic_v6-v1/280000/A144D8F5-7100-5C4B-B3B8-C56DE9DB3199.root", 
+    "root://cms-xrd-global.cern.ch//store/mc/RunIISummer19UL17NanoAOD/DY3JetsToLL_M-50_TuneCP5_13TeV-madgraphMLM-pythia8/NANOAODSIM/106X_mc2017_realistic_v6-v1/280000/A320D641-D37D-F64C-BE6C-B6790CCCEBAE.root", 
+    "root://cms-xrd-global.cern.ch//store/mc/RunIISummer19UL17NanoAOD/DY3JetsToLL_M-50_TuneCP5_13TeV-madgraphMLM-pythia8/NANOAODSIM/106X_mc2017_realistic_v6-v1/280000/A33D5BE2-25B1-9D49-BBE4-4D5D650C67D5.root", 
+    "root://cms-xrd-global.cern.ch//store/mc/RunIISummer19UL17NanoAOD/DY3JetsToLL_M-50_TuneCP5_13TeV-madgraphMLM-pythia8/NANOAODSIM/106X_mc2017_realistic_v6-v1/280000/A5FD40E4-9E2C-2C46-8FF8-9841295DC9A2.root", 
+    "root://cms-xrd-global.cern.ch//store/mc/RunIISummer19UL17NanoAOD/DY3JetsToLL_M-50_TuneCP5_13TeV-madgraphMLM-pythia8/NANOAODSIM/106X_mc2017_realistic_v6-v1/280000/A9063CBC-FC1F-5446-8535-CA49A7D40237.root", 
+    "root://cms-xrd-global.cern.ch//store/mc/RunIISummer19UL17NanoAOD/DY3JetsToLL_M-50_TuneCP5_13TeV-madgraphMLM-pythia8/NANOAODSIM/106X_mc2017_realistic_v6-v1/280000/A9314A85-9011-4D43-B362-0EC5C81F5F21.root", 
+    "root://cms-xrd-global.cern.ch//store/mc/RunIISummer19UL17NanoAOD/DY3JetsToLL_M-50_TuneCP5_13TeV-madgraphMLM-pythia8/NANOAODSIM/106X_mc2017_realistic_v6-v1/280000/B08E4690-8040-864B-A309-EBFF1DBD1923.root", 
+    "root://cms-xrd-global.cern.ch//store/mc/RunIISummer19UL17NanoAOD/DY3JetsToLL_M-50_TuneCP5_13TeV-madgraphMLM-pythia8/NANOAODSIM/106X_mc2017_realistic_v6-v1/280000/B2B4D993-61A4-3649-B892-9C20205F2613.root", 
+    "root://cms-xrd-global.cern.ch//store/mc/RunIISummer19UL17NanoAOD/DY3JetsToLL_M-50_TuneCP5_13TeV-madgraphMLM-pythia8/NANOAODSIM/106X_mc2017_realistic_v6-v1/280000/B437158C-6E6B-5649-9472-304B9575E84B.root", 
+    "root://cms-xrd-global.cern.ch//store/mc/RunIISummer19UL17NanoAOD/DY3JetsToLL_M-50_TuneCP5_13TeV-madgraphMLM-pythia8/NANOAODSIM/106X_mc2017_realistic_v6-v1/280000/C0713C14-DA37-7A4B-BA51-1BFD1FC7B7EE.root", 
+    "root://cms-xrd-global.cern.ch//store/mc/RunIISummer19UL17NanoAOD/DY3JetsToLL_M-50_TuneCP5_13TeV-madgraphMLM-pythia8/NANOAODSIM/106X_mc2017_realistic_v6-v1/280000/C5199994-2A06-A24D-A9EE-FEFB01AFD04D.root", 
+    "root://cms-xrd-global.cern.ch//store/mc/RunIISummer19UL17NanoAOD/DY3JetsToLL_M-50_TuneCP5_13TeV-madgraphMLM-pythia8/NANOAODSIM/106X_mc2017_realistic_v6-v1/280000/C913D61A-2F6B-B248-A263-335192AFAAAA.root", 
+    "root://cms-xrd-global.cern.ch//store/mc/RunIISummer19UL17NanoAOD/DY3JetsToLL_M-50_TuneCP5_13TeV-madgraphMLM-pythia8/NANOAODSIM/106X_mc2017_realistic_v6-v1/280000/D1410F17-EDF9-E84F-BF1F-1893418955CE.root", 
+    "root://cms-xrd-global.cern.ch//store/mc/RunIISummer19UL17NanoAOD/DY3JetsToLL_M-50_TuneCP5_13TeV-madgraphMLM-pythia8/NANOAODSIM/106X_mc2017_realistic_v6-v1/280000/DA12CE4C-E021-C94B-AB1A-6C2EAC73DBBC.root", 
+    "root://cms-xrd-global.cern.ch//store/mc/RunIISummer19UL17NanoAOD/DY3JetsToLL_M-50_TuneCP5_13TeV-madgraphMLM-pythia8/NANOAODSIM/106X_mc2017_realistic_v6-v1/280000/DB76E794-87D2-484B-BD5D-E5E34C512D40.root", 
+    "root://cms-xrd-global.cern.ch//store/mc/RunIISummer19UL17NanoAOD/DY3JetsToLL_M-50_TuneCP5_13TeV-madgraphMLM-pythia8/NANOAODSIM/106X_mc2017_realistic_v6-v1/280000/DF8354FA-5B93-AF44-92A3-53B68E2ACAB9.root", 
+    "root://cms-xrd-global.cern.ch//store/mc/RunIISummer19UL17NanoAOD/DY3JetsToLL_M-50_TuneCP5_13TeV-madgraphMLM-pythia8/NANOAODSIM/106X_mc2017_realistic_v6-v1/280000/EFFD52E9-B15B-A44E-805B-7213EA615BB6.root", 
+    "root://cms-xrd-global.cern.ch//store/mc/RunIISummer19UL17NanoAOD/DY3JetsToLL_M-50_TuneCP5_13TeV-madgraphMLM-pythia8/NANOAODSIM/106X_mc2017_realistic_v6-v1/280000/F9084ECC-FC56-3A4C-945C-DB754236B7A8.root"
+  ], 
+  "nfilesperjob": 1, 
+  "nchunks": 85, 
+  "chunks": [
+    0, 
+    1, 
+    2, 
+    3, 
+    4, 
+    5, 
+    6, 
+    7, 
+    8, 
+    9, 
+    10, 
+    11, 
+    12, 
+    13, 
+    14, 
+    15, 
+    16, 
+    17, 
+    18, 
+    19, 
+    20, 
+    21, 
+    22, 
+    23, 
+    24, 
+    25, 
+    26, 
+    27, 
+    28, 
+    29, 
+    30, 
+    31, 
+    32, 
+    33, 
+    34, 
+    35, 
+    36, 
+    37, 
+    38, 
+    39, 
+    40, 
+    41, 
+    42, 
+    43, 
+    44, 
+    45, 
+    46, 
+    47, 
+    48, 
+    49, 
+    50, 
+    51, 
+    52, 
+    53, 
+    54, 
+    55, 
+    56, 
+    57, 
+    58, 
+    59, 
+    60, 
+    61, 
+    62, 
+    63, 
+    64, 
+    65, 
+    66, 
+    67, 
+    68, 
+    69, 
+    70, 
+    71, 
+    72, 
+    73, 
+    74, 
+    75, 
+    76, 
+    77, 
+    78, 
+    79, 
+    80, 
+    81, 
+    82, 
+    83, 
+    84
+  ], 
+  "chunkdict": {
+    "0": [
+      "root://cms-xrd-global.cern.ch//store/mc/RunIISummer19UL17NanoAOD/DY3JetsToLL_M-50_TuneCP5_13TeV-madgraphMLM-pythia8/NANOAODSIM/106X_mc2017_realistic_v6-v1/270000/0205FF87-ADC7-474A-9DD1-AA52CB967E38.root"
+    ], 
+    "1": [
+      "root://cms-xrd-global.cern.ch//store/mc/RunIISummer19UL17NanoAOD/DY3JetsToLL_M-50_TuneCP5_13TeV-madgraphMLM-pythia8/NANOAODSIM/106X_mc2017_realistic_v6-v1/270000/0CA166A8-8059-9E4C-B49C-9A34A492121D.root"
+    ], 
+    "2": [
+      "root://cms-xrd-global.cern.ch//store/mc/RunIISummer19UL17NanoAOD/DY3JetsToLL_M-50_TuneCP5_13TeV-madgraphMLM-pythia8/NANOAODSIM/106X_mc2017_realistic_v6-v1/270000/1A779134-01E4-8C48-AF4A-CE66631C5234.root"
+    ], 
+    "3": [
+      "root://cms-xrd-global.cern.ch//store/mc/RunIISummer19UL17NanoAOD/DY3JetsToLL_M-50_TuneCP5_13TeV-madgraphMLM-pythia8/NANOAODSIM/106X_mc2017_realistic_v6-v1/270000/27E0F5F9-FC3B-854D-A1E3-4019C2BB0220.root"
+    ], 
+    "4": [
+      "root://cms-xrd-global.cern.ch//store/mc/RunIISummer19UL17NanoAOD/DY3JetsToLL_M-50_TuneCP5_13TeV-madgraphMLM-pythia8/NANOAODSIM/106X_mc2017_realistic_v6-v1/270000/2B858C28-2F23-8246-8251-7EDA67DF7B04.root"
+    ], 
+    "5": [
+      "root://cms-xrd-global.cern.ch//store/mc/RunIISummer19UL17NanoAOD/DY3JetsToLL_M-50_TuneCP5_13TeV-madgraphMLM-pythia8/NANOAODSIM/106X_mc2017_realistic_v6-v1/270000/2BFF544B-F20F-BC4B-A723-EB87C1897127.root"
+    ], 
+    "6": [
+      "root://cms-xrd-global.cern.ch//store/mc/RunIISummer19UL17NanoAOD/DY3JetsToLL_M-50_TuneCP5_13TeV-madgraphMLM-pythia8/NANOAODSIM/106X_mc2017_realistic_v6-v1/270000/370188F4-7959-6248-837C-DA3A6B06680D.root"
+    ], 
+    "7": [
+      "root://cms-xrd-global.cern.ch//store/mc/RunIISummer19UL17NanoAOD/DY3JetsToLL_M-50_TuneCP5_13TeV-madgraphMLM-pythia8/NANOAODSIM/106X_mc2017_realistic_v6-v1/270000/38D39D5D-C4B0-D24D-8EAB-5D9DC81017D6.root"
+    ], 
+    "8": [
+      "root://cms-xrd-global.cern.ch//store/mc/RunIISummer19UL17NanoAOD/DY3JetsToLL_M-50_TuneCP5_13TeV-madgraphMLM-pythia8/NANOAODSIM/106X_mc2017_realistic_v6-v1/270000/3BBE43AB-A807-A046-8F65-FBFD24AFE19C.root"
+    ], 
+    "9": [
+      "root://cms-xrd-global.cern.ch//store/mc/RunIISummer19UL17NanoAOD/DY3JetsToLL_M-50_TuneCP5_13TeV-madgraphMLM-pythia8/NANOAODSIM/106X_mc2017_realistic_v6-v1/270000/40CE935B-294B-FB49-A978-3C04AC00BA0D.root"
+    ], 
+    "10": [
+      "root://cms-xrd-global.cern.ch//store/mc/RunIISummer19UL17NanoAOD/DY3JetsToLL_M-50_TuneCP5_13TeV-madgraphMLM-pythia8/NANOAODSIM/106X_mc2017_realistic_v6-v1/270000/4A12D34A-2F8F-174D-96C4-DC9D28ADCC72.root"
+    ], 
+    "11": [
+      "root://cms-xrd-global.cern.ch//store/mc/RunIISummer19UL17NanoAOD/DY3JetsToLL_M-50_TuneCP5_13TeV-madgraphMLM-pythia8/NANOAODSIM/106X_mc2017_realistic_v6-v1/270000/4C369591-5D63-7640-B139-5940F8F2244B.root"
+    ], 
+    "12": [
+      "root://cms-xrd-global.cern.ch//store/mc/RunIISummer19UL17NanoAOD/DY3JetsToLL_M-50_TuneCP5_13TeV-madgraphMLM-pythia8/NANOAODSIM/106X_mc2017_realistic_v6-v1/270000/514D0B44-D268-D14E-866A-86C7A48877A3.root"
+    ], 
+    "13": [
+      "root://cms-xrd-global.cern.ch//store/mc/RunIISummer19UL17NanoAOD/DY3JetsToLL_M-50_TuneCP5_13TeV-madgraphMLM-pythia8/NANOAODSIM/106X_mc2017_realistic_v6-v1/270000/53B9BBA8-5B21-0540-8834-397D27CD34BD.root"
+    ], 
+    "14": [
+      "root://cms-xrd-global.cern.ch//store/mc/RunIISummer19UL17NanoAOD/DY3JetsToLL_M-50_TuneCP5_13TeV-madgraphMLM-pythia8/NANOAODSIM/106X_mc2017_realistic_v6-v1/270000/5D68EE54-7831-9341-99D9-F6372F013CB3.root"
+    ], 
+    "15": [
+      "root://cms-xrd-global.cern.ch//store/mc/RunIISummer19UL17NanoAOD/DY3JetsToLL_M-50_TuneCP5_13TeV-madgraphMLM-pythia8/NANOAODSIM/106X_mc2017_realistic_v6-v1/270000/5E956B23-5BEB-5E4A-B9B4-393D316FF28A.root"
+    ], 
+    "16": [
+      "root://cms-xrd-global.cern.ch//store/mc/RunIISummer19UL17NanoAOD/DY3JetsToLL_M-50_TuneCP5_13TeV-madgraphMLM-pythia8/NANOAODSIM/106X_mc2017_realistic_v6-v1/270000/666B810D-F39C-E94D-8B9A-0FB1C180FDB9.root"
+    ], 
+    "17": [
+      "root://cms-xrd-global.cern.ch//store/mc/RunIISummer19UL17NanoAOD/DY3JetsToLL_M-50_TuneCP5_13TeV-madgraphMLM-pythia8/NANOAODSIM/106X_mc2017_realistic_v6-v1/270000/670BC2A1-FA8E-1C4F-A190-1076FBD7CBF4.root"
+    ], 
+    "18": [
+      "root://cms-xrd-global.cern.ch//store/mc/RunIISummer19UL17NanoAOD/DY3JetsToLL_M-50_TuneCP5_13TeV-madgraphMLM-pythia8/NANOAODSIM/106X_mc2017_realistic_v6-v1/270000/7E5736A4-5F5C-ED4A-B878-70852B32F0A9.root"
+    ], 
+    "19": [
+      "root://cms-xrd-global.cern.ch//store/mc/RunIISummer19UL17NanoAOD/DY3JetsToLL_M-50_TuneCP5_13TeV-madgraphMLM-pythia8/NANOAODSIM/106X_mc2017_realistic_v6-v1/270000/822D9BF7-2773-9C4D-AFCC-32FC863A4289.root"
+    ], 
+    "20": [
+      "root://cms-xrd-global.cern.ch//store/mc/RunIISummer19UL17NanoAOD/DY3JetsToLL_M-50_TuneCP5_13TeV-madgraphMLM-pythia8/NANOAODSIM/106X_mc2017_realistic_v6-v1/270000/97E5513D-1C7E-EC4A-AB87-263B3E2193DA.root"
+    ], 
+    "21": [
+      "root://cms-xrd-global.cern.ch//store/mc/RunIISummer19UL17NanoAOD/DY3JetsToLL_M-50_TuneCP5_13TeV-madgraphMLM-pythia8/NANOAODSIM/106X_mc2017_realistic_v6-v1/270000/A8E7E698-B405-7246-AB82-BEFA3A38C65A.root"
+    ], 
+    "22": [
+      "root://cms-xrd-global.cern.ch//store/mc/RunIISummer19UL17NanoAOD/DY3JetsToLL_M-50_TuneCP5_13TeV-madgraphMLM-pythia8/NANOAODSIM/106X_mc2017_realistic_v6-v1/270000/B404F15C-A7EA-4C48-A389-7A83DD6A8588.root"
+    ], 
+    "23": [
+      "root://cms-xrd-global.cern.ch//store/mc/RunIISummer19UL17NanoAOD/DY3JetsToLL_M-50_TuneCP5_13TeV-madgraphMLM-pythia8/NANOAODSIM/106X_mc2017_realistic_v6-v1/270000/B662CD50-1CD9-2946-927E-71D1DFA9E78D.root"
+    ], 
+    "24": [
+      "root://cms-xrd-global.cern.ch//store/mc/RunIISummer19UL17NanoAOD/DY3JetsToLL_M-50_TuneCP5_13TeV-madgraphMLM-pythia8/NANOAODSIM/106X_mc2017_realistic_v6-v1/270000/BC00AD74-8029-6741-8D7B-D00A6609813D.root"
+    ], 
+    "25": [
+      "root://cms-xrd-global.cern.ch//store/mc/RunIISummer19UL17NanoAOD/DY3JetsToLL_M-50_TuneCP5_13TeV-madgraphMLM-pythia8/NANOAODSIM/106X_mc2017_realistic_v6-v1/270000/C04D23D3-F77F-8348-8F9D-79E3A7934FEC.root"
+    ], 
+    "26": [
+      "root://cms-xrd-global.cern.ch//store/mc/RunIISummer19UL17NanoAOD/DY3JetsToLL_M-50_TuneCP5_13TeV-madgraphMLM-pythia8/NANOAODSIM/106X_mc2017_realistic_v6-v1/270000/C1E50CBD-D19D-A44D-A45D-E0AE52FCF7B8.root"
+    ], 
+    "27": [
+      "root://cms-xrd-global.cern.ch//store/mc/RunIISummer19UL17NanoAOD/DY3JetsToLL_M-50_TuneCP5_13TeV-madgraphMLM-pythia8/NANOAODSIM/106X_mc2017_realistic_v6-v1/270000/C1EA2268-F342-0C46-B0DA-F721EDDEE912.root"
+    ], 
+    "28": [
+      "root://cms-xrd-global.cern.ch//store/mc/RunIISummer19UL17NanoAOD/DY3JetsToLL_M-50_TuneCP5_13TeV-madgraphMLM-pythia8/NANOAODSIM/106X_mc2017_realistic_v6-v1/270000/D1AF9610-D965-E946-9FAC-BB1E3B27AE51.root"
+    ], 
+    "29": [
+      "root://cms-xrd-global.cern.ch//store/mc/RunIISummer19UL17NanoAOD/DY3JetsToLL_M-50_TuneCP5_13TeV-madgraphMLM-pythia8/NANOAODSIM/106X_mc2017_realistic_v6-v1/270000/D7C010B5-7478-5046-91DB-12399E863644.root"
+    ], 
+    "30": [
+      "root://cms-xrd-global.cern.ch//store/mc/RunIISummer19UL17NanoAOD/DY3JetsToLL_M-50_TuneCP5_13TeV-madgraphMLM-pythia8/NANOAODSIM/106X_mc2017_realistic_v6-v1/270000/E106D6D0-D76D-5D44-9BCC-BA382890F634.root"
+    ], 
+    "31": [
+      "root://cms-xrd-global.cern.ch//store/mc/RunIISummer19UL17NanoAOD/DY3JetsToLL_M-50_TuneCP5_13TeV-madgraphMLM-pythia8/NANOAODSIM/106X_mc2017_realistic_v6-v1/270000/E34BAA73-2B8A-314B-9C4B-6DDC4C740EEB.root"
+    ], 
+    "32": [
+      "root://cms-xrd-global.cern.ch//store/mc/RunIISummer19UL17NanoAOD/DY3JetsToLL_M-50_TuneCP5_13TeV-madgraphMLM-pythia8/NANOAODSIM/106X_mc2017_realistic_v6-v1/270000/EA2F4574-97FB-5C4C-9CF4-D0A1CC4983CE.root"
+    ], 
+    "33": [
+      "root://cms-xrd-global.cern.ch//store/mc/RunIISummer19UL17NanoAOD/DY3JetsToLL_M-50_TuneCP5_13TeV-madgraphMLM-pythia8/NANOAODSIM/106X_mc2017_realistic_v6-v1/270000/EC38B7F1-F871-AF47-BE49-84A86BAF2EE6.root"
+    ], 
+    "34": [
+      "root://cms-xrd-global.cern.ch//store/mc/RunIISummer19UL17NanoAOD/DY3JetsToLL_M-50_TuneCP5_13TeV-madgraphMLM-pythia8/NANOAODSIM/106X_mc2017_realistic_v6-v1/270000/FC27EFFE-2D93-3B4D-BA8A-30FACEB0A665.root"
+    ], 
+    "35": [
+      "root://cms-xrd-global.cern.ch//store/mc/RunIISummer19UL17NanoAOD/DY3JetsToLL_M-50_TuneCP5_13TeV-madgraphMLM-pythia8/NANOAODSIM/106X_mc2017_realistic_v6-v1/280000/04690099-932D-C34C-94C4-F2724D13555E.root"
+    ], 
+    "36": [
+      "root://cms-xrd-global.cern.ch//store/mc/RunIISummer19UL17NanoAOD/DY3JetsToLL_M-50_TuneCP5_13TeV-madgraphMLM-pythia8/NANOAODSIM/106X_mc2017_realistic_v6-v1/280000/096F68D4-7DFA-8B4E-A1C8-50340CD5CB77.root"
+    ], 
+    "37": [
+      "root://cms-xrd-global.cern.ch//store/mc/RunIISummer19UL17NanoAOD/DY3JetsToLL_M-50_TuneCP5_13TeV-madgraphMLM-pythia8/NANOAODSIM/106X_mc2017_realistic_v6-v1/280000/0C0CB099-C243-F841-8D09-5CA88ACAE009.root"
+    ], 
+    "38": [
+      "root://cms-xrd-global.cern.ch//store/mc/RunIISummer19UL17NanoAOD/DY3JetsToLL_M-50_TuneCP5_13TeV-madgraphMLM-pythia8/NANOAODSIM/106X_mc2017_realistic_v6-v1/280000/11D3983D-3111-CD41-BA1F-3B686A601371.root"
+    ], 
+    "39": [
+      "root://cms-xrd-global.cern.ch//store/mc/RunIISummer19UL17NanoAOD/DY3JetsToLL_M-50_TuneCP5_13TeV-madgraphMLM-pythia8/NANOAODSIM/106X_mc2017_realistic_v6-v1/280000/13790DC3-F0DC-3E43-9E2E-D36172B0AE70.root"
+    ], 
+    "40": [
+      "root://cms-xrd-global.cern.ch//store/mc/RunIISummer19UL17NanoAOD/DY3JetsToLL_M-50_TuneCP5_13TeV-madgraphMLM-pythia8/NANOAODSIM/106X_mc2017_realistic_v6-v1/280000/15C86FF3-2048-1A4C-9832-E1708EC6A429.root"
+    ], 
+    "41": [
+      "root://cms-xrd-global.cern.ch//store/mc/RunIISummer19UL17NanoAOD/DY3JetsToLL_M-50_TuneCP5_13TeV-madgraphMLM-pythia8/NANOAODSIM/106X_mc2017_realistic_v6-v1/280000/1782BC91-3129-F443-B19A-A957C5BF7401.root"
+    ], 
+    "42": [
+      "root://cms-xrd-global.cern.ch//store/mc/RunIISummer19UL17NanoAOD/DY3JetsToLL_M-50_TuneCP5_13TeV-madgraphMLM-pythia8/NANOAODSIM/106X_mc2017_realistic_v6-v1/280000/1C51BA60-403E-C143-AFB5-6F4C698CB215.root"
+    ], 
+    "43": [
+      "root://cms-xrd-global.cern.ch//store/mc/RunIISummer19UL17NanoAOD/DY3JetsToLL_M-50_TuneCP5_13TeV-madgraphMLM-pythia8/NANOAODSIM/106X_mc2017_realistic_v6-v1/280000/1FCA2E3D-EE3F-AE44-BBC1-98E7DF8A2E4C.root"
+    ], 
+    "44": [
+      "root://cms-xrd-global.cern.ch//store/mc/RunIISummer19UL17NanoAOD/DY3JetsToLL_M-50_TuneCP5_13TeV-madgraphMLM-pythia8/NANOAODSIM/106X_mc2017_realistic_v6-v1/280000/20523FF0-4E43-E44B-AA8E-EA6277419E65.root"
+    ], 
+    "45": [
+      "root://cms-xrd-global.cern.ch//store/mc/RunIISummer19UL17NanoAOD/DY3JetsToLL_M-50_TuneCP5_13TeV-madgraphMLM-pythia8/NANOAODSIM/106X_mc2017_realistic_v6-v1/280000/25EA8EFE-D3C8-2D4C-BC36-EAE6871A73C1.root"
+    ], 
+    "46": [
+      "root://cms-xrd-global.cern.ch//store/mc/RunIISummer19UL17NanoAOD/DY3JetsToLL_M-50_TuneCP5_13TeV-madgraphMLM-pythia8/NANOAODSIM/106X_mc2017_realistic_v6-v1/280000/2AACD69E-69FD-9641-BBD5-27908EAFD2DF.root"
+    ], 
+    "47": [
+      "root://cms-xrd-global.cern.ch//store/mc/RunIISummer19UL17NanoAOD/DY3JetsToLL_M-50_TuneCP5_13TeV-madgraphMLM-pythia8/NANOAODSIM/106X_mc2017_realistic_v6-v1/280000/2B1B6AC0-7CAE-424A-8CE8-30900395D5EE.root"
+    ], 
+    "48": [
+      "root://cms-xrd-global.cern.ch//store/mc/RunIISummer19UL17NanoAOD/DY3JetsToLL_M-50_TuneCP5_13TeV-madgraphMLM-pythia8/NANOAODSIM/106X_mc2017_realistic_v6-v1/280000/2E672683-944B-CB47-830F-846FB0547E50.root"
+    ], 
+    "49": [
+      "root://cms-xrd-global.cern.ch//store/mc/RunIISummer19UL17NanoAOD/DY3JetsToLL_M-50_TuneCP5_13TeV-madgraphMLM-pythia8/NANOAODSIM/106X_mc2017_realistic_v6-v1/280000/3CCA490D-DFB6-E145-AF5B-C3DE312262A7.root"
+    ], 
+    "50": [
+      "root://cms-xrd-global.cern.ch//store/mc/RunIISummer19UL17NanoAOD/DY3JetsToLL_M-50_TuneCP5_13TeV-madgraphMLM-pythia8/NANOAODSIM/106X_mc2017_realistic_v6-v1/280000/481A6381-5036-3343-8E0E-D4D0BBF7D83A.root"
+    ], 
+    "51": [
+      "root://cms-xrd-global.cern.ch//store/mc/RunIISummer19UL17NanoAOD/DY3JetsToLL_M-50_TuneCP5_13TeV-madgraphMLM-pythia8/NANOAODSIM/106X_mc2017_realistic_v6-v1/280000/49C8EEB2-D489-BC4F-A37E-5ABE25F179C4.root"
+    ], 
+    "52": [
+      "root://cms-xrd-global.cern.ch//store/mc/RunIISummer19UL17NanoAOD/DY3JetsToLL_M-50_TuneCP5_13TeV-madgraphMLM-pythia8/NANOAODSIM/106X_mc2017_realistic_v6-v1/280000/4DB4F022-C646-3744-91A5-6766DF0943B7.root"
+    ], 
+    "53": [
+      "root://cms-xrd-global.cern.ch//store/mc/RunIISummer19UL17NanoAOD/DY3JetsToLL_M-50_TuneCP5_13TeV-madgraphMLM-pythia8/NANOAODSIM/106X_mc2017_realistic_v6-v1/280000/53A0F0C5-C06F-144F-B651-8156CDC9B6CE.root"
+    ], 
+    "54": [
+      "root://cms-xrd-global.cern.ch//store/mc/RunIISummer19UL17NanoAOD/DY3JetsToLL_M-50_TuneCP5_13TeV-madgraphMLM-pythia8/NANOAODSIM/106X_mc2017_realistic_v6-v1/280000/5A42FD79-E77F-4048-9E5C-C096FAE29A7C.root"
+    ], 
+    "55": [
+      "root://cms-xrd-global.cern.ch//store/mc/RunIISummer19UL17NanoAOD/DY3JetsToLL_M-50_TuneCP5_13TeV-madgraphMLM-pythia8/NANOAODSIM/106X_mc2017_realistic_v6-v1/280000/6127CE69-FA48-624E-BCAD-C9EAFE1EA1BF.root"
+    ], 
+    "56": [
+      "root://cms-xrd-global.cern.ch//store/mc/RunIISummer19UL17NanoAOD/DY3JetsToLL_M-50_TuneCP5_13TeV-madgraphMLM-pythia8/NANOAODSIM/106X_mc2017_realistic_v6-v1/280000/640A5B68-F65E-194C-AAD5-A0AB3EC46D16.root"
+    ], 
+    "57": [
+      "root://cms-xrd-global.cern.ch//store/mc/RunIISummer19UL17NanoAOD/DY3JetsToLL_M-50_TuneCP5_13TeV-madgraphMLM-pythia8/NANOAODSIM/106X_mc2017_realistic_v6-v1/280000/6BD37EFB-B80F-0049-A82A-59F327C7A4BD.root"
+    ], 
+    "58": [
+      "root://cms-xrd-global.cern.ch//store/mc/RunIISummer19UL17NanoAOD/DY3JetsToLL_M-50_TuneCP5_13TeV-madgraphMLM-pythia8/NANOAODSIM/106X_mc2017_realistic_v6-v1/280000/6C561A89-6E97-2643-A85E-D80925AD840C.root"
+    ], 
+    "59": [
+      "root://cms-xrd-global.cern.ch//store/mc/RunIISummer19UL17NanoAOD/DY3JetsToLL_M-50_TuneCP5_13TeV-madgraphMLM-pythia8/NANOAODSIM/106X_mc2017_realistic_v6-v1/280000/72AC3A17-4CFB-FC42-A5F0-98F63924432E.root"
+    ], 
+    "60": [
+      "root://cms-xrd-global.cern.ch//store/mc/RunIISummer19UL17NanoAOD/DY3JetsToLL_M-50_TuneCP5_13TeV-madgraphMLM-pythia8/NANOAODSIM/106X_mc2017_realistic_v6-v1/280000/7BD65402-29AC-084C-A3BD-F15AF843A3C8.root"
+    ], 
+    "61": [
+      "root://cms-xrd-global.cern.ch//store/mc/RunIISummer19UL17NanoAOD/DY3JetsToLL_M-50_TuneCP5_13TeV-madgraphMLM-pythia8/NANOAODSIM/106X_mc2017_realistic_v6-v1/280000/7CF9AE11-ECF4-9F4F-838C-F2FB8A882467.root"
+    ], 
+    "62": [
+      "root://cms-xrd-global.cern.ch//store/mc/RunIISummer19UL17NanoAOD/DY3JetsToLL_M-50_TuneCP5_13TeV-madgraphMLM-pythia8/NANOAODSIM/106X_mc2017_realistic_v6-v1/280000/7E9220EA-1A55-A54C-BB87-178FBADEB1DB.root"
+    ], 
+    "63": [
+      "root://cms-xrd-global.cern.ch//store/mc/RunIISummer19UL17NanoAOD/DY3JetsToLL_M-50_TuneCP5_13TeV-madgraphMLM-pythia8/NANOAODSIM/106X_mc2017_realistic_v6-v1/280000/81550F95-0C55-A44D-BBBA-D39064DCACE4.root"
+    ], 
+    "64": [
+      "root://cms-xrd-global.cern.ch//store/mc/RunIISummer19UL17NanoAOD/DY3JetsToLL_M-50_TuneCP5_13TeV-madgraphMLM-pythia8/NANOAODSIM/106X_mc2017_realistic_v6-v1/280000/85E92DD9-613F-3741-AA6E-32AD4E168148.root"
+    ], 
+    "65": [
+      "root://cms-xrd-global.cern.ch//store/mc/RunIISummer19UL17NanoAOD/DY3JetsToLL_M-50_TuneCP5_13TeV-madgraphMLM-pythia8/NANOAODSIM/106X_mc2017_realistic_v6-v1/280000/8971624C-6927-8645-B8D0-E481196E1E69.root"
+    ], 
+    "66": [
+      "root://cms-xrd-global.cern.ch//store/mc/RunIISummer19UL17NanoAOD/DY3JetsToLL_M-50_TuneCP5_13TeV-madgraphMLM-pythia8/NANOAODSIM/106X_mc2017_realistic_v6-v1/280000/954FEEF4-57A7-BE44-9617-3619343EED0B.root"
+    ], 
+    "67": [
+      "root://cms-xrd-global.cern.ch//store/mc/RunIISummer19UL17NanoAOD/DY3JetsToLL_M-50_TuneCP5_13TeV-madgraphMLM-pythia8/NANOAODSIM/106X_mc2017_realistic_v6-v1/280000/A144D8F5-7100-5C4B-B3B8-C56DE9DB3199.root"
+    ], 
+    "68": [
+      "root://cms-xrd-global.cern.ch//store/mc/RunIISummer19UL17NanoAOD/DY3JetsToLL_M-50_TuneCP5_13TeV-madgraphMLM-pythia8/NANOAODSIM/106X_mc2017_realistic_v6-v1/280000/A320D641-D37D-F64C-BE6C-B6790CCCEBAE.root"
+    ], 
+    "69": [
+      "root://cms-xrd-global.cern.ch//store/mc/RunIISummer19UL17NanoAOD/DY3JetsToLL_M-50_TuneCP5_13TeV-madgraphMLM-pythia8/NANOAODSIM/106X_mc2017_realistic_v6-v1/280000/A33D5BE2-25B1-9D49-BBE4-4D5D650C67D5.root"
+    ], 
+    "70": [
+      "root://cms-xrd-global.cern.ch//store/mc/RunIISummer19UL17NanoAOD/DY3JetsToLL_M-50_TuneCP5_13TeV-madgraphMLM-pythia8/NANOAODSIM/106X_mc2017_realistic_v6-v1/280000/A5FD40E4-9E2C-2C46-8FF8-9841295DC9A2.root"
+    ], 
+    "71": [
+      "root://cms-xrd-global.cern.ch//store/mc/RunIISummer19UL17NanoAOD/DY3JetsToLL_M-50_TuneCP5_13TeV-madgraphMLM-pythia8/NANOAODSIM/106X_mc2017_realistic_v6-v1/280000/A9063CBC-FC1F-5446-8535-CA49A7D40237.root"
+    ], 
+    "72": [
+      "root://cms-xrd-global.cern.ch//store/mc/RunIISummer19UL17NanoAOD/DY3JetsToLL_M-50_TuneCP5_13TeV-madgraphMLM-pythia8/NANOAODSIM/106X_mc2017_realistic_v6-v1/280000/A9314A85-9011-4D43-B362-0EC5C81F5F21.root"
+    ], 
+    "73": [
+      "root://cms-xrd-global.cern.ch//store/mc/RunIISummer19UL17NanoAOD/DY3JetsToLL_M-50_TuneCP5_13TeV-madgraphMLM-pythia8/NANOAODSIM/106X_mc2017_realistic_v6-v1/280000/B08E4690-8040-864B-A309-EBFF1DBD1923.root"
+    ], 
+    "74": [
+      "root://cms-xrd-global.cern.ch//store/mc/RunIISummer19UL17NanoAOD/DY3JetsToLL_M-50_TuneCP5_13TeV-madgraphMLM-pythia8/NANOAODSIM/106X_mc2017_realistic_v6-v1/280000/B2B4D993-61A4-3649-B892-9C20205F2613.root"
+    ], 
+    "75": [
+      "root://cms-xrd-global.cern.ch//store/mc/RunIISummer19UL17NanoAOD/DY3JetsToLL_M-50_TuneCP5_13TeV-madgraphMLM-pythia8/NANOAODSIM/106X_mc2017_realistic_v6-v1/280000/B437158C-6E6B-5649-9472-304B9575E84B.root"
+    ], 
+    "76": [
+      "root://cms-xrd-global.cern.ch//store/mc/RunIISummer19UL17NanoAOD/DY3JetsToLL_M-50_TuneCP5_13TeV-madgraphMLM-pythia8/NANOAODSIM/106X_mc2017_realistic_v6-v1/280000/C0713C14-DA37-7A4B-BA51-1BFD1FC7B7EE.root"
+    ], 
+    "77": [
+      "root://cms-xrd-global.cern.ch//store/mc/RunIISummer19UL17NanoAOD/DY3JetsToLL_M-50_TuneCP5_13TeV-madgraphMLM-pythia8/NANOAODSIM/106X_mc2017_realistic_v6-v1/280000/C5199994-2A06-A24D-A9EE-FEFB01AFD04D.root"
+    ], 
+    "78": [
+      "root://cms-xrd-global.cern.ch//store/mc/RunIISummer19UL17NanoAOD/DY3JetsToLL_M-50_TuneCP5_13TeV-madgraphMLM-pythia8/NANOAODSIM/106X_mc2017_realistic_v6-v1/280000/C913D61A-2F6B-B248-A263-335192AFAAAA.root"
+    ], 
+    "79": [
+      "root://cms-xrd-global.cern.ch//store/mc/RunIISummer19UL17NanoAOD/DY3JetsToLL_M-50_TuneCP5_13TeV-madgraphMLM-pythia8/NANOAODSIM/106X_mc2017_realistic_v6-v1/280000/D1410F17-EDF9-E84F-BF1F-1893418955CE.root"
+    ], 
+    "80": [
+      "root://cms-xrd-global.cern.ch//store/mc/RunIISummer19UL17NanoAOD/DY3JetsToLL_M-50_TuneCP5_13TeV-madgraphMLM-pythia8/NANOAODSIM/106X_mc2017_realistic_v6-v1/280000/DA12CE4C-E021-C94B-AB1A-6C2EAC73DBBC.root"
+    ], 
+    "81": [
+      "root://cms-xrd-global.cern.ch//store/mc/RunIISummer19UL17NanoAOD/DY3JetsToLL_M-50_TuneCP5_13TeV-madgraphMLM-pythia8/NANOAODSIM/106X_mc2017_realistic_v6-v1/280000/DB76E794-87D2-484B-BD5D-E5E34C512D40.root"
+    ], 
+    "82": [
+      "root://cms-xrd-global.cern.ch//store/mc/RunIISummer19UL17NanoAOD/DY3JetsToLL_M-50_TuneCP5_13TeV-madgraphMLM-pythia8/NANOAODSIM/106X_mc2017_realistic_v6-v1/280000/DF8354FA-5B93-AF44-92A3-53B68E2ACAB9.root"
+    ], 
+    "83": [
+      "root://cms-xrd-global.cern.ch//store/mc/RunIISummer19UL17NanoAOD/DY3JetsToLL_M-50_TuneCP5_13TeV-madgraphMLM-pythia8/NANOAODSIM/106X_mc2017_realistic_v6-v1/280000/EFFD52E9-B15B-A44E-805B-7213EA615BB6.root"
+    ], 
+    "84": [
+      "root://cms-xrd-global.cern.ch//store/mc/RunIISummer19UL17NanoAOD/DY3JetsToLL_M-50_TuneCP5_13TeV-madgraphMLM-pythia8/NANOAODSIM/106X_mc2017_realistic_v6-v1/280000/F9084ECC-FC56-3A4C-945C-DB754236B7A8.root"
+    ]
+  }
+}

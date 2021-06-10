@@ -59,22 +59,24 @@ class MergedSample(Sample):
     nevts    = "%.1f"%self.nevents if self.nevents>=0 else ""
     sumw     = "%.1f"%self.sumweights if self.sumweights>=0 else ""
     norm     = "%.4f"%self.norm
-    split_   = split and self.splitsamples
+    split_   = split and len(self.splitsamples)>0
     name     = self.name.ljust(justname-indent)
     title    = self.title.ljust(justtitle)
     if merged:
       string = ">>> %s%s %s %10s %12s %17s %9s  %s" %\
                (pre,name,title,xsec,nevts,sumw,norm,self.extraweight)
+      if "├─ " in pre or "└─ " in pre or indent==0:
+        pline = color("│  ") if colpass else "│  " # line passing merged samples
+        subpre = pre.replace("├─ ",pline).replace("└─ ",' '*3)
+      else:
+        subpre = pre+' '*3
+      #print "indent=%r, pre=%r, subpre=%r, split_=%r, colpass=%r"%(indent,pre,subpre,split_,colpass)
       for i, sample in enumerate(self.samples):
         islast   = i+1>=len(self.samples)
-        if "├─ " in pre or "└─ " in pre or indent==0:
-          pline = color("│  ") if colpass else "│  " # line passing merged samples
-          subpre = pre.replace("├─ ",pline)
-        else:
-          subpre = pre+' '*3
-        subpre  += "└─ " if (islast and not split_) else "├─ "
-        colpass  = split_ and islast
-        string  += "\n" + sample.row(pre=subpre,indent=indent+3,justname=justname,justtitle=justtitle,split=split,colpass=colpass)
+        subpre_  = subpre + ("└─ " if (islast and not split_) else "├─ ")
+        colpass_ = split_ and islast
+        #print "i=%r, subpre_=%r, islast=%r, colpass_=%r"%(i,subpre_,islast,colpass_)
+        string  += "\n" + sample.row(pre=subpre_,indent=indent+3,justname=justname,justtitle=justtitle,split=split,colpass=colpass_)
     else:
       string = ">>> %s%s %s"%(pre,name,title)
     if split_:
@@ -185,7 +187,6 @@ class MergedSample(Sample):
     
     # HISTOGRAMS
     allhists = [ ]
-    garbage  = [ ]
     hargs    = (variables, selection)
     hkwargs  = kwargs.copy()
     if parallel and len(self.samples)>1:
@@ -218,7 +219,7 @@ class MergedSample(Sample):
           sumhist.SetMarkerColor(self.fillcolor)
           sumhists.append(sumhist)
         else:
-          sumhist.Add(subhist)      
+          sumhist.Add(subhist)
       if verbosity>=4:
         printhist(sumhist,pre=">>>   ")
       deletehist(subhists)
@@ -244,6 +245,7 @@ class MergedSample(Sample):
     name             = kwargs.get('name',               self.name+"_merged" )
     name            += kwargs.get('tag',                ""                  )
     title            = kwargs.get('title',              self.title          )
+    parallel         = kwargs.get('parallel',           False                )
     kwargs['cuts']   = joincuts(kwargs.get('cuts'),     self.cuts           )
     kwargs['weight'] = joinweights(kwargs.get('weight', ""), self.weight    ) # pass scale down
     kwargs['scale']  = kwargs.get('scale', 1.0) * self.scale * self.norm # pass scale down
@@ -252,28 +254,48 @@ class MergedSample(Sample):
       #print ">>>    norm=%.4f, scale=%.4f, total %.4f"%(self.norm,kwargs['scale'],self.scale)
     
     # HISTOGRAMS
-    hists = [ ]
-    garbage = [ ]
-    for sample in self.samples:
-      if 'name' in kwargs: # prevent memory leaks
-        kwargs['name']  = makehistname(kwargs.get('name',""),sample.name)
-      subhists = sample.gethist2D(variables,selection,**kwargs)
-      if hists==[ ]:
-        for (xvariable,yvariable), subhist in zip(variables,subhists):
-          #hist = subhist.Clone("%s_vs_%s_%s"%(xvariable.filename,yvariable.filename,name))
-          subhist.SetName("%s_vs_%s_%s"%(xvariable.filename,yvariable.filename,name))
-          subhist.SetTitle(title)
-          subhist.SetDirectory(0)
-          hists.append(subhist)
-      else:
-        for hist, subhist in zip(hists,subhists):
-          hist.Add(subhist)
-          garbage.append(subhist)
-    deletehist(garbage)
+    allhists = [ ]
+    hargs    = (variables, selection)
+    hkwargs  = kwargs.copy()
+    if parallel and len(self.samples)>1:
+      hkwargs['parallel'] = False
+      processor = MultiProcessor()
+      for sample in self.samples:
+        processor.start(sample.gethist2D,hargs,hkwargs,name=sample.title)        
+      for process in processor:
+        allhists.append(process.join())
+    else:
+      for sample in self.samples:
+        if 'name' in kwargs: # prevent memory leaks
+          hkwargs['name']  = makehistname(kwargs.get('name',""),sample.name)
+        allhists.append(sample.gethist2D(*hargs,**hkwargs))
+    
+    # SUM
+    sumhists = [ ]
+    if any(len(subhists)<len(variables) for subhists in allhists):
+      LOG.error("MergedSample.gethist2D: len(subhists) = %s < %s = len(variables)"%(len(subhists),len(variables)))
+    for ivar, (xvariable,yvariable) in enumerate(variables):
+      subhists = [subhists[ivar] for subhists in allhists]
+      sumhist  = None
+      for subhist in subhists:
+        if sumhist==None:
+          hname = makehistname("%s_vs_%s"%(xvariable.filename,yvariable.filename),name)
+          sumhist = subhist.Clone(hname)
+          sumhist.SetTitle(title)
+          sumhist.SetDirectory(0)
+          sumhist.SetLineColor(self.linecolor)
+          sumhist.SetFillColor(kWhite if self.isdata or self.issignal else self.fillcolor)
+          sumhist.SetMarkerColor(self.fillcolor)
+          sumhists.append(sumhist)
+        else:
+          sumhist.Add(subhist)
+      if verbosity>=4:
+        printhist(sumhist,pre=">>>   ")
+      deletehist(subhists)
     
     if issingle:
-      return hists[0]
-    return hists
+      return sumhists[0]
+    return sumhists
   
 
 def unwrap_MergedSamples_args(*args,**kwargs):

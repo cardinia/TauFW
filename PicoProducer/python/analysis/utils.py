@@ -1,3 +1,4 @@
+
 # Author: Izaak Neutelings (May 2020)
 import os, sys
 from math import sqrt, sin, cos, pi
@@ -157,7 +158,7 @@ def getmetfilters(era,isdata,verb=0):
   if isdata:
     filters.extend(['Flag_eeBadScFilter']) # eeBadScFilter "not suggested" for MC
   if ('2017' in era or '2018' in era) and ('UL' not in era):
-    filters.extend(['Flag_ecalBadCalibFilterV2']) # under review for change in Ultra Legacy
+    filters.extend(['Flag_ecalBadCalibFilter']) # under review for change in Ultra Legacy #Lor changes from Flag_ecalBadCalibFilterV2 to Flag_ecalBadCalibFilter for UL2017
   funcstr = "func = lambda e: e."+' and e.'.join(filters)
   if verb>=1:
     LOG.verb(">>> getmetfilters: %r"%(funcstr))
@@ -250,7 +251,7 @@ def getlepvetoes(event, electrons, muons, taus, channel):
       if muon1.charge*muon2.charge<0 and muon1.DeltaR(muon2)>0.15:
         dilepton_veto = True
         break
-  elif channel=='eletau' or channel=='etau':
+  elif channel=='eletau' or channel =='etau':
     for electron1, electron2 in combinations(looseElectrons,2):
       if electron1.charge*electron2.charge<0 and electron1.DeltaR(electron2)>0.20:
         dilepton_veto = True

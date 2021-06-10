@@ -91,7 +91,7 @@ int main(int argc, char * argv[]) {
     cb.cp().process(ch::JoinStr({sig_procs})).AddSyst(cb, "shape_ees", "shape", SystMap<>::init(1));
     cb.cp().process(ch::JoinStr({sig_procs})).AddSyst(cb, "shape_fes", "shapeU", SystMap<>::init(1));
     cb.cp().process({"ZTT"}).AddSyst(cb, "shape_tes", "shape", SystMap<>::init(1));
-    //cb.cp().process(ch::JoinStr({sig_procs})).AddSyst(cb, "shape_res", "shape", SystMap<>::init(1)); //Uncomment once fixed
+    cb.cp().process(ch::JoinStr({sig_procs})).AddSyst(cb, "shape_res", "shape", SystMap<>::init(1)); //Uncomment once fixed
     
   //! [part6]
 
