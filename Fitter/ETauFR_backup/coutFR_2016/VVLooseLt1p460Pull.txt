@@ -1,3 +1,0 @@
-CMS_ETauFR_et_VVLoose_pass_13TeV_QCD_bin_1 :  -0.0802188980494 +- 0.928839839288
-nuis_p:  <ROOT.RooRealVar object ("CMS_ETauFR_et_VVLoose_pass_13TeV_QCD_bin_1") at 0x47185f0>
-CMS_ETauFR_et_VVLoose_pass_13TeV_QCD_bin_1 :  0.0 +- 0.0
