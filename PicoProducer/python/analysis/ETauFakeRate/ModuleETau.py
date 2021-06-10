@@ -20,6 +20,7 @@ class ModuleETau(ModuleTauPair):
     self.resoScale = 0.
     if self.fes:
       self.ltf=self.fes
+
     # TRIGGERS
     jsonfile       = os.path.join(datadir,"trigger/tau_triggers_%d.json"%(self.year))
     self.trigger   = TrigObjMatcher(jsonfile,trigger='SingleElectron',isdata=self.isdata)
@@ -37,6 +38,7 @@ class ModuleETau(ModuleTauPair):
       self.etfSFs  = TauIDSFTool(tauSFVersion[self.year],'DeepTau2017v2p1VSe',  'VLoose')
       self.mtfSFs  = TauIDSFTool(tauSFVersion[self.year],'DeepTau2017v2p1VSmu', 'VLoose')
       self.resoScale = 0.1
+
 
     # CUTFLOW
     self.out.cutflow.addcut('none',         "no cut"                     )

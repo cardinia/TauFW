@@ -91,7 +91,7 @@ def main(args):
           #'RESUp':   sampleset.shift(systs['RES'].procs,"",systs['RES'].up," +3% mvisRES", split=True,filter=False,share=True),
           #'RESDown': sampleset.shift(systs['RES'].procs,"",systs['RES'].dn," -3% mvisRES", split=True,filter=False,share=True),
         }
-        keys = samplesets.keys() if verbosity>=1 else ['Nom','TESUp','TESDown','FESUp','FESDown','EESUp','EESDown','RESUp','RESDown']
+        keys = samplesets.keys() if verbosity>=1 else ['Nom','TESUp','TESDown','FESUp','FESDown','EESUp','EESDown']#,'RESUp','RESDown']
         for shift in keys:
           if not shift in samplesets: continue
           samplesets[shift].printtable(merged=True,split=True)
@@ -196,7 +196,7 @@ def main(args):
       
       else:
         
-        tauwps    = ['VVVLoose','VVLoose','VLoose','Loose','Medium','Tight','VTight','VVTight']
+        tauwps    = ['VVVLoose']#,'VVLoose','VLoose','Loose','Medium','Tight','VTight','VVTight']
         if channel=='mutau' :
           tauwps    = ['VLoose','Loose','Medium','Tight']
         tauwpbits = { wp: 2**i for i, wp in enumerate(tauwps)}
@@ -245,8 +245,8 @@ def main(args):
         createinputs(fname,samplesets['EESDown'],observables_pass,bins_pass,systs['EES'].dn,filter=systs['EES'].procs)
         createinputs(fname,samplesets['Nom'],observables_pass,bins_pass,"_shape_resUp",shift="_resoUp")
         createinputs(fname,samplesets['Nom'],observables_pass,bins_pass,"_shape_resDown",shift="_resoDown")
-        #createinputs(fname,samplesets['RESUp'],observables_pass_resUp,bins_pass,systs['RES'].up,filter=systs['RES'].procs, shift="_resoUp")
-        #createinputs(fname,samplesets['RESDown'],observables_pass_resDown,bins_pass,systs['RES'].dn,filter=systs['RES'].procs, shift="_resoDown")
+        #createinputs(fname,samplesets['RESUp'],observables_pass_resUp,bins_pass,systs['RES'].up,filter=systs['RES'].procs)
+        #createinputs(fname,samplesets['RESDown'],observables_pass_resDown,bins_pass,systs['RES'].dn,filter=systs['RES'].procs)
         createinputs(fname,samplesets['TESUp'],  observables_fail,bins_fail,systs['TES'].up,filter=systs['TES'].procs)
         createinputs(fname,samplesets['TESDown'],observables_fail,bins_fail,systs['TES'].dn,filter=systs['TES'].procs)
         createinputs(fname,samplesets['FESUp'],  observables_fail,bins_fail,systs['FES'].up,filter=systs['FES'].procs)
@@ -255,8 +255,8 @@ def main(args):
         createinputs(fname,samplesets['EESDown'],observables_fail,bins_fail,systs['EES'].dn,filter=systs['EES'].procs)
         createinputs(fname,samplesets['Nom'],observables_fail,bins_fail,"_shape_resUp",shift="_resoUp")
         createinputs(fname,samplesets['Nom'],observables_fail,bins_fail,"_shape_resDown",shift="_resoDown")
-        #createinputs(fname,samplesets['RESUp'],observables_fail_resUp,bins_fail,systs['RES'].up,filter=systs['RES'].procs,shift="_resoUp")
-        #createinputs(fname,samplesets['RESDown'],observables_fail_resDown,bins_fail,systs['RES'].dn,filter=systs['RES'].procs,shift="_resoDown")
+        #createinputs(fname,samplesets['RESUp'],observables_fail_resUp,bins_fail,systs['RES'].up,filter=systs['RES'].procs)
+        #createinputs(fname,samplesets['RESDown'],observables_fail_resDown,bins_fail,systs['RES'].dn,filter=systs['RES'].procs)
       
       ############
       #   PLOT   #

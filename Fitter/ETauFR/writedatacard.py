@@ -9,6 +9,7 @@ import math
 #eta = ['0to0.4','0.4to0.8','0.8to1.2','1.2to1.7','1.7to3.0']
 eta = ['0to1.46','1.56to2.3']#'0.8to1.2','1.2to1.7','1.7to3.0']
 wp = ['VVVLoose','VVLoose','VLoose','Loose','Medium','Tight','VTight','VVTight']
+
 for ieta in eta :
     print '<<<<<<< eta range: ', ieta
     for iwp in wp :
@@ -21,6 +22,7 @@ for ieta in eta :
         signals = ['ZL']
 
         categories = {
+
             'et' : [( 1, '%s_pass'%(iwp) ),( 2, '%s_fail'%(iwp) )],
         }
 
