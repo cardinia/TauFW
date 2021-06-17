@@ -18,9 +18,7 @@ class ScaleFactor:
     LOG.insist(self.hist,"ScaleFactor(%s): histogram %r does not exist in %s"%(self.name,histname,filename))
     self.hist.SetDirectory(0)
     self.file.Close()
-    
-    if ptvseta: self.getSF = self.getSF_ptvseta
-    else:       self.getSF = self.getSF_etavspt
+    self.getSF = self.getSF_ptvseta if ptvseta else self.getSF_etavspt
   
   def __mul__(self, oScaleFactor):
     return ScaleFactorProduct(self, oScaleFactor)
@@ -33,7 +31,7 @@ class ScaleFactor:
     elif xbin>self.hist.GetXaxis().GetNbins(): xbin -= 1
     if ybin==0: ybin = 1
     elif ybin>self.hist.GetYaxis().GetNbins(): ybin -= 1
-    sf   = self.hist.GetBinContent(xbin,ybin)
+    sf = self.hist.GetBinContent(xbin,ybin)
     #print "ScaleFactor(%s).getSF_ptvseta: pt = %6.2f, eta = %6.3f, sf = %6.3f"%(self.name,pt,eta,sf)
     return sf
   
@@ -45,7 +43,7 @@ class ScaleFactor:
     elif xbin>self.hist.GetXaxis().GetNbins(): xbin -= 1
     if ybin==0: ybin = 1
     elif ybin>self.hist.GetYaxis().GetNbins(): ybin -= 1
-    sf   = self.hist.GetBinContent(xbin,ybin)
+    sf = self.hist.GetBinContent(xbin,ybin)
     #print "ScaleFactor(%s).getSF_etavspt: pt = %6.2f, eta = %6.3f, sf = %6.3f"%(self.name,pt,eta,sf)
     return sf
     
@@ -75,9 +73,9 @@ class ScaleFactorHTT(ScaleFactor):
     data   = self.effs_data[etabin].Eval(pt)
     mc     = self.effs_mc[etabin].Eval(pt)
     if mc==0:
-      sf   = 1.0
+      sf = 1.0
     else:
-      sf   = data/mc
+      sf = data/mc
     #print "ScaleFactorHTT(%s).getSF: pt = %6.2f, eta = %6.3f, data = %6.3f, mc = %6.3f, sf = %6.3f"%(self.name,pt,eta,data,mc,sf)
     return sf
   
@@ -92,6 +90,7 @@ class ScaleFactorProduct:
     #print '>>> ScaleFactor(%s).init'%(self.name)
     self.scaleFactor1 = scaleFactor1
     self.scaleFactor2 = scaleFactor2
+    self.filename = "%s, %s"%(scaleFactor1.filename,scaleFactor2.filename)
   
   def getSF(self, pt, eta):
     return self.scaleFactor1.getSF(pt,eta)*self.scaleFactor2.getSF(pt,eta)

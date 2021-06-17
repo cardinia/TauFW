@@ -6,7 +6,7 @@ from collections import OrderedDict
 import ROOT; ROOT.PyConfig.IgnoreCommandLineOptions = True
 import TauFW.PicoProducer.tools.config as GLOB
 from TauFW.common.tools.file import ensuredir, ensurefile, ensureinit, getline
-from TauFW.common.tools.utils import execute, chunkify, repkey, alphanum_key, lreplace
+from TauFW.common.tools.utils import execute, chunkify, repkey, alphanum_key, lreplace, rreplace
 from TauFW.common.tools.log import Logger, color, bold
 from TauFW.PicoProducer.analysis.utils import getmodule, ensuremodule
 from TauFW.PicoProducer.batch.utils import getbatch, getcfgsamples, chunkify_by_evts, evtsplitexp
@@ -324,7 +324,7 @@ def main_link(args):
       LOG.insist(all('=' in o for o in parts[1:]),"All extra module options should be of format KEY=VALUE!")
       if 'python/analysis/' in module: # useful for tab completion
         module = module.split('python/analysis/')[-1].replace('/','.')
-      module = module.rstrip('.py')
+      module = rreplace(module,'.py')
       path   = os.path.join('python/analysis/','/'.join(module.split('.')[:-1]))
       ensureinit(path,by="pico.py")
       ensuremodule(module)
@@ -393,24 +393,23 @@ def main_run(args):
   """Run given module locally."""
   if args.verbosity>=1:
     print ">>> main_run", args
-  eras      = args.eras
-  channels  = args.channels
-  tag       = args.tag
+  eras      = args.eras      # eras to loop over and run
+  channels  = args.channels  # channels to loop over and run
+  tag       = args.tag       # extra tag for output file
   outdir    = args.outdir
-  dtypes    = args.dtypes
-  filters   = args.samples
-  vetoes    = args.vetoes
-  force     = args.force
+  dtypes    = args.dtypes    # filter (only include) these sample types ('data','mc','embed')
+  filters   = args.samples   # filter (only include) these samples (glob patterns)
+  vetoes    = args.vetoes    # exclude these sample (glob patterns)
   extraopts = args.extraopts # extra options for module (for all runs)
-  maxevts   = args.maxevts
-  dasfiles  = args.dasfiles
-  userfiles = args.infiles
-  nfiles    = args.nfiles
-  nsamples  = args.nsamples
-  prefetch  = args.prefetch
-  dryrun    = args.dryrun
+  prefetch  = args.prefetch  # copy input file first to local output directory
+  maxevts   = args.maxevts   # maximum number of files (per sample, era, channel)
+  dasfiles  = args.dasfiles  # explicitly process nanoAOD files stored on DAS (as opposed to local storage)
+  userfiles = args.infiles   # use these input files
+  nfiles    = args.nfiles    # maximum number of files (per sample, era, channel)
+  nsamples  = args.nsamples  # maximum number of samples (per era, channel)
+  dryrun    = args.dryrun    # prepare and print command, without executing
   verbosity = args.verbosity
-  preselect = args.preselect
+  preselect = args.preselect # extra selection string
   
   # LOOP over ERAS
   if not eras:
@@ -445,95 +444,98 @@ def main_run(args):
         print ">>> %-12s = %r"%('userfiles',userfiles)
         print ">>> %-12s = %r"%('outdir',outdir)
       
-      # GET SAMPLES
-      if not userfiles and (filters or vetoes or dtypes):
-        LOG.insist(era in CONFIG.eras,"Era '%s' not found in the configuration file. Available: %s"%(era,CONFIG.eras))
-        samples = getsamples(era,channel=channel,tag=tag,dtype=dtypes,filter=filters,veto=vetoes,moddict=moddict,verb=verbosity)
-        if nsamples>0:
-          samples = samples[:nsamples]
-        if not samples:
-          print_no_samples(dtypes,filters,vetoes)
-      else:
-        samples = [None]
-      if verbosity>=2:
-        print ">>> %-12s = %r"%('samples',samples)
-      if verbosity>=1:
-        print '-'*80
-      
-      # LOOP over SAMPLES
-      for sample in samples:
-        if sample:
-          print ">>> %s"%(bold(sample.name))
-          if verbosity>=1:
-            for path in sample.paths:
-              print ">>> %s"%(bold(path))
+      # LOOP over FILTERS
+      for filter in filters:
+        filters_ = [filter]
         
-        # SETTINGS
-        dtype      = None
-        extraopts_ = extrachopts[:] # extra options for module (for this channel & sample)
-        if sample:
-          filetag  = "_%s_%s_%s%s"%(channel,era,sample.name,tag)
-          if sample.extraopts:
-            extraopts_.extend(sample.extraopts)
+        # GET SAMPLES
+        if not userfiles and (filters_ or vetoes or dtypes):
+          LOG.insist(era in CONFIG.eras,"Era '%s' not found in the configuration file. Available: %s"%(era,CONFIG.eras))
+          samples = getsamples(era,channel=channel,tag=tag,dtype=dtypes,filter=filters_,veto=vetoes,moddict=moddict,verb=verbosity)
+          if nsamples>0:
+            samples = samples[:nsamples]
+          if not samples:
+            print_no_samples(dtypes,filters_,vetoes)
         else:
-          filetag  = "_%s_%s%s"%(channel,era,tag)
+          samples = [None]
+        if verbosity>=2:
+          print ">>> %-12s = %r"%('samples',samples)
         if verbosity>=1:
-          print ">>> %-12s = %s"%('sample',sample)
-          print ">>> %-12s = %r"%('filetag',filetag) # postfix
-          print ">>> %-12s = %s"%('extraopts',extraopts_)
-        
-        # GET FILES
-        infiles = [ ]
-        if userfiles:
-          infiles = userfiles[:]
-        elif sample:
-          nevents = 0
-          infiles = sample.getfiles(das=dasfiles,verb=verbosity)
-          dtype   = sample.dtype
-          if nfiles>0:
-            infiles = infiles[:nfiles]
-          if verbosity==1:
-            print ">>> %-12s = %r"%('dtype',dtype)
-            print ">>> %-12s = %s"%('nfiles',len(infiles))
-            print ">>> %-12s = [ "%('infiles')
-            for file in infiles:
-              print ">>>   %r"%file
-            print ">>> ]"
-        if verbosity==1:
           print '-'*80
         
-        # RUN
-        runcmd = processor
-        if procopts:
-          runcmd += " %s"%(procopts)
-        if skim:
-          runcmd += " -y %s -o %s"%(era,outdir)
-          if preselect:
-            runcmd += " --preselect '%s'"%(preselect)
-
-        ###elif 'test' in channel:
-        ###  runcmd += " -o %s"%(outdir)
-        else: # analysis
-          runcmd += " -y %s -c %s -M %s -o %s"%(era,channel,module,outdir)
-        if dtype:
-          runcmd += " -d %r"%(dtype)
-        if filetag:
-          runcmd += " -t %r"%(filetag) # postfix
-        if maxevts:
-          runcmd += " -m %s"%(maxevts)
-        if infiles:
-          runcmd += " -i %s"%(' '.join(infiles))
-        if prefetch:
-          runcmd += " -p"
-        if extraopts_:
-          runcmd += " --opt '%s'"%("' '".join(extraopts_))
-        #elif nfiles:
-        #  runcmd += " --nfiles %s"%(nfiles)
-        print ">>> Executing: "+bold(runcmd)
-        if not dryrun:
-          #execute(runcmd,dry=dryrun,verb=verbosity+1) # real-time print out does not work well with python script 
-          os.system(runcmd)
-        print
+        # LOOP over SAMPLES
+        for sample in samples:
+          if sample:
+            print ">>> %s"%(bold(sample.name))
+            if verbosity>=1:
+              for path in sample.paths:
+                print ">>> %s"%(bold(path))
+          
+          # SETTINGS
+          dtype      = None
+          extraopts_ = extrachopts[:] # extra options for module (for this channel & sample)
+          if sample:
+            filetag  = "_%s_%s_%s%s"%(channel,era,sample.name,tag)
+            if sample.extraopts:
+              extraopts_.extend(sample.extraopts)
+          else:
+            filetag  = "_%s_%s%s"%(channel,era,tag)
+          if verbosity>=1:
+            print ">>> %-12s = %s"%('sample',sample)
+            print ">>> %-12s = %r"%('filetag',filetag) # postfix
+            print ">>> %-12s = %s"%('extraopts',extraopts_)
+          
+          # GET FILES
+          infiles = [ ]
+          if userfiles:
+            infiles = userfiles[:]
+          elif sample:
+            nevents = 0
+            infiles = sample.getfiles(das=dasfiles,verb=verbosity)
+            dtype   = sample.dtype
+            if nfiles>0:
+              infiles = infiles[:nfiles]
+            if verbosity==1:
+              print ">>> %-12s = %r"%('dtype',dtype)
+              print ">>> %-12s = %s"%('nfiles',len(infiles))
+              print ">>> %-12s = [ "%('infiles')
+              for file in infiles:
+                print ">>>   %r"%file
+              print ">>> ]"
+          if verbosity==1:
+            print '-'*80
+          
+          # RUN
+          runcmd = processor
+          if procopts:
+            runcmd += " %s"%(procopts)
+          if skim:
+            runcmd += " -y %s -o %s"%(era,outdir)
+            if preselect:
+              runcmd += " --preselect '%s'"%(preselect)
+          ###elif 'test' in channel:
+          ###  runcmd += " -o %s"%(outdir)
+          else: # analysis
+            runcmd += " -y %s -c %s -M %s -o %s"%(era,channel,module,outdir)
+          if dtype:
+            runcmd += " -d %r"%(dtype)
+          if filetag:
+            runcmd += " -t %r"%(filetag) # postfix
+          if maxevts:
+            runcmd += " -m %s"%(maxevts)
+          if infiles:
+            runcmd += " -i %s"%(' '.join(infiles))
+          if prefetch:
+            runcmd += " -p"
+          if extraopts_:
+            runcmd += " --opt '%s'"%("' '".join(extraopts_))
+          #elif nfiles:
+          #  runcmd += " --nfiles %s"%(nfiles)
+          print ">>> Executing: "+bold(runcmd)
+          if not dryrun:
+            #execute(runcmd,dry=dryrun,verb=verbosity+1) # real-time print out does not work well with python script 
+            os.system(runcmd)
+          print
       
 
       
@@ -588,6 +590,7 @@ def preparejobs(args):
   checkdas     = args.checkdas     # look up number of events in DAS and compare to processed events in job output
   checkqueue   = args.checkqueue   # check job status to speed up if batch is slow: 0 (no check), 1 (check once, fast), -1 (check every job, slow, default)
   checkevts    = args.checkevts    # validate output files and counts events (default, but slow)
+  checkexpevts = args.checkexpevts # compare actual vs. processed number of events
   extraopts    = args.extraopts    # extra options for module (for all runs)
   prefetch     = args.prefetch     # copy input file first to local output directory
   preselect    = args.preselect    # preselection string for post-processing
@@ -629,7 +632,7 @@ def preparejobs(args):
       outdirformat = CONFIG.nanodir if skim else CONFIG.outdir # for job output
       jobdir_      = ""
       jobcfgs      = ""
-      if resubmit:
+      if resubmit: # get samples from existing job config files
         # TODO: allow user to resubmit given config file
         jobdir_ = repkey(jobdirformat,ERA=era,SAMPLE='*',CHANNEL=channel,TAG=tag)
         jobcfgs = repkey(os.path.join(jobdir_,"config/jobconfig_$SAMPLE$TAG_try[0-9]*.json"),
@@ -638,7 +641,7 @@ def preparejobs(args):
           print ">>> %-12s = %s"%('cwd',os.getcwd())
           print ">>> %-12s = %s"%('jobcfgs',jobcfgs)
         samples = getcfgsamples(jobcfgs,filter=filters,veto=vetoes,dtype=dtypes,verb=verbosity)
-      else:
+      else: # get samples from sample list
         LOG.insist(era in CONFIG.eras,"Era '%s' not found in the configuration file. Available: %s"%(era,CONFIG.eras))
         samples = getsamples(era,channel=channel,tag=tag,dtype=dtypes,filter=filters,veto=vetoes,moddict=moddict,verb=verbosity)
       if verbosity>=2:
@@ -751,8 +754,8 @@ def preparejobs(args):
           if checkqueue==1 and not jobs: # check jobs only once to speed up performance
             batch = getbatch(CONFIG,verb=verbosity)
             jobs  = batch.jobs(verb=verbosity-1)
-          infiles, chunkdict = checkchunks(sample,channel=channel,tag=tag,jobs=jobs,
-                                           checkqueue=checkqueue,checkevts=checkevts,das=checkdas,verb=verbosity)[:2]
+          infiles, chunkdict = checkchunks(sample,channel=channel,tag=tag,jobs=jobs,checkqueue=checkqueue,
+                                           checkevts=checkevts,checkexpevts=checkexpevts,das=checkdas,verb=verbosity)[:2]
           nevents = sample.jobcfg['nevents'] # updated in checkchunks
         else: # first-time submission
           infiles   = sample.getfiles(das=dasfiles,verb=verbosity-1)
@@ -778,6 +781,9 @@ def preparejobs(args):
         infiles.sort() # to have consistent order with resubmission
         chunks    = [ ] # chunk indices
         if maxevts_>1:
+          if verbosity>=1:
+            print ">>> Preparing jobs with chunks split by number of events..."
+            
           try:
             ntot, fchunks = chunkify_by_evts(infiles,maxevts_,evtdict=sample.filenevts,verb=verbosity) # list of file chunks split by events
             if nevents<=0 and not resubmit:
@@ -791,6 +797,8 @@ def preparejobs(args):
           if testrun:
             fchunks = fchunks[:4]
         else:
+          if verbosity>=1:
+            print ">>> Preparing jobs with chunks split by number of files..."
           fchunks = chunkify(infiles,nfilesperjob_) # list of file chunks split by number of files
         nfiles    = len(infiles)
         nchunks   = len(fchunks)
@@ -866,6 +874,7 @@ def preparejobs(args):
           ('cfgname',cfgname),    ('joblist',joblist),    ('maxevts',maxevts_),
           ('nfiles',nfiles),      ('files',infiles),      ('nfilesperjob',nfilesperjob_), #('nchunks',nchunks),
           ('nchunks',nchunks),    ('chunks',chunks),      ('chunkdict',chunkdict),
+          ('filenevts',sample.filenevts),
         ])
         
         # YIELD
@@ -886,15 +895,16 @@ def preparejobs(args):
 def checkchunks(sample,**kwargs):
   """Help function to check jobs status: success, pending, failed or missing.
   Return list of files to be resubmitted, and a dictionary between chunk index and input files."""
-  outdir       = kwargs.get('outdir',     None  )
-  channel      = kwargs.get('channel',    None  )
-  tag          = kwargs.get('tag',        None  )
-  checkqueue   = kwargs.get('checkqueue', -1    ) # check queue of batch system for pending jobs
-  checkevts    = kwargs.get('checkevts',  True  ) # validate output file & count events (slow, default)
-  pendjobs     = kwargs.get('jobs',       [ ]   )
-  checkdas     = kwargs.get('das',        True  ) # check number of events from DAS
-  showlogs     = kwargs.get('showlogs',   False ) # print log files of failed jobs
-  verbosity    = kwargs.get('verb',       0     )
+  outdir       = kwargs.get('outdir',       None  )
+  channel      = kwargs.get('channel',      None  )
+  tag          = kwargs.get('tag',          None  )
+  checkqueue   = kwargs.get('checkqueue',   -1    ) # check queue of batch system for pending jobs
+  checkevts    = kwargs.get('checkevts',    True  ) # validate output file & count events (slow, default)
+  checkexpevts = kwargs.get('checkexpevts', False ) # compare actual to expected number of processed events
+  pendjobs     = kwargs.get('jobs',         [ ]   )
+  checkdas     = kwargs.get('das',          True  ) # check number of events from DAS
+  showlogs     = kwargs.get('showlogs',     False ) # print log files of failed jobs
+  verbosity    = kwargs.get('verb',         0     )
   oldjobcfg    = sample.jobcfg # job config from last job
   oldcfgname   = oldjobcfg['config']
   chunkdict    = oldjobcfg['chunkdict'] # filenames
@@ -903,6 +913,7 @@ def checkchunks(sample,**kwargs):
   postfix      = oldjobcfg['postfix']
   logdir       = oldjobcfg['logdir']
   nfilesperjob = oldjobcfg['nfilesperjob']
+  filenevts    = sample.filenevts
   if outdir==None:
     outdir     = oldjobcfg['outdir']
   storage      = getstorage(outdir,ensure=True) # StorageElement instance of output directory
@@ -910,6 +921,10 @@ def checkchunks(sample,**kwargs):
     channel    = oldjobcfg['channel']
   if tag==None:
     tag        = oldjobcfg['tag']
+  if not filenevts:
+    checkexpevts==False
+  elif checkexpevts==None:
+    checkexpevts = 'skim' not in channel.lower() # default for pico analysis jobs
   evtsplit     = any(any(evtsplitexp.match(f) for f in chunkdict[i]) for i in chunkdict)
   noldchunks   = len(chunkdict) # = number of jobs
   goodchunks   = [ ] # good job output
@@ -1010,15 +1025,27 @@ def checkchunks(sample,**kwargs):
       infile   = chunkexp.sub(r"\1.root",basename) # reconstruct input file without path or postfix
       outmatch = chunkexp.match(basename)
       ipart    = int(outmatch.group(2) or -1) if outmatch else -1 # >0 if input file split by events
-      nevents  = isvalid(fname) if checkevts else 0 # check for corruption
+      nevents  = isvalid(fname) if checkevts else 0 # get number of events processed & check for corruption
       ichunk   = -1
       for i in chunkdict:
         if ichunk>-1: # found corresponding input file
           break
         for chunkfile in chunkdict[i]: # find chunk output file belongs to
           if infile not in chunkfile: continue
-          inmatch = evtsplitexp.match(chunkfile)
-          if inmatch and int(inmatch.group(2))/int(inmatch.group(3))!=ipart: continue
+          nevtsexp = -1
+          inmatch = evtsplitexp.match(chunkfile) # filename:firstevt:maxevts
+          if inmatch: # chunk was split by events
+            firstevt = int(inmatch.group(2))
+            maxevts  = int(inmatch.group(3))
+            if firstevt/nevtsexp!=ipart: continue # right file, wrong chunk
+            if checkexpevts or verbosity>=2:
+              filentot = filenevts.get(inmatch.group(1),-1)
+              if filentot>-1 and firstevt>=filentot: # sanity check
+                LOG.warning("checkchunks: chunk %d has firstevt=%s>=%s=filentot, which indicates a bug or changed input file %s."%(
+                  ichunk,firstevt,filentot,chunkfile))
+              nevtsexp = min(maxevts,filentot-firstevt) if filentot>-1 else maxevts # = maxevts; roughly expected nevts (some loss due to cuts)
+          elif checkexpevts or verbosity>=2:
+            nevtsexp = filenevts.get(chunkfile,-1) # expected number of processed events
           ichunk  = i
           if ichunk in pendchunks:
             if verbosity>=2:
@@ -1029,8 +1056,14 @@ def checkchunks(sample,**kwargs):
               print ">>>   => Bad nevents=%s..."%(nevents)
             badfiles.append(chunkfile)
           else:
+            if checkexpevts and nevtsexp>-1 and nevents!=nevtsexp:
+              LOG.warning("checkchunks: Found %s processed events, but expected %s for %s..."%(nevents,nevtsexp,fname))
             if verbosity>=2:
-              print ">>>   => Good, nevents=%s"%(nevents)
+              if nevtsexp>-1:
+                frac = "%.1f%%"%(100.0*nevents/nevtsexp) if nevtsexp!=0 else ""
+                print ">>>   => Good, nevents=%s/%s %s"%(nevents,nevtsexp,frac)
+              else:
+                print ">>>   => Good, nevents=%s"%(nevents)
             nprocevents += nevents
             goodfiles.append(chunkfile)
       if verbosity>=2:
@@ -1120,15 +1153,35 @@ def checkchunks(sample,**kwargs):
       else:
         #LOG.warning("Did not recognize output file '%s'!"%(fname))
         continue
-      nevents = isvalid(fname) if checkevts else 0 # check for corruption
+      nevents = isvalid(fname) if checkevts else 0 # get number of processed events & check for corruption
       if nevents<0:
         if verbosity>=2:
           print ">>>   => Bad, nevents=%s"%(nevents)
         badchunks.append(ichunk)
         # TODO: remove file from outdir to avoid conflicting output ?
       else:
+        nevtsexp = 0 # expected number of processed events
+        if checkexpevts or verbosity>=2:
+          for chunkfile in chunkdict[ichunk]:
+            inmatch = evtsplitexp.match(chunkfile) # look for filename:firstevt:maxevts
+            if inmatch: # chunk was split by events
+              firstevt  = int(inmatch.group(2))
+              maxevts   = int(inmatch.group(3))
+              filentot  = filenevts.get(inmatch.group(1),-1)
+              if firstevt>=filentot: # sanity check
+                LOG.warning("checkchunks: chunk %d has firstevt=%s>=%s=filentot, which indicates a bug or changed input file %s."%(
+                  ichunk,firstevt,filentot,chunkfile))
+              nevtsexp += min(maxevts,filentot-firstevt) if filentot>-1 else maxevts
+            else:
+              nevtsexp += filenevts.get(chunkfile,-1)
+          if checkexpevts and nevtsexp>0 and nevents!=nevtsexp:
+            LOG.warning("checkchunks: Found %s processed events, but expected %s for %s..."%(nevents,nevtsexp,fname))
         if verbosity>=2:
-          print ">>>   => Good, nevents=%s"%(nevents)
+          if nevtsexp>-1:
+            frac = "%.1f%%"%(100.0*nevents/nevtsexp) if nevtsexp!=0 else ""
+            print ">>>   => Good, nevents=%s/%s %s"%(nevents,nevtsexp,frac)
+          else:
+            print ">>>   => Good, nevents=%s"%(nevents)
         nprocevents += nevents
         goodchunks.append(ichunk)
     
@@ -1321,15 +1374,17 @@ def main_status(args):
   eras           = args.eras
   channels       = args.channels
   tag            = args.tag
-  checkdas       = args.checkdas
-  checkqueue     = args.checkqueue
-  checkevts      = args.checkevts
+  checkdas       = args.checkdas     # check number of events from DAS
+  checkqueue     = args.checkqueue   # check queue of batch system for pending jobs
+  checkevts      = args.checkevts    # validate output file & count events (slow, default)
+  checkexpevts   = args.checkexpevts # compare actual to expected number of processed events
   dtypes         = args.dtypes
   filters        = args.samples
   vetoes         = args.vetoes
   force          = args.force
   subcmd         = args.subcommand
   cleanup        = subcmd=='clean' or (subcmd=='hadd' and args.cleanup)
+  maxopenfiles   = args.maxopenfiles if subcmd=='hadd' else 0 # maximum number of files opened during hadd, via -n option
   dryrun         = args.dryrun
   verbosity      = args.verbosity
   cmdverb        = max(1,verbosity)
@@ -1385,6 +1440,7 @@ def main_status(args):
         
         # HADD or CLEAN
         if subcmd in ['hadd','clean']:
+          cfgname  = sample.jobcfg['config'] # config file
           jobdir   = sample.jobcfg['jobdir'] # job directory
           cfgdir   = sample.jobcfg['cfgdir'] # job configuration directory
           logdir   = sample.jobcfg['logdir'] # job log directory
@@ -1399,6 +1455,7 @@ def main_status(args):
           logfiles = os.path.join(logdir,'*%s*.*.log'%(postfix))
           if verbosity>=1:
             print ">>> %sing job output for '%s'"%(subcmd.capitalize(),sample.name)
+            print ">>> %-12s = %r"%('cfgname',cfgname)
             print ">>> %-12s = %r"%('jobdir',jobdir)
             print ">>> %-12s = %r"%('cfgdir',cfgdir)
             print ">>> %-12s = %r"%('outdir',outdir)
@@ -1406,8 +1463,8 @@ def main_status(args):
             print ">>> %-12s = %s"%('infiles',infiles)
             if subcmd=='hadd':
               print ">>> %-12s = %r"%('outfile',outfile)
-          resubfiles, chunkdict, npend = checkchunks(sample,channel=channel,tag=tag,jobs=jobs,
-                                                     checkqueue=checkqueue,checkevts=checkevts,das=checkdas,verb=verbosity)
+          resubfiles, chunkdict, npend = checkchunks(sample,channel=channel,tag=tag,jobs=jobs,checkqueue=checkqueue,
+                                                     checkevts=checkevts,das=checkdas,checkexpevts=checkexpevts,verb=verbosity)
           if (len(resubfiles)>0 or npend>0) and not force: # only clean or hadd if all jobs were successful
             LOG.warning("Cannot %s job output because %d chunks need to be resubmitted..."%(subcmd,len(resubfiles))+
                         " Please use -f or --force to %s anyway.\n"%(subcmd))
@@ -1416,7 +1473,8 @@ def main_status(args):
           if subcmd=='hadd':
             #haddcmd = 'hadd -f %s %s'%(outfile,infiles)
             #haddout = execute(haddcmd,dry=dryrun,verb=max(1,verbosity))
-            haddout = storage.hadd(infiles,outfile,dry=dryrun,verb=cmdverb)
+            haddout = storage.hadd(infiles,outfile,dry=dryrun,verb=cmdverb,maxopenfiles=maxopenfiles)
+            # TODO: add option to print out cutflow for outfile
             #os.system(haddcmd)
           
           # CLEAN UP
@@ -1447,11 +1505,13 @@ def main_status(args):
         # ONLY CHECK STATUS
         else:
           showlogs = args.showlogs # print log files of failed jobs
+          cfgname  = sample.jobcfg['config'] # config file
           jobdir   = sample.jobcfg['jobdir']
           outdir   = sample.jobcfg['outdir']
           logdir   = sample.jobcfg['logdir']
           if verbosity>=1:
             print ">>> Checking job status for '%s'"%(sample.name)
+            print ">>> %-12s = %r"%('cfgname',cfgname)
             print ">>> %-12s = %r"%('jobdir',jobdir)
             print ">>> %-12s = %r"%('outdir',outdir)
             print ">>> %-12s = %r"%('logdir',logdir)
@@ -1511,6 +1571,8 @@ if __name__ == "__main__":
                           metavar='N',          help="check job status: 0 (no check), 1 (check once, fast), -1 (check every job, slow, default)" ) # speed up if batch is slow
   parser_job.add_argument('--skipevts',         dest='checkevts', action='store_false',
                                                 help="skip validation and counting of events in output files (faster)" )
+  parser_job.add_argument('--checkexpevts',     dest='checkexpevts', action='store_true', default=None,
+                                                help="check if the actual number of processed events is the same as the expected number" )
   parser_chk = ArgumentParser(add_help=False,parents=[parser_job])
   parser_job.add_argument('-B','--batch-opts',  dest='batchopts', default=None,
                                                 help='extra options for the batch system')
@@ -1609,6 +1671,8 @@ if __name__ == "__main__":
                           metavar='NLOGS',      help="show log files of failed jobs: 0 (show none), -1 (show all), n (show max n)" )
   #parser_hdd.add_argument('--keep',             dest='cleanup', action='store_false',
   #                                              help="do not remove job output after hadd'ing" )
+  parser_hdd.add_argument('-m','--maxopenfiles',dest='maxopenfiles', type=int, default=CONFIG.maxopenfiles,
+                          metavar='NFILES',     help="maximum numbers to be opened during hadd, default=%(default)d" )
   parser_hdd.add_argument('-r','--clean',       dest='cleanup', action='store_true',
                                                 help="remove job output (to be used after hadd'ing)" )
   

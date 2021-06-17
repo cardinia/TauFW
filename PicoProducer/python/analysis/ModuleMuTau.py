@@ -4,7 +4,7 @@ import sys
 import numpy as np
 from TauFW.PicoProducer.analysis.TreeProducerMuTau import *
 from TauFW.PicoProducer.analysis.ModuleTauPair import *
-from TauFW.PicoProducer.analysis.utils import LeptonTauPair, loosestIso, idIso, matchgenvistau, matchtaujet
+from TauFW.PicoProducer.analysis.utils import LeptonTauPair, loosestIso, idIso, matchgenvistau, matchtaujet, filtermutau
 from TauFW.PicoProducer.corrections.MuonSFs import *
 #from TauFW.PicoProducer.corrections.TrigObjMatcher import loadTriggerDataFromJSON, TrigObjMatcher
 from TauPOG.TauIDSFs.TauIDSFTool import TauIDSFTool, TauESTool, campaigns
@@ -69,12 +69,7 @@ class ModuleMuTau(ModuleTauPair):
     """Process and pre-select events; fill branches and return True if the events passes,
     return False otherwise."""
     sys.stdout.flush()
-    for tau in Collection(event,'Tau'):
-      if tau.decayMode==2:
-        print ">>> FOUND 2!!!!!!!"
-      elif tau.decayMode==5:
-        print ">>> FOUND 5!!!!!!!"
-    return False
+    
     
     ##### NO CUT #####################################
     self.out.cutflow.fill('none')
@@ -135,11 +130,11 @@ class ModuleMuTau(ModuleTauPair):
           if tes!=1:
             tau.pt   *= tes
             tau.mass *= tes
-            tau.es    = tes
+            tau.es    = tes # store for later reuse
         elif self.ltf and 0<genmatch<5: # lepton -> tau fake
           tau.pt   *= self.ltf
           tau.mass *= self.ltf
-          tau.es    = self.ltf
+          tau.es    = self.ltf # store for later reuse
         #elif genmatch in [1,3]: # electron -> tau fake (apply by default, override with 'ltf=1.0')
         #  fes = self.fesTool.getFES(tau.eta,tau.decayMode,unc=self.fes)
         #  tau.pt   *= fes
@@ -250,6 +245,8 @@ class ModuleMuTau(ModuleTauPair):
       self.out.genvistaueta_2[0] = eta
       self.out.genvistauphi_2[0] = phi
       self.out.gendm_2[0]        = status
+      if self.dozpt:
+        self.out.mutaufilter     = filtermutau(event) # for stitching DYJetsToTauTauToMuTauh
     
     
     # JETS

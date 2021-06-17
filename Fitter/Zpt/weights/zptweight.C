@@ -16,15 +16,23 @@
 #include <algorithm>
 using namespace std;
 
-TString _fname = "weights/zpt_weight_$ERA$TAG.root";
-//TString _fname = "$CMSSW_BASE/src/TauFWFitter/Zpt/weights/$ERA/zpt_weight_$ERA$TAG.root";
+TString _fname = "weights/zpt_weights_$ERA$TAG.root";
+//TString _fname = "$CMSSW_BASE/src/TauFWFitter/Zpt/weights/$ERA/zpt_weights_$ERA$TAG.root";
 TString _hname = "zptweight";
 TH1* histZpt;
 //TH2F* histZpt;
 
+TString setZptFile(TString fname){
+  _fname = fname;
+  return fname;
+}
+
 void loadZptWeights(TString fname="2017", TString hname=_hname, TString tag=""){
-  if(!fname.EndsWith(".root")) // replace $-keys in file pattern _fname
+  if(!fname.EndsWith(".root")){ // replace $-keys in file pattern _fname
     fname = _fname.Copy().ReplaceAll("$ERA",fname).ReplaceAll("$TAG",tag);
+    if(hname.Contains("zptmass")) // 2D weights
+      fname = fname.Copy().ReplaceAll("zpt_weight","zptmass_weight");
+  }
   std::cout << ">>> loadZptWeights(): opening " << fname << ":" << hname << std::endl;
   if(histZpt)
     histZpt->Delete();
@@ -48,7 +56,7 @@ Float_t getZptWeight(Float_t pt){
   return histZpt->GetBinContent(xbin);
 }
 
-Float_t getZptWeight2D(Float_t pt, Float_t mass){
+Float_t getZptWeight(Float_t pt, Float_t mass){
   Int_t xbin = histZpt->GetXaxis()->FindBin(pt);
   Int_t ybin = histZpt->GetYaxis()->FindBin(mass);
   Float_t weight = 1.0;

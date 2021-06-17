@@ -20,33 +20,45 @@ zptpath = os.path.join(datadir,"zpt/")
 
 class ZptCorrectionTool:
   
-  def __init__(self, year=2017):
+  def __init__(self, era, filename=None, histname='zptmass_weight'):
     """Load Z pT weights."""
-    assert year in [2016,2017,2018], "ZptCorrectionTool: You must choose a year from: 2016, 2017, or 2018."
-    
-    if year==2016:
-      filename = zptpath+"Zpt_weights_2016.root"
-    elif year==2017:
-      filename = zptpath+"Zpt_weights_2017.root"
-    else:
-      filename = zptpath+"Zpt_weights_2018.root"
-    
+    #assert year in [2016,2017,2018], "ZptCorrectionTool: You must choose a year from: 2016, 2017, or 2018."
+    if not filename:
+      if 'UL' in era:
+        #if '2016' in era and 'preVFP' in era:
+        #  filename = zptpath+"Zpt_weights_UL2016_preVFP.root"
+        #elif '2016' in era and 'postVFP' in era:
+        #  filename = zptpath+"Zpt_weights_UL2016_postVFP.root"
+        if '2016' in era:
+          filename = zptpath+"zptmass_weights_UL2016.root"
+        elif '2017' in era:
+          filename = zptpath+"zptmass_weights_UL2017.root"
+        elif '2018' in era:
+          filename = zptpath+"zptmass_weights_UL2018.root"
+      else:
+        if '2016' in era:
+          filename = zptpath+"zptmass_weights_2016.root"
+        elif '2017' in era:
+          filename = zptpath+"zptmass_weights_2017.root"
+        elif '2018' in era:
+          filename = zptpath+"zptmass_weights_2018.root"
+    assert filename, "ZptCorrectionTool.__init__: Did not find filename for %r"%(era)
+    print "Loading ZptCorrectionTool for %s:%r..."%(filename,histname)
     file    = ensureTFile(filename,'READ')
-    hist = file.Get('zptmass_weights')
+    hist = file.Get(histname)
     hist.SetDirectory(0)
     file.Close()
-    
-    self.hist      = hist
-    self.filename  = filename
-    
+    self.hist     = hist
+    self.filename = filename
+  
   def getZptWeight(self,Zpt,Zmass):
     """Get Z pT weight for a given Z boson pT and mass."""
-    xbin = self.hist.GetXaxis().FindBin(Zmass)
-    ybin = self.hist.GetYaxis().FindBin(Zpt)
-    if xbin==0: xbin = 1
-    elif xbin>self.hist.GetXaxis().GetNbins(): xbin -= 1
-    if ybin==0: ybin = 1
-    elif ybin>self.hist.GetYaxis().GetNbins(): ybin -= 1
+    xbin = self.hist.GetXaxis().FindBin(Zpt)
+    ybin = self.hist.GetYaxis().FindBin(Zmass)
+    if xbin==0: xbin = 1 # underflow: use first bin
+    elif xbin>self.hist.GetXaxis().GetNbins(): xbin -= 1 # overflow: use last bin
+    if ybin==0: ybin = 1 # underflow: use first bin
+    elif ybin>self.hist.GetYaxis().GetNbins(): ybin -= 1 # overflow: use last bin
     weight = self.hist.GetBinContent(xbin,ybin)
     return weight
   
@@ -57,15 +69,13 @@ class RecoilCorrectionTool:
   def __init__(self, year=2017, dozpt=True):
     """Load correction tool."""
     assert year in [2016,2017,2018], "RecoilCorrectionTool: You must choose a year from: 2016, 2017, or 2018."        
-    
     if year==2016:
       filename = rcpath+"TypeI-PFMet_Run2016BtoH.root" #"TypeI-PFMet_Run2016_legacy.root"
     elif year==2017:
       filename = rcpath+"Type1_PFMET_2017.root"
     else:
       filename = rcpath+"TypeI-PFMet_Run2018.root"
-    
-    print "Loading RecoilCorrectionTool(%s)..."%filename
+    print "Loading RecoilCorrectionTool for %s..."%filename
     CMSSW_BASE = os.environ.get("CMSSW_BASE",None)
     recoil_h   = "%s/src/HTT-utilities/RecoilCorrections/interface/RecoilCorrector.h"%(CMSSW_BASE)
     assert CMSSW_BASE, "RecoilCorrectionTool: Did not find $CMSSW_BASE"
@@ -73,7 +83,6 @@ class RecoilCorrectionTool:
     gROOT.ProcessLine('#include "%s"'%recoil_h)
     gSystem.Load("libHTT-utilitiesRecoilCorrections.so")
     corrector  = ROOT.RecoilCorrector(filename)
-    
     self.corrector = corrector
     self.filename  = filename
     
